@@ -43,6 +43,9 @@ object CNFSAT{
         val (env, res) = solve(l, Map())
         if(res) (env, SAT) else (env, UNSAT)
     }
+    
+  def removeAux(m: Map[Variable, Boolean]): Map[Variable, Boolean] =
+    m.filterKeys(_.id.head == 'u').toList.map((f, v) => (Variable(f.id.tail) -> v)).toMap
 }
 
 object TwoSAT{

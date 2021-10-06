@@ -1,6 +1,8 @@
 package satapps
 import scala.collection.mutable.ArrayBuffer
 
+import scala.language.implicitConversions
+
 object Main{
 
   def xorMat(a: BinaryMatrix, b: BinaryMatrix): Boolean = 
@@ -13,9 +15,9 @@ object Main{
 
   def main(args: Array[String]): Unit = {
       //println(GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3))).bfs(0))
+      println(CNFSAT.removeAux(CNFSAT.solveSAT((("p" | "q") & "r").toCNF, BruteForce)._1))
 
-
-      println(CNFSAT.solveSAT(!Variable("q") | Variable("q") & Variable("p"), BruteForce))
-      println(Prop.exactlyOne(Variable("a") :: Variable("b") :: Variable("c") :: Nil))
+      //println(CNFSAT.solveSAT(!Variable("q") | Variable("q") & Variable("p"), BruteForce))
+      //println(Prop.exactlyOne(Variable("a") :: Variable("b") :: Variable("c") :: Nil))
   }
 }
