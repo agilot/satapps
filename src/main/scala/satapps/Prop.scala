@@ -9,6 +9,7 @@ abstract class Expr {
       case And(l, r) => l.varSet() ++ r.varSet()
       case Or(l, r) => l.varSet() ++ r.varSet()
       case Xor(l, r) => l.varSet() ++ r.varSet()
+      case _ => Set()
     }
   
   override def toString() =
@@ -18,16 +19,59 @@ abstract class Expr {
       case And(l, r) => s"(${l} ^ ${r})"
       case Or(l, r) => s"(${l} v ${r})"
       case Xor(l, r) => s"(${l} xor ${r})"
+      case T => "T"
+      case F => "F"
     }
 
-  def eval(e: Map[Variable, Boolean]): Boolean =
+  def eval(e: Map[Variable, Expr], lazyEv: Side = Left): Expr =
     this match{
-      case v: Variable => e(v)
-      case Not(v) => !v.eval(e)
-      case And(l, r) => l.eval(e) && r.eval(e)
-      case Or(l, r) => l.eval(e) || r.eval(e)
-      case Xor(l, r) => l.eval(e) ^ r.eval(e)
+      case T => T
+      case F => F
+      case v: Variable => if (e.contains(v)) e(v) else v
+      case Not(v) => 
+        v.eval(e, lazyEv) match{
+          case T => F
+          case F => T
+          case _ => this
+        }
+      case And(l, r) =>
+        lazy val ev1 = 
+          lazyEv match{
+            case Left => l.eval(e, lazyEv)
+            case Right => r.eval(e, lazyEv)
+          }
+        lazy val ev2 = 
+          lazyEv match{
+            case Left => r.eval(e, lazyEv)
+            case Right => l.eval(e, lazyEv)
+          }
+         
+        if (ev1 == F || ev2 == F) F
+        else if (ev1 == T) ev2
+        else if (ev2 ==  T) ev1
+        else this
+
+      case Or(l, r) => 
+        lazy val ev1 = 
+          lazyEv match{
+            case Left => l.eval(e, lazyEv)
+            case Right => r.eval(e, lazyEv)
+          }
+        lazy val ev2 = 
+          lazyEv match{
+            case Left => r.eval(e, lazyEv)
+            case Right => l.eval(e, lazyEv)
+          }
+         
+        if (ev1 == T || ev2 == T) T
+        else if (ev1 == F) ev2
+        else if (ev2 == F) ev1
+        else this
+      
+      case x: Xor => 
+        x.to2CNF().eval(e, lazyEv)
     }
+
 
   def &(e2: Expr) = And(this, e2)
   def |(e2: Expr) = Or(this, e2)
@@ -37,6 +81,7 @@ abstract class Expr {
   def unary_~ = Not(this)
 
   def toCNF: Expr = 
+    val expEv = eval(Map())
 
     def renameVars(e: Expr): Expr =
       e match{
@@ -45,6 +90,7 @@ abstract class Expr {
         case And(l, r) => And(renameVars(l), renameVars(r))
         case Or(l, r) => Or(renameVars(l), renameVars(r))
         case Xor(l, r) => Xor(renameVars(l), renameVars(r))
+        case _ => throw IllegalArgumentException("This state should never occur")
       }
     
 
@@ -70,6 +116,7 @@ abstract class Expr {
         case Not(exp) =>
           val te = tseytin(exp, pref + "0")
           (pref, te._2 + (Variable(pref) -> Not(Variable(te._1))))
+        case _ => throw IllegalArgumentException("This state should never occur")
       }
     
     def clauseConv(ve: (Variable, Expr)) =
@@ -81,7 +128,7 @@ abstract class Expr {
         case _ => throw IllegalArgumentException("This case should never occur")
       }
 
-    val ts = tseytin(renameVars(this), "r")
+    val ts = tseytin(renameVars(expEv), "r")
     And(Variable(ts._1), Prop.andAll(ts._2.toList.map(clauseConv)))
   
 }
@@ -93,6 +140,12 @@ case class Or(left: Expr, right: Expr) extends Expr
 case class Xor(left: Expr, right: Expr) extends Expr{
   def to2CNF() = And(Or(left, right), Or(Not(left), Not(right)))
 }
+case object T extends Expr
+case object F extends Expr
+
+abstract class Side
+case object Right extends Side
+case object Left extends Side
 
 given Conversion[String, Expr] with
   def apply(id: String) = Variable(id)

@@ -14,7 +14,9 @@ object Main{
     TwoSAT.solve2SAT(matToCNF(a.xor(b))) == SAT
 
   def main(args: Array[String]): Unit = {
-      //println(GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3))).bfs(0))
+      val graph = GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3)))
+      //println(graph.graphColoring(4, BruteForce))
+      //println(graph.bfs(0))
       println(CNFSAT.removeAux(CNFSAT.solveSAT((("p" | "q") & "r").toCNF, BruteForce)._1))
 
       //println(CNFSAT.solveSAT(!Variable("q") | Variable("q") & Variable("p"), BruteForce))

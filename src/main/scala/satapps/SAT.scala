@@ -25,18 +25,18 @@ object CNFSAT{
       case _ => isClause(e)
     }
 
-  def solveSAT(e: Expr, solv: SATSolver): (Map[Variable, Boolean], SATResult) =
+  def solveSAT(e: Expr, solv: SATSolver): (Map[Variable, Expr], SATResult) =
     solv match{
       case BruteForce => 
         val l = e.varSet().toList
-        def solve(unused: List[Variable], env: Map[Variable, Boolean]): (Map[Variable, Boolean], Boolean) =
+        def solve(unused: List[Variable], env: Map[Variable, Expr]): (Map[Variable, Expr], Boolean) =
           unused match{
             case Nil => 
-              if (e.eval(env)) (env, true) else (env, false)
+              if (e.eval(env) == T) (env, true) else (env, false)
             case x :: xs => 
-              val (e1, b1) = solve(xs, env + (x -> false))
+              val (e1, b1) = solve(xs, env + (x -> F))
               if(b1) (e1, true) else
-                val (e2, b2) = solve(xs, env + (x -> true))
+                val (e2, b2) = solve(xs, env + (x -> T))
                 if(b2) (e2, true) else
                   (env, false)
           }
@@ -44,7 +44,7 @@ object CNFSAT{
         if(res) (env, SAT) else (env, UNSAT)
     }
     
-  def removeAux(m: Map[Variable, Boolean]): Map[Variable, Boolean] =
+  def removeAux(m: Map[Variable, Expr]): Map[Variable, Expr] =
     m.filterKeys(_.id.head == 'u').toList.map((f, v) => (Variable(f.id.tail) -> v)).toMap
 }
 
