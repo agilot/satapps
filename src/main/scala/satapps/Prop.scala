@@ -29,10 +29,11 @@ abstract class Expr {
       case F => F
       case v: Variable => if (e.contains(v)) e(v) else v
       case Not(v) => 
-        v.eval(e, lazyEv) match{
+        val ve = v.eval(e, lazyEv)
+        ve match{
           case T => F
           case F => T
-          case _ => this
+          case _ => Not(ve)
         }
       case And(l, r) =>
         lazy val ev1 = 
@@ -40,6 +41,8 @@ abstract class Expr {
             case Left => l.eval(e, lazyEv)
             case Right => r.eval(e, lazyEv)
           }
+        
+        
         lazy val ev2 = 
           lazyEv match{
             case Left => r.eval(e, lazyEv)
@@ -49,7 +52,7 @@ abstract class Expr {
         if (ev1 == F || ev2 == F) F
         else if (ev1 == T) ev2
         else if (ev2 ==  T) ev1
-        else this
+        else And(ev1, ev2)
 
       case Or(l, r) => 
         lazy val ev1 = 
@@ -66,7 +69,7 @@ abstract class Expr {
         if (ev1 == T || ev2 == T) T
         else if (ev1 == F) ev2
         else if (ev2 == F) ev1
-        else this
+        else Or(ev1, ev2)
       
       case x: Xor => 
         x.to2CNF().eval(e, lazyEv)
@@ -79,6 +82,20 @@ abstract class Expr {
   def ||(e2: Expr) = Or(this, e2)
   def unary_! = Not(this)
   def unary_~ = Not(this)
+  
+  def isCNFClause: Boolean =
+    this match {
+      case Or(l, r) => l.isCNFClause && r.isCNFClause
+      case Variable(_) => true
+      case Not(Variable(_)) => true
+      case _ => false
+    }
+  
+  def isCNF: Boolean =    
+    this match {
+      case And(l, r) => l.isCNF && r.isCNF
+      case _ => isCNFClause
+    }
 
   def toCNF: Expr = 
     val expEv = eval(Map())

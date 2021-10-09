@@ -3,3 +3,5 @@ project/target/
 .metals/
 .vscode/
 .bsp/
+.bloop/
+project/.bloop/

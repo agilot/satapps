@@ -26,13 +26,9 @@ abstract class Graph{
       iter(Map(source -> 0), Queue(source))
   
   def graphColoring(c: Int, solv: SATSolver): Boolean =
-    println(andAll(vertexSet.toList.flatMap((k: Vertex) => 
-      exactlyOne(Range(0, c).toList.map(i => Variable(s"x${i}${k}"))) :: 
-      Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i}${k}"), Variable(s"x${i}${m}"))))))).toCNF.varSet().size)
     val (env, res) = CNFSAT.solveSAT(andAll(vertexSet.toList.flatMap((k: Vertex) => 
       exactlyOne(Range(0, c).toList.map(i => Variable(s"x${i}${k}"))) :: 
       Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i}${k}"), Variable(s"x${i}${m}"))))))).toCNF, solv)
-      println(env)
       res == SAT
     
 }

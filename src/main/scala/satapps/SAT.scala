@@ -8,28 +8,62 @@ case object UNKNOWN extends SATResult
 
 abstract class SATSolver
 case object BruteForce extends SATSolver
+case object DPLL extends SATSolver
 
 object CNFSAT{
 
-  def isSAT(e: Expr): Boolean =    
-    def isClause(ex: Expr): Boolean =
-      ex match {
-        case And(l, r) => isClause(l) && isClause(r)
-        case Variable(_) => true
-        case Not(Variable(_)) => true
-        case _ => false
-      }
-    
-    e match {
-      case Or(l, r) => isSAT(l) && isSAT(r)
-      case _ => isClause(e)
-    }
+  type Env = Map[Variable, Expr]
 
-  def solveSAT(e: Expr, solv: SATSolver): (Map[Variable, Expr], SATResult) =
+  def units(e: Expr): Env =
+    e match{
+      case T => Map()
+      case F => Map()
+      case Or(l, r) => Map()
+      case And(l, r) => units(l) ++ units(r)
+      case Not(Variable(s)) => Map(Variable(s) -> F)
+      case Variable(s) => Map(Variable(s) -> T)
+      case _ => throw IllegalArgumentException("Not in CNF Form")
+    }
+  
+  def removeUnits(e: Expr): (Expr, Env) = 
+    val u = units(e)
+    val ev = e.eval(u)
+    if(ev == e) (ev, u) else 
+      val rec = removeUnits(ev)
+      (rec._1, u ++ rec._2)
+    
+
+  def solveSAT(e: Expr, solv: SATSolver): (Env, SATResult) =
     solv match{
+      case DPLL =>
+        val l = e.varSet()
+        def solve(ex: Expr, unused: Set[Variable], env: Env) : (Env, Boolean) =
+          val ru = removeUnits(ex)
+          val newUnused = unused -- ru._2.keys
+          val newEnv = ru._2 ++ env
+          //println(s"ex = ${ex}, unused = ${unused}, env = ${env}, ru = ${ru}, newUnused = ${newUnused}, newEnv =${newEnv}")
+          ru._1 match{
+            case F => (newEnv, false)
+            case T => (newEnv, true)
+            case _ =>
+              val v = newUnused.toList.head
+              val newUnused2 = newUnused - v
+              val newEnv2 = newEnv + (v -> T)
+              val newExp2 = ru._1.eval(newEnv2)
+              val s1 = solve(newExp2, newUnused2, newEnv2)
+              if (s1._2) s1
+              else
+                val newEnv3 = newEnv + (v -> F)
+                val newExp3 = ru._1.eval(newEnv3)
+                val s2 = solve(newExp3, newUnused2, newEnv3)
+                s2
+          }
+        val (env, res) = solve(e, l, Map())
+        if(res) (env, SAT) else (env, UNSAT)
+
       case BruteForce => 
         val l = e.varSet().toList
-        def solve(unused: List[Variable], env: Map[Variable, Expr]): (Map[Variable, Expr], Boolean) =
+        def solve(unused: List[Variable], env: Env): (Env, Boolean) =
           unused match{
             case Nil => 
               if (e.eval(env) == T) (env, true) else (env, false)
@@ -44,8 +78,8 @@ object CNFSAT{
         if(res) (env, SAT) else (env, UNSAT)
     }
     
-  def removeAux(m: Map[Variable, Expr]): Map[Variable, Expr] =
-    m.filterKeys(_.id.head == 'u').toList.map((f, v) => (Variable(f.id.tail) -> v)).toMap
+  def removeAux(m: Env): Env =
+    m.view.filterKeys(_.id.head == 'u').toMap.toList.map((f, v) => (Variable(f.id.tail) -> v)).toMap
 }
 
 object TwoSAT{
