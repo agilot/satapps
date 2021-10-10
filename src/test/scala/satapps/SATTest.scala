@@ -27,26 +27,21 @@ import scala.language.implicitConversions
      val v = "q" &  "p"
      assert(v.isCNF)
      val (env, res) = CNFSAT.solveSAT(v, DPLL)
-     assert(env.size == 2)
-     assert(env(Variable("q")) == T)
-     assert(env(Variable("p")) == T)
+     assert(env.size <= 2)
      assert(v.eval(env) == T)
      assert(res == SAT)
 
      val v2 = "q" &  ("p" | !"q")
      assert(v2.isCNF)
      val (env2, res2) = CNFSAT.solveSAT(v2, DPLL)
-     assert(env2.size == 2)
-     assert(env2(Variable("q")) == T)
-     assert(env2(Variable("p")) == T)
+     assert(env2.size <= 2)
      assert(v2.eval(env2) == T)
      assert(res2 == SAT)
 
      val v3 = ("p" | "q") & "r"
      assert(v3.isCNF)
      val (env3, res3) = CNFSAT.solveSAT(v3, DPLL)
-     assert(env3.size == 2)
-     assert(env3(Variable("r")) == T)
+     assert(env3.size <= 3)
      assert(v3.eval(env3) == T)
      assert(res3 == SAT)
    }

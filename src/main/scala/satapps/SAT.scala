@@ -24,7 +24,38 @@ object CNFSAT{
       case Variable(s) => Map(Variable(s) -> T)
       case _ => throw IllegalArgumentException("Not in CNF Form")
     }
-  
+
+  def pures(e: Expr): Env =
+    val set = e.varSet()
+    val m = set.map((_ -> (0, 0))).toMap
+    def count(ex : Expr): Map[Variable, (Int, Int)] =
+      ex match{
+        case T => m
+        case F => m
+        case And(l, r) => 
+          val ml = count(l)
+          val mr = count(r)
+          ml.map((k, v) => k -> (v._1 + mr(k)._1, v._2 + mr(k)._2))
+        case Or(l, r) =>
+          val ml = count(l)
+          val mr = count(r)
+          ml.map((k, v) => k -> (v._1 + mr(k)._1, v._2 + mr(k)._2))
+        case Not(Variable(s)) =>
+          m.updated(Variable(s), (0, 1))
+        case Variable(s) =>
+          m.updated(Variable(s), (1, 0))
+        case _ => throw IllegalArgumentException("This case should never occur")
+      }
+
+    count(e).filter((k, v) => v._1 == 0 || v._2 == 0).map((k, v) => if(v._2 == 0) k -> T else k -> F)
+    
+  def removePures(e: Expr): (Expr, Env) = 
+    val p = pures(e)
+    val ev = e.eval(p)
+    if(ev == e) (ev, p) else 
+      val rec = removePures(ev)
+      (rec._1, p ++ rec._2)
+
   def removeUnits(e: Expr): (Expr, Env) = 
     val u = units(e)
     val ev = e.eval(u)
@@ -32,13 +63,23 @@ object CNFSAT{
       val rec = removeUnits(ev)
       (rec._1, u ++ rec._2)
     
+  def removePuresAndUnits(e: Expr): (Expr, Env) = 
+    val u = units(e)
+    val ev1 = e.eval(u)
+    val p = pures(ev1) ++ u
+    val ev2 = ev1.eval(p)
+    if(ev2 == e) (ev2, p) else 
+      val rec = removePuresAndUnits(ev2)
+      (rec._1, p ++ rec._2)
+    
 
   def solveSAT(e: Expr, solv: SATSolver): (Env, SATResult) =
     solv match{
       case DPLL =>
         val l = e.varSet()
         def solve(ex: Expr, unused: Set[Variable], env: Env) : (Env, Boolean) =
-          val ru = removeUnits(ex)
+          println("yo")
+          val ru = removePuresAndUnits(ex)
           val newUnused = unused -- ru._2.keys
           val newEnv = ru._2 ++ env
           //println(s"ex = ${ex}, unused = ${unused}, env = ${env}, ru = ${ru}, newUnused = ${newUnused}, newEnv =${newEnv}")
