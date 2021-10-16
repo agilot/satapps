@@ -78,7 +78,6 @@ object CNFSAT{
       case DPLL =>
         val l = e.varSet()
         def solve(ex: Expr, unused: Set[Variable], env: Env) : (Env, Boolean) =
-          println("yo")
           val ru = removePuresAndUnits(ex)
           val newUnused = unused -- ru._2.keys
           val newEnv = ru._2 ++ env

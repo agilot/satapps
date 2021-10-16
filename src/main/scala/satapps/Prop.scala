@@ -88,21 +88,27 @@ abstract class Expr {
       case Or(l, r) => l.isCNFClause && r.isCNFClause
       case Variable(_) => true
       case Not(Variable(_)) => true
+      case T => true
+      case F => true
       case _ => false
     }
   
   def isCNF: Boolean =    
     this match {
+      case T => true
+      case F => true
       case And(l, r) => l.isCNF && r.isCNF
       case _ => isCNFClause
     }
 
-  def toCNF: Expr = 
+  def toCNF(prefVar: String = "u", prefReg: String = "r"): Expr = 
     val expEv = eval(Map())
+    expEv match{ case T => T case F => F case _ => 
+    
 
     def renameVars(e: Expr): Expr =
       e match{
-        case Variable(s) => Variable("u" + s)
+        case Variable(s) => Variable(prefVar + s)
         case Not(v) => Not(renameVars(v))
         case And(l, r) => And(renameVars(l), renameVars(r))
         case Or(l, r) => Or(renameVars(l), renameVars(r))
@@ -145,8 +151,9 @@ abstract class Expr {
         case _ => throw IllegalArgumentException("This case should never occur")
       }
 
-    val ts = tseytin(renameVars(expEv), "r")
+    val ts = tseytin(renameVars(expEv), prefReg)
     And(Variable(ts._1), Prop.andAll(ts._2.toList.map(clauseConv)))
+  }
   
 }
 
@@ -190,12 +197,45 @@ object Prop{
   def none(v: List[Variable]): Expr = andAll(v.map(Not(_)))
   def same(v : List[Variable]): Expr = Or(all(v), none(v))
   def atLeastOne(v: List[Variable]): Expr = orAll(v)
+  def atMostK(v: List[Variable], k: Int, regName: String = "r"): Expr =
+    require(k >= 0)
+    def reg(a: Int, b: Int) = Variable(s"${regName}${a}${b}")
+    val n = v.size
+    if (k >= n) T
+    else if (k == 0) andAll(v.map(va => Not(va)))
+    else 
+      val it = v.zip(Range(0, n))
+      val it2 = if(n >= 2) it.tail.init else Nil
+      val o1 = Or(Not(v.head), reg(0, 0))
+      val o2 = if (k < 2) T else andAll((for(j <- 1 until k) yield Not(reg(0, j))).toList)
+      val o3 = if (n < 3) T else andAll((for((vi, i) <- it2) yield Or(Not(vi), reg(i, 0))).toList)
+      val o4 = if (n < 3) T else andAll((for((vi, i) <- it2) yield Or(Not(reg(i - 1, 0)), reg(i, 0))).toList)
+      val o5 = if (n < 3 || k < 2) T else andAll((for((vi, i) <- it2; j <- 1 until k) yield Or(Not(vi), Or(Not(reg(i - 1, j - 1)), reg(i, j)))).toList)
+      val o6 = if (n < 3 || k < 2) T else andAll((for((vi, i) <- it2; j <- 1 until k) yield Or(Not(reg(i - 1, j)), reg(i, j))).toList)
+      val o7 = if (n < 2) T else andAll((for((vi, i) <- it.tail) yield Or(Not(vi), Not(reg(i - 1, k - 1)))).toList)
+      andAll(o1 :: o2 :: o3 :: o4 :: o5 :: o6 :: o7 :: Nil)
+  
+  def atLeastK(v: List[Variable], k: Int, regName: String = "r"): Expr =
+    require(k >= 0)
+    val n = v.size
+    val vs = v.toSet
+    def invert(t: Expr): Expr =
+      t match{
+        case Or(l, r) => Or(invert(l), invert(r))
+        case And(l, r) => And(invert(l), invert(r))
+        case Not(Variable(s)) => if (vs.contains(Variable(s))) Variable(s) else Not(Variable(s))
+        case Variable(s) => if (vs.contains(Variable(s))) Not(Variable(s)) else Variable(s)
+        case _ => t
+      }
+    invert(atMostK(v, n - k, regName))
+    
+  
   def exactlyOne(v: List[Variable]): Expr = 
     def notPairs(l: List[Variable]): Expr =
       l match
-        case List(x, y) => Not(And(x, y))
+        case List(x, y) => Or(Not(x), Not(y))
         case x :: xs => 
-          And(andAll(xs.map(y => Not(And(x, y)))), notPairs(xs))
+          And(andAll(xs.map(y => Or(Not(x), Not(y)))), notPairs(xs))
         case _ => throw IllegalArgumentException("This state should never occur")
     v match{
       case Nil => throw IllegalArgumentException("No Variable")

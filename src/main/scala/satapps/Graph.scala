@@ -28,8 +28,19 @@ abstract class Graph{
   def graphColoring(c: Int, solv: SATSolver): Boolean =
     val (env, res) = CNFSAT.solveSAT(andAll(vertexSet.toList.flatMap((k: Vertex) => 
       exactlyOne(Range(0, c).toList.map(i => Variable(s"x${i}${k}"))) :: 
-      Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i}${k}"), Variable(s"x${i}${m}"))))))).toCNF, solv)
+      Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i}${k}"), Variable(s"x${i}${m}"))))))).toCNF(), solv)
       res == SAT
+  
+  def clique(k: Int, solv: SATSolver): Boolean =
+    val n = adjList.size;
+    val c1 = andAll(
+    (for(i <- 0 until k; j <- 0 until k; u <- 0 until n if i != j)
+      yield orAll(Not(Variable(s"x${i}${u}")) :: adjList(u).map(v => Variable(s"x${j}${v}")))).toList)
+    val c2 = andAll((for(i <- 0 until k) yield
+      exactlyOne((for(u <- 0 until n)
+        yield Variable(s"x${i}${u}")).toList)).toList)
+    val (env, res) =CNFSAT.solveSAT(And(c1, c2), solv)
+    res == SAT
     
 }
 

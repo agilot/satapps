@@ -15,7 +15,9 @@ object Main{
 
   def main(args: Array[String]): Unit = {
       val graph = GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3)))
-      println(graph.graphColoring(4, DPLL))
+      val graph2 = GraphFromEdgeSet(Set(0, 1, 2), Set((0, 1), (1, 0), (2, 1), (1, 2), (0, 2), (2, 0)))
+      //println(graph.graphColoring(4, DPLL))
+      println(graph2.clique(3, DPLL))
       //println(graph.bfs(0))
       //println(CNFSAT.removeAux(CNFSAT.solveSAT((("p" | "q") & "r").toCNF, DPLL)._1))
       //println(CNFSAT.solveSAT(!Variable("q") | Variable("q") & Variable("p"), BruteForce))
