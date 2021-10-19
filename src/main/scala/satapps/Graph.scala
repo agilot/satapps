@@ -32,16 +32,22 @@ abstract class Graph{
       res == SAT
   
   def clique(k: Int, solv: SATSolver): Boolean =
+    require(k >= 0)
     val n = adjList.size;
-    val c1 = andAll(
-    (for(i <- 0 until k; j <- 0 until k; u <- 0 until n if i != j)
-      yield orAll(Not(Variable(s"x${i}${u}")) :: adjList(u).map(v => Variable(s"x${j}${v}")))).toList)
-    val c2 = andAll((for(i <- 0 until k) yield
-      exactlyOne((for(u <- 0 until n)
-        yield Variable(s"x${i}${u}")).toList)).toList)
-    val (env, res) =CNFSAT.solveSAT(And(c1, c2), solv)
-    res == SAT
-    
+    if (k > n) false
+    else 
+      val c1 = andAll(
+      (for(i <- 0 until k; j <- 0 until k; u <- 0 until n if i != j)
+        yield orAll(Not(Variable(s"x${i}${u}")) :: adjList(u).map(v => Variable(s"x${j}${v}")))).toList)
+      val c2 = andAll((for(i <- 0 until k) yield
+        exactlyOne((for(u <- 0 until n)
+          yield Variable(s"x${i}${u}")).toList)).toList)
+      val (env, res) =CNFSAT.solveSAT(And(c1, c2), solv)
+      res == SAT
+  
+  def complement: Graph
+
+  def indset(k: Int, solv: SATSolver) : Boolean = complement.clique(k, solv)
 }
 
 class GraphFromMatrix(mat: BinaryMatrix) extends Graph{
@@ -49,7 +55,9 @@ class GraphFromMatrix(mat: BinaryMatrix) extends Graph{
     override lazy val vertexSet: Set[Vertex] = Range(0,mat.r).toSet
     override lazy val adjList = (for(i <- 0 until mat.r) yield (i, (for(j <- 0 until mat.c if mat(i, j)) yield j).toList)).toMap
     override lazy val edgeSet = (for(i <- 0 until mat.r; j <- 0 until mat.c if mat(i, j)) yield (i, j)).toSet
-}
+
+    def complement = GraphFromMatrix(mat.complement)
+  }
 
 class GraphFromEdgeSet(v: Set[Vertex], e: Set[Edge]) extends Graph{
     override lazy val adjMat = buildMatrix(edgeSet.toList)
@@ -60,4 +68,6 @@ class GraphFromEdgeSet(v: Set[Vertex], e: Set[Edge]) extends Graph{
 
     private def buildMatrix(l: List[Edge]): BinaryImMatrix =
       l.foldLeft(Mat.imZeros(vertexSet.size, vertexSet.size))((acc: BinaryImMatrix, e: Edge) => acc.set(e._1, e._2, true))
-}
+
+    def complement = GraphFromEdgeSet(v, (for i <- v; j <- v yield (i, j)).toSet -- e)
+  }

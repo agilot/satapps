@@ -15,6 +15,7 @@ trait BinaryMatrix extends Matrix[Boolean]{
   def transClos(): BinaryMatrix
   def mult(m: BinaryMatrix): BinaryMatrix
   def pow(n: Int): BinaryMatrix
+  def complement: BinaryMatrix
   override def toString(): String = (for(i <- 0 until r) yield (for(j <- 0 until c) yield (if (apply(i, j)) "1" else "0") ++ " ").reduce(_ ++ _) ++ "\n").reduce(_ ++ _)
 
 }
@@ -49,7 +50,8 @@ class BinaryImMatrix(private val arr: List[Boolean], override val r: Int, overri
   override def set(i: Int, j: Int, v: Boolean): BinaryImMatrix = BinaryImMatrix(arr.updated(i * c + j, v), r, c)
   def xor(m2: BinaryMatrix): BinaryImMatrix = BinaryImMatrix(arr.zip(m2.iterator().toList).map(_^_), r, c)
   def or(m2: BinaryMatrix): BinaryImMatrix = BinaryImMatrix(arr.zip(m2.iterator().toList).map(_||_), r, c)
-  
+  def complement : BinaryImMatrix = BinaryImMatrix(arr.map(!_), r, c)
+
   override def equals (m: Any): Boolean = 
     if (m.isInstanceOf[BinaryImMatrix])
       m.asInstanceOf[BinaryImMatrix].arr == arr
