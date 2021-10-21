@@ -11,17 +11,35 @@ trait MultiSet[T] extends (T => Int)
   with StrictOptimizedIterableOps[T, MultiSet, MultiSet[T]]{
 
   def incl(elem: T) : MultiSet[T]
+  def inclN(elem: T, n: Int): MultiSet[T] = Range(0, n).foldLeft(this)((s, i) => s.incl(elem))
   def excl(elem: T) : MultiSet[T]
-  def contains(elem: T) : Boolean
+  def exclN(elem: T, n: Int): MultiSet[T] = Range(0, n).foldLeft(this)((s, i) => s.excl(elem))
   def mult(elem: T) : Int
-  def inter(set: MultiSet[T]) : MultiSet[T]
+
+  override def toString(): String = 
+    if (size == 0) "()"
+    else 
+      "(" + head.toString + tail.foldLeft("")((s: String, e : T) => s + ", " + e.toString()) + ")"
+  
+  def intersect(set: MultiSet[T]) : MultiSet[T] = 
+    val newS = set.filter(contains(_))
+    foldLeft(newS)((acc, e) => if (acc(e) > mult(e)) acc - e else acc)
+
+  def removedAll(it: Iterable[T]): MultiSet[T] = it.foldLeft(this)(_ - _)
+  def diff(set: MultiSet[T]): MultiSet[T] = removedAll(set)
+  def union(set: MultiSet[T]): MultiSet[T] = (this -- set) ++ (set -- this) ++ (set & this)
 
   override val iterableFactory: IterableFactory[MultiSet] = MultiSetFactory
 
   def +(elem: T) = incl(elem)
   def -(elem: T) = excl(elem)
+  def --(it: Iterable[T]) = removedAll(it)
+  def &(set: MultiSet[T]) = intersect(set)
+  def &~(set:MultiSet[T]) = diff(set)
+
   def apply(elem: T): Int = mult(elem)
-  def union(set: MultiSet[T]) : MultiSet[T] = concat(set)
+  def sum(set: MultiSet[T]) : MultiSet[T] = concat(set)
+  def contains(elem: T) : Boolean = mult(elem) > 0
 }
 
 object MultiSetFactory extends IterableFactory[MultiSet] {
@@ -53,7 +71,6 @@ class ImMultiSet[T](private val m: Map[T, Int]) extends MultiSet[T]{
     }
   }
 
-  override def toString(): String = "(" + head.toString + tail.foldLeft("")((s: String, e : T) => s + ", " + e.toString()) + ")"
   override def equals(that: Any): Boolean = 
     that match{
       case set: ImMultiSet[_] => m == set.m
@@ -69,11 +86,21 @@ class ImMultiSet[T](private val m: Map[T, Int]) extends MultiSet[T]{
       case Some(i) => ImMultiSet(m.updated(elem, i - 1))
     }
   
-  override def contains(elem: T) = m.contains(elem)
-
   override def mult(elem: T) = m.get(elem).getOrElse(0)
   
-  override def inter(set: MultiSet[T]) = ImMultiSet(m.view.filterKeys(set.contains(_)).toMap.map((k, v) => k -> math.min(v, set(k))))
+  override def intersect(set: MultiSet[T]) = ImMultiSet(m.view.filterKeys(set.contains(_)).toMap.map((k, v) => k -> math.min(v, set(k))))
 }
 
+object SetRed{
+
+  def setPacking[T](k: Int, c: Set[Set[T]], solv: SATSolver): Boolean =
+    val n = c.size
+    val z = c.zip(Range(0, n))
+    val g = GraphFromEdgeSet(Range(0, n).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
+      yield (p1._2, p2._2)).toSet)
+    println(g.edgeSet)
+    g.indset(k, solv)
+
+
+}
 

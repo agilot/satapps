@@ -2,13 +2,15 @@ package satapps
 
 import scala.collection.immutable.Queue
 import satapps.Prop._
+import java.awt.event.AdjustmentListener
+import satapps.Graphs.GraphImpl
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
 
 abstract class Graph{
   lazy val adjMat: BinaryMatrix
-  lazy val adjList: Map[Vertex, List[Vertex]]
+  lazy val adjList: Map[Vertex, Set[Vertex]]
   lazy val edgeSet: Set[Edge]
   lazy val vertexSet: Set[(Vertex)]
 
@@ -38,7 +40,7 @@ abstract class Graph{
     else 
       val c1 = andAll(
       (for(i <- 0 until k; j <- 0 until k; u <- 0 until n if i != j)
-        yield orAll(Not(Variable(s"x${i}${u}")) :: adjList(u).map(v => Variable(s"x${j}${v}")))).toList)
+        yield orAll(Not(Variable(s"x${i}${u}")) :: (adjList(u) - u).map(v => Variable(s"x${j}${v}")).toList)).toList)
       val c2 = andAll((for(i <- 0 until k) yield
         exactlyOne((for(u <- 0 until n)
           yield Variable(s"x${i}${u}")).toList)).toList)
@@ -47,13 +49,14 @@ abstract class Graph{
   
   def complement: Graph
 
-  def indset(k: Int, solv: SATSolver) : Boolean = complement.clique(k, solv)
+  def indset(k: Int, solv: SATSolver) : Boolean = 
+    complement.clique(k, solv)
 }
 
 class GraphFromMatrix(mat: BinaryMatrix) extends Graph{
     override lazy val adjMat = mat
     override lazy val vertexSet: Set[Vertex] = Range(0,mat.r).toSet
-    override lazy val adjList = (for(i <- 0 until mat.r) yield (i, (for(j <- 0 until mat.c if mat(i, j)) yield j).toList)).toMap
+    override lazy val adjList = (for(i <- 0 until mat.r) yield (i, (for(j <- 0 until mat.c if mat(i, j)) yield j).toSet)).toMap
     override lazy val edgeSet = (for(i <- 0 until mat.r; j <- 0 until mat.c if mat(i, j)) yield (i, j)).toSet
 
     def complement = GraphFromMatrix(mat.complement)
@@ -62,8 +65,8 @@ class GraphFromMatrix(mat: BinaryMatrix) extends Graph{
 class GraphFromEdgeSet(v: Set[Vertex], e: Set[Edge]) extends Graph{
     override lazy val adjMat = buildMatrix(edgeSet.toList)
     override lazy val vertexSet: Set[Vertex] = v
-    override lazy val adjList = e.toList.foldLeft(v.map((_, Nil)).toMap)((m: Map[Vertex, List[Vertex]], p: Edge) => 
-      m + (p._1 -> (p._2 :: m(p._1))) )
+    override lazy val adjList = e.foldLeft(v.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
+      m + (p._1 -> (m(p._1) + p._2)) )
     override lazy val edgeSet = e
 
     private def buildMatrix(l: List[Edge]): BinaryImMatrix =
@@ -71,3 +74,23 @@ class GraphFromEdgeSet(v: Set[Vertex], e: Set[Edge]) extends Graph{
 
     def complement = GraphFromEdgeSet(v, (for i <- v; j <- v yield (i, j)).toSet -- e)
   }
+
+object Graphs{
+  abstract class GraphImpl
+  case object FromAdjList extends GraphImpl
+  case object FromAdjMat extends GraphImpl
+  case object FromEdgeSet extends GraphImpl
+
+  def vert(n: Int) = Range(0, n).toSet
+
+  //CASE MISSING
+  def empty(n: Int, impl: GraphImpl) = impl match{
+    case FromEdgeSet => GraphFromEdgeSet(vert(n), Set())
+    case FromAdjMat => GraphFromMatrix(Mat.imZeros(n, n))
+  }
+
+  //CASE MISSING
+  def complete(n: Int, impl: GraphImpl) = impl match{
+    case FromEdgeSet => GraphFromEdgeSet(vert(n), (for(i <- 0 until n; j <- 0 until n; if i != j) yield (i, j)).toSet)
+  }
+}

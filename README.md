@@ -15,6 +15,7 @@ The scope of this library is thus to:
 - Graph coloring
 - Independent sets
 - Cliques
+- Set packing
 
 ### We plan to add in the future
 - Graph Isomorphism
