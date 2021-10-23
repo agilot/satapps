@@ -190,14 +190,14 @@ object Prop{
       case _ => throw IllegalArgumentException("Not a xor 2-clause")
     }
   
-  def andAll(ex : List[Expr]) = ex.reduce(And(_, _))
-  def orAll(ex: List[Expr]) = ex.reduce(Or(_, _))
+  def andAll(ex : Iterable[Expr]) = ex.reduce(And(_, _))
+  def orAll(ex: Iterable[Expr]) = ex.reduce(Or(_, _))
 
-  def all(v: List[Variable]): Expr = andAll(v)
-  def none(v: List[Variable]): Expr = andAll(v.map(Not(_)))
-  def same(v : List[Variable]): Expr = Or(all(v), none(v))
-  def atLeastOne(v: List[Variable]): Expr = orAll(v)
-  def atMostK(v: List[Variable], k: Int, regName: String = "r"): Expr =
+  def all(v: Iterable[Variable]): Expr = andAll(v)
+  def none(v: Iterable[Variable]): Expr = andAll(v.map(Not(_)))
+  def same(v : Iterable[Variable]): Expr = Or(all(v), none(v))
+  def atLeastOne(v: Iterable[Variable]): Expr = orAll(v)
+  def atMostK(v: Iterable[Variable], k: Int, regName: String = "r"): Expr =
     require(k >= 0)
     def reg(a: Int, b: Int) = Variable(s"${regName}${a}${b}")
     val n = v.size
@@ -215,7 +215,7 @@ object Prop{
       val o7 = if (n < 2) T else andAll((for((vi, i) <- it.tail) yield Or(Not(vi), Not(reg(i - 1, k - 1)))).toList)
       andAll(o1 :: o2 :: o3 :: o4 :: o5 :: o6 :: o7 :: Nil)
   
-  def atLeastK(v: List[Variable], k: Int, regName: String = "r"): Expr =
+  def atLeastK(v: Iterable[Variable], k: Int, regName: String = "r"): Expr =
     require(k >= 0)
     val n = v.size
     val vs = v.toSet
@@ -230,7 +230,8 @@ object Prop{
     invert(atMostK(v, n - k, regName))
     
   
-  def exactlyOne(v: List[Variable]): Expr = 
+  //TODO: convert list -> iterable
+  def exactlyOne(v: List[Variable]): Expr =
     def notPairs(l: List[Variable]): Expr =
       l match
         case List(x, y) => Or(Not(x), Not(y))

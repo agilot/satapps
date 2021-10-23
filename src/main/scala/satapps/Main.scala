@@ -14,8 +14,9 @@ object Main{
     TwoSAT.solve2SAT(matToCNF(a.xor(b))) == SAT
 
   def main(args: Array[String]): Unit = {
+      //println(Mat.sudoku(3, DPLL, Nil))
       //val s = ImMultiSet(Map(1 -> 1, 2 -> 2, 3 -> 3))
-      println(SetRed.setPacking(4, Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
+      //println(SetRed.setPacking(4, Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
       //val t = ImMultiSet(Map(1 -> 1, 2 -> 1, 3 -> 2, 4 -> 1))
       //val graph = GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3)))
       //val graph2 = GraphFromEdgeSet(Set(0, 1, 2), Set((0, 1), (1, 0), (2, 1), (1, 2), (0, 2), (2, 0)))

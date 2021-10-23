@@ -3,6 +3,7 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, StrictOptimizedIterableOps}
 import scala.collection.mutable.{Builder, ImmutableBuilder}
 import scala.collection.mutable
+import satapps.Prop._
 
 trait Matrix[T] extends Iterable[T]{
   val rows: Int
@@ -138,4 +139,21 @@ class BinaryImMatrix(private val arr: Seq[Boolean], private val r: Int, private 
 
 object Mat {
   def imZeros(r: Int, c: Int) = BinaryImMatrix((0 until r * c).map(_ => false).toList, r, c)
+
+  def sudoku(k: Int, solv: SATSolver, constr: Iterable[(Int, Int, Int)]): Boolean = 
+    val n = k * k
+    val v1 = andAll(for(i <- 0 until n; j <- 0 until n) 
+      yield exactlyOne((for(v <- 0 until n) yield Variable(s"x${i}${j}${v}")).toList))
+    
+    val v2 = andAll(for(i <- 0 until n; v <- 0 until n) 
+      yield exactlyOne((for(j <- 0 until n) yield Variable(s"x${i}${j}${v}")).toList))
+    val v3 = andAll(for(j <- 0 until n; v <- 0 until n) 
+      yield exactlyOne((for(i <- 0 until n) yield Variable(s"x${i}${j}${v}")).toList))
+    val v4 = andAll(for(ci <- 0 until k; cj <- 0 until k; v <- 0 until n)
+      yield exactlyOne((for(i <- ci * k until (ci + 1) * k; j <- cj * k until (cj + 1) * k)
+      yield Variable(s"x${i}${j}${v}")).toList))
+    val v5 = if(constr.size > 0) andAll(constr.map((i, j, v) => Variable(s"x${i}${j}${v}"))) else T
+    val vf = andAll(v1 ::  v2 :: v3 :: v4 :: v5 :: Nil)
+    CNFSAT.solveSAT(vf, solv)._2 == SAT
+    
 }

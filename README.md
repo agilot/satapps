@@ -13,9 +13,10 @@ The scope of this library is thus to:
 
 ### Currently the library tackles the following problems
 - Graph coloring
-- Independent sets
-- Cliques
+- Independent set
+- Clique
 - Set packing
+- Sudoku
 
 ### We plan to add in the future
 - Graph Isomorphism
