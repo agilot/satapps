@@ -7,7 +7,7 @@ object Main{
 
   def xorMat(a: BinaryMatrix, b: BinaryMatrix): Boolean = 
     def matToCNF(mat: BinaryMatrix): Expr = 
-      Prop.xor2ClauseToCNF((for(i <- 0 until mat.r; j <- 0 until mat.c)
+      Prop.xor2ClauseToCNF((for(i <- 0 until mat.rows; j <- 0 until mat.cols)
         yield if (mat(i,j)) Not(Xor(Variable(s"r${i}"), Variable(s"c${j}"))) else Xor(Variable(s"r${i}"), Variable(s"c${j}"))
       ).reduce(And(_, _)))
     

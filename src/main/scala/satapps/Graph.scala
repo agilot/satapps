@@ -55,9 +55,9 @@ abstract class Graph{
 
 class GraphFromMatrix(mat: BinaryMatrix) extends Graph{
     override lazy val adjMat = mat
-    override lazy val vertexSet: Set[Vertex] = Range(0,mat.r).toSet
-    override lazy val adjList = (for(i <- 0 until mat.r) yield (i, (for(j <- 0 until mat.c if mat(i, j)) yield j).toSet)).toMap
-    override lazy val edgeSet = (for(i <- 0 until mat.r; j <- 0 until mat.c if mat(i, j)) yield (i, j)).toSet
+    override lazy val vertexSet: Set[Vertex] = Range(0,mat.rows).toSet
+    override lazy val adjList = (for(i <- 0 until mat.rows) yield (i, (for(j <- 0 until mat.cols if mat(i, j)) yield j).toSet)).toMap
+    override lazy val edgeSet = (for(i <- 0 until mat.rows; j <- 0 until mat.cols if mat(i, j)) yield (i, j)).toSet
 
     def complement = GraphFromMatrix(mat.complement)
   }
@@ -70,7 +70,7 @@ class GraphFromEdgeSet(v: Set[Vertex], e: Set[Edge]) extends Graph{
     override lazy val edgeSet = e
 
     private def buildMatrix(l: List[Edge]): BinaryImMatrix =
-      l.foldLeft(Mat.imZeros(vertexSet.size, vertexSet.size))((acc: BinaryImMatrix, e: Edge) => acc.set(e._1, e._2, true))
+      l.foldLeft(Mat.imZeros(vertexSet.size, vertexSet.size))((acc: BinaryImMatrix, e: Edge) => acc.updated(e._1, e._2, true))
 
     def complement = GraphFromEdgeSet(v, (for i <- v; j <- v yield (i, j)).toSet -- e)
   }
