@@ -17,10 +17,10 @@ The scope of this library is thus to:
 - Clique
 - Set packing
 - Sudoku
+- Vertex cover
 
 ### We plan to add in the future
 - Graph Isomorphism
-- Vertex cover
 - Set cover
 - Subset sum
 - Presburger arithmetic

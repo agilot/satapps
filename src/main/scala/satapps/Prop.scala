@@ -176,6 +176,9 @@ given Conversion[String, Expr] with
 
 object Prop{
 
+  def implies(l: Expr, r: Expr): Expr = 
+    Or(Not(l), r)
+
   def xnorTo2CNF(e: Not): Expr = 
     e.exp match {
       case Xor(l, r) => And(Or(Not(l), r), Or(l, Not(r)))

@@ -12,7 +12,7 @@ abstract class Graph{
   lazy val adjMat: BinaryMatrix
   lazy val adjList: Map[Vertex, Set[Vertex]]
   lazy val edgeSet: Set[Edge]
-  lazy val vertexSet: Set[(Vertex)]
+  lazy val vertexSet: Set[Vertex]
 
   def transClos() = 
     GraphFromMatrix(adjMat.transClos())
@@ -47,6 +47,14 @@ abstract class Graph{
       val (env, res) =CNFSAT.solveSAT(And(c1, c2), solv)
       res == SAT
   
+  def vertexCover(k: Int, solv: SATSolver): Boolean =
+    val vars = vertexSet.map(v => Variable(s"x${v}"))
+    //val exp = And(atMostK(vars, k, "r1"), And(andAll(edgeSet.map((u, v) => Variable(s"x${u}${v}"))), andAll(for(p <- adjList if p._2 != Set()) yield Prop.implies(Variable(s"x${p._1}"), andAll(p._2.map(v => Variable(s"x${p._1}${v}")))))))
+    val exp = And(atMostK(vars, k, "r1"), andAll(edgeSet.map((u, v) => And(Variable(s"x${u}${v}"), Prop.implies(Variable(s"x${u}${v}"), Or(Variable(s"x${u}"), Variable(s"x${v}")))))))
+    println(exp)
+    val (env, res) = CNFSAT.solveSAT(exp, solv)
+    res == SAT
+
   def complement: Graph
 
   def indset(k: Int, solv: SATSolver) : Boolean = 
