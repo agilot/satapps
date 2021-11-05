@@ -29,8 +29,8 @@ abstract class Graph{
   
   def graphColoring(c: Int, solv: SATSolver): Boolean =
     val (env, res) = CNFSAT.solveSAT(andAll(vertexSet.toList.flatMap((k: Vertex) => 
-      exactlyOne(Range(0, c).toList.map(i => Variable(s"x${i}${k}"))) :: 
-      Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i}${k}"), Variable(s"x${i}${m}"))))))).toCNF(), solv)
+      exactlyOne(Range(0, c).toList.map(i => Variable(s"x${i},${k}"))) :: 
+      Range(0, c).toList.flatMap((i: Int) => adjList(k).map((m: Vertex) => Not(And(Variable(s"x${i},${k}"), Variable(s"x${i},${m}"))))))).toCNF(), solv)
       res == SAT
   
   def clique(k: Int, solv: SATSolver): Boolean =
@@ -40,17 +40,17 @@ abstract class Graph{
     else 
       val c1 = andAll(
       (for(i <- 0 until k; j <- 0 until k; u <- 0 until n if i != j)
-        yield orAll(Not(Variable(s"x${i}${u}")) :: (adjList(u) - u).map(v => Variable(s"x${j}${v}")).toList)).toList)
+        yield orAll(Not(Variable(s"x${i},${u}")) :: (adjList(u) - u).map(v => Variable(s"x${j},${v}")).toList)).toList)
       val c2 = andAll((for(i <- 0 until k) yield
         exactlyOne((for(u <- 0 until n)
-          yield Variable(s"x${i}${u}")).toList)).toList)
+          yield Variable(s"x${i},${u}")).toList)).toList)
       val (env, res) =CNFSAT.solveSAT(And(c1, c2), solv)
       res == SAT
   
   def vertexCover(k: Int, solv: SATSolver): Boolean =
     val vars = vertexSet.map(v => Variable(s"x${v}"))
     //val exp = And(atMostK(vars, k, "r1"), And(andAll(edgeSet.map((u, v) => Variable(s"x${u}${v}"))), andAll(for(p <- adjList if p._2 != Set()) yield Prop.implies(Variable(s"x${p._1}"), andAll(p._2.map(v => Variable(s"x${p._1}${v}")))))))
-    val exp = And(atMostK(vars, k, "r1"), andAll(edgeSet.map((u, v) => And(Variable(s"x${u}${v}"), Prop.implies(Variable(s"x${u}${v}"), Or(Variable(s"x${u}"), Variable(s"x${v}")))))))
+    val exp = And(atMostK(vars, k, "r1"), andAll(edgeSet.map((u, v) => And(Variable(s"e${u},${v}"), Prop.implies(Variable(s"e${u},${v}"), Or(Variable(s"x${u}"), Variable(s"x${v}")))))))
     println(exp)
     val (env, res) = CNFSAT.solveSAT(exp, solv)
     res == SAT

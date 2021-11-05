@@ -18,10 +18,11 @@ The scope of this library is thus to:
 - Set packing
 - Sudoku
 - Vertex cover
+- Set cover
 
 ### We plan to add in the future
 - Graph Isomorphism
-- Set cover
 - Subset sum
+- Knapsack
 - Presburger arithmetic
 - Bounded Model Checking

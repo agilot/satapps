@@ -3,6 +3,7 @@ package satapps
 import java.util
 import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, StrictOptimizedIterableOps}
 import scala.collection.mutable.{Builder, ImmutableBuilder}
+import satapps.Prop._
 
 trait MultiSet[T] extends (T => Int) 
   with Iterable[T] 
@@ -100,6 +101,17 @@ object SetRed{
       yield (p1._2, p2._2)).toSet)
     println(g.edgeSet)
     g.indset(k, solv)
+
+  def setCover[T](k: Int, u: Set[T], c: Set[Set[T]], solv: SATSolver): Boolean =
+    require(k > 0)
+    if (c.foldLeft(u)(_ -- _) == Set())
+      val z1 = Range(0, u.size).zip(u)
+      val z2 = Range(0, c.size).zip(c)
+      val vars = z2.map((j, s) => Variable(s"s${j}"))
+      val exp = And(atMostK(vars, k, "r1"), andAll(z1.map((i, t) => And(Variable(s"t${i}"), Prop.implies(Variable(s"t${i}"), orAll(for((j, s) <- z2 if s.contains(t)) yield Variable(s"s${j}")))))))
+      val (env, res) = CNFSAT.solveSAT(exp, solv)
+      res == SAT
+    else false
 
 
 }
