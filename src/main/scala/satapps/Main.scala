@@ -15,9 +15,10 @@ object Main{
 
   def main(args: Array[String]): Unit = {
       //println(Mat.sudoku(3, DPLL, Nil))
+      println(Mat.nQueens(4, DPLL, Nil))
       //val s = ImMultiSet(Map(1 -> 1, 2 -> 2, 3 -> 3))
       //println(SetRed.setPacking(4, Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
-      println(SetRed.setCover(2, Set(1, 2, 3, 4, 5, 6, 7), Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
+      //println(SetRed.setCover(2, Set(1, 2, 3, 4, 5, 6, 7), Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
       //val t = ImMultiSet(Map(1 -> 1, 2 -> 1, 3 -> 2, 4 -> 1))
       //val graph = GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3)))
       //println(graph.vertexCover(1, DPLL))

@@ -19,6 +19,7 @@ The scope of this library is thus to:
 - Sudoku
 - Vertex cover
 - Set cover
+- N Queens
 
 ### We plan to add in the future
 - Graph Isomorphism
