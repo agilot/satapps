@@ -20,6 +20,7 @@ The scope of this library is thus to:
 - Vertex cover
 - Set cover
 - N Queens
+- Latin Square
 
 ### We plan to add in the future
 - Graph Isomorphism
