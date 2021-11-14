@@ -13,4 +13,14 @@ class MatTest extends AnyFunSuite{
       assert(Mat.nQueens(i, DPLL, Nil)) 
     }
   }
+
+  test("Blocked N-Queens"){
+    val n = 8
+    assert(Mat.blockedNQueens(1, DPLL, Nil)) 
+    assert(!Mat.blockedNQueens(2, DPLL, Nil)) 
+    assert(!Mat.blockedNQueens(3, DPLL, Nil)) 
+    for(i <- 4 to n){
+      assert(Mat.blockedNQueens(i, DPLL, Nil)) 
+    }
+  }
 }

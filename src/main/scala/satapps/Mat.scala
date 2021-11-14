@@ -179,4 +179,17 @@ object Mat {
     val v4 = if(constr.size > 0) andAll(constr.map((i, j, v) => Variable(s"x${i},${j},${v}"))) else T
     val vf = andAll(v1 ::  v2 :: v3 :: v4 :: Nil)
     CNFSAT.solveSAT(vf, solv)._2 == SAT
+  
+  def blockedNQueens(n: Int, solv: SATSolver, constr: Iterable[(Int, Int)]): Boolean =
+    val v1 = andAll(for(i <- 0 until n) 
+      yield exactlyOne((for(j <- 0 until n) yield Variable(s"x${i},${j}")).toList))
+    val v2 = andAll(for(j <- 0 until n) 
+      yield exactlyOne((for(i <- 0 until n) yield Variable(s"x${i},${j}")).toList))
+    val v3 = if(constr.size > 0) andAll(constr.map((i, j) => Not(Variable(s"x${i},${j}")))) else T
+    val v4 = andAll(for(i <- -n + 1 until n)
+      yield atMostK((for(j <- 0 until n; if (0 <= i + j && i + j < n)) yield Variable(s"x${j},${i + j}")).toList, 1, s"d${i},1"))
+    val v5 = andAll(for(i <- 0 until 2 * n - 1)
+      yield atMostK((for(j <- 0 until n; if (0 <= i - j && i - j < n)) yield Variable(s"x${j},${i - j}")).toList, 1, s"d${i},2"))
+    val vf = andAll(v1 :: v2 :: v3 :: v4 :: v5 :: Nil)
+    CNFSAT.solveSAT(vf, solv)._2 == SAT
 }
