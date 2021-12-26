@@ -193,8 +193,8 @@ object Prop{
       case _ => throw IllegalArgumentException("Not a xor 2-clause")
     }
   
-  def andAll(ex : Iterable[Expr]) = ex.reduce(And(_, _))
-  def orAll(ex: Iterable[Expr]) = ex.reduce(Or(_, _))
+  def andAll(ex : Iterable[Expr]) = ex.fold(T)(And(_, _))
+  def orAll(ex: Iterable[Expr]) = ex.fold(F)(Or(_, _))
 
   def all(v: Iterable[Variable]): Expr = andAll(v)
   def none(v: Iterable[Variable]): Expr = andAll(v.map(Not(_)))

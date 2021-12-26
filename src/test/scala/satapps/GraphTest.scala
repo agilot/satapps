@@ -24,4 +24,14 @@ class GraphTest extends AnyFunSuite{
       assert(Graphs.empty(n, Graphs.FromEdgeSet).indset(i, DPLL))
     }
   }
+
+  test("dominating set"){
+    
+    val n = 5
+    for(i <- 1 to n){assert(Graphs.complete(n, Graphs.FromEdgeSet).dominatingSet(1, DPLL))}
+
+    for(i <- 1 to n - 1){
+      assert(!Graphs.empty(n, Graphs.FromEdgeSet).dominatingSet(i, DPLL))
+    }
+  }
 }

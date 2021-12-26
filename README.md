@@ -16,16 +16,17 @@ The scope of this library is thus to:
 - Independent set
 - Clique
 - Set packing
+- Dominating Set
 - Sudoku
 - Vertex cover
 - Set cover
 - N-Queens
 - Blocked N-Queens
 - Latin Square
+- Unbounded subset sum (really really slow but really fun)
 
 ### We plan to add in the future
 - Graph Isomorphism
-- Subset sum
 - Knapsack
 - Presburger arithmetic
 - Bounded Model Checking

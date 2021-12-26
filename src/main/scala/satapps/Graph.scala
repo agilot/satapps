@@ -54,6 +54,13 @@ abstract class Graph{
     println(exp)
     val (env, res) = CNFSAT.solveSAT(exp, solv)
     res == SAT
+  
+  def dominatingSet(k: Int, solv: SATSolver): Boolean =
+    val vars = vertexSet.map(v => Variable(s"x${v}")).toList
+    val vert = vertexSet.map(v => Variable(s"v${v}")).toList
+    val exp = And(atMostK(vars, k), And(andAll(vert), andAll(vertexSet.map(v => Prop.implies(Variable(s"v${v}"), Or(Variable(s"x${v}"), orAll(adjList(v).map(v2 => Variable(s"x${v2}")))))))))
+    val (env, res) = CNFSAT.solveSAT(exp, solv)
+    res == SAT
 
   def complement: Graph
 
