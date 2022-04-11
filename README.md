@@ -1,32 +1,37 @@
 # SAT-Apps (Under construction)
-In complexity theory, the Cook-Levin theorem states that the Boolean
-satisfiability problem, better known as SAT, is NP-complete, i.e. any
-problem in NP is polynomially reducible to SAT.\
-The scope of this library is thus to:
-- Implement efficient modern SAT solvers
-- Reduce a bunch of NP problems to SAT instances and solve them efficiently
-- Reduce harder problems to SAT instances in order to solve them relatively efficiently
+SAT-Apps is a Scala library that tackles several NP-hard problems using Z3, an optimized SMT from Microsoft Research.
 
-### Solvers at disposal
-- Brute Force
-- DPLL
+It also implements algorithmic data structures such as matrices, multisets, graphs and propositional logic.
+## Currently the library tackles the following problems
 
-### Currently the library tackles the following problems
+### Graphs
+
 - Graph coloring
 - Independent set
 - Clique
-- Set packing
-- Dominating Set
-- Sudoku
+- Dominating set
 - Vertex cover
-- Set cover
-- N-Queens
-- Blocked N-Queens
-- Latin Square
-- Unbounded subset sum (really really slow but really fun)
 
-### We plan to add in the future
+### Sets
+
+- Set packing
+- Set cover
+- Partition
+- Multiway number partitioning
+- N-Partition
+- 0-1 knapsack
+- Bounded knapsack
+- Unbounded knapsack
+- Bin packing
+### Games
+
+- Sudoku
+- N-Queens completion
+- Blocked N-Queens
+- Latin square
+
+
+## We plan to add in the future
 - Graph Isomorphism
-- Knapsack
 - Presburger arithmetic
 - Bounded Model Checking

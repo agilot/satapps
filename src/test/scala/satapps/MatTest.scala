@@ -1,26 +1,21 @@
 package satapps
 
 import org.scalatest.funsuite.AnyFunSuite
-import scala.language.implicitConversions
 
 class MatTest extends AnyFunSuite{
   test("N-Queens"){
-    val n = 8
-    assert(Mat.nQueens(1, DPLL, Nil)) 
-    assert(!Mat.nQueens(2, DPLL, Nil)) 
-    assert(!Mat.nQueens(3, DPLL, Nil)) 
-    for(i <- 4 to n){
-      assert(Mat.nQueens(i, DPLL, Nil)) 
-    }
+    assert(Mat.nQueensCompletion(1, List((0, 0))).isDefined) 
+    assert(!Mat.nQueensCompletion(2, List((0, 0))).isDefined) 
+    assert(!Mat.nQueensCompletion(3, List((0, 0))).isDefined) 
+    assert(!Mat.nQueensCompletion(4, List((0, 0))).isDefined)
+    assert(Mat.nQueensCompletion(5, List((0, 0))).isDefined) 
   }
 
   test("Blocked N-Queens"){
-    val n = 8
-    assert(Mat.blockedNQueens(1, DPLL, Nil)) 
-    assert(!Mat.blockedNQueens(2, DPLL, Nil)) 
-    assert(!Mat.blockedNQueens(3, DPLL, Nil)) 
-    for(i <- 4 to n){
-      assert(Mat.blockedNQueens(i, DPLL, Nil)) 
-    }
+    assert(!Mat.blockedNQueens(1, List((0, 0))).isDefined) 
+    assert(!Mat.blockedNQueens(2, List((0, 0))).isDefined) 
+    assert(!Mat.blockedNQueens(3, List((0, 0))).isDefined) 
+    assert(Mat.blockedNQueens(4, List((0, 0))).isDefined) 
+    assert(Mat.blockedNQueens(5, List((0, 0))).isDefined) 
   }
 }
