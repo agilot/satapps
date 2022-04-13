@@ -1,7 +1,8 @@
 package satapps
 
 import scala.collection.immutable.Queue
-import z3.scala.*
+import Z3.{|| as _, *}
+import BooleanMatricesOps.*
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
@@ -25,7 +26,7 @@ class Graph (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[Vertex]],
       m + (p._2 -> (m(p._2) + p._1)) )
 
   def complement = Graph(adjMat.complement)
-  def nonReflComplement = Graph((adjMat.or(Mat.id(adjMat.r))).complement)
+  def nonReflComplement = Graph((adjMat || Mat.id(adjMat.r)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
 
   def bfs(source: Vertex): Map[Vertex, Int] = 

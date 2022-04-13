@@ -1,5 +1,7 @@
 package satapps
 
+import Z3.*
+
 //package prop{
 
   import scala.annotation.targetName

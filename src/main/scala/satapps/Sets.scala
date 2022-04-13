@@ -3,7 +3,8 @@ package satapps
 import java.util
 import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, StrictOptimizedIterableOps}
 import scala.collection.mutable.{Builder, ImmutableBuilder}
-import z3.scala.*
+
+import Z3.*
 
 class MultiSet[T] private (m: Map[T, Int]) extends (T => Int) 
   with Iterable[T] 
