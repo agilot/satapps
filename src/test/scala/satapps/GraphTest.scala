@@ -40,11 +40,11 @@ class GraphTest extends AnyFunSuite{
   }
 
   test("hamiltonian"){
-    println(Graphs.complete(5).hamiltonianCycle)
-    println(Graphs.complete(5).hamiltonianPath)
+    // println(Graphs.complete(5).hamiltonianCycle)
+    // println(Graphs.complete(5).hamiltonianPath)
 
-    println(Graph(Set(0, 1, 2), Set((0, 1), (1, 0), (1, 2), (2, 1))).hamiltonianCycle)
-    println(Graph(Set(0, 1, 2), Set((0, 1), (1, 0), (1, 2), (2, 1))).hamiltonianPath)
+    // println(Graph(Set(0, 1, 2), Set((0, 1), (1, 0), (1, 2), (2, 1))).hamiltonianCycle)
+    // println(Graph(Set(0, 1, 2), Set((0, 1), (1, 0), (1, 2), (2, 1))).hamiltonianPath)
   }
 
 
