@@ -5,26 +5,34 @@ import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, 
 import scala.collection.mutable.{Builder, ImmutableBuilder}
 import z3.scala.*
 
-trait MultiSet[T] extends (T => Int) 
+class MultiSet[T] private (m: Map[T, Int]) extends (T => Int) 
   with Iterable[T] 
   with IterableOps[T, MultiSet, MultiSet[T]]
   with IterableFactoryDefaults[T, MultiSet]
   with StrictOptimizedIterableOps[T, MultiSet, MultiSet[T]]{
 
-  def incl(elem: T) : MultiSet[T]
+  private lazy val map: Map[T, Int] = m
+  
+  def this(m: (T, Int)*) = this(m.toMap)
+  def this() = this(Map()) 
+
+  def incl(elem: T) = MultiSet(m.updated(elem, mult(elem) + 1))
   def inclN(elem: T, n: Int): MultiSet[T] = Range(0, n).foldLeft(this)((s, i) => s.incl(elem))
-  def excl(elem: T) : MultiSet[T]
+  def excl(elem: T) = 
+    m.get(elem) match{
+      case None => MultiSet(m)
+      case Some(1) => MultiSet(m - elem)
+      case Some(i) => MultiSet(m.updated(elem, i - 1))
+    }
   def exclN(elem: T, n: Int): MultiSet[T] = Range(0, n).foldLeft(this)((s, i) => s.excl(elem))
-  def mult(elem: T) : Int
+  def mult(elem: T) = m.get(elem).getOrElse(0)
 
   override def toString(): String = 
     if (size == 0) "()"
     else 
       "(" + head.toString + tail.foldLeft("")((s: String, e : T) => s + ", " + e.toString()) + ")"
   
-  def intersect(set: MultiSet[T]) : MultiSet[T] = 
-    val newS = set.filter(contains(_))
-    foldLeft(newS)((acc, e) => if (acc(e) > mult(e)) acc - e else acc)
+  def intersect(set: MultiSet[T]) = MultiSet(m.view.filterKeys(set.contains(_)).toMap.map((k, v) => k -> math.min(v, set(k))))
 
   def removedAll(it: Iterable[T]): MultiSet[T] = it.foldLeft(this)(_ - _)
   def diff(set: MultiSet[T]): MultiSet[T] = removedAll(set)
@@ -41,22 +49,7 @@ trait MultiSet[T] extends (T => Int)
   def apply(elem: T): Int = mult(elem)
   def sum(set: MultiSet[T]) : MultiSet[T] = concat(set)
   def contains(elem: T) : Boolean = mult(elem) > 0
-}
 
-object MultiSetFactory extends IterableFactory[MultiSet] {
-
-  def from[T](source: IterableOnce[T]): MultiSet[T] =
-    (newBuilder[T] ++= source).result()
-
-  def empty[T]: MultiSet[T] = ImMultiSet(Map())
-
-  def newBuilder[A]: Builder[A, MultiSet[A]] =
-    new ImmutableBuilder[A, MultiSet[A]](empty) {
-      def addOne(elem: A): this.type = { elems = elems.incl(elem); this }
-    }
-}
-
-class ImMultiSet[T](private val m: Map[T, Int]) extends MultiSet[T]{
 
   override def iterator: Iterator[T] = new Iterator[T]{
     val i: Iterator[(T, Int)] = m.iterator
@@ -72,31 +65,31 @@ class ImMultiSet[T](private val m: Map[T, Int]) extends MultiSet[T]{
     }
   }
 
-  override def equals(that: Any): Boolean = 
+    override def equals(that: Any): Boolean = 
     that match{
-      case set: ImMultiSet[_] => m == set.m
+      case set: MultiSet[_] => m == set.map
       case _ => false
     }
-  override def incl(elem: T) = 
-    ImMultiSet(m.updated(elem, mult(elem) + 1))
+}
 
-  override def excl(elem: T) = 
-    m.get(elem) match{
-      case None => ImMultiSet(m)
-      case Some(1) => ImMultiSet(m - elem)
-      case Some(i) => ImMultiSet(m.updated(elem, i - 1))
+object MultiSetFactory extends IterableFactory[MultiSet] {
+
+  def from[T](source: IterableOnce[T]): MultiSet[T] =
+    (newBuilder[T] ++= source).result()
+
+  def empty[T]: MultiSet[T] = MultiSet()
+
+  def newBuilder[A]: Builder[A, MultiSet[A]] =
+    new ImmutableBuilder[A, MultiSet[A]](empty) {
+      def addOne(elem: A): this.type = { elems = elems.incl(elem); this }
     }
-  
-  override def mult(elem: T) = m.get(elem).getOrElse(0)
-  
-  override def intersect(set: MultiSet[T]) = ImMultiSet(m.view.filterKeys(set.contains(_)).toMap.map((k, v) => k -> math.min(v, set(k))))
 }
 
 object SetRed{
 
   def setPacking[T](k: Int, c: Seq[Set[T]]): Option[Set[Int]] =
     val z = c.zipWithIndex
-    val g = GraphFromEdgeSet(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
+    val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
       yield (p1._2, p2._2)).toSet)
     g.indset(k)
 

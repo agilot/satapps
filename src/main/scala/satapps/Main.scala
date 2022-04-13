@@ -5,9 +5,9 @@ import scala.language.implicitConversions
 
 object Main{
 
-  // def xorMat(a: BinaryMatrix, b: BinaryMatrix): Boolean = 
-  //   def matToCNF(mat: BinaryMatrix): Expr = 
-  //     Prop.xor2ClauseToCNF((for(i <- 0 until mat.rows; j <- 0 until mat.cols)
+  // def xorMat(a: Matrix[Boolean], b: Matrix[Boolean]): Boolean = 
+  //   def matToCNF(mat: Matrix[Boolean]): Expr = 
+  //     Prop.xor2ClauseToCNF((for(i <- 0 until mat.r; j <- 0 until mat.c)
   //       yield if (mat(i,j)) Not(Xor(Variable(s"r${i}"), Variable(s"c${j}"))) else Xor(Variable(s"r${i}"), Variable(s"c${j}"))
   //     ).reduce(And(_, _)))
     
@@ -31,5 +31,16 @@ object Main{
       //println(CNFSAT.removeAux(CNFSAT.solveSAT((("p" | "q") & "r").toCNF, DPLL)._1))
       //println(CNFSAT.solveSAT(!Variable("q") | Variable("q") & Variable("p"), BruteForce))
       //println(Prop.exactlyOne(Variable("a") :: Variable("b") :: Variable("c") :: Nil))
-  }
+      // val e: Expr = (("H" ^ "C") & ("R" === "C") & ("P" ^ "L") & (("S" === "N") | ("S" === "P") | ("S" === "A")) & ("H" ^ "S") & ("N" === F) & ("A" === T)  & ("NI" === "N") & Prop.atMostK(List("H", "R", "N", "P", "NI", "A", "L", "C", "S"), 4) & Prop.atLeastK(List("H", "R", "N", "P", "NI", "A", "L", "C", "S"), 4)).eval().toCNF()
+      // val str = e.varSet.toList.map(_.id)
+      // val (sol, z) = solve(e.toZ3, str)
+      // println(sol match{
+      //   case Some(s) => Some(s.zip(str).filter((b, v) => !v.startsWith("r")))
+      //   case None => None
+      // }
+      // )
+
+      //println(Mat.fromBlock(Matrix(Seq(1, 2, 3, 4), 2, 2), Matrix(Seq(5, 6), 2, 1), Matrix(Seq(7, 8), 1, 2), Matrix(Seq(9), 1, 1)))
+      
+    }
 }

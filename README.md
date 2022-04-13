@@ -11,6 +11,8 @@ It also implements algorithmic data structures such as matrices, multisets, grap
 - Clique
 - Dominating set
 - Vertex cover
+- Hamiltonian Cycle
+- Hamiltonian Path
 
 ### Sets
 
