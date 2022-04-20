@@ -17,9 +17,9 @@ object Matrices {
     andAll(List(cst1, cst2, cst3, cst4))
 
   def latinSquare(n: Int, constr: Iterable[(Int, Int, Int)]): Option[Matrix[Int]] = 
-    val str: Seq[String] = for(i <- 0 until n; j <- 0 until n) yield s"${i},${j}"
+    val str: IndexedSeq[String] = for(i <- 0 until n; j <- 0 until n) yield s"${i},${j}"
     val (sol, z) = solve(latinSquareConstraints(n, constr), str)
-    val res = toInt(sol).map(Matrix(_, n, n))
+    val res = toInt(sol).map(s => Matrix(s.toIndexedSeq, n, n))
     z.delete()
     res
 
@@ -30,7 +30,7 @@ object Matrices {
       yield distinct((for(i <- ci * k until (ci + 1) * k; j <- cj * k until (cj + 1) * k)
       yield intConst(s"${i},${j}")).toList))
     val (sol, z) = solve(latinSquareConstraints(n, constr) && cst, str)
-    val res = toInt(sol).map(Matrix(_, n, n))
+    val res = toInt(sol).map(s => Matrix(s.toIndexedSeq, n, n))
     z.delete()
     res
 

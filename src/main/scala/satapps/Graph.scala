@@ -21,13 +21,13 @@ class Graph private (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[V
     e.map((_, 1)).toMap)
 
   def this(wMat: Matrix[Int]) =
-    this(Matrix(wMat.unravel.map(_ > 0), wMat.r, wMat.c), 
-    (for(i <- 0 until wMat.r) yield (i, (for(j <- 0 until wMat.c if wMat(i, j) > 0) yield j).toSet)).toMap, 
-    (for(i <- 0 until wMat.r; j <- 0 until wMat.c if wMat(i, j) > 0) yield (i, j)).toSet, 
-    Range(0,wMat.r).toSet,
+    this(Matrix(wMat.unravel.map(_ > 0), wMat.rows, wMat.columns), 
+    (for(i <- 0 until wMat.rows) yield (i, (for(j <- 0 until wMat.columns if wMat(i, j) > 0) yield j).toSet)).toMap, 
+    (for(i <- 0 until wMat.rows; j <- 0 until wMat.columns if wMat(i, j) > 0) yield (i, j)).toSet, 
+    Range(0,wMat.rows).toSet,
     wMat,
-    (for(i <- 0 until wMat.r) yield (i, (for(j <- 0 until wMat.c if wMat(i, j) > 0) yield (j, wMat(i, j))).toSet)).toMap,
-    (for(i <- 0 until wMat.r; j <- 0 until wMat.c if wMat(i, j) > 0) yield ((i, j), wMat(i, j))).toMap)
+    (for(i <- 0 until wMat.rows) yield (i, (for(j <- 0 until wMat.columns if wMat(i, j) > 0) yield (j, wMat(i, j))).toSet)).toMap,
+    (for(i <- 0 until wMat.rows; j <- 0 until wMat.columns if wMat(i, j) > 0) yield ((i, j), wMat(i, j))).toMap)
     
   def this(v: Set[Vertex], e: Map[Edge, Int]) =
     this(e.keySet.foldLeft(BoolMatrix.falses(v.size, v.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true)), 
@@ -43,7 +43,7 @@ class Graph private (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[V
       m + (p._2 -> (m(p._2) + p._1)) )
 
   def complement = Graph(adjMat.complement)
-  def nonReflComplement = Graph((adjMat || BoolMatrix.id(adjMat.r)).complement)
+  def nonReflComplement = Graph((adjMat || BoolMatrix.id(adjMat.rows)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
   def undirected: Graph = Graph(adjMat)
 

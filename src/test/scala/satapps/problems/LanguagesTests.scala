@@ -1,10 +1,12 @@
-package satapps
+package satapps.problems
 
-import problems.Languages.CloseString
+import satapps.*
+import Languages.CloseString
 import scala.util.Random
+
 import org.scalatest.funsuite.AnyFunSuite
 
-class LanguageTest extends AnyFunSuite{
+class LanguagesTest extends AnyFunSuite{
   test("CloseString") {
     trait Solver extends CloseString {
       override type Char = scala.Char

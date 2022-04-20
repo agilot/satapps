@@ -35,26 +35,26 @@ object Extensions{
       res
 
   extension (a: Matrix[Boolean])
-    def ^(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_^_), a.r, a.c)
-    def ||(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_||_), a.r, a.c)
-    def complement : Matrix[Boolean] = Matrix[Boolean](a.unravel.map(!_), a.r, a.c)
+    def ^(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_^_), a.rows, a.columns)
+    def ||(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_||_), a.rows, a.columns)
+    def complement : Matrix[Boolean] = Matrix[Boolean](a.unravel.map(!_), a.rows, a.columns)
     
     def *(b2: Matrix[Boolean]): Matrix[Boolean] =
-      require(a.c == b2.r)
+      require(a.columns == b2.rows)
       Matrix[Boolean](
-        (for(i <- 0 until a.r; j <- 0 until b2.c)
-          yield (for(k <- 0 until a.c) yield a(i, k) && b2(k, j)).reduce(_ || _)).toList
-        , a.r, b2.c)
+        (for(i <- 0 until a.rows; j <- 0 until b2.columns)
+          yield (for(k <- 0 until a.columns) yield a(i, k) && b2(k, j)).reduce(_ || _)).toIndexedSeq
+        , a.rows, b2.columns)
 
     def pow(n: Int): Matrix[Boolean] =
-      require(n > 0 && a.r == a.c)
+      require(n > 0 && a.rows == a.columns)
       n match{
         case 1 => a
         case _ => *(pow(n - 1))
       }
 
     def transClos(): Matrix[Boolean] = 
-      require(a.r == a.c)
+      require(a.rows == a.columns)
       def transPow(bef: Matrix[Boolean], aft: Matrix[Boolean]): Matrix[Boolean] =
         if(bef equals aft)
           bef
@@ -62,6 +62,4 @@ object Extensions{
           transPow(aft, aft || (a * aft))
       
       transPow(a, a || (a * a))
-
-    def toString(): String = (for(i <- 0 until a.r) yield (for(j <- 0 until a.c) yield (if (a(i, j)) "1" else "0") ++ " ").reduce(_ ++ _) ++ "\n").reduce(_ ++ _)
 }

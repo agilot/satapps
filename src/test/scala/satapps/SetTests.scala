@@ -1,7 +1,7 @@
 package satapps
 import org.scalatest.funsuite.AnyFunSuite
 
-class SetsTest extends AnyFunSuite{
+class SetTests extends AnyFunSuite{
   test("incl"){
     val set: MultiSet[Int] = MultiSet()
     val set2 = set + 1 + 1 + 2 + 3 + 4

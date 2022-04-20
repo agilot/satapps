@@ -1,10 +1,11 @@
-package satapps
-import org.scalatest.funsuite.AnyFunSuite
-import scala.language.implicitConversions
-import problems.Graphs.*
-import z3.scala.*
+package satapps.problems
 
-class GraphTest extends AnyFunSuite{
+import satapps.*
+import Graphs.*
+
+import org.scalatest.funsuite.AnyFunSuite
+
+class GraphsTests extends AnyFunSuite{
   test("empty/complete"){
     val n = 5
     for(i <- 2 to 5){
