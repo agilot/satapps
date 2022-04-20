@@ -1,0 +1,5 @@
+site_name: SAT-Apps
+nav:
+  - Home: index.md
+  - Problems: problems.md
+theme: readthedocs
