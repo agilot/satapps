@@ -1,24 +1,21 @@
 package satapps
 
 import scala.collection.immutable.Queue
-import Z3.{*, given}
 import BooleanMatricesOps.{*, given}
-import scala.collection.immutable.ArraySeq
-import scala.annotation.targetName
 import Extensions.*
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
 
-class Graph (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[Vertex]], val edgeSet: Set[Edge], val vertexSet: Set[Vertex], val wMat: Matrix[Int], val wAdjList: Map[Vertex, Set[(Vertex, Int)]], val wMap: Map[Edge, Int]){
+class Graph private (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[Vertex]], val edgeSet: Set[Edge], val vertexSet: Set[Vertex], val wMat: Matrix[Int], val wAdjList: Map[Vertex, Set[(Vertex, Int)]], val wMap: Map[Edge, Int]){
 
   def this(v: Set[Vertex], e: Set[Edge]) =
-    this(e.foldLeft(Mat.falses(v.size, v.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true)), 
+    this(e.foldLeft(BoolMatrix.falses(v.size, v.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true)), 
     e.foldLeft(v.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
       m + (p._1 -> (m(p._1) + p._2)) ), 
     e, 
     v,
-    e.foldLeft(Mat.zeros(v.size, v.size))((acc: Matrix[Int], e: Edge) => acc.updated(e._1, e._2, 1)),
+    e.foldLeft(IntMatrix.zeros(v.size, v.size))((acc: Matrix[Int], e: Edge) => acc.updated(e._1, e._2, 1)),
     e.foldLeft(v.map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: Edge) => 
       m + (p._1 -> (m(p._1) + ((p._2, 1)))) ),
     e.map((_, 1)).toMap)
@@ -33,11 +30,11 @@ class Graph (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[Vertex]],
     (for(i <- 0 until wMat.r; j <- 0 until wMat.c if wMat(i, j) > 0) yield ((i, j), wMat(i, j))).toMap)
     
   def this(v: Set[Vertex], e: Map[Edge, Int]) =
-    this(e.keySet.foldLeft(Mat.falses(v.size, v.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true)), 
+    this(e.keySet.foldLeft(BoolMatrix.falses(v.size, v.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true)), 
     e.keySet.foldLeft(v.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => m + (p._1 -> (m(p._1) + p._2))), 
     e.keySet, 
     v,
-    e.foldLeft(Mat.zeros(v.size, v.size))((acc: Matrix[Int], p: (Edge, Int)) => acc.updated(p._1._1, p._1._2, p._2)),
+    e.foldLeft(IntMatrix.zeros(v.size, v.size))((acc: Matrix[Int], p: (Edge, Int)) => acc.updated(p._1._1, p._1._2, p._2)),
     e.foldLeft(v.map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: (Edge, Int)) => 
       m + (p._1._1 -> (m(p._1._1) + ((p._1._2, p._2))))),
     e)
@@ -46,25 +43,25 @@ class Graph (val adjMat: Matrix[Boolean], val adjList: Map[Vertex, Set[Vertex]],
       m + (p._2 -> (m(p._2) + p._1)) )
 
   def complement = Graph(adjMat.complement)
-  def nonReflComplement = Graph((adjMat || Mat.id(adjMat.r)).complement)
+  def nonReflComplement = Graph((adjMat || BoolMatrix.id(adjMat.r)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
   def undirected: Graph = Graph(adjMat)
 
   def bfs(source: Vertex): Map[Vertex, Int] = 
-      def iter(dist: Map[Vertex, Int], queue: Queue[Vertex]): Map[Vertex, Int] =
-        if (dist.keys == vertexSet)
-          dist
-        else
-          val (e, q): (Vertex, Queue[Vertex]) = queue.dequeue
-          val l = adjList(e).filter(!dist.contains(_))
-          iter(dist ++ l.map(_ -> (dist(e) + 1)), q enqueueAll l)
-      iter(Map(source -> 0), Queue(source))
+    def iter(dist: Map[Vertex, Int], queue: Queue[Vertex]): Map[Vertex, Int] =
+      if (dist.keys == vertexSet)
+        dist
+      else
+        val (e, q): (Vertex, Queue[Vertex]) = queue.dequeue
+        val l = adjList(e).filter(!dist.contains(_))
+        iter(dist ++ l.map(_ -> (dist(e) + 1)), q enqueueAll l)
+    iter(Map(source -> 0), Queue(source))
   
 }
 
 
-object Graphs{
-  def empty(n: Int) = Graph(Mat.falses(n, n))
+object Graph {
+  def empty(n: Int) = Graph(BoolMatrix.falses(n, n))
   def complete(n: Int) = empty(n).nonReflComplement
-  def identity(n: Int) = Graph(Mat.id(n))
+  def identity(n: Int) = Graph(BoolMatrix.id(n))
 }

@@ -1,31 +1,12 @@
-package satapps
+package satapps.problems
+
+import satapps.*
 import Z3.{*, given}
 import BooleanMatricesOps.{*, given}
 import scala.collection.immutable.ArraySeq
 import Extensions.*
 
-  def min[T](start: T, idx: Int, prob: Int => Option[T], endIdx: Int): T =
-    def rec(last: T, k: Int): T =
-      val sol: Option[T] = prob(k)
-      sol match{
-        case Some(s) if k > endIdx => rec(s, k - 1)
-        case _ => last
-      }
-      
-    rec(start, idx)
-
-  def max[T](start: T, idx: Int, prob: Int => Option[T], endIdx: Int): T =
-    def rec(last: T, k: Int): T =
-      val sol: Option[T] = prob(k)
-      sol match{
-        case Some(s) if k < endIdx => rec(s, k + 1)
-        case _ => last
-      }
-      
-    rec(start, idx)
-
-
-object GraphProb{
+object Graphs {
 
   def coloring(g: Graph)(c: Int): Option[Seq[Int]] =
     val str: Seq[String] = 
@@ -36,7 +17,7 @@ object GraphProb{
     val cst2: Z3Type = andAll((for((v1, v2) <- g.edgeSet; i <- 0 until c) yield
       intConst(s"${v1},${i}") + intConst(s"${v2},${i}") <= 1).toList)
     val cst3: Z3Type = andAll((for(v <- 0 until g.vertexSet.size) yield sum(for(i <- 0 until c) yield intConst(s"${v},${i}")) === 1))
-      
+
     val (sol, z) = solve(cst1 && cst2 && cst3, str)
     val res = toInt(sol).map(_.zipWithIndex.filter((cs, idx) => cs >= 1).map((cs, idx) => idx % c))
     z.delete()
@@ -48,7 +29,7 @@ object GraphProb{
 
   def cliquePartition(g: Graph)(k: Int): Option[Seq[Set[Int]]] =
     coloring(g.nonReflComplement)(k).map(_.zipWithIndex.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._1, acc(p._1) + p._2)))
-  
+
   def vertexCover(g: Graph)(k: Int): Option[Set[Vertex]] =
     val str: Seq[String] = Range(0, g.vertexSet.size).map(_.toString)
     val vars: Seq[Z3Type] = intConst(str)
@@ -59,7 +40,7 @@ object GraphProb{
     val res = filterSol(sol).map(_.toSet)
     z.delete()
     res
-    
+
   def hamiltonianCycle(g: Graph): Option[Seq[Edge]] =
     travelingSalesman(g.undirected)(g.vertexSet.size)
 
@@ -78,19 +59,19 @@ object GraphProb{
     val res = toInt(sol).map(some => some.zip(esl).filter((v, e) => v > 0).map((v, e) => e))
     z.delete()
     res
-  
+
   def hamiltonianPath(g: Graph): Option[Seq[Edge]] =
     val n: Int = g.vertexSet.size
-    val nG: Graph = Graph(Mat.fromBlock(g.adjMat, Mat.ones(n, 1), Mat.ones(1, n), Mat.zeros(1, 1)))
+    val nG: Graph = Graph(Matrix.fromBlock(g.adjMat, IntMatrix.ones(n, 1), IntMatrix.ones(1, n), IntMatrix.zeros(1, 1)))
     val p = hamiltonianCycle(nG).map(_.filter(p => p._1 < n && p._2 < n))
     p.map(some => if(some.size == n) some.tail else some)
-  
+
   def dominatingSet(g: Graph)(k: Int): Option[Set[Vertex]] =
     val str: Seq[String] = Range(0, g.vertexSet.size).map(_.toString)
     val vars: Seq[Z3Type] = intConst(str)
     val cst1: Z3Type = andAll((for (v1 <- 0 until g.vertexSet.size) yield sum(intConst((g.adjList(v1) + v1).map(_.toString).toList)) >= 1).toList)
     val cst2: Z3Type = vars >= 0 && vars <= 1 && sum(vars) === k
-    
+
     val (sol, z) = solve(cst1 && cst2, str)
     val res = filterSol(sol).map(_.toSet)
     z.delete()
@@ -120,7 +101,8 @@ object GraphProb{
     val res = filterSol(sol).map(_.toSet)
     z.delete()
     res
-  else if (g.vertexSet.size >= k) Some(Range(0, k).toSet) else None
+  else if (g.vertexSet.size >= k) Some(Range(0, k).toSet) 
+  else None
 
 
   def kRegularInducedSubgraph(g: Graph)(k: Int)(v: Int) : Option[Set[Int]] = 
@@ -135,7 +117,8 @@ object GraphProb{
       val res = filterSol(sol).map(_.toSet)
       z.delete()
       res
-    else if (g.vertexSet.size >= k) Some(Range(0, k).toSet) else None
+    else if (g.vertexSet.size >= k) Some(Range(0, k).toSet) 
+    else None
 
 
 

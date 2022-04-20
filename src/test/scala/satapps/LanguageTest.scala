@@ -1,5 +1,6 @@
 package satapps
 
+import problems.Languages.CloseString
 import scala.util.Random
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -83,7 +84,7 @@ class LanguageTest extends AnyFunSuite{
       solvable("_" * len, k, strs: _*)
     }
 
-    for _ <- 0 until 30 do {
+    for _ <- 0 until 3 do {
       val len = 37
 
       given solver: Solver with
