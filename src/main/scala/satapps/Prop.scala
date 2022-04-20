@@ -3,179 +3,178 @@ package satapps
 import Z3.{*, given}
 import Extensions.*
 
-//package prop{
+import scala.annotation.targetName
 
-  import scala.annotation.targetName
-
-  abstract class Expr {
-        
-    def varSet: Set[Variable] =
-      this match{
-        case v: Variable => Set(v)
-        case Not(v) => v.varSet
-        case And(l, r) => l.varSet ++ r.varSet
-        case Or(l, r) => l.varSet ++ r.varSet
-        case Xor(l, r) => l.varSet ++ r.varSet
-        case _ => Set()
-      }
-    
-    override def toString() =
-      this match{
-        case Variable(s) => s
-        case Not(v) => s"~${v}"
-        case And(l, r) => s"(${l} ^ ${r})"
-        case Or(l, r) => s"(${l} v ${r})"
-        case Xor(l, r) => s"(${l} xor ${r})"
-        case T => "T"
-        case F => "F"
-      }
-
-    def eval(e: Map[Variable, Expr] = Map(), lazyEv: Side = Left): Expr =
-      this match{
-        case T => T
-        case F => F
-        case v: Variable => if (e.contains(v)) e(v) else v
-        case Not(v) => 
-          val ve = v.eval(e, lazyEv)
-          ve match{
-            case T => F
-            case F => T
-            case _ => Not(ve)
-          }
-        case And(l, r) =>
-          lazy val ev1 = 
-            lazyEv match{
-              case Left => l.eval(e, lazyEv)
-              case Right => r.eval(e, lazyEv)
-            }
-          
-          
-          lazy val ev2 = 
-            lazyEv match{
-              case Left => r.eval(e, lazyEv)
-              case Right => l.eval(e, lazyEv)
-            }
-          
-          if (ev1 == F || ev2 == F) F
-          else if (ev1 == T) ev2
-          else if (ev2 ==  T) ev1
-          else And(ev1, ev2)
-
-        case Or(l, r) => 
-          lazy val ev1 = 
-            lazyEv match{
-              case Left => l.eval(e, lazyEv)
-              case Right => r.eval(e, lazyEv)
-            }
-          lazy val ev2 = 
-            lazyEv match{
-              case Left => r.eval(e, lazyEv)
-              case Right => l.eval(e, lazyEv)
-            }
-          
-          if (ev1 == T || ev2 == T) T
-          else if (ev1 == F) ev2
-          else if (ev2 == F) ev1
-          else Or(ev1, ev2)
-        
-        case x: Xor => 
-          x.to2CNF().eval(e, lazyEv)
-      }
-
-
-    def &(e2: Expr) = And(this, e2)
-    def |(e2: Expr) = Or(this, e2)
-    def &&(e2: Expr) = And(this, e2)
-    def ||(e2: Expr) = Or(this, e2)
-    def ^(e2: Expr) = Xor(this, e2)
-    def ===(e2: Expr) = And(Prop.implies(this, e2), Prop.implies(e2, this))
-    def unary_! = Not(this)
-    def unary_~ = Not(this)
-    
-    def isCNFClause: Boolean =
-      this match {
-        case Or(l, r) => l.isCNFClause && r.isCNFClause
-        case Variable(_) => true
-        case Not(Variable(_)) => true
-        case T => true
-        case F => true
-        case _ => false
-      }
-    
-    def isCNF: Boolean =    
-      this match {
-        case T => true
-        case F => true
-        case And(l, r) => l.isCNF && r.isCNF
-        case _ => isCNFClause
-      }
-    
-    def toZ3: Z3Type =
-      this match {
-        case T => true
-        case F => false
-        case Variable(s) => boolConst(s)
-        case Not(v) => !v.toZ3
-        case And(l, r) => l.toZ3 && r.toZ3
-        case Or(l, r) => l.toZ3 || r.toZ3
-        case Xor(l, r) => l.toZ3 ^ r.toZ3
-      }
-
-    def toCNF(prefVar: String = "u", prefReg: String = "r"): Expr = 
-      val expEv = eval(Map())
-      expEv match{ case T => T case F => F case _ => 
+trait Expr {
       
-
-      def renameVars(e: Expr): Expr =
-        e match{
-          case Variable(s) => Variable(prefVar + s)
-          case Not(v) => Not(renameVars(v))
-          case And(l, r) => And(renameVars(l), renameVars(r))
-          case Or(l, r) => Or(renameVars(l), renameVars(r))
-          case Xor(l, r) => Xor(renameVars(l), renameVars(r))
-          case _ => throw IllegalArgumentException("This state should never occur")
-        }
-      
-
-      def tseytin(e: Expr, pref: String): (String, Map[Variable, Expr]) =
-
-        e match{
-          case Variable(v) => (v, Map())
-          case And(l, r) =>
-            val tl = tseytin(l, pref + "0")
-            val tr = tseytin(r, pref + "1")
-            val m = tl._2 ++ tr._2 
-            (pref, m + (Variable(pref) -> And(Variable(tl._1), Variable(tr._1))))
-          case Or(l, r) =>
-            val tl = tseytin(l, pref + "0")
-            val tr = tseytin(r, pref + "1")
-            val m = tl._2 ++ tr._2 
-            (pref, m + (Variable(pref) -> Or(Variable(tl._1), Variable(tr._1))))
-          case Xor(l, r) =>
-            val tl = tseytin(l, pref + "0")
-            val tr = tseytin(r, pref + "1")
-            val m = tl._2 ++ tr._2 
-            (pref, m + (Variable(pref) -> Xor(Variable(tl._1), Variable(tr._1))))
-          case Not(exp) =>
-            val te = tseytin(exp, pref + "0")
-            (pref, te._2 + (Variable(pref) -> Not(Variable(te._1))))
-          case _ => throw IllegalArgumentException("This state should never occur")
-        }
-      
-      def clauseConv(ve: (Variable, Expr)) =
-        ve._2 match{
-          case Not(v) => And(Or(Not(v), Not(ve._1)), Or(v, ve._1))
-          case And(v1, v2) => And(And(Or(Not(v1), Or(Not(v2), ve._1)), Or(v1, Not(ve._1))), Or(v2, Not(ve._1)))
-          case Or(v1, v2) => And(And(Or(v1, Or(v2, Not(ve._1))), Or(Not(v1), ve._1)), Or(Not(v2), ve._1))
-          case Xor(v1, v2) => And(And(Or(Not(v1), Or(Not(v2), Not(ve._1))), Or(v1, Or(v2, Not(ve._1)))), And(Or(v1, Or(Not(v2), ve._1)), Or(Not(v1), Or(v2, ve._1))))
-          case _ => throw IllegalArgumentException("This case should never occur")
-        }
-
-      val ts = tseytin(renameVars(expEv), prefReg)
-      And(Variable(ts._1), Prop.andAll(ts._2.toList.map(clauseConv)))
+  def varSet: Set[Variable] =
+    this match{
+      case v: Variable => Set(v)
+      case Not(v) => v.varSet
+      case And(l, r) => l.varSet ++ r.varSet
+      case Or(l, r) => l.varSet ++ r.varSet
+      case Xor(l, r) => l.varSet ++ r.varSet
+      case _ => Set()
     }
-    
+  
+  override def toString() =
+    this match{
+      case Variable(s) => s
+      case Not(v) => s"~${v}"
+      case And(l, r) => s"(${l} ^ ${r})"
+      case Or(l, r) => s"(${l} v ${r})"
+      case Xor(l, r) => s"(${l} xor ${r})"
+      case T => "T"
+      case F => "F"
+    }
+
+  def eval(e: Map[Variable, Expr] = Map(), lazyEv: Side = Left): Expr =
+    this match{
+      case T => T
+      case F => F
+      case v: Variable => if (e.contains(v)) e(v) else v
+      case Not(v) => 
+        val ve = v.eval(e, lazyEv)
+        ve match{
+          case T => F
+          case F => T
+          case _ => Not(ve)
+        }
+      case And(l, r) =>
+        lazy val ev1 = 
+          lazyEv match{
+            case Left => l.eval(e, lazyEv)
+            case Right => r.eval(e, lazyEv)
+          }
+        
+        
+        lazy val ev2 = 
+          lazyEv match{
+            case Left => r.eval(e, lazyEv)
+            case Right => l.eval(e, lazyEv)
+          }
+        
+        if (ev1 == F || ev2 == F) F
+        else if (ev1 == T) ev2
+        else if (ev2 ==  T) ev1
+        else And(ev1, ev2)
+
+      case Or(l, r) => 
+        lazy val ev1 = 
+          lazyEv match{
+            case Left => l.eval(e, lazyEv)
+            case Right => r.eval(e, lazyEv)
+          }
+        lazy val ev2 = 
+          lazyEv match{
+            case Left => r.eval(e, lazyEv)
+            case Right => l.eval(e, lazyEv)
+          }
+        
+        if (ev1 == T || ev2 == T) T
+        else if (ev1 == F) ev2
+        else if (ev2 == F) ev1
+        else Or(ev1, ev2)
+      
+      case x: Xor => 
+        x.to2CNF().eval(e, lazyEv)
+    }
+
+
+  def &(e2: Expr) = And(this, e2)
+  def |(e2: Expr) = Or(this, e2)
+  def &&(e2: Expr) = And(this, e2)
+  def ||(e2: Expr) = Or(this, e2)
+  def ^(e2: Expr) = Xor(this, e2)
+  def ===(e2: Expr) = And(Prop.implies(this, e2), Prop.implies(e2, this))
+  def unary_! = Not(this)
+  def unary_~ = Not(this)
+  
+  def isCNFClause: Boolean =
+    this match {
+      case Or(l, r) => l.isCNFClause && r.isCNFClause
+      case Variable(_) => true
+      case Not(Variable(_)) => true
+      case T => true
+      case F => true
+      case _ => false
+    }
+  
+  def isCNF: Boolean =    
+    this match {
+      case T => true
+      case F => true
+      case And(l, r) => l.isCNF && r.isCNF
+      case _ => isCNFClause
+    }
+  
+  def toZ3: Z3Type =
+    this match {
+      case T => true
+      case F => false
+      case Variable(s) => boolConst(s)
+      case Not(v) => !v.toZ3
+      case And(l, r) => l.toZ3 && r.toZ3
+      case Or(l, r) => l.toZ3 || r.toZ3
+      case Xor(l, r) => l.toZ3 ^ r.toZ3
+    }
+
+  def toCNF(prefVar: String = "u", prefReg: String = "r"): Expr = {
+    val expEv = eval(Map())
+    expEv match { 
+      case T => T 
+      case F => F 
+      case _ => 
+        def renameVars(e: Expr): Expr =
+          e match{
+            case Variable(s) => Variable(prefVar + s)
+            case Not(v) => Not(renameVars(v))
+            case And(l, r) => And(renameVars(l), renameVars(r))
+            case Or(l, r) => Or(renameVars(l), renameVars(r))
+            case Xor(l, r) => Xor(renameVars(l), renameVars(r))
+            case _ => throw IllegalArgumentException("This state should never occur")
+          }
+        
+
+        def tseytin(e: Expr, pref: String): (String, Map[Variable, Expr]) =
+
+          e match{
+            case Variable(v) => (v, Map())
+            case And(l, r) =>
+              val tl = tseytin(l, pref + "0")
+              val tr = tseytin(r, pref + "1")
+              val m = tl._2 ++ tr._2 
+              (pref, m + (Variable(pref) -> And(Variable(tl._1), Variable(tr._1))))
+            case Or(l, r) =>
+              val tl = tseytin(l, pref + "0")
+              val tr = tseytin(r, pref + "1")
+              val m = tl._2 ++ tr._2 
+              (pref, m + (Variable(pref) -> Or(Variable(tl._1), Variable(tr._1))))
+            case Xor(l, r) =>
+              val tl = tseytin(l, pref + "0")
+              val tr = tseytin(r, pref + "1")
+              val m = tl._2 ++ tr._2 
+              (pref, m + (Variable(pref) -> Xor(Variable(tl._1), Variable(tr._1))))
+            case Not(exp) =>
+              val te = tseytin(exp, pref + "0")
+              (pref, te._2 + (Variable(pref) -> Not(Variable(te._1))))
+            case _ => throw IllegalArgumentException("This state should never occur")
+          }
+        
+        def clauseConv(ve: (Variable, Expr)) =
+          ve._2 match{
+            case Not(v) => And(Or(Not(v), Not(ve._1)), Or(v, ve._1))
+            case And(v1, v2) => And(And(Or(Not(v1), Or(Not(v2), ve._1)), Or(v1, Not(ve._1))), Or(v2, Not(ve._1)))
+            case Or(v1, v2) => And(And(Or(v1, Or(v2, Not(ve._1))), Or(Not(v1), ve._1)), Or(Not(v2), ve._1))
+            case Xor(v1, v2) => And(And(Or(Not(v1), Or(Not(v2), Not(ve._1))), Or(v1, Or(v2, Not(ve._1)))), And(Or(v1, Or(Not(v2), ve._1)), Or(Not(v1), Or(v2, ve._1))))
+            case _ => throw IllegalArgumentException("This case should never occur")
+          }
+
+        val ts = tseytin(renameVars(expEv), prefReg)
+        And(Variable(ts._1), Prop.andAll(ts._2.toList.map(clauseConv)))
+    }
   }
+}
 
 case class Variable(id: String) extends Expr
 case class Not(exp: Expr) extends Expr
@@ -194,7 +193,7 @@ case object Left extends Side
 given Conversion[String, Variable] with
   def apply(id: String) = Variable(id)
 
-object Prop{
+object Prop {
 
   def booleanToExpr(b: Boolean): Expr = if (b) T else F
   def booleanToExpr(b: Option[Boolean]): Option[Expr] = b.map(booleanToExpr)
@@ -338,7 +337,5 @@ object TwoSAT{
     def checkGraph() = !(for(p <- m) yield g.adjMat(p._2, p._2 + 1) || g.adjMat(p._2 + 1, p._2)).reduce(_ || _)
     
     checkGraph()
-//  }
-
 }
 
