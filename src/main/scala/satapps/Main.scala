@@ -19,7 +19,7 @@ object Main{
       //println(Circuits.subsetSum(List(2, 3, 5, 7), 6, DPLL))
       //val s = ImMultiSet(Map(1 -> 1, 2 -> 2, 3 -> 3))
       //println(SetRed.setPacking(4, Set(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3)), DPLL))
-      //println(SetRed.setCover(3, Set(1, 2, 3, 4, 5, 6, 7), List(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3))))
+      //println(SetRed.exactCover(Set(1, 2, 3, 4, 5, 6, 7), List(Set(1, 2, 3), Set(4, 5, 6), Set(2, 4), Set(1, 7), Set(2, 3))))
       //println(SetRed.nPartition(MultiSetFactory.from(Seq(10, 8, 2, 2, 11, 1, 6, 4, 7, 6, 5, 4)), 4))
       //val t = ImMultiSet(Map(1 -> 1, 2 -> 1, 3 -> 2, 4 -> 1))
       //val graph = GraphFromEdgeSet(Set(0, 1, 2, 3), Set((0, 1), (1, 2), (2, 3), (0, 3)))

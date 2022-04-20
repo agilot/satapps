@@ -10,6 +10,8 @@ It also implements algorithmic data structures such as matrices, multisets, grap
 - Independent set
 - Clique
 - Dominating set
+- Domatic partition
+- Maximum domatic partition / Domatic number
 - Vertex cover
 - Hamiltonian Cycle
 - Hamiltonian Path

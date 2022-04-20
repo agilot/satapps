@@ -4,7 +4,8 @@ import java.util
 import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, StrictOptimizedIterableOps}
 import scala.collection.mutable.{Builder, ImmutableBuilder}
 
-import Z3.*
+import Z3.{*, given}
+import Extensions.*
 
 class MultiSet[T] private (m: Map[T, Int]) extends (T => Int) 
   with Iterable[T] 
@@ -92,9 +93,9 @@ object SetRed{
     val z = c.zipWithIndex
     val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
       yield (p1._2, p2._2)).toSet)
-    g.indset(k)
+    GraphProb.indset(g)(k)
 
-  def setCover[T](k: Int, u: Set[T], c: Seq[Set[T]]): Option[Set[Int]] =
+  def setCover[T](u: Set[T], c: Seq[Set[T]])(k: Int): Option[Set[Int]] =
     require(k > 0)
     if (c.foldLeft(u)(_ -- _) == Set())
       val zc: Seq[(Set[T], Int)] = c.zipWithIndex
@@ -108,6 +109,22 @@ object SetRed{
       z.delete()
       res
     else None
+
+  def exactCover[T](u: Set[T], c: Seq[Set[T]]): Option[Set[Int]] =
+    if (c.foldLeft(u)(_ -- _) == Set())
+      val zc: Seq[(Set[T], Int)] = c.zipWithIndex
+      val str: Seq[String] = Range(0, c.size).map(_.toString)
+      val vars: Seq[Z3Type] = intConst(str)
+      val cst1: Z3Type = vars >= 0
+      val cst2: Z3Type = andAll((for elem <- u yield sum(zc.filter((s, j) => s.contains(elem)).map(e => intConst(e._2.toString))) === 1).toList)
+      val (sol, z) = solve(cst1 && cst2, str)
+      val res = filterSol(sol).map(_.toSet)
+      z.delete()
+      res
+    else None
+  
+  def minSetCover[T](u: Set[T], c: Seq[Set[T]]): Set[Int] =
+    min(Range(0, c.size).toSet, c.size - 1, setCover(u, c), 1)
     
   def partition(s: MultiSet[Int]): Option[(MultiSet[Int], MultiSet[Int])] =
     multiwayPartitioning(s, 2).map(some => (some.head, some.tail.head))

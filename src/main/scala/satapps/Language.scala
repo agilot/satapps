@@ -1,6 +1,7 @@
 package satapps
 
-import Z3.*
+import Z3.{*, given}
+import Extensions.*
 
 trait CloseString {
   // Problem abstraction
