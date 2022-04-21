@@ -10,7 +10,7 @@ object Sets {
     val z = c.zipWithIndex
     val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
       yield (p1._2, p2._2)).toSet)
-    Graphs.indset(g)(k)
+    satapps.problems.Graphs.indset(g)(k)
 
   def setCover[T](u: Set[T], c: Seq[Set[T]])(k: Int): Option[Set[Int]] =
     require(k > 0)
