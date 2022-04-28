@@ -1,5 +1,63 @@
 site_name: SAT-Apps
 nav:
   - Home: index.md
-  - Problems: problems.md
-theme: readthedocs
+  - Problems: 
+      - problems.md
+      - Graphs:
+          - Clique: /problems/clique
+          - Coloring: /problems/coloring
+          - Dominating set: /problems/domset
+          - Hamiltonian graphs: /problems/hamiltonian
+          - Independent set: /problems/indset
+          - Vertex cover: /problems/vertex_cover
+
+repo_url: https://github.com/agilot/satapps
+repo_name: Github
+edit_uri: ""
+
+
+
+
+theme:
+#  logo: logo.png
+#  favicon: logo.png
+  icon:
+      repo: fontawesome/brands/github
+  features:
+      - navigation.instant
+      - navigation.tabs
+      - navigation.tabs.sticky
+#      - navigation.sections
+      - navigation.expand
+      - navigation.top
+#      - toc.integrate
+#      - toc.follow
+  name: material
+  palette:
+    - scheme: slate 
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-night 
+        name: Switch to dark mode
+    
+
+
+plugins:
+  - search
+#  - section-index
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -17,14 +17,26 @@ trait Graph {
   def wAdjList: Map[Vertex, Set[(Vertex, Int)]]
   def wMap: Map[Edge, Int]
 
-  lazy val incEdges: Map[Vertex, Set[Vertex]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
+  lazy val inNeighb: Map[Vertex, Set[Vertex]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
     m + (p._2 -> (m(p._2) + p._1))
   )
 
+  def outNeighb: Map[Vertex, Set[Vertex]] = adjList
+
+  lazy val neighb: Map[Vertex, Set[Vertex]] = inNeighb.map((v, s) => (v, s ++ adjList(v)))
+
+  lazy val outIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
+    m + (p._1 -> (m(p._1) + p)))
+  lazy val inIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
+    m + (p._2 -> (m(p._2) + p)))
+  lazy val incidence: Map[Vertex, Set[Edge]] = inIncidence.map((v, s) => (v, s ++ outIncidence(v)))
+  
   def complement: Graph = Graph(adjMat.complement)
   def nonReflComplement: Graph = Graph((adjMat || BoolMatrix.id(adjMat.rows)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
   def undirected: Graph = Graph(adjMat)
+
+  def connected: Boolean = ???
 
   def bfs(source: Vertex): Map[Vertex, Int] = 
     def iter(dist: Map[Vertex, Int], queue: Queue[Vertex]): Map[Vertex, Int] =

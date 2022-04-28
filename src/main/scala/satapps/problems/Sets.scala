@@ -148,7 +148,7 @@ object Sets {
 
   def knapsack(items: Seq[(Int, Int)], w: Int, v: Int): Option[Seq[Int]] = boundedKnapsack(items, w, v, 1)
 
-  def boundedKnapsack(items: Seq[(Int, Int)], w: Int, v: Int): Option[Seq[Int]] =
+  def unboundedKnapsack(items: Seq[(Int, Int)], w: Int, v: Int): Option[Seq[Int]] =
     val str: Seq[String] = Range(0, items.size).map(_.toString)
     val (sol, z) = solve(knapsackConstraints(items, w, v), str)
     z.delete()
