@@ -2,7 +2,7 @@
 
 A subset of vertices $S$ in a graph $G = (V, E)$ is an __dominating set__ if any vertex that is not in $S$ is adjacent to a vertex of $S$. A __minimum dominating set__ is a dominating set of smallest possible size. This size is called the __domination number__ of $G$ and is usually denoted by $\gamma(G)$.
 
-An __indepedent dominating set__ is a subset of vertices that is both a dominating set and an [independent set](/problems/indset). A __minimum independent dominating set__ is an independent dominating set of smallest possible size. This size is called the __independent domination number__ of $G$ and is usually denoted by $i(G)$.
+An __indepedent dominating set__ is a subset of vertices that is both a dominating set and an [independent set](../indset). A __minimum independent dominating set__ is an independent dominating set of smallest possible size. This size is called the __independent domination number__ of $G$ and is usually denoted by $i(G)$.
 
 A __total dominating set__ is a dominating set that induces a total subgraph. A __minimum total dominating set__ is a total dominating set of smallest possible size. This size is called the __total domination number__ of $G$ and is usually denoted by $\gamma_t(G)$. In order for the total domination number to be defined, the graph has to be connected.
 

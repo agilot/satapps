@@ -17,7 +17,7 @@ $$\sum_{v \in V} x_v = k$$
 
 $$x_u + x_{v} \geq 1 \ \forall (u, v) \in E$$
 
-Finding an vertex cover of size $k$ is equivalent to finding an [independent set](/problems/indset#independent-set-decision-problem) of size $|V| - k$ since its complement is going to be a vertex cover.
+Finding an vertex cover of size $k$ is equivalent to finding an [independent set](../indset#independent-set-decision-problem) of size $|V| - k$ since its complement is going to be a vertex cover.
 
 ## Minimum vertex cover problem and vertex cover number
 
@@ -29,9 +29,9 @@ $$\min_x \sum_{v \in V} x_v $$
 
 $$\text{s.t.} x_u + x_{v} \geq 1 \ \forall (u, v) \in E$$
 
-Finding a minimum vertex cover is  equivalent to finding a [maximum independent set](/problems/indset#maximum-independent-set-problem) and take its complement.
+Finding a minimum vertex cover is  equivalent to finding a [maximum independent set](../indset#maximum-independent-set-problem) and take its complement.
 
-Computing the vertex cover number of a graph is also NP-hard and is equal to the number of vertices minus the [independence number](/problems/indset#independence-number) of the graph (Gallai 1959) [2]
+Computing the vertex cover number of a graph is also NP-hard and is equal to the number of vertices minus the [independence number](../indset#independence-number) of the graph (Gallai 1959) [2]
 
 ---
 

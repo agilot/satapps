@@ -4,11 +4,11 @@ A subset of vertices $S$ in a graph $G = (V, E)$ is an __independent set__ if fo
 
 A __maximum independent set__ is an independent set of largest possible size. This size is called the __independence number__ of $G$ and is usually denoted by $\alpha(G)$.
 
-An __indepedent dominating set__ is a subset of vertices that is both an independent set and a [dominating set](/problems/domset).
+An __indepedent dominating set__ is a subset of vertices that is both an independent set and a [dominating set](../domset).
 
 A __minimum independent dominating set__ is an independent dominating set of smallest possible size. This size is called the __independent domination number__ of $G$ and is usually denoted by $i(G)$.
 
-A partition of $V$ into independent subsets is called a [__coloring__](/problems/coloring).
+A partition of $V$ into independent subsets is called a [__coloring__](../coloring).
 
 
 
@@ -23,7 +23,7 @@ $$\sum_{v \in V} x_v = k$$
 
 $$x_u + x_{v} \leq 1 \ \forall (u, v) \in E$$
 
-Finding an independent set of size $k$ is equivalent to finding a [clique](/problems/clique#clique-decision-problem) of size $k$ in the graph's complement. It is also equivalent to finding a [vertex cover](/problems/vertex_cover#vertex-cover-decision-problem) of size $|V| - k$ since its complement is going to be an independent set.
+Finding an independent set of size $k$ is equivalent to finding a [clique](../clique#clique-decision-problem) of size $k$ in the graph's complement. It is also equivalent to finding a [vertex cover](../vertex_cover#vertex-cover-decision-problem) of size $|V| - k$ since its complement is going to be an independent set.
 
 ## Maximum independent set problem and independence number
 
@@ -35,9 +35,9 @@ $$\max_x \sum_{v \in V} x_v $$
 
 $$\text{s.t.} x_u + x_{v} \leq 1 \ \forall (u, v) \in E$$
 
-Finding a maximum independent set is equivalent to finding a [maximum clique](/problems/clique#maximum-clique-problem) in the graph's complement. It is also equivalent to finding a [minimum vertex cover](/problems/vertex_cover#minimum-vertex-cover-problem) and take its complement.
+Finding a maximum independent set is equivalent to finding a [maximum clique](../clique#maximum-clique-problem) in the graph's complement. It is also equivalent to finding a [minimum vertex cover](../vertex_cover#minimum-vertex-cover-problem) and take its complement.
 
-Computing the independence number of a graph is also NP-hard. It is equal to the number of vertices minus the [vertex cover number](/problems/vertex_cover#vertex-cover-number) of the graph (Gallai 1959) [2] and to the [clique number](/problems/clique#clique-number) of the graph's complement.
+Computing the independence number of a graph is also NP-hard. It is equal to the number of vertices minus the [vertex cover number](../vertex_cover#vertex-cover-number) of the graph (Gallai 1959) [2] and to the [clique number](../clique#clique-number) of the graph's complement.
 
 
 

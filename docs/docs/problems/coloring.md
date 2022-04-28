@@ -1,6 +1,6 @@
 # Coloring
 
-Given a graph $G = (V, E)$, a __vertex coloring__ is an assignment such that no two adjacent vertices are of the same color. This is equivalent to partionning $V$ into [independent sets](/prolems/indset).
+Given a graph $G = (V, E)$, a __vertex coloring__ is an assignment such that no two adjacent vertices are of the same color. This is equivalent to partionning $V$ into [independent sets](../indset).
 
 A vertex coloring that minimizes the number of colors needed for a given graph G is known as a __minimum vertex coloring__ of G. The minimum number of colors itself is called the __chromatic number__, denoted $\chi(G)$.
 
@@ -24,7 +24,7 @@ No adjacent vertices have the same color:
 
 $$x_{u, i} + x_{v, i} \leq 1 \ \forall (u, v) \in E, \, i = 1, ..., k$$
 
-Finding an k-coloring is equivalent to finding a [clique cover](/problems/clique#clique-cover-decision-problem) of size $k$ in the graph's complement.
+Finding an k-coloring is equivalent to finding a [clique cover](../clique#clique-cover-decision-problem) of size $k$ in the graph's complement.
 
 ## Minimum coloring problem and chromatic number
 
@@ -39,9 +39,9 @@ $$\text{s.t. } \sum_{i = 1}^{|V|} x_{v, i} = 1 \  \forall v \in V$$
 $$x_{u, i} + x_{v, i} \leq w_i \ \forall (u, v) \in E, \, i = 1, ..., |V|$$
 
 
-Finding a minimum coloring is equivalent to finding a [maximum clique cover](/problems/clique#maximum-clique-cover-problem) in the graph's complement.
+Finding a minimum coloring is equivalent to finding a [maximum clique cover](../clique#maximum-clique-cover-problem) in the graph's complement.
 
-Computing the chromatic number of a graph is also NP-hard. It is equal to the [clique cover number](/problems/clique#clique-cover-number) of the graph's complement.
+Computing the chromatic number of a graph is also NP-hard. It is equal to the [clique cover number](../clique#clique-cover-number) of the graph's complement.
 
 ## Edge coloring problem and chromatic index
 
