@@ -1,12 +1,12 @@
 # List of problems
 
 ## Graphs
-### [Clique](/problems/clique)
+### [Clique](/satapps/problems/clique)
   - Clique search and decision problem
   - Maximum clique problem and clique number
   - Clique cover search and decision problem 
   - Minimum clique cover problem and clique cover number
-### [Coloring](/problems/coloring)
+### [Coloring](coloring)
   - k-coloring search and decision problem
   - Minimum graph coloring problem and chromatic number
   - Edge coloring problem and chromatic index
