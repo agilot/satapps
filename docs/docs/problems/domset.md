@@ -4,7 +4,9 @@ A subset of vertices $S$ in a graph $G = (V, E)$ is an __dominating set__ if any
 
 An __indepedent dominating set__ is a subset of vertices that is both a dominating set and an [independent set](../indset). A __minimum independent dominating set__ is an independent dominating set of smallest possible size. This size is called the __independent domination number__ of $G$ and is usually denoted by $i(G)$.
 
-A __total dominating set__ is a dominating set that induces a total subgraph. A __minimum total dominating set__ is a total dominating set of smallest possible size. This size is called the __total domination number__ of $G$ and is usually denoted by $\gamma_t(G)$. In order for the total domination number to be defined, the graph has to be connected.
+A __total dominating set__ is a set such that every vertex in $V$ is adjacent to a vertex in $S$ . A __minimum total dominating set__ is a total dominating set of smallest possible size. This size is called the __total domination number__ of $G$ and is usually denoted by $\gamma_t(G)$. In order for the total domination number to be defined, the graph has to be connected.
+
+A __connected dominating set__ is a dominating set that induces a connected subgraph. A __minimum connected dominating set__ is a connected dominating set of smallest possible size. This size is called the __connected domination number__ of $G$ and is usually denoted by $\gamma_c(G)$. In order for the connected domination number to be defined, the graph has to be connected.
 
 A partition of $V$ into dominating sets is called a __domatic partition__. A __maximum domatic partition__ is a domatic partition of maximum size. This size is called the __domatic number__ of the graph.
 
@@ -25,10 +27,7 @@ $$\sum_{v \in N(u) \cup \{u\}} x_v \geq 1 \ \forall u \in V$$
 
 The minimum dominating set problem consists in finding a minimum dominating set in the graph; it is  NP-hard.
 
-Finding a minimum dominating set is equivalent to find an optimal solution to the following 0-1 integer linear program  (where w_iw 
-i
-​	
-  represents whether the color is used):
+Finding a minimum dominating set is equivalent to find an optimal solution to the following 0-1 integer linear program:
 
 $$\min_x \sum_{v \in V} x_v $$
 
@@ -83,7 +82,7 @@ $$\sum_{v \in N(u)} x_v \geq 1 \ \forall u \in V$$
 
 The minimum total dominating set problem consists in finding a minimum total dominating set in the graph; it is  NP-hard.
 
-If no vertex is total to all the others (polynomially checkable and in the opposite case the solution is the vertex in question), finding a minimum total dominating set is equivalent to find an optimal solution to the following 0-1 integer linear program:
+If no vertex is connected to all the others (polynomially checkable and in the opposite case the solution is the vertex in question), finding a minimum total dominating set is equivalent to find an optimal solution to the following 0-1 integer linear program:
 
 $$\min_x \sum_{v \in V} x_v $$
 
@@ -94,6 +93,59 @@ $$\sum_{v \in N(u)} x_v \geq 1 \ \forall u \in V$$
 Computing the total domination number of a graph is also NP-hard. It also follows immediatly from the deinition that:
 
 $$\gamma(G) \leq \gamma_t(G)$$
+
+## Connected dominating set search and decision problem
+
+
+The connected dominating set decision problem consists in deciding whether a connected graph, given a natural integer $k$, has a connected dominating set of size $k$. This problem has been proven to be NP-complete [4]. The connected dominating set search problem consists in finding such a set.
+
+Finding a connected dominating set of size $k$ is equivalent to find a feasible solution to this 0-1 integer linear program [5]:
+
+$$\sum_{v \in V} x_v = k$$
+
+$$\sum_{v \in N(u) \cup \{u\}} x_v \geq 1 \ \forall u \in V$$
+
+$$\sum_{(u, v) \in E} y_{uv} = \sum_{u \in V} - 1 $$
+
+$$y_{uv} \leq x_u,\  y_{uv} \leq x_v, \ \forall(u, v) \in E $$
+
+$$z^w_{uv} \leq y_{uv},\ z^w_{uv} \leq x_w,\ \forall(u, v) \in E, w \in V$$
+
+$$z^w_{vu} \leq y_{uv},\ z^w_{vu} \leq x_w,\ \forall(u, v) \in E, w \in V$$
+
+$$y_{uv} + x_u + x_v + x_w - 3 \leq z^w_{uv} + z^w_{vu} \leq 3 + y_{uv} − x_u − x_v − x_w, \forall u, v, w \in V$$
+
+$$ x_u + x_v - 1 \leq \sum_{
+w' \in V \setminus \{i, j\}}
+z^v_{uw'} + y_{uv} \leq 3 − x_u − x_v,\ \forall u, v \in V $$
+
+## Minimum connected dominating set problem and connected domination number
+
+The minimum connected dominating set problem consists in finding a minimum connected dominating set in the graph; it is  NP-hard.
+
+Finding a minimum total dominating set is equivalent to find an optimal solution to the following 0-1 integer linear program:
+
+$$\min_x \sum_{v \in V} x_v $$
+
+$$\text{s.t.} \sum_{v \in N(u) \cup \{u\}} x_v \geq 1 \ \forall u \in V$$
+
+$$\sum_{(u, v) \in E} y_{uv} = \sum_{u \in V} - 1 $$
+
+$$y_{uv} \leq x_u,\  y_{uv} \leq x_v, \ \forall(u, v) \in E $$
+
+$$z^w_{uv} \leq y_{uv},\ z^w_{uv} \leq x_w,\ \forall(u, v) \in E, w \in V$$
+
+$$z^w_{vu} \leq y_{uv},\ z^w_{vu} \leq x_w,\ \forall(u, v) \in E, w \in V$$
+
+$$y_{uv} + x_u + x_v + x_w - 3 \leq z^w_{uv} + z^w_{vu} \leq 3 + y_{uv} − x_u − x_v − x_w, \forall u, v, w \in V$$
+
+$$ x_u + x_v - 1 \leq \sum_{
+w' \in V \setminus \{i, j\}}
+z^v_{uw'} + y_{uv} \leq 3 − x_u − x_v,\ \forall u, v \in V $$
+
+Computing the connected domination number of a graph is also NP-hard. It also follows immediatly from the deinition that:
+
+$$\gamma(G) \leq \gamma_c(G)$$
 
 ## Domatic partition search and decision problem
 
@@ -128,7 +180,7 @@ Computing the domatic number of a graph is also NP-hard. However it has been pro
 
 $$d(G) \leq \delta(G) + 1$$
 
-where $\delta(G)$ is the minimum degree of a vertex of $G$ [4].
+where $\delta(G)$ is the minimum degree of a vertex of $G$ [6].
 
 ---
 
@@ -140,5 +192,9 @@ York, 1979.
 
 [3] Michael A. Henning, Anders Yeo. Total Domination in Graphs. Springer, 2013.
 
-[4] E.J. Cockayne and S.T. Hedetniemi, Towards a theory of domination in graphs, Networks 7 (1977)
+[4] Oliver Schaudt, Rainer Schrader, The complexity of connected dominating sets and total dominating sets with specified induced subgraphs, Information Processing Letters, Volume 112, Issue 24, 2012.
+
+[5] Fan, Neng & Watson, Jean-Paul. (2012). Solving the Connected Dominating Set Problem and Power Dominating Set Problem by Integer Programming.
+
+[6] E.J. Cockayne and S.T. Hedetniemi, Towards a theory of domination in graphs, Networks 7 (1977)
 247-261.

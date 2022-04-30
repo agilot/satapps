@@ -34,7 +34,14 @@ trait Graph {
   def complement: Graph = Graph(adjMat.complement)
   def nonReflComplement: Graph = Graph((adjMat || BoolMatrix.id(adjMat.rows)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
-  def undirected: Graph = Graph(adjMat)
+  def reversed: Graph = Graph(vertexSet, edgeSet.map((i, j) => (j, i)))
+  def unweighted: Graph = Graph(adjMat)
+  def undirected(doubleEdges: Boolean = true): Graph =
+    val revEs = reversed.edgeSet
+    if (doubleEdges) 
+      Graph(vertexSet, edgeSet ++ revEs)
+    else
+      Graph(vertexSet, edgeSet ++ revEs -- (for(i <- 0 until vertexSet.size; j <- i + 1 until vertexSet.size) yield (i, j)))
 
   def connected: Boolean = ???
 

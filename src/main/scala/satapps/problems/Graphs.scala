@@ -151,6 +151,8 @@ object Graphs {
     val res = filterSol(sol).map(_.toSet)
     z.delete()
     res
+  
+  def dominatingSetDecision(g: Graph)(k: Int): Boolean = dominatingSet(g)(k).isDefined
 
   def minDominatingSet(g: Graph): Set[Int] =
     min(g.vertexSet, g.vertexSet.size - 1, dominatingSet(g), 1)
@@ -199,6 +201,46 @@ object Graphs {
   def totalDominationNumber(g: Graph): Option[Int] =
     minTotalDominatingSet(g).map(_.size)
 
+  def connectedDominatingSet(g: Graph)(k: Int): Option[Set[Vertex]] =
+    val n: Int = g.vertexSet.size
+    val esl: Seq[Edge] = g.undirected(false).edgeSet.toSeq
+    val strX: Seq[String] = Range(0, n).map(_.toString)
+    val strY: Seq[String] = esl.map(_.toString)
+    val strZ: Seq[String] = esl.flatMap(e => Range(0, g.vertexSet.size).map(v => s"${e},${v}"))
+    val str = strX ++ strY ++ strZ
+    val varsX: Seq[Z3Type] = intConst(strX)
+    val varsY: Seq[Z3Type] = intConst(strY)
+    val vars: Seq[Z3Type] = intConst(str)
+
+    val cst1: Z3Type = andAll((for (v1 <- 0 until g.vertexSet.size) yield sum(intConst((g.adjList(v1) + v1).map(_.toString).toList)) >= 1).toList)
+    val cst2: Z3Type = vars >= 0 && vars <= 1 && sum(varsX) === k
+    val cst3a: Z3Type = sum(varsY) === (sum(varsX) - 1)
+    val cst3b: Z3Type = andAll(for(e <- esl) yield (intConst(e.toString) <= intConst(e._1.toString)) && (intConst(e.toString) <= intConst(e._2.toString)))
+    val cst3c: Z3Type = andAll(for(e <- esl; v <- 0 until n) yield intConst(s"${e},${v}") <= intConst(e.toString) && intConst(s"${e},${v}") <= intConst(v.toString))
+    val cst3d: Z3Type = andAll(for((i, j) <- esl; v <- 0 until n) yield intConst(s"${(j, i)},${v}") <= intConst((i, j).toString) && intConst(s"${(j, i)},${v}") <= intConst(v.toString))
+    val cst3e: Z3Type = andAll(for(e <- esl; v <- 0 until n) yield 
+      ((intConst(e.toString) - 3 + intConst(e._1.toString) + intConst(e._2.toString) + intConst(v.toString)) <= (intConst(s"${e},${v}") + intConst(s"${(e._2, e._1)},${v}"))) &&
+      ((intConst(s"${e},${v}") + intConst(s"${(e._2, e._1)},${v}")) <= (intConst(e.toString) + 3 - intConst(e._1.toString) - intConst(e._2.toString) - intConst(v.toString))))
+    val cst3f: Z3Type = andAll(for(e <- esl) yield 
+      ((intConst(e._1.toString) + intConst(e._2.toString) - 1) <= (sum(for(k0 <- 0 until n; if k0 != e._1 && k0 != e._2) yield intConst(s"${(e._1, k0)}${e._2}")) + intConst(e.toString))) &&
+      ((sum(for(k0 <- 0 until n; if k0 != e._1 && k0 != e._2) yield intConst(s"${(e._1, k0)}${e._2}")) + intConst(e.toString)) <= (3 - intConst(e._1.toString) + intConst(e._2.toString))))
+
+    val cst: Z3Type = cst1 && cst2 && cst3a && cst3b && cst3c && cst3d && cst3e && cst3f
+    println(cst.toStringed())
+    val (sol, z) = solve(cst, str)
+    val res = filterSol(sol.map(_.take(n))).map(_.toSet)
+    z.delete()
+    res
+
+  def connectedDominatingSetDecision(g: Graph)(k: Int): Boolean = connectedDominatingSet(g)(k)
+
+  def minimumConnectedDominatingSet(g: Graph) =
+    if (g.connected)
+      Some(min(g.vertexSet, g.vertexSet.size - 1, connectedDominatingSet(g), 1))
+    else None
+
+  def connectedDominationNumber: Option[Int] = minimumConnectedDominatingSet(g).map(_.size)
+
 /***********************Independent dominating set***********************/
 
   def independentDominatingSet(g: Graph)(k: Int): Option[Set[Vertex]] =
@@ -221,7 +263,7 @@ object Graphs {
 /***********************Hamiltonian***********************/
 
   def hamiltonianCycle(g: Graph): Option[Seq[Edge]] =
-    travelingSalesman(g.undirected)(g.vertexSet.size)
+    travelingSalesperson(g.unweighted)(g.vertexSet.size)
 
   def hamiltonianCycleDecision(g: Graph): Boolean = hamiltonianCycle(g).isDefined
 
@@ -233,8 +275,27 @@ object Graphs {
 
   def hamiltonianPathDecision(g: Graph): Boolean = hamiltonianPath(g).isDefined
 
-  def travelingSalesman(g: Graph)(d: Int): Option[Seq[Edge]] =
+  def hamiltonianPathFixed(g: Graph)(start: Vertex, end: Vertex): Option[Seq[Edge]] =
+    val n: Int = g.vertexSet.size
+    val nG: Graph = Graph(Matrix.fromBlock(g.adjMat, IntMatrix.ones(n, 1), IntMatrix.ones(1, n), IntMatrix.zeros(1, 1)))
     if(g.vertexSet.size > 2 && g.connected)
+      val esl: Seq[Edge] = nG.edgeSet.toList
+      val str: Seq[String] = esl.map((v1, v2) => s"${v1},${v2}")
+      val cstStart: Z3Type = intConst(s"${n},${start}") === 1
+      val cstEnd: Z3Type = intConst(s"${end},${n}") === 1
+      val (sol, z) = solve(tspConstraints(nG)(n + 1) && cstStart && cstEnd, str)
+      val res = toInt(sol).map(some => some.zip(esl).filter((v, e) => v > 0).map((v, e) => e))
+      z.delete()
+      res
+    else None
+
+
+    val p = hamiltonianCycle(nG).map(_.filter(p => p._1 < n && p._2 < n))
+    p.map(some => if(some.size == n) some.tail else some)
+
+  def hamiltonianPathFixedDecision(g: Graph)(start: Vertex, end: Vertex): Boolean = hamiltonianPathFixed(g)(start, end).isDefined
+
+  private def tspConstraints(g: Graph)(d: Int): Z3Type = 
       val esl: Seq[Edge] = g.edgeSet.toList
       val str: Seq[String] = esl.map((v1, v2) => s"${v1},${v2}")
       val vars: Seq[Z3Type] = intConst(str)
@@ -242,14 +303,19 @@ object Graphs {
       val cst2: Z3Type = andAll(g.inNeighb.map((v2, se) => sum(se.map(v1 => intConst(s"${v1},${v2}")).toList) === 1).toList)
       val cst3: Z3Type = vars >= 0 && vars <= 1
       val cst4: Z3Type = sum(esl.map(e => intConst(s"${e._1}, ${e._2}") * g.wMap(e))) <= d
+      return cst1 && cst2 && cst3 && cst4
 
-      val (sol, z) = solve(cst1 && cst2 && cst3 && cst4, str)
+  def travelingSalesperson(g: Graph)(d: Int): Option[Seq[Edge]] =
+    if(g.vertexSet.size > 2 && g.connected)
+      val esl: Seq[Edge] = g.edgeSet.toList
+      val str: Seq[String] = esl.map((v1, v2) => s"${v1},${v2}")
+      val (sol, z) = solve(tspConstraints(g)(d), str)
       val res = toInt(sol).map(some => some.zip(esl).filter((v, e) => v > 0).map((v, e) => e))
       z.delete()
       res
     else None
 
-  def travelingSalesmanDecision(g: Graph)(d: Int): Boolean = travelingSalesman(g)(d).isDefined
+  def travelingSalespersonDecision(g: Graph)(d: Int): Boolean = travelingSalesperson(g)(d).isDefined
 
 /***********************Induced subgraphs***********************/
 

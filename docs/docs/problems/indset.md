@@ -23,7 +23,7 @@ $$\sum_{v \in V} x_v = k$$
 
 $$x_u + x_{v} \leq 1 \ \forall (u, v) \in E$$
 
-Finding an independent set of size $k$ is equivalent to finding a [clique](../clique#clique-decision-problem) of size $k$ in the graph's complement. It is also equivalent to finding a [vertex cover](../vertex_cover#vertex-cover-decision-problem) of size $|V| - k$ since its complement is going to be an independent set.
+Finding an independent set of size $k$ is equivalent to finding a [clique](../clique#clique-search-and-decision-problem) of size $k$ in the graph's complement. It is also equivalent to finding a [vertex cover](../vertex_cover#vertex-cover-search-and-decision-problem) of size $|V| - k$ since its complement is going to be an independent set.
 
 ## Maximum independent set problem and independence number
 
@@ -35,9 +35,9 @@ $$\max_x \sum_{v \in V} x_v $$
 
 $$\text{s.t.} x_u + x_{v} \leq 1 \ \forall (u, v) \in E$$
 
-Finding a maximum independent set is equivalent to finding a [maximum clique](../clique#maximum-clique-problem) in the graph's complement. It is also equivalent to finding a [minimum vertex cover](../vertex_cover#minimum-vertex-cover-problem) and take its complement.
+Finding a maximum independent set is equivalent to finding a [maximum clique](../clique#maximum-clique-problem-and-clique-number) in the graph's complement. It is also equivalent to finding a [minimum vertex cover](../vertex_cover#minimum-vertex-cover-problem-and-vertex-cover-number) and take its complement.
 
-Computing the independence number of a graph is also NP-hard. It is equal to the number of vertices minus the [vertex cover number](../vertex_cover#vertex-cover-number) of the graph (Gallai 1959) [2] and to the [clique number](../clique#clique-number) of the graph's complement.
+Computing the independence number of a graph is also NP-hard. It is equal to the number of vertices minus the [vertex cover number](../vertex_cover#minimum-vertex-cover-problem-and-vertex-cover-number) of the graph (Gallai 1959) [2] and to the [clique number](../clique#maximum-clique-problem-and-clique-number) of the graph's complement.
 
 
 

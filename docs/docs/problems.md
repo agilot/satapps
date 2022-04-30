@@ -17,11 +17,14 @@
   - Minimum independent dominating set and independent domination number
   - Total dominating set search and decision problem
   - Minimum total dominating set and total domination number
+  - Connected dominating set search and decision problem
+  - Minimum connected dominating set and connected domination number
   - Domatic partition search and decision problem
   - Domatic partition problem and domatic number
 ### [Hamiltonian graphs](hamiltonian)
-  - Directed hamiltonian cycle search and decision problem
-  - Directed hamiltonian path search and decision problem
+  - Directed Hamiltonian cycle search and decision problem
+  - Directed Hamiltonian path search and decision problem
+  - Directed Hamiltonian path with fixed start and end points search and decision problem
   - Asymetric integer traveling salesperson decision problem
 ### [Independent set](indset)
   - Independent set search and decision problem
@@ -31,14 +34,18 @@
 ### [Vertex cover](vertex_cover)
   - Vertex cover search and decision problem
   - Minimum vertex cover problem and vertex cover number
----
 
 
-## Matrices (Games)
+
+## Games
+
+### [N-Queens](n-queens)
+- N-queens completion problem
+- Blocked n-queens problem
+
 - Latin square
 - Sudoku
-- n-queens (completion)
-- Blocked n-queens
+
 
 ## Sets
 - Set packing

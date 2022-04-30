@@ -29,6 +29,7 @@ class GraphsTests extends AnyFunSuite{
     for(i <- 1 to n - 1){
       assert(!dominatingSet(Graph.empty(n))(i).isDefined)
     }
+    println(connectedDominatingSet(Graph.complete(5))(0))
   }
 
   test("indset/clique"){

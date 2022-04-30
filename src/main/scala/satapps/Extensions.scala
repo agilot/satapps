@@ -6,6 +6,7 @@ import z3.scala.*
 object Extensions{
   extension (a: Z3Type)
     def +(b: Z3Type): Z3Type = z => z.mkAdd(a(z), b(z))
+    def -(b: Z3Type): Z3Type = z => z.mkSub(a(z), b(z))
     def *(b: Z3Type): Z3Type = z => z.mkMul(a(z), b(z))
     def ===(b: Z3Type): Z3Type = z => z.mkEq(a(z), b(z))
     def !==(b: Z3Type): Z3Type = z => z.mkDistinct(a(z), b(z))
@@ -21,6 +22,7 @@ object Extensions{
 
   extension (a: Seq[Z3Type])
     def +(b: Seq[Z3Type]): Z3Type = andAll(a.zip(b).map(_ + _))
+    def -(b: Seq[Z3Type]): Z3Type = andAll(a.zip(b).map(_ - _))
     def ===(b: Z3Type): Z3Type = andAll(a.map(_ === b))
     def <=(b: Z3Type): Z3Type = andAll(a.map(_ <= b))
     def >=(b: Z3Type): Z3Type = andAll(a.map(_ >= b))
