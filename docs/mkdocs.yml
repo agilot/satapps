@@ -4,12 +4,12 @@ nav:
   - Problems: 
       - problems.md
       - Graphs:
-          - Clique: /problems/clique
-          - Coloring: /problems/coloring
-          - Dominating set: /problems/domset
-          - Hamiltonian graphs: /problems/hamiltonian
-          - Independent set: /problems/indset
-          - Vertex cover: /problems/vertex_cover
+          - Clique: problems/clique
+          - Coloring: problems/coloring
+          - Dominating set: problems/domset
+          - Hamiltonian graphs: problems/hamiltonian
+          - Independent set: problems/indset
+          - Vertex cover: problems/vertex_cover
 
 repo_url: https://github.com/agilot/satapps
 repo_name: Github
@@ -19,7 +19,7 @@ edit_uri: ""
 
 
 theme:
-#  logo: logo.png
+  logo: logo.png
 #  favicon: logo.png
   icon:
       repo: fontawesome/brands/github
