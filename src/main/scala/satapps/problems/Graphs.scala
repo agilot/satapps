@@ -232,14 +232,14 @@ object Graphs {
     z.delete()
     res
 
-  def connectedDominatingSetDecision(g: Graph)(k: Int): Boolean = connectedDominatingSet(g)(k)
+  def connectedDominatingSetDecision(g: Graph)(k: Int): Boolean = connectedDominatingSet(g)(k).isDefined
 
   def minimumConnectedDominatingSet(g: Graph) =
     if (g.connected)
       Some(min(g.vertexSet, g.vertexSet.size - 1, connectedDominatingSet(g), 1))
     else None
 
-  def connectedDominationNumber: Option[Int] = minimumConnectedDominatingSet(g).map(_.size)
+  def connectedDominationNumber(g: Graph): Option[Int] = minimumConnectedDominatingSet(g).map(_.size)
 
 /***********************Independent dominating set***********************/
 

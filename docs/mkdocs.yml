@@ -4,12 +4,17 @@ nav:
   - Problems: 
       - problems.md
       - Graphs:
-          - Clique: problems/clique
-          - Coloring: problems/coloring
-          - Dominating set: problems/domset
-          - Hamiltonian graphs: problems/hamiltonian
-          - Independent set: problems/indset
-          - Vertex cover: problems/vertex_cover
+        - Clique: problems/clique
+        - Coloring: problems/coloring
+        - Dominating set: problems/domset
+        - Hamiltonian graphs: problems/hamiltonian
+        - Independent set: problems/indset
+        - Vertex cover: problems/vertex_cover
+      - Games:
+        - N-Queens: problems/n-queens
+      - Sets:
+        - Partition: problems/partitioning
+        - Set covering and packing: problems/set-cover
 
 repo_url: https://github.com/agilot/satapps
 repo_name: Github

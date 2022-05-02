@@ -2,60 +2,71 @@
 
 ## Graphs
 ### [Clique](clique)
-  - Clique search and decision problem
-  - Maximum clique problem and clique number
-  - Clique cover search and decision problem 
-  - Minimum clique cover problem and clique cover number
+  - Clique
+  - Maximum clique and clique number
+  - Clique cover 
+  - Minimum clique cover and clique cover number
 ### [Coloring](coloring)
-  - k-coloring search and decision problem
-  - Minimum graph coloring problem and chromatic number
+  - k-coloring
+  - Minimum graph coloring and chromatic number
   - Edge coloring problem and chromatic index
 ### [Dominating set](domset)
-  - Dominating set search and decision problem
-  - Minimum dominating set problem and domination number
-  - Independent dominating set search and decision problem
+  - Dominating set
+  - Minimum dominating set and domination number
+  - Independent dominating set
   - Minimum independent dominating set and independent domination number
-  - Total dominating set search and decision problem
+  - Total dominating set
   - Minimum total dominating set and total domination number
-  - Connected dominating set search and decision problem
+  - Connected dominating
   - Minimum connected dominating set and connected domination number
   - Domatic partition search and decision problem
   - Domatic partition problem and domatic number
 ### [Hamiltonian graphs](hamiltonian)
-  - Directed Hamiltonian cycle search and decision problem
-  - Directed Hamiltonian path search and decision problem
-  - Directed Hamiltonian path with fixed start and end points search and decision problem
-  - Asymetric integer traveling salesperson decision problem
+  - Directed and undirected Hamiltonian cycle
+  - Directed and undirected Hamiltonian path
+  - Directed and undirected 
+  - Hamiltonian path with fixed start and end points
+  - Asymetric and symetric integer traveling salesperson decision problem
 ### [Independent set](indset)
-  - Independent set search and decision problem
-  - Maximum independent set problem and independence number
-  - Independent dominating set search and decision problem
+  - Independent set
+  - Maximum independent set and independence number
+  - Independent dominating set
   - Minimum independent dominating set and independent domination number
 ### [Vertex cover](vertex_cover)
-  - Vertex cover search and decision problem
-  - Minimum vertex cover problem and vertex cover number
+  - Vertex cover
+  - Minimum vertex cover and vertex cover number
 
 
 
 ## Games
 
 ### [N-Queens](n-queens)
-- N-queens completion problem
-- Blocked n-queens problem
-
-- Latin square
-- Sudoku
+- N-queens completion
+- Blocked n-queens
+---
+- Latin square completion
+- Sudoku completion
 
 
 ## Sets
-- Set packing
+
+### [Partitioning](partitioning)
+- Partition
+- k-partition
+- Subset sum
+- k-way number partitioning
+
+### [Set covering and packing](set-cover)
 - Set cover
 - Minimum set cover
+- Set packing
+- Maximum set packing
 - Exact cover
-- Partition
-- n-partition
-- 3-partition
-- Multiway number partitioning
+- Hitting set
+- Minimum hitting set
+- Exact hitting set
+- Set splitting
+---
 - Bin packing
 - Knapsack
 - Bounded knapsack
