@@ -4,6 +4,7 @@ import scala.collection.immutable.Queue
 import scala.annotation.targetName
 import BooleanMatricesOps.{*, given}
 import Extensions.*
+import problems.Graphs.*
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
@@ -54,6 +55,28 @@ trait Graph {
         val l = adjList(e).filter(!dist.contains(_))
         iter(dist ++ l.map(_ -> (dist(e) + 1)), q enqueueAll l)
     iter(Map(source -> 0), Queue(source))
+
+  lazy val edgeOrderedList: Seq[Edge] = edgeSet.toSeq.sorted 
+  
+  /****Numbers*****/
+
+  def independenceNumber: Int = Indset.max(this).size
+  def vertexCoverNumber: Int = VertexCover.min(this).size
+  def cliqueNumber: Int = Clique.max(this).size
+  def cliqueCoverNumber: Int = CliqueCover.min(this).size
+  def chromaticNumber: Int = Coloring.min(this).values.size  
+  def edgeChromaticNumber: Int = EdgeColoring.min(this).values.size
+  def dominationNumber: Int = DominatingSet.min(this).size
+  def domaticNumber: Int = DomaticPartition.max(this).size
+  def totalDominationNumber: Option[Int] = try{ Some(TotalDominatingSet.min(this).size)}
+    catch{
+      case e: IllegalArgumentException => None
+    }
+  def connectedDominationNumber: Option[Int] =  try{ Some(ConnectedDominatingSet.min(this).size)}
+    catch{
+      case e: IllegalArgumentException => None
+    }
+  def independentDominationNumber: Int = IndependentDominatingSet.min(this).size
 
 }
 

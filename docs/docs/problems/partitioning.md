@@ -14,11 +14,11 @@ The 3-partition decision problem consists in determining whether $S$ can be part
 
 Both problem can be generalized to the problem of dividing $S$ into k-tuples of equal sums (strongly NP-hard) [3]. If $n = 0 [k]$, finding a partition of the set is equivalent to find a feasible solution to the following 0-1 linear integer program (where $x_{ip} = 1$ means that the item $i$ belongs to the $p$-th k-tuple):
 
-$$ \sum_{p = 1}^{\frac{n}{k}} x_{ip} = 1, \ i = 0, ..., n$$
+$$ \sum_{p = 1}^{\frac{n}{k}} x_{ip} = 1, \ i = 1, ..., n$$
 
 $$ \sum_{i = 1}^n S_ix_{ip} = \dfrac{k}{n}\sum_{i = 1}^n S_i$$
 
-$$ \sum_{i = 1}^n x_{ip} = k ,\ p = 0, ..., \dfrac{n}{k}$$
+$$ \sum_{i = 1}^n x_{ip} = k ,\ p = 1, ..., \dfrac{n}{k}$$
 
 The k-partition 
 
@@ -37,9 +37,54 @@ The k-way number partitioning decision problem consists in deciding whether, giv
 
 Finding a partition that fulfills this condition is equivalent to find a feasible solution to the following 0-1 linear integer program(where $x_{ip} = 1$ means that the item $i$ belongs to the $p$-th subset):
 
-$$ \sum_{p = 1}^{k} x_{ip} = 1, \ i = 0, ..., n$$
+$$ \sum_{p = 1}^{k} x_{ip} = 1, \ i = 1, ..., n$$
 
 $$ \sum_{i = 1}^n S_ix_{ip} = \dfrac{\sum_{i = 1}^n S_i}{k}$$
+
+
+## Bin packing decision and search problem
+
+The bin packing decision problem consists in deciding whether, given positive integers $k$ and $B$, $S$ can be partitioned into $k$ subsets such that the sum of each subset is smaller or equal than $B$. This problem has been proven to be strongly NP-complete [2]. The corresponding search problem consists in finding such a partition.
+
+Finding a bin packing is equivalent to find a feasible solution to the following integer linear program (where $x_{ib} = 1$ means that the item $i$ belongs to the $b$-th bin):
+
+$$ \sum_{b = 1}^{k} x_{ib} = 1, \ i = 1, ..., n$$
+
+$$ \sum_{i = 1}^n S_i x_{ib} \leq B, \ b = 1, ..., k$$
+
+## Bin packing problem
+
+The bin packing problem consists in finding, given a positive integer $B$, the smallest partition of $S$ such that the sum of each subset is smaller or equal than $B$. This problem is NP-hard.
+
+Finding a bin packing is equivalent to solve the following integer linear program (where $x_{ib} = 1$ means that the item $i$ belongs to the $b$-th bin):
+
+$$\min_y \sum_{b=1}^{n} y_{b}$$
+
+$$\text{s.t. } \sum_{b = 1}^{k} x_{ib} = 1, \ i = 1, ..., n$$
+
+$$ \sum _{i = 1}^{n} S_i x_{ib} \leq B y_{b}, \ \forall b = 1, ..., n$$
+
+## Bin packing decision and search problem
+
+The bin packing decision problem consists in deciding whether, given positive integers $k$ and $B$, $S$ can be partitioned into $k$ subsets such that the sum of each subset is smaller or equal than $B$. This problem has been proven to be strongly NP-complete [2]. The corresponding search problem consists in finding such a partition.
+
+Finding a bin packing is equivalent to find a feasible solution to the following integer linear program (where $x_{ib} = 1$ means that the item $i$ belongs to the $b$-th bin):
+
+$$ \sum_{b = 1}^{k} x_{ib} = 1, \ i = 1, ..., n$$
+
+$$ \sum_{i = 1}^n S_i x_{ib} \leq B, \ b = 1, ..., k$$
+
+## Bin covering problem
+
+The bin covering problem consists in finding, given a positive integer $B$, the smallest partition of $S$ such that the sum of each subset is smaller or equal than $B$. This problem is NP-hard.
+
+Finding a bin packing is equivalent to solve the following integer linear program (where $x_{ib} = 1$ means that the item $i$ belongs to the $b$-th bin):
+
+$$\min_y \sum_{b=1}^{n} y_{b}$$
+
+$$\text{s.t. } \sum_{b = 1}^{k} x_{ib} = 1, \ i = 1, ..., n$$
+
+$$ \sum _{i = 1}^{n} S_i x_{ib} \leq B y_{b}, \ \forall b = 1, ..., n$$
 
 
 ---
@@ -51,3 +96,5 @@ Complexity of Computer Computations, 1972: Plenum Press, 85-103.
 York, 1979.
 
 [3] Babel, L., Kellerer, H. & Kotov, V. The k-partitioning problem. Mathematical Methods of Operations Research 47, 59–82 (1998).
+
+[4] Martello S., Toth P., KNAPSACK PROBLEMS Algorithms and Computer Implementations, 1990.

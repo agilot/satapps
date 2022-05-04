@@ -9,7 +9,7 @@ object Z3 {
 
   def sum(s: Seq[Z3Type]): Z3Type = z => z.mkAdd(s.map(elem => elem(z)): _*)
   def prod(s: Seq[Z3Type]): Z3Type = z => z.mkMul(s.map(elem => elem(z)): _*)
-  def andAll(s: Seq[Z3Type]): Z3Type = z => z.mkAnd(s.map(elem => elem(z)): _*)
+  def andAll(s: Seq[Z3Type]): Z3Type = z => if (s.isEmpty) z.mkTrue() else z.mkAnd(s.map(elem => elem(z)): _*)
   def orAll(s: Seq[Z3Type]): Z3Type = z => z.mkOr(s.map(elem => elem(z)): _*)
   def distinct(s: Seq[Z3Type]): Z3Type = z => z.mkDistinct(s.map(elem => elem(z)): _*)
 
@@ -54,6 +54,8 @@ object Z3 {
     (res, z)
 
   def filterSol(sol: Option[Seq[Z3AST]]): Option[Seq[Int]] = 
-    toInt(sol).map(_.zipWithIndex.filter((x, j) => x > 0).map((x, j) => j))
+    sol.map(filterSol)
+  def filterSol(sol: Seq[Z3AST]): Seq[Int] = 
+    toInt(sol).zipWithIndex.filter((x, j) => x > 0).map((x, j) => j)
 
 }

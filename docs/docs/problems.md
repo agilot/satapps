@@ -55,6 +55,7 @@
 - k-partition
 - Subset sum
 - k-way number partitioning
+- Bin packing
 
 ### [Set covering and packing](set-cover)
 - Set cover
@@ -67,7 +68,8 @@
 - Exact hitting set
 - Set splitting
 ---
-- Bin packing
+
+
 - Knapsack
 - Bounded knapsack
 - Unbounded knapsack

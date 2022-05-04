@@ -103,7 +103,7 @@ object Sets {
     val z = c.zipWithIndex
     val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
       yield (p1._2, p2._2)).toSet)
-    satapps.problems.Graphs.indset(g)(k)
+    satapps.problems.Graphs.Indset.search(g,k)
 
   def setCover[T](u: Set[T], c: Seq[Set[T]])(k: Int): Option[Set[Int]] =
     require(k > 0)
@@ -133,8 +133,8 @@ object Sets {
       res
     else None
 
-  def minSetCover[T](u: Set[T], c: Seq[Set[T]]): Set[Int] =
-    min(Range(0, c.size).toSet, c.size - 1, setCover(u, c), 1)
+  // def minSetCover[T](u: Set[T], c: Seq[Set[T]]): Set[Int] =
+  //   min(Range(0, c.size).toSet, c.size - 1, setCover(u, c), 1)
 
   def setSplitting[T](u: Set[T], c: Seq[Set[T]]): Option[(Set[T], Set[T])] = 
     if (c.foldLeft(u)(_ -- _) == Set())
@@ -142,7 +142,7 @@ object Sets {
       val mu: Map[T, Int] = u.zipWithIndex.toMap
       val str: Seq[String] = Range(0, u.size).map(_.toString)
       val vars: Seq[Z3Type] = intConst(str)
-      val cst1: Z3Type = vars >= 0
+      val cst1: Z3Type = vars >= 0 && vars <= 1
       val cst2: Z3Type = andAll(for(s <- c) yield 
         val summ = sum((for(e <- s) yield intConst(mu(e).toString)).toSeq)
         summ > 0 && summ < s.size)
