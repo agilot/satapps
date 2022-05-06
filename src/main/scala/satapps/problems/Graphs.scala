@@ -69,8 +69,8 @@ object Graphs {
 
   object Clique extends BasicMaxProblem[Graph, Set[Int]]{
     override def search(g: Graph, k: Int) = Indset.search(g.nonReflComplement, k)
-    override def decision(g: Graph, k: Int) = Indset.decision(g.nonReflComplement, k)
-    override def enumeration(g: Graph, k: Int) = Indset.enumeration(g.nonReflComplement, k)
+    override def decide(g: Graph, k: Int) = Indset.decide(g.nonReflComplement, k)
+    override def enumerate(g: Graph, k: Int) = Indset.enumerate(g.nonReflComplement, k)
 
     override def max(g: Graph) = Indset.max(g.nonReflComplement)
   }
@@ -78,9 +78,9 @@ object Graphs {
   object CliqueCover extends BasicMinProblem[Graph, Seq[Set[Int]]]{
     override def search(g: Graph, k: Int) = 
       Coloring.search(g.nonReflComplement, k).map(_.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._2, acc(p._2) + p._1)))
-    override def decision(g: Graph, k: Int) = Coloring.decision(g.nonReflComplement, k)
-    override def enumeration(g: Graph, k: Int) = 
-      Coloring.enumeration(g.nonReflComplement, k).map(_.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._2, acc(p._2) + p._1)))
+    override def decide(g: Graph, k: Int) = Coloring.decide(g.nonReflComplement, k)
+    override def enumerate(g: Graph, k: Int) = 
+      Coloring.enumerate(g.nonReflComplement, k).map(_.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._2, acc(p._2) + p._1)))
  
     override def min(g: Graph) = min(g, g.vertexSet.size, 1)
   }
@@ -190,22 +190,22 @@ object Graphs {
 
   object SymetricTravelingSalesperson extends BasicBiProblem[Graph, Int, Seq[Edge]]{
     override def search(g: Graph, d: Int) = AsymetricTravelingSalesperson.search(g.undirected(true), d)
-    override def decision(g: Graph, d: Int) = AsymetricTravelingSalesperson.decision(g.undirected(true), d)
-    override def enumeration(g: Graph, d: Int) = AsymetricTravelingSalesperson.enumeration(g.undirected(true), d)
+    override def decide(g: Graph, d: Int) = AsymetricTravelingSalesperson.decide(g.undirected(true), d)
+    override def enumerate(g: Graph, d: Int) = AsymetricTravelingSalesperson.enumerate(g.undirected(true), d)
 
   }
 
   object DirectedHamiltonianCycle extends BasicProblem[Graph, Seq[Edge]]{
     override def search(g: Graph) = AsymetricTravelingSalesperson.search(g.unweighted, g.vertexSet.size)
-    override def decision(g: Graph) = AsymetricTravelingSalesperson.decision(g.unweighted, g.vertexSet.size)
-    override def enumeration(g: Graph) = AsymetricTravelingSalesperson.enumeration(g.unweighted, g.vertexSet.size)
+    override def decide(g: Graph) = AsymetricTravelingSalesperson.decide(g.unweighted, g.vertexSet.size)
+    override def enumerate(g: Graph) = AsymetricTravelingSalesperson.enumerate(g.unweighted, g.vertexSet.size)
 
   }
   
   object UndirectedHamiltonianCycle extends BasicProblem[Graph, Seq[Edge]]{
     override def search(g: Graph) = DirectedHamiltonianCycle.search(g.undirected(true))
-    override def decision(g: Graph) = DirectedHamiltonianCycle.decision(g.undirected(true))
-    override def enumeration(g: Graph) = DirectedHamiltonianCycle.enumeration(g.undirected(true))
+    override def decide(g: Graph) = DirectedHamiltonianCycle.decide(g.undirected(true))
+    override def enumerate(g: Graph) = DirectedHamiltonianCycle.enumerate(g.undirected(true))
 
   }
   
@@ -215,18 +215,18 @@ object Graphs {
       val nG: Graph = Graph(Matrix.fromBlock(g.adjMat, IntMatrix.ones(n, 1), IntMatrix.ones(1, n), IntMatrix.zeros(1, 1)))
       val p = DirectedHamiltonianCycle.search(nG).map(_.filter(p => p._1 < n && p._2 < n))
       p.map(some => if(some.size == n) some.tail else some)
-    override def decision(g: Graph) = search(g).isDefined
-    override def enumeration(g: Graph) = 
+    override def decide(g: Graph) = search(g).isDefined
+    override def enumerate(g: Graph) = 
       val n: Int = g.vertexSet.size
       val nG: Graph = Graph(Matrix.fromBlock(g.adjMat, IntMatrix.ones(n, 1), IntMatrix.ones(1, n), IntMatrix.zeros(1, 1)))
-      val p = DirectedHamiltonianCycle.enumeration(nG).map(_.filter(p => p._1 < n && p._2 < n))
+      val p = DirectedHamiltonianCycle.enumerate(nG).map(_.filter(p => p._1 < n && p._2 < n))
       p.map(some => if(some.size == n) some.tail else some)
   }
   
   object UndirectedHamiltonianPath extends BasicProblem[Graph, Seq[Edge]]{    
     override def search(g: Graph) = DirectedHamiltonianPath.search(g.undirected(true))
-    override def decision(g: Graph) = DirectedHamiltonianPath.decision(g.undirected(true))
-    override def enumeration(g: Graph) = DirectedHamiltonianPath.enumeration(g.undirected(true))
+    override def decide(g: Graph) = DirectedHamiltonianPath.decide(g.undirected(true))
+    override def enumerate(g: Graph) = DirectedHamiltonianPath.enumerate(g.undirected(true))
 
   }
 
@@ -247,8 +247,8 @@ object Graphs {
   }
   object UndirectedHamiltonianFixedPath extends BasicTriProblem[Graph, Vertex, Vertex, Seq[Edge]]{    
     override def search(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.search(g.undirected(true), start, end)
-    override def decision(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.decision(g.undirected(true), start, end)
-    override def enumeration(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.enumeration(g.undirected(true), start, end)
+    override def decide(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.decide(g.undirected(true), start, end)
+    override def enumerate(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.enumerate(g.undirected(true), start, end)
 
   }
   

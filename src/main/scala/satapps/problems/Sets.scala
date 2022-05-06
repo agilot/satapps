@@ -35,9 +35,9 @@ object Sets {
   object Partition extends BasicProblem[MultiSet[Int], (MultiSet[Int], MultiSet[Int])]{
     def search(s: MultiSet[Int]): Option[(MultiSet[Int], MultiSet[Int])] =
       KWayNumberPartitioning.search(s, 2).map(some => (some.head, some.tail.head))
-    def decision(s: MultiSet[Int]): Boolean = KWayNumberPartitioning.decision(s, 2)
-    def enumeration(s: MultiSet[Int]): Set[(MultiSet[Int], MultiSet[Int])] =
-      KWayNumberPartitioning.enumeration(s, 2).map(some => (some.head, some.tail.head))
+    def decide(s: MultiSet[Int]): Boolean = KWayNumberPartitioning.decide(s, 2)
+    def enumerate(s: MultiSet[Int]): Set[(MultiSet[Int], MultiSet[Int])] =
+      KWayNumberPartitioning.enumerate(s, 2).map(some => (some.head, some.tail.head))
   }
 
   object ThreePartition extends BasicProblem[MultiSet[Int], Seq[(Int, Int, Int)]]{
@@ -47,9 +47,9 @@ object Sets {
         (l.head, tl.head, tl.tail.head)
     def search(s: MultiSet[Int]): Option[Seq[(Int, Int, Int)]] =
       KPartitioning.search(s, 3).map(_.map(to3Tuple))
-    def decision(s: MultiSet[Int]): Boolean = KPartitioning.decision(s, 3)
-    def enumeration(s: MultiSet[Int]): Set[Seq[(Int, Int, Int)]] =
-      KPartitioning.enumeration(s, 3).map(_.map(to3Tuple))
+    def decide(s: MultiSet[Int]): Boolean = KPartitioning.decide(s, 3)
+    def enumerate(s: MultiSet[Int]): Set[Seq[(Int, Int, Int)]] =
+      KPartitioning.enumerate(s, 3).map(_.map(to3Tuple))
   }
 
   object FourPartition extends BasicProblem[MultiSet[Int], Seq[(Int, Int, Int, Int)]]{
@@ -60,8 +60,8 @@ object Sets {
         (l.head, tl.head, ttl.head, ttl.tail.head)
     def search(s: MultiSet[Int]): Option[Seq[(Int, Int, Int, Int)]] =
       KPartitioning.search(s, 4).map(_.map(to4Tuple))
-    def decision(s: MultiSet[Int]): Boolean = KPartitioning.decision(s, 4)
-    def enumeration(s: MultiSet[Int]) = KPartitioning.enumeration(s, 4).map(_.map(to4Tuple))
+    def decide(s: MultiSet[Int]): Boolean = KPartitioning.decide(s, 4)
+    def enumerate(s: MultiSet[Int]) = KPartitioning.enumerate(s, 4).map(_.map(to4Tuple))
   }
 
   object KPartitioning extends BiProblem[MultiSet[Int], Int, Seq[MultiSet[Int]]]{
@@ -115,12 +115,12 @@ object Sets {
       val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
         yield (p1._2, p2._2)).toSet)
       satapps.problems.Graphs.Indset.search(g,k)
-    override def decision(c: Seq[Set[T]], k: Int): Boolean = search(c, k).isDefined
-    override def enumeration(c: Seq[Set[T]], k: Int): Set[Set[Int]] =
+    override def decide(c: Seq[Set[T]], k: Int): Boolean = search(c, k).isDefined
+    override def enumerate(c: Seq[Set[T]], k: Int): Set[Set[Int]] =
       val z = c.zipWithIndex
       val g = Graph(Range(0, c.size).toSet, (for(p1 <- z; p2 <- z; if (p1._2 != p2._2) && ((p1._1 & p2._1) != Set()))
         yield (p1._2, p2._2)).toSet)
-      satapps.problems.Graphs.Indset.enumeration(g,k)
+      satapps.problems.Graphs.Indset.enumerate(g,k)
 
     override def max(c: Seq[Set[T]]) = max(c, 1, c.size)
   }
@@ -207,8 +207,8 @@ object Sets {
 
   object Knapsack extends BasicTriProblem[Seq[(Int, Int)], Int, Int, Seq[Int]]{
     override def search(items: Seq[(Int, Int)], w: Int, v: Int) = BoundedKnapsack.search(items, w, 1, v)
-    override def decision(items: Seq[(Int, Int)], w: Int, v: Int) = BoundedKnapsack.decision(items, w, 1, v)
-    override def enumeration(items: Seq[(Int, Int)], w: Int, v: Int) = BoundedKnapsack.enumeration(items, w, 1, v)
+    override def decide(items: Seq[(Int, Int)], w: Int, v: Int) = BoundedKnapsack.decide(items, w, 1, v)
+    override def enumerate(items: Seq[(Int, Int)], w: Int, v: Int) = BoundedKnapsack.enumerate(items, w, 1, v)
   }
 
   object UnboundedKnapsack extends TriProblem[Seq[(Int, Int)], Int, Int, Seq[Int]]{

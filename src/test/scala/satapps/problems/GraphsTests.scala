@@ -24,10 +24,10 @@ class GraphsTests extends AnyFunSuite{
 
   test("dominating set"){
     val n = 5
-    for(i <- 1 to n){assert(DominatingSet.decision(Graph.complete(n), 1))}
+    for(i <- 1 to n){assert(DominatingSet.decide(Graph.complete(n), 1))}
 
     for(i <- 1 to n - 1){
-      assert(!DominatingSet.decision(Graph.empty(n), i))
+      assert(!DominatingSet.decide(Graph.empty(n), i))
     }
     //println(connectedDominatingSet(Graph.complete(5))(0))
   }
@@ -35,10 +35,10 @@ class GraphsTests extends AnyFunSuite{
   test("indset/clique"){
     val n = 5
     for(i <- 2 to 5){
-      assert(!Indset.decision(Graph.complete(n), i))
-      assert(Clique.decision(Graph.complete(n), i))
-      assert(Indset.decision(Graph.empty(n), i))
-      assert(!Clique.decision(Graph.empty(n), i))
+      assert(!Indset.decide(Graph.complete(n), i))
+      assert(Clique.decide(Graph.complete(n), i))
+      assert(Indset.decide(Graph.empty(n), i))
+      assert(!Clique.decide(Graph.empty(n), i))
     }
   }
 
