@@ -6,18 +6,18 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class MatricesTests extends AnyFunSuite{
   test("N-Queens"){
-    assert(nQueensCompletion(1, List((0, 0))).isDefined) 
-    assert(!nQueensCompletion(2, List((0, 0))).isDefined) 
-    assert(!nQueensCompletion(3, List((0, 0))).isDefined) 
-    assert(!nQueensCompletion(4, List((0, 0))).isDefined)
-    assert(nQueensCompletion(5, List((0, 0))).isDefined) 
+    assert(NQueensCompletion.decision(1, List((0, 0)))) 
+    assert(!NQueensCompletion.decision(2, List((0, 0)))) 
+    assert(!NQueensCompletion.decision(3, List((0, 0)))) 
+    assert(!NQueensCompletion.decision(4, List((0, 0))))
+    assert(NQueensCompletion.decision(5, List((0, 0)))) 
   }
 
   test("Blocked N-Queens"){
-    assert(!blockedNQueens(1, List((0, 0))).isDefined) 
-    assert(!blockedNQueens(2, List((0, 0))).isDefined) 
-    assert(!blockedNQueens(3, List((0, 0))).isDefined) 
-    assert(blockedNQueens(4, List((0, 0))).isDefined) 
-    assert(blockedNQueens(5, List((0, 0))).isDefined) 
+    assert(!BlockedNQueens.decision(1, List((0, 0)))) 
+    assert(!BlockedNQueens.decision(2, List((0, 0)))) 
+    assert(!BlockedNQueens.decision(3, List((0, 0)))) 
+    assert(BlockedNQueens.decision(4, List((0, 0)))) 
+    assert(BlockedNQueens.decision(5, List((0, 0)))) 
   }
 }

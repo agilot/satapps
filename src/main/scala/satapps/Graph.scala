@@ -44,7 +44,7 @@ trait Graph {
     else
       Graph(vertexSet, edgeSet ++ revEs -- (for(i <- 0 until vertexSet.size; j <- i + 1 until vertexSet.size) yield (i, j)))
 
-  def connected: Boolean = ???
+  def connected: Boolean = bfs(0).size == vertexSet.size
 
   def bfs(source: Vertex): Map[Vertex, Int] = 
     def iter(dist: Map[Vertex, Int], queue: Queue[Vertex]): Map[Vertex, Int] =
@@ -60,14 +60,14 @@ trait Graph {
   
   /****Numbers*****/
 
-  def independenceNumber: Int = Indset.max(this).size
-  def vertexCoverNumber: Int = VertexCover.min(this).size
-  def cliqueNumber: Int = Clique.max(this).size
-  def cliqueCoverNumber: Int = CliqueCover.min(this).size
-  def chromaticNumber: Int = Coloring.min(this).values.size  
-  def edgeChromaticNumber: Int = EdgeColoring.min(this).values.size
-  def dominationNumber: Int = DominatingSet.min(this).size
-  def domaticNumber: Int = DomaticPartition.max(this).size
+  def independenceNumber: Option[Int] = Indset.max(this).map(_.size)
+  def vertexCoverNumber: Option[Int] = VertexCover.min(this).map(_.size)
+  def cliqueNumber: Option[Int] = Clique.max(this).map(_.size)
+  def cliqueCoverNumber: Option[Int] = CliqueCover.min(this).map(_.size)
+  def chromaticNumber: Option[Int] = Coloring.min(this).map(_.values.size)  
+  def edgeChromaticNumber: Option[Int] = EdgeColoring.min(this).map(_.values.size)
+  def dominationNumber: Option[Int] = DominatingSet.min(this).map(_.size)
+  def domaticNumber: Option[Int] = DomaticPartition.max(this).map(_.size)
   def totalDominationNumber: Option[Int] = try{ Some(TotalDominatingSet.min(this).size)}
     catch{
       case e: IllegalArgumentException => None

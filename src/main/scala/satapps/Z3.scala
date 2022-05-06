@@ -22,6 +22,9 @@ object Z3 {
   given Conversion[Int, Z3Type] with
     def apply(id: Int) = z => z.mkInt(id, z.mkIntSort())
 
+  given Conversion[Seq[Int], Seq[Z3Type]] with
+    def apply(id: Seq[Int]) = id.map(e => (z => z.mkInt(e, z.mkIntSort())))
+
   given Conversion[Boolean, Z3Type] with
     def apply(id: Boolean) = z => if (id) z.mkTrue() else z.mkFalse()
 

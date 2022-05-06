@@ -36,7 +36,7 @@ object Graphs {
       val cst2: Z3Type = vars >= 0 && sum(vars) >= k
       (cst1 && cst2, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol).toSet
-    override def max(g: Graph): Set[Int] = max(g, Set(0), 1, g.vertexSet.size)
+    override def max(g: Graph): Option[Set[Int]] = max(g, 1, g.vertexSet.size)
   }
 
   object VertexCover extends MinProblem[Graph, Set[Int]] {
@@ -47,7 +47,7 @@ object Graphs {
       val cst2: Z3Type = vars >= 0 && sum(vars) <= k
       (cst1 && cst2, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol).toSet
-    override def min(g: Graph): Set[Int] = min(g, g.vertexSet, g.vertexSet.size, 1)
+    override def min(g: Graph): Option[Set[Int]] = min(g, g.vertexSet.size, 1)
   }
 
   object Coloring extends MinProblem[Graph, Map[Vertex, Int]] {
@@ -64,12 +64,14 @@ object Graphs {
     override protected def convert(g: Graph, c: Int, sol: Seq[Z3AST]) = 
       toInt(sol).zipWithIndex.filter((cs, idx) => cs >= 1).map((cs, idx) => idx % c).zipWithIndex.map(p => (p._2, p._1)).toMap
 
-    override def min(g: Graph): Map[Vertex, Int] = min(g, Range(0, g.vertexSet.size).zipWithIndex.toMap, g.vertexSet.size, 1)
+    override def min(g: Graph): Option[Map[Vertex, Int]] = min(g, g.vertexSet.size, 1)
   }
 
   object Clique extends BasicMaxProblem[Graph, Set[Int]]{
     override def search(g: Graph, k: Int) = Indset.search(g.nonReflComplement, k)
     override def decision(g: Graph, k: Int) = Indset.decision(g.nonReflComplement, k)
+    override def enumeration(g: Graph, k: Int) = Indset.enumeration(g.nonReflComplement, k)
+
     override def max(g: Graph) = Indset.max(g.nonReflComplement)
   }
 
@@ -77,7 +79,10 @@ object Graphs {
     override def search(g: Graph, k: Int) = 
       Coloring.search(g.nonReflComplement, k).map(_.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._2, acc(p._2) + p._1)))
     override def decision(g: Graph, k: Int) = Coloring.decision(g.nonReflComplement, k)
-    override def min(g: Graph) = min(g, Range(0, g.vertexSet.size).map(Set(_)), g.vertexSet.size, 1)
+    override def enumeration(g: Graph, k: Int) = 
+      Coloring.enumeration(g.nonReflComplement, k).map(_.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => acc.updated(p._2, acc(p._2) + p._1)))
+ 
+    override def min(g: Graph) = min(g, g.vertexSet.size, 1)
   }
 
   object EdgeColoring extends MinProblem[Graph, Map[Edge, Int]] {
@@ -93,7 +98,7 @@ object Graphs {
       (cst1 && cst2 && cst3, str)
     override protected def convert(g: Graph, c: Int, sol: Seq[Z3AST]) = 
       g.edgeOrderedList.zip(toInt(sol).zipWithIndex.filter((cs, idx) => cs >= 1).map((cs, idx) => idx % c)).toMap
-    override def min(g: Graph): Map[Edge, Int] = min(g, g.edgeSet.toList.zipWithIndex.toMap, g.edgeSet.size, 1)
+    override def min(g: Graph): Option[Map[Edge, Int]] = min(g, g.edgeSet.size, 1)
   }  
 
   object DominatingSet extends MinProblem[Graph, Set[Int]] {
@@ -104,7 +109,7 @@ object Graphs {
       val cst2: Z3Type = vars >= 0 && vars <= 1 && sum(vars) === k
       (cst1 && cst2, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol).toSet
-    override def min(g: Graph): Set[Int] = min(g, g.vertexSet, g.vertexSet.size, 1)
+    override def min(g: Graph): Option[Set[Int]] = min(g, g.vertexSet.size, 1)
   }
 
   object DomaticPartition extends MaxProblem[Graph, Seq[Set[Vertex]]]{
@@ -119,7 +124,7 @@ object Graphs {
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = 
       toInt(sol).zipWithIndex.foldLeft(ArraySeq.fill(k)(Set(): Set[Vertex]))((acc, p) => 
       if (p._1 >= 1) acc.updated(p._2 % k, acc(p._2 % k) + (p._2 / k)) else acc)
-    override def max(g: Graph): Seq[Set[Vertex]] = max(g, g.vertexSet.map(Set(_)).toList, 1, g.vertexSet.size)
+    override def max(g: Graph): Option[Seq[Set[Vertex]]] = max(g, 1, g.vertexSet.size)
   }
 
   object TotalDominatingSet extends MinProblem[Graph, Set[Vertex]]{
@@ -130,11 +135,7 @@ object Graphs {
       val cst2: Z3Type = vars >= 0 && vars <= 1 && sum(vars) === k
       (cst1 && cst2, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol).toSet
-    override def min(g: Graph) = 
-      if(g.adjList.exists((v, s) => s.isEmpty))
-        throw IllegalArgumentException("The graph has an isolated vertex")
-      else
-        min(g, g.vertexSet, g.vertexSet.size, 1)
+    override def min(g: Graph) = min(g, g.vertexSet.size, 1)
   }
 
   object ConnectedDominatingSet extends MinProblem[Graph, Set[Vertex]]{
@@ -163,10 +164,7 @@ object Graphs {
         ((sum(for(k0 <- 0 until n; if k0 != e._1 && k0 != e._2) yield intConst(s"${(e._1, k0)}${e._2}")) + intConst(e.toString)) <= (3 - intConst(e._1.toString) + intConst(e._2.toString))))
       (cst1 && cst2 && cst3a && cst3b && cst3c && cst3d && cst3e && cst3f, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol.take(g.vertexSet.size)).toSet
-    override def min(g: Graph) = 
-      if (g.connected)
-        min(g, g.vertexSet, g.vertexSet.size, 1)
-      else throw IllegalArgumentException("The graph is not connected")
+    override def min(g: Graph) = min(g, g.vertexSet.size, 1)
   }
 
   object IndependentDominatingSet extends MinProblem[Graph, Set[Int]] {
@@ -178,7 +176,7 @@ object Graphs {
       val cst3: Z3Type = andAll((for (v1, v2) <- g.edgeSet yield intConst(v1.toString) + intConst(v2.toString) <= 1).toList)
       (cst1 && cst2 && cst3, str)
     override protected def convert(g: Graph, k: Int, sol: Seq[Z3AST]) = filterSol(sol).toSet
-    override def min(g: Graph): Set[Int] = min(g, g.vertexSet, g.vertexSet.size, 1)
+    override def min(g: Graph): Option[Set[Int]] = min(g, g.vertexSet.size, 1)
   }
 
   object AsymetricTravelingSalesperson extends BiProblem[Graph, Int, Seq[Edge]]{
@@ -193,16 +191,22 @@ object Graphs {
   object SymetricTravelingSalesperson extends BasicBiProblem[Graph, Int, Seq[Edge]]{
     override def search(g: Graph, d: Int) = AsymetricTravelingSalesperson.search(g.undirected(true), d)
     override def decision(g: Graph, d: Int) = AsymetricTravelingSalesperson.decision(g.undirected(true), d)
+    override def enumeration(g: Graph, d: Int) = AsymetricTravelingSalesperson.enumeration(g.undirected(true), d)
+
   }
 
   object DirectedHamiltonianCycle extends BasicProblem[Graph, Seq[Edge]]{
     override def search(g: Graph) = AsymetricTravelingSalesperson.search(g.unweighted, g.vertexSet.size)
     override def decision(g: Graph) = AsymetricTravelingSalesperson.decision(g.unweighted, g.vertexSet.size)
+    override def enumeration(g: Graph) = AsymetricTravelingSalesperson.enumeration(g.unweighted, g.vertexSet.size)
+
   }
   
   object UndirectedHamiltonianCycle extends BasicProblem[Graph, Seq[Edge]]{
     override def search(g: Graph) = DirectedHamiltonianCycle.search(g.undirected(true))
     override def decision(g: Graph) = DirectedHamiltonianCycle.decision(g.undirected(true))
+    override def enumeration(g: Graph) = DirectedHamiltonianCycle.enumeration(g.undirected(true))
+
   }
   
   object DirectedHamiltonianPath extends BasicProblem[Graph, Seq[Edge]]{
@@ -212,11 +216,18 @@ object Graphs {
       val p = DirectedHamiltonianCycle.search(nG).map(_.filter(p => p._1 < n && p._2 < n))
       p.map(some => if(some.size == n) some.tail else some)
     override def decision(g: Graph) = search(g).isDefined
+    override def enumeration(g: Graph) = 
+      val n: Int = g.vertexSet.size
+      val nG: Graph = Graph(Matrix.fromBlock(g.adjMat, IntMatrix.ones(n, 1), IntMatrix.ones(1, n), IntMatrix.zeros(1, 1)))
+      val p = DirectedHamiltonianCycle.enumeration(nG).map(_.filter(p => p._1 < n && p._2 < n))
+      p.map(some => if(some.size == n) some.tail else some)
   }
   
   object UndirectedHamiltonianPath extends BasicProblem[Graph, Seq[Edge]]{    
     override def search(g: Graph) = DirectedHamiltonianPath.search(g.undirected(true))
     override def decision(g: Graph) = DirectedHamiltonianPath.decision(g.undirected(true))
+    override def enumeration(g: Graph) = DirectedHamiltonianPath.enumeration(g.undirected(true))
+
   }
 
   object DirectedHamiltonianFixedPath extends TriProblem[Graph, Vertex, Vertex, Seq[Edge]]{
@@ -237,6 +248,8 @@ object Graphs {
   object UndirectedHamiltonianFixedPath extends BasicTriProblem[Graph, Vertex, Vertex, Seq[Edge]]{    
     override def search(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.search(g.undirected(true), start, end)
     override def decision(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.decision(g.undirected(true), start, end)
+    override def enumeration(g: Graph, start: Vertex, end: Vertex) = DirectedHamiltonianFixedPath.enumeration(g.undirected(true), start, end)
+
   }
   
 /***********************Constraints***********************/

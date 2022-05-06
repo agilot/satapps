@@ -43,7 +43,7 @@
 ### [N-Queens](n-queens)
 - N-queens completion
 - Blocked n-queens
----
+### [Grid games](grid-games)
 - Latin square completion
 - Sudoku completion
 
@@ -56,6 +56,7 @@
 - Subset sum
 - k-way number partitioning
 - Bin packing
+- Minimum Bin Packing
 
 ### [Set covering and packing](set-cover)
 - Set cover
@@ -67,9 +68,7 @@
 - Minimum hitting set
 - Exact hitting set
 - Set splitting
----
-
-
+### [Knapsack](knapsack)
 - Knapsack
 - Bounded knapsack
 - Unbounded knapsack
