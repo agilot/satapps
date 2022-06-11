@@ -1,40 +1,25 @@
 package satapps
 
-import Z3.*
+import ConstrProg.*
 import z3.scala.*
+import z3.scala.dsl.BoolConstant
 
 object Extensions{
-  extension (a: Z3Type)
-    def +(b: Z3Type): Z3Type = z => z.mkAdd(a(z), b(z))
-    def -(b: Z3Type): Z3Type = z => z.mkSub(a(z), b(z))
-    def *(b: Z3Type): Z3Type = z => z.mkMul(a(z), b(z))
-    def ===(b: Z3Type): Z3Type = z => z.mkEq(a(z), b(z))
-    def !==(b: Z3Type): Z3Type = z => z.mkDistinct(a(z), b(z))
-    def <=(b: Z3Type): Z3Type = z => z.mkLE(a(z), b(z))
-    def >=(b: Z3Type): Z3Type = z => z.mkGE(a(z), b(z))
-    def <(b: Z3Type): Z3Type = z => z.mkLT(a(z), b(z))
-    def >(b: Z3Type): Z3Type = z => z.mkGT(a(z), b(z))
-    def &&(b: Z3Type): Z3Type = z => z.mkAnd(a(z), b(z))
-    def ||(b: Z3Type): Z3Type = z => z.mkOr(a(z), b(z))
-    def ^(b: Z3Type): Z3Type = z => z.mkXor(a(z), b(z))
-    def <=>(b: Z3Type): Z3Type = z => z.mkIff(a(z), b(z))
-    def unary_! : Z3Type = (z: Z3Context) => z.mkNot(a(z))
 
-  extension (a: Seq[Z3Type])
-    def +(b: Seq[Z3Type]): Z3Type = andAll(a.zip(b).map(_ + _))
-    def -(b: Seq[Z3Type]): Z3Type = andAll(a.zip(b).map(_ - _))
-    def ===(b: Z3Type): Z3Type = andAll(a.map(_ === b))
-    def <=(b: Z3Type): Z3Type = andAll(a.map(_ <= b))
-    def >=(b: Z3Type): Z3Type = andAll(a.map(_ >= b))
-    def <(b: Z3Type): Z3Type = andAll(a.map(_ < b))
-    def >(b: Z3Type): Z3Type = andAll(a.map(_ > b))
-
-  extension (a: Z3Type)
-    def toStringed(): String = 
-      val z: Z3Context = Z3Context()
-      val res = a(z).toString
-      z.delete()
-      res
+  extension (a: Seq[IntConstr])
+    def +(b: Seq[IntConstr]): Seq[IntConstr] = a.zip(b).map(_ + _)
+    def *(b: Seq[IntConstr]): Seq[IntConstr] = a.zip(b).map(_ * _)
+    def -(b: Seq[IntConstr]): Seq[IntConstr] = a.zip(b).map(_ - _)
+    def ===(b: Seq[IntConstr]): BoolConstr = And(a.zip(b).map(_ === _) : _*)
+    def ===(b: IntConstr): BoolConstr = And(a.map(_ === b) : _*)
+    def <=(b: Seq[IntConstr]): BoolConstr = And(a.zip(b).map(_ <= _): _*)
+    def <=(b: IntConstr): BoolConstr = And(a.map(_ <= b): _*)
+    def >=(b: Seq[IntConstr]): BoolConstr = And(a.zip(b).map(_ >= _): _*)
+    def >=(b: IntConstr): BoolConstr = And(a.map(_ >= b): _*)
+    def <(b: Seq[IntConstr]): BoolConstr = And(a.zip(b).map(_ < _): _*)
+    def <(b: IntConstr): BoolConstr = And(a.map(_ < b): _*)
+    def >(b: Seq[IntConstr]): BoolConstr = And(a.zip(b).map(_ > _): _*)
+    def >(b: IntConstr): BoolConstr = And(a.map(_ > b): _*)
 
   extension (a: Matrix[Boolean])
     def ^(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_^_), a.rows, a.columns)
@@ -64,4 +49,21 @@ object Extensions{
           transPow(aft, aft || (a * aft))
       
       transPow(a, a || (a * a))
+
+  extension [T](s: Iterable[Set[T]])
+    def isPartition(universe: Set[T]): Boolean = s.foldLeft((universe, 0))((acc, e)  => (acc._1 -- e, acc._2 + e.size)) == (Set(), universe.size)
+  
+  extension (s: NumQuery)
+    def toInt: IntQuery = 
+      IntQuery(s.map((k, v) => (k, v match{
+        case i: IntNum => i.c
+        case _ => throw IllegalStateException()
+      })).toMap)
+  
+  extension (s: IntQuery)
+    def filterPositive: IntQuery = s.filterVal(_ > 0)
+    def filterIdx: Set[Int] = s.filterPositive.varSet.map(_.toInt)
+    def filterPairIdx: Set[(Int, Int)] = s.filterPositive.varSet.map{case s"${v1},${v2}"=> (v1.toInt, v2.toInt)}
+
+
 }

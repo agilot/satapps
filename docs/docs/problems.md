@@ -9,6 +9,7 @@
 ### [Coloring](coloring)
   - k-coloring
   - Minimum graph coloring and chromatic number
+  - Chromatic polyonomial
   - Edge coloring problem and chromatic index
 ### [Dominating set](domset)
   - Dominating set

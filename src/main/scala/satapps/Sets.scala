@@ -4,6 +4,11 @@ import java.util
 import scala.collection.{IterableOps, IterableFactory, IterableFactoryDefaults, StrictOptimizedIterableOps}
 import scala.collection.mutable.{Builder, ImmutableBuilder}
 
+object Iter{
+  def cartesian[U, V](s1: Iterable[U], s2: Iterable[V]): Iterable[(U, V)] =
+    for(i <- s1; j <- s2) yield (i,j)
+}
+
 class MultiSet[T] private (m: Map[T, Int]) extends (T => Int) 
   with Iterable[T] 
   with IterableOps[T, MultiSet, MultiSet[T]]

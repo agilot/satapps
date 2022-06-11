@@ -25,13 +25,16 @@ trait Graph {
   def outNeighb: Map[Vertex, Set[Vertex]] = adjList
 
   lazy val neighb: Map[Vertex, Set[Vertex]] = inNeighb.map((v, s) => (v, s ++ adjList(v)))
-
+ 
   lazy val outIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
     m + (p._1 -> (m(p._1) + p)))
   lazy val inIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
     m + (p._2 -> (m(p._2) + p)))
   lazy val incidence: Map[Vertex, Set[Edge]] = inIncidence.map((v, s) => (v, s ++ outIncidence(v)))
   
+  def neighb(v: Set[Vertex]): Set[Vertex] = v.foldLeft(Set[Vertex]())(_ ++ neighb(_)) -- v
+
+
   def complement: Graph = Graph(adjMat.complement)
   def nonReflComplement: Graph = Graph((adjMat || BoolMatrix.id(adjMat.rows)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
@@ -45,6 +48,12 @@ trait Graph {
       Graph(vertexSet, edgeSet ++ revEs -- (for(i <- 0 until vertexSet.size; j <- i + 1 until vertexSet.size) yield (i, j)))
 
   def connected: Boolean = bfs(0).size == vertexSet.size
+  def isClique: Boolean = undirected(true).edgeSet.size == vertexSet.size * (vertexSet.size - 1) / 2
+  def isIndependent: Boolean = undirected(true).edgeSet.size == 0
+
+
+  def induced(vertices: Set[Vertex]): Graph = 
+    Graph(vertices, edgeSet.filter(vertices(_) && vertices(_)))
 
   def bfs(source: Vertex): Map[Vertex, Int] = 
     def iter(dist: Map[Vertex, Int], queue: Queue[Vertex]): Map[Vertex, Int] =
@@ -55,8 +64,6 @@ trait Graph {
         val l = adjList(e).filter(!dist.contains(_))
         iter(dist ++ l.map(_ -> (dist(e) + 1)), q enqueueAll l)
     iter(Map(source -> 0), Queue(source))
-
-  lazy val edgeOrderedList: Seq[Edge] = edgeSet.toSeq.sorted 
   
   /****Numbers*****/
 

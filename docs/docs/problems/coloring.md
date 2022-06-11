@@ -4,6 +4,8 @@ Given a graph $G = (V, E)$, a __vertex coloring__ is an assignment such that no 
 
 A vertex coloring that minimizes the number of colors needed for a given graph G is known as a __minimum vertex coloring__ of G. The minimum number of colors itself is called the __chromatic number__, denoted $\chi(G)$.
 
+The __chromatic polynomial__ of a graph is the polynomial that associates to each value $k$ the number of possible k-colorings in the graph. It is often denoted $P(G, k)$ or $\chi_G(k)$.
+
 An __edge coloring__ is an assignment such that no two adjacent edges are of the same color. This is equivalent to partionning $V$ into disjoint matchings.
 
 An edge coloring that minimizes the number of colors needed for a given graph G is known as a __minimum edge coloring__ of G. The minimum number of colors itself is called the __chromatic index__, denoted $\chi'(G)$.
@@ -12,7 +14,7 @@ An edge coloring that minimizes the number of colors needed for a given graph G 
 ## k-coloring problem
 
 
-The k-coloring problem consists in deciding whether a graph, given a natural integer $k$, admits a k-coloring. This problem has been proven to be NP-complete (Karp, 1972) [1]. The search version of the problem consists in finding such an assignement.
+The k-coloring problem consists in deciding whether a graph, given a natural integer $k$, admits a k-coloring. This problem has been proven to be NP-complete (Karp, 1972) [1]. The search version of the problem consists in finding such an assignement. The enumeration version of the problem consists in determining the value of the chromatic polynomial of the graph in $k$.
 
 Finding a k-coloring is equivalent to find a feasible solution to this 0-1 integer linear program:
 
@@ -43,15 +45,19 @@ Finding a minimum coloring is equivalent to finding a [maximum clique cover](../
 
 Computing the chromatic number of a graph is also NP-hard. It is equal to the [clique cover number](../clique#maximum-clique-cover-problem-and-clique-cover-number) of the graph's complement.
 
+## Chromatic polynomial
+
+Computing the value of the chromatic polynomial at any integer greater than 2 is #P-complete and is #P-hard at any rational number [2]. Finding the coefficients of the chromatic polynomial is also #P-hard[3].
+
 ## Edge coloring problem and chromatic index
 
 The edge coloring problem consists in finding a minimum edge coloring in the graph.
 
-By Vizing's theorem (Vizing, 1964) [2], the chromatic index is almost tightly bounded by the maximum degree $\Delta(G)$ of the graph :
+By Vizing's theorem (Vizing, 1964) [4], the chromatic index is almost tightly bounded by the maximum degree $\Delta(G)$ of the graph :
 
 $$\Delta(G) \leq \chi'(G) \leq \Delta(G) + 1$$
 
-Therefore deciding whether the graph is k-edge colorable is as hard as finding a minimum coloring and computing the chromatic index. In fact the 3 problems are NP-complete [3].
+Therefore deciding whether the graph is k-edge colorable is as hard as finding a minimum coloring and computing the chromatic index. In fact the 3 problems are NP-complete [5].
 
 Finding a minimum edge coloring is equivalent to find a feasible solution to the following 0-1 integer linear program:
 
@@ -67,9 +73,12 @@ $$\sum_{e \in \delta(u)} x_{e, i} \leq 1 \ \forall u \in V, \, i = 1, ..., \Delt
 ---
 
 
-[1] Karp, Richard M., “Reducibility Among Combinatorial Problems”.
-Complexity of Computer Computations, 1972: Plenum Press, 85-103.
+[1] Karp, Richard M., “Reducibility Among Combinatorial Problems”. Complexity of Computer Computations, 1972: Plenum Press, 85-103.
 
-[2] Vizing, V.G. The chromatic class of a multigraph. Cybern Syst Anal 1, 32–41 (1965)
+[2] M. Linial. Hard enumeration problems in geometry and combinatorics. SIAM Journal of Algebraic and Discrete Methods, 7:331–335, 1986.
 
-[3] Holyer, Ian (1981), "The NP-completeness of edge-coloring", SIAM Journal on Computing, 10 (4): 718–720,
+[3] Oxley, J. G.; Welsh, D. J. A. (2002), "Chromatic, flow and reliability polynomials: The complexity of their coefficients.", Combinatorics, Probability and Computing, 11 (4): 403–426
+
+[4] Vizing, V.G. The chromatic class of a multigraph. Cybern Syst Anal 1, 32–41 (1965)
+
+[5] Holyer, Ian (1981), "The NP-completeness of edge-coloring", SIAM Journal on Computing, 10 (4): 718–720,
