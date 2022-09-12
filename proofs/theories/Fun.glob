@@ -1,0 +1,102 @@
+DIGEST 0e9f430c5ff414ef5e503b2ca7ee1929
+FSatapps.Fun
+R15:38 Coq.Logic.FunctionalExtensionality <> <> lib
+def 53:56 <> id_f
+binder 59:59 <> A:1
+R70:73 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R69:69 Satapps.Fun <> A:1 var
+R74:74 Satapps.Fun <> A:1 var
+binder 83:83 <> a:2
+R88:88 Satapps.Fun <> a:2 var
+def 103:109 <> const_f
+binder 112:112 <> A:3
+binder 114:114 <> B:4
+R127:127 Satapps.Fun <> B:4 var
+binder 124:124 <> b:5
+R132:135 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R131:131 Satapps.Fun <> A:3 var
+R136:136 Satapps.Fun <> B:4 var
+binder 145:145 <> a:6
+R150:150 Satapps.Fun <> b:5 var
+def 165:168 <> comp
+binder 170:170 <> A:7
+binder 172:172 <> B:8
+binder 174:174 <> C:9
+R188:191 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R187:187 Satapps.Fun <> B:8 var
+R192:192 Satapps.Fun <> C:9 var
+binder 184:184 <> f:10
+R200:203 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R199:199 Satapps.Fun <> A:7 var
+R204:204 Satapps.Fun <> B:8 var
+binder 196:196 <> g:11
+binder 214:214 <> a:12
+R219:219 Satapps.Fun <> f:10 var
+R222:222 Satapps.Fun <> g:11 var
+R224:224 Satapps.Fun <> a:12 var
+def 240:246 <> inv_f_l
+binder 249:249 <> A:13
+binder 251:251 <> B:14
+R265:268 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R264:264 Satapps.Fun <> A:13 var
+R269:269 Satapps.Fun <> B:14 var
+binder 261:261 <> f:15
+R277:280 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R276:276 Satapps.Fun <> B:14 var
+R281:281 Satapps.Fun <> A:13 var
+binder 273:273 <> i:16
+R295:297 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R287:290 Satapps.Fun <> comp def
+R294:294 Satapps.Fun <> f:15 var
+R292:292 Satapps.Fun <> i:16 var
+R298:301 Satapps.Fun <> id_f def
+def 315:321 <> inv_f_r
+binder 324:324 <> A:17
+binder 326:326 <> B:18
+R340:343 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R339:339 Satapps.Fun <> A:17 var
+R344:344 Satapps.Fun <> B:18 var
+binder 336:336 <> f:19
+R352:355 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R351:351 Satapps.Fun <> B:18 var
+R356:356 Satapps.Fun <> A:17 var
+binder 348:348 <> i:20
+R370:372 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R362:365 Satapps.Fun <> comp def
+R369:369 Satapps.Fun <> i:20 var
+R367:367 Satapps.Fun <> f:19 var
+R373:376 Satapps.Fun <> id_f def
+def 390:394 <> inv_f
+binder 397:397 <> A:21
+binder 399:399 <> B:22
+R413:416 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R412:412 Satapps.Fun <> A:21 var
+R417:417 Satapps.Fun <> B:22 var
+binder 409:409 <> f:23
+R425:428 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R424:424 Satapps.Fun <> B:22 var
+R429:429 Satapps.Fun <> A:21 var
+binder 421:421 <> i:24
+R446:449 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R435:441 Satapps.Fun <> inv_f_l def
+R445:445 Satapps.Fun <> i:24 var
+R443:443 Satapps.Fun <> f:23 var
+R450:456 Satapps.Fun <> inv_f_r def
+R460:460 Satapps.Fun <> i:24 var
+R458:458 Satapps.Fun <> f:23 var
+def 475:479 <> opt_f
+binder 482:482 <> A:25
+binder 484:484 <> B:26
+R498:501 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R497:497 Satapps.Fun <> A:25 var
+R502:502 Satapps.Fun <> B:26 var
+binder 494:494 <> f:27
+R517:522 Coq.Init.Datatypes <> option ind
+R524:524 Satapps.Fun <> A:25 var
+binder 514:514 <> o:28
+R535:535 Satapps.Fun <> o:28 var
+R544:547 Coq.Init.Datatypes <> Some constr
+R554:557 Coq.Init.Datatypes <> Some constr
+R560:560 Satapps.Fun <> f:27 var
+R567:570 Coq.Init.Datatypes <> None constr
+R575:578 Coq.Init.Datatypes <> None constr

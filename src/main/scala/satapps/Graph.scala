@@ -5,20 +5,21 @@ import scala.annotation.targetName
 import BooleanMatricesOps.{*, given}
 import Extensions.*
 import problems.Graphs.*
+import java.beans.VetoableChangeSupport
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
 
 trait Graph {
+  def n: Int
   def adjMat: Matrix[Boolean]
   def adjList: Map[Vertex, Set[Vertex]]
   def edgeSet: Set[Edge]
-  def vertexSet: Set[Vertex]
   def wMat: Matrix[Int]
   def wAdjList: Map[Vertex, Set[(Vertex, Int)]]
   def wMap: Map[Edge, Int]
 
-  lazy val inNeighb: Map[Vertex, Set[Vertex]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
+  lazy val inNeighb: Map[Vertex, Set[Vertex]] = edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
     m + (p._2 -> (m(p._2) + p._1))
   )
 
@@ -26,9 +27,9 @@ trait Graph {
 
   lazy val neighb: Map[Vertex, Set[Vertex]] = inNeighb.map((v, s) => (v, s ++ adjList(v)))
  
-  lazy val outIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
+  lazy val outIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
     m + (p._1 -> (m(p._1) + p)))
-  lazy val inIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
+  lazy val inIncidence: Map[Vertex, Set[Edge]] = edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Edge]], p: Edge) => 
     m + (p._2 -> (m(p._2) + p)))
   lazy val incidence: Map[Vertex, Set[Edge]] = inIncidence.map((v, s) => (v, s ++ outIncidence(v)))
   
@@ -38,17 +39,17 @@ trait Graph {
   def complement: Graph = Graph(adjMat.complement)
   def nonReflComplement: Graph = Graph((adjMat || BoolMatrix.id(adjMat.rows)).complement)
   def transClos: Graph = Graph(adjMat.transClos())
-  def reversed: Graph = Graph(vertexSet, edgeSet.map((i, j) => (j, i)))
+  def reversed: Graph = Graph(n, edgeSet.map((i, j) => (j, i)))
   def unweighted: Graph = Graph(adjMat)
   def undirected(doubleEdges: Boolean = true): Graph =
     val revEs = reversed.edgeSet
     if (doubleEdges) 
-      Graph(vertexSet, edgeSet ++ revEs)
+      Graph(n, edgeSet ++ revEs)
     else
-      Graph(vertexSet, edgeSet ++ revEs -- (for(i <- 0 until vertexSet.size; j <- i + 1 until vertexSet.size) yield (i, j)))
+      Graph(n, edgeSet ++ revEs -- (for(i <- 0 until n; j <- i + 1 until n) yield (i, j)))
 
-  def connected: Boolean = bfs(0).size == vertexSet.size
-  def isClique: Boolean = undirected(true).edgeSet.size == vertexSet.size * (vertexSet.size - 1) / 2
+  def connected: Boolean = bfs(0).size == n
+  def isClique: Boolean = undirected(true).edgeSet.size == n * (n - 1) / 2
   def isIndependent: Boolean = undirected(true).edgeSet.size == 0
 
 
@@ -87,20 +88,20 @@ trait Graph {
 
 }
 
-class SetGraph (override val vertexSet: Set[Vertex], override val edgeSet: Set[Edge]) extends Graph {
+class SetGraph (override val n: Int, override val edgeSet: Set[Edge]) extends Graph {
   override lazy val adjMat: Matrix[Boolean] = 
-    edgeSet.foldLeft(BoolMatrix.falses(vertexSet.size, vertexSet.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true))
+    edgeSet.foldLeft(BoolMatrix.falses(n, n))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true))
 
   override lazy val adjList: Map[Vertex, Set[Vertex]] = 
-    edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
+    edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
       m + (p._1 -> (m(p._1) + p._2)) 
     )
   
   override lazy val wMat: Matrix[Int] = 
-    edgeSet.foldLeft(IntMatrix.zeros(vertexSet.size, vertexSet.size))((acc: Matrix[Int], e: Edge) => acc.updated(e._1, e._2, 1))
+    edgeSet.foldLeft(IntMatrix.zeros(n, n))((acc: Matrix[Int], e: Edge) => acc.updated(e._1, e._2, 1))
 
   override lazy val wAdjList: Map[Vertex, Set[(Vertex, Int)]] = 
-    edgeSet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: Edge) => 
+    edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: Edge) => 
       m + (p._1 -> (m(p._1) + ((p._2, 1)))) 
     )
 
@@ -108,21 +109,21 @@ class SetGraph (override val vertexSet: Set[Vertex], override val edgeSet: Set[E
     edgeSet.map((_, 1)).toMap
 }
 
-class WeightedSetGraph (override val vertexSet: Set[Vertex], override val wMap: Map[Edge, Int]) extends Graph {
+class WeightedSetGraph (override val n: Int, override val wMap: Map[Edge, Int]) extends Graph {
   override lazy val adjMat: Matrix[Boolean] = 
-    wMap.keySet.foldLeft(BoolMatrix.falses(vertexSet.size, vertexSet.size))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true))
+    wMap.keySet.foldLeft(BoolMatrix.falses(n, n))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true))
 
   override lazy val adjList: Map[Vertex, Set[Vertex]] =
-    wMap.keySet.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => m + (p._1 -> (m(p._1) + p._2)))
+    wMap.keySet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => m + (p._1 -> (m(p._1) + p._2)))
 
   override lazy val edgeSet: Set[Edge] =
     wMap.keySet
 
   override lazy val wMat: Matrix[Int] =
-    wMap.foldLeft(IntMatrix.zeros(vertexSet.size, vertexSet.size))((acc: Matrix[Int], p: (Edge, Int)) => acc.updated(p._1._1, p._1._2, p._2))
+    wMap.foldLeft(IntMatrix.zeros(n, n))((acc: Matrix[Int], p: (Edge, Int)) => acc.updated(p._1._1, p._1._2, p._2))
 
   override lazy val wAdjList: Map[Vertex, Set[(Vertex, Int)]] =
-    wMap.foldLeft(vertexSet.map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: (Edge, Int)) => 
+    wMap.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: (Edge, Int)) => 
       m + (p._1._1 -> (m(p._1._1) + ((p._1._2, p._2))))
     )
 }
@@ -148,11 +149,23 @@ class MatrixGraph (override val wMat: Matrix[Int]) extends Graph {
 }
 
 object Graph {
-  def apply(v: Set[Vertex], e: Set[Edge]): Graph = SetGraph(v, e)
+  def apply(n: Int, e: Set[Edge]): Graph = SetGraph(n, e)
   def apply(wMat: Matrix[Int]): Graph = MatrixGraph(wMat)
-  def apply(v: Set[Vertex], e: Map[Edge, Int]): Graph = WeightedSetGraph(v, e)
+  def apply(n: Int, e: Map[Edge, Int]): Graph = WeightedSetGraph(n, e)
 
   def empty(n: Int): Graph = Graph(BoolMatrix.falses(n, n))
   def complete(n: Int): Graph = empty(n).nonReflComplement
   def identity(n: Int): Graph = Graph(BoolMatrix.id(n))
+}
+
+class GraphBuilder[T](vertices: Set[T], edges: Set[(T, T)]){
+  
+  def this() = this(Set(), Set())
+  def addVertex(v: T) = GraphBuilder(vertices + v, edges)
+  def addEdge(e: (T, T)) = 
+    assert(vertices(e._1))
+    assert(vertices(e._2))
+    GraphBuilder(vertices, edges + e)
+  def build(): (Graph, Map[Vertex, T]) = 
+
 }

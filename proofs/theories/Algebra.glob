@@ -1,0 +1,975 @@
+DIGEST 7d76333236cf51683a6e15e8c4ff0575
+FSatapps.Algebra
+R39:42 Coq.Bool.Bool <> <> lib
+R44:51 Coq.Arith.PeanoNat <> <> lib
+R69:71 Satapps.Fun <> <> lib
+sec 83:87 <> Binop
+def 102:106 <> binop
+binder 109:109 <> A:1
+binder 111:111 <> B:2
+binder 113:113 <> C:3
+R126:129 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R125:125 Satapps.Algebra <> A:1 var
+R131:134 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R130:130 Satapps.Algebra <> B:2 var
+R135:135 Satapps.Algebra <> C:3 var
+def 150:159 <> comp_f_bin
+binder 162:162 <> A:4
+binder 164:164 <> B:5
+binder 166:166 <> C:6
+binder 168:168 <> D:7
+R182:185 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R181:181 Satapps.Algebra <> C:6 var
+R186:186 Satapps.Algebra <> D:7 var
+binder 178:178 <> f:8
+R196:200 Satapps.Algebra <> binop def
+R202:202 Satapps.Algebra <> A:4 var
+R204:204 Satapps.Algebra <> B:5 var
+R206:206 Satapps.Algebra <> C:6 var
+binder 190:192 <> bin:9
+R211:215 Satapps.Algebra <> binop def
+R217:217 Satapps.Algebra <> A:4 var
+R219:219 Satapps.Algebra <> B:5 var
+R221:221 Satapps.Algebra <> D:7 var
+binder 230:230 <> a:10
+binder 239:239 <> b:11
+R244:244 Satapps.Algebra <> f:8 var
+R247:249 Satapps.Algebra <> bin:9 var
+R251:251 Satapps.Algebra <> a:10 var
+R253:253 Satapps.Algebra <> b:11 var
+def 269:278 <> comp_bin_f
+binder 281:281 <> A:12
+binder 283:283 <> B:13
+binder 285:285 <> C:14
+R301:305 Satapps.Algebra <> binop def
+R307:307 Satapps.Algebra <> B:13 var
+R309:309 Satapps.Algebra <> B:13 var
+R311:311 Satapps.Algebra <> C:14 var
+binder 295:297 <> bin:15
+R319:322 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R318:318 Satapps.Algebra <> A:12 var
+R323:323 Satapps.Algebra <> B:13 var
+binder 315:315 <> f:16
+R329:333 Satapps.Algebra <> binop def
+R335:335 Satapps.Algebra <> A:12 var
+R337:337 Satapps.Algebra <> A:12 var
+R339:339 Satapps.Algebra <> C:14 var
+binder 348:349 <> a1:17
+binder 358:359 <> a2:18
+R364:366 Satapps.Algebra <> bin:15 var
+R369:369 Satapps.Algebra <> f:16 var
+R371:372 Satapps.Algebra <> a1:17 var
+R376:376 Satapps.Algebra <> f:16 var
+R378:379 Satapps.Algebra <> a2:18 var
+def 395:406 <> homomorphism
+binder 409:409 <> A:19
+binder 411:411 <> B:20
+R425:428 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R424:424 Satapps.Algebra <> A:19 var
+R429:429 Satapps.Algebra <> B:20 var
+binder 421:421 <> f:21
+R440:444 Satapps.Algebra <> binop def
+R446:446 Satapps.Algebra <> A:19 var
+R448:448 Satapps.Algebra <> A:19 var
+R450:450 Satapps.Algebra <> A:19 var
+binder 433:436 <> bin1:22
+R461:465 Satapps.Algebra <> binop def
+R467:467 Satapps.Algebra <> B:20 var
+R469:469 Satapps.Algebra <> B:20 var
+R471:471 Satapps.Algebra <> B:20 var
+binder 454:457 <> bin2:23
+R494:496 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R477:486 Satapps.Algebra <> comp_f_bin def
+R490:493 Satapps.Algebra <> bin1:22 var
+R488:488 Satapps.Algebra <> f:21 var
+R497:506 Satapps.Algebra <> comp_bin_f def
+R513:513 Satapps.Algebra <> f:21 var
+R508:511 Satapps.Algebra <> bin2:23 var
+def 528:533 <> linear
+binder 536:536 <> A:24
+R550:553 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R549:549 Satapps.Algebra <> A:24 var
+R554:554 Satapps.Algebra <> A:24 var
+binder 546:546 <> f:25
+R564:568 Satapps.Algebra <> binop def
+R570:570 Satapps.Algebra <> A:24 var
+R572:572 Satapps.Algebra <> A:24 var
+R574:574 Satapps.Algebra <> A:24 var
+binder 558:560 <> bin:26
+R580:591 Satapps.Algebra <> homomorphism def
+R599:601 Satapps.Algebra <> bin:26 var
+R595:597 Satapps.Algebra <> bin:26 var
+R593:593 Satapps.Algebra <> f:25 var
+R609:613 Satapps.Algebra Binop <> sec
+sec 625:637 <> Associativity
+def 652:656 <> assoc
+binder 659:659 <> A:27
+R673:677 Satapps.Algebra <> binop def
+R679:679 Satapps.Algebra <> A:27 var
+R681:681 Satapps.Algebra <> A:27 var
+R683:683 Satapps.Algebra <> A:27 var
+binder 669:669 <> f:28
+R707:707 Satapps.Algebra <> A:27 var
+binder 697:698 <> a1:29
+binder 700:701 <> a2:30
+binder 703:704 <> a3:31
+R725:726 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R711:711 Satapps.Algebra <> f:28 var
+R713:714 Satapps.Algebra <> a1:29 var
+R717:717 Satapps.Algebra <> f:28 var
+R719:720 Satapps.Algebra <> a2:30 var
+R722:723 Satapps.Algebra <> a3:31 var
+R727:727 Satapps.Algebra <> f:28 var
+R730:730 Satapps.Algebra <> f:28 var
+R732:733 Satapps.Algebra <> a1:29 var
+R735:736 Satapps.Algebra <> a2:30 var
+R739:740 Satapps.Algebra <> a3:31 var
+rec 750:758 <> Semigroup
+proj 794:808 <> semigroup_assoc
+binder 761:761 <> A:32
+R777:781 Satapps.Algebra <> binop def
+R783:783 Satapps.Algebra <> A:32 var
+R785:785 Satapps.Algebra <> A:32 var
+R787:787 Satapps.Algebra <> A:32 var
+binder 771:773 <> law:33
+R811:815 Satapps.Algebra <> assoc def
+R817:819 Satapps.Algebra <> law:33 var
+R828:840 Satapps.Algebra Associativity <> sec
+sec 852:859 <> Identity
+def 874:880 <> neutr_l
+binder 883:883 <> A:36
+binder 885:885 <> B:37
+R899:903 Satapps.Algebra <> binop def
+R905:905 Satapps.Algebra <> A:36 var
+R907:907 Satapps.Algebra <> B:37 var
+R909:909 Satapps.Algebra <> B:37 var
+binder 895:895 <> f:38
+R916:916 Satapps.Algebra <> A:36 var
+binder 913:913 <> e:39
+R933:933 Satapps.Algebra <> B:37 var
+binder 930:930 <> b:40
+R942:944 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R937:937 Satapps.Algebra <> f:38 var
+R939:939 Satapps.Algebra <> e:39 var
+R941:941 Satapps.Algebra <> b:40 var
+R945:945 Satapps.Algebra <> b:40 var
+def 960:966 <> neutr_r
+binder 969:969 <> A:41
+binder 971:971 <> B:42
+R985:989 Satapps.Algebra <> binop def
+R991:991 Satapps.Algebra <> A:41 var
+R993:993 Satapps.Algebra <> B:42 var
+R995:995 Satapps.Algebra <> A:41 var
+binder 981:981 <> f:43
+R1002:1002 Satapps.Algebra <> B:42 var
+binder 999:999 <> e:44
+R1019:1019 Satapps.Algebra <> A:41 var
+binder 1016:1016 <> a:45
+R1028:1030 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1023:1023 Satapps.Algebra <> f:43 var
+R1025:1025 Satapps.Algebra <> a:45 var
+R1027:1027 Satapps.Algebra <> e:44 var
+R1031:1031 Satapps.Algebra <> a:45 var
+def 1046:1050 <> neutr
+binder 1053:1053 <> A:46
+R1067:1071 Satapps.Algebra <> binop def
+R1073:1073 Satapps.Algebra <> A:46 var
+R1075:1075 Satapps.Algebra <> A:46 var
+R1077:1077 Satapps.Algebra <> A:46 var
+binder 1063:1063 <> f:47
+R1084:1084 Satapps.Algebra <> A:46 var
+binder 1081:1081 <> e:48
+R1101:1104 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1090:1096 Satapps.Algebra <> neutr_l def
+R1100:1100 Satapps.Algebra <> e:48 var
+R1098:1098 Satapps.Algebra <> f:47 var
+R1105:1111 Satapps.Algebra <> neutr_r def
+R1115:1115 Satapps.Algebra <> e:48 var
+R1113:1113 Satapps.Algebra <> f:47 var
+rec 1125:1135 <> UnitalMagma
+proj 1178:1191 <> unimagma_neutr
+binder 1138:1138 <> A:49
+R1154:1158 Satapps.Algebra <> binop def
+R1160:1160 Satapps.Algebra <> A:49 var
+R1162:1162 Satapps.Algebra <> A:49 var
+R1164:1164 Satapps.Algebra <> A:49 var
+binder 1148:1150 <> law:50
+R1171:1171 Satapps.Algebra <> A:49 var
+binder 1168:1168 <> e:51
+R1194:1198 Satapps.Algebra <> neutr def
+R1204:1204 Satapps.Algebra <> e:51 var
+R1200:1202 Satapps.Algebra <> law:50 var
+rec 1215:1220 <> Monoid
+proj 1263:1274 <> monoid_assoc
+proj 1288:1299 <> monoid_neutr
+binder 1223:1223 <> A:54
+R1239:1243 Satapps.Algebra <> binop def
+R1245:1245 Satapps.Algebra <> A:54 var
+R1247:1247 Satapps.Algebra <> A:54 var
+R1249:1249 Satapps.Algebra <> A:54 var
+binder 1233:1235 <> law:55
+R1256:1256 Satapps.Algebra <> A:54 var
+binder 1253:1253 <> e:56
+R1277:1281 Satapps.Algebra <> assoc def
+R1283:1285 Satapps.Algebra <> law:55 var
+R1302:1306 Satapps.Algebra <> neutr def
+R1312:1312 Satapps.Algebra <> e:56 var
+R1308:1310 Satapps.Algebra <> law:55 var
+prf 1325:1342 <> monoid_is_unimagma
+binder 1345:1345 <> A:60
+binder 1362:1364 <> law:61
+R1370:1370 Satapps.Algebra <> A:60 var
+binder 1367:1367 <> e:62
+R1386:1389 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1374:1379 Satapps.Algebra <> Monoid class
+R1385:1385 Satapps.Algebra <> e:62 var
+R1381:1383 Satapps.Algebra <> law:61 var
+R1390:1400 Satapps.Algebra <> UnitalMagma class
+R1406:1406 Satapps.Algebra <> e:62 var
+R1402:1404 Satapps.Algebra <> law:61 var
+prf 1457:1475 <> monoid_is_semigroup
+binder 1478:1478 <> A:63
+binder 1495:1497 <> law:64
+R1503:1503 Satapps.Algebra <> A:63 var
+binder 1500:1500 <> e:65
+R1519:1522 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1507:1512 Satapps.Algebra <> Monoid class
+R1518:1518 Satapps.Algebra <> e:65 var
+R1514:1516 Satapps.Algebra <> law:64 var
+R1523:1531 Satapps.Algebra <> Semigroup class
+R1533:1535 Satapps.Algebra <> law:64 var
+prf 1586:1601 <> neutr_l_r_unique
+binder 1604:1604 <> A:66
+R1626:1630 Satapps.Algebra <> binop def
+R1632:1632 Satapps.Algebra <> A:66 var
+R1634:1634 Satapps.Algebra <> A:66 var
+R1636:1636 Satapps.Algebra <> A:66 var
+binder 1622:1622 <> f:67
+R1644:1644 Satapps.Algebra <> A:66 var
+binder 1640:1641 <> e1:68
+R1652:1652 Satapps.Algebra <> A:66 var
+binder 1648:1649 <> e2:69
+R1668:1671 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1656:1662 Satapps.Algebra <> neutr_l def
+R1666:1667 Satapps.Algebra <> e1:68 var
+R1664:1664 Satapps.Algebra <> f:67 var
+R1684:1687 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1672:1678 Satapps.Algebra <> neutr_r def
+R1682:1683 Satapps.Algebra <> e2:69 var
+R1680:1680 Satapps.Algebra <> f:67 var
+R1690:1692 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1688:1689 Satapps.Algebra <> e1:68 var
+R1693:1694 Satapps.Algebra <> e2:69 var
+R1704:1710 Satapps.Algebra <> neutr_r def
+R1713:1719 Satapps.Algebra <> neutr_l def
+prf 1794:1805 <> neutr_unique
+binder 1808:1808 <> A:70
+R1830:1834 Satapps.Algebra <> binop def
+R1836:1836 Satapps.Algebra <> A:70 var
+R1838:1838 Satapps.Algebra <> A:70 var
+R1840:1840 Satapps.Algebra <> A:70 var
+binder 1826:1826 <> f:71
+R1848:1848 Satapps.Algebra <> A:70 var
+binder 1844:1845 <> e1:72
+R1856:1856 Satapps.Algebra <> A:70 var
+binder 1852:1853 <> e2:73
+R1870:1873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1860:1864 Satapps.Algebra <> neutr def
+R1868:1869 Satapps.Algebra <> e1:72 var
+R1866:1866 Satapps.Algebra <> f:71 var
+R1884:1887 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1874:1878 Satapps.Algebra <> neutr def
+R1882:1883 Satapps.Algebra <> e2:73 var
+R1880:1880 Satapps.Algebra <> f:71 var
+R1890:1892 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1888:1889 Satapps.Algebra <> e1:72 var
+R1893:1894 Satapps.Algebra <> e2:73 var
+R1943:1958 Satapps.Algebra <> neutr_l_r_unique thm
+R1943:1958 Satapps.Algebra <> neutr_l_r_unique thm
+R1977:1984 Satapps.Algebra Identity <> sec
+sec 1996:2002 <> Inverse
+def 2017:2021 <> inv_l
+binder 2024:2024 <> A:74
+binder 2026:2026 <> B:75
+binder 2028:2028 <> C:76
+R2042:2046 Satapps.Algebra <> binop def
+R2048:2048 Satapps.Algebra <> A:74 var
+R2050:2050 Satapps.Algebra <> B:75 var
+R2052:2052 Satapps.Algebra <> C:76 var
+binder 2038:2038 <> f:77
+R2059:2059 Satapps.Algebra <> C:76 var
+binder 2056:2056 <> e:78
+R2067:2070 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2066:2066 Satapps.Algebra <> B:75 var
+R2071:2071 Satapps.Algebra <> A:74 var
+binder 2063:2063 <> i:79
+R2088:2088 Satapps.Algebra <> B:75 var
+binder 2085:2085 <> b:80
+R2101:2103 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2092:2092 Satapps.Algebra <> f:77 var
+R2095:2095 Satapps.Algebra <> i:79 var
+R2097:2097 Satapps.Algebra <> b:80 var
+R2100:2100 Satapps.Algebra <> b:80 var
+R2104:2104 Satapps.Algebra <> e:78 var
+def 2119:2123 <> inv_r
+binder 2126:2126 <> A:81
+binder 2128:2128 <> B:82
+binder 2130:2130 <> C:83
+R2144:2148 Satapps.Algebra <> binop def
+R2150:2150 Satapps.Algebra <> A:81 var
+R2152:2152 Satapps.Algebra <> B:82 var
+R2154:2154 Satapps.Algebra <> C:83 var
+binder 2140:2140 <> f:84
+R2161:2161 Satapps.Algebra <> C:83 var
+binder 2158:2158 <> e:85
+R2169:2172 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2168:2168 Satapps.Algebra <> A:81 var
+R2173:2173 Satapps.Algebra <> B:82 var
+binder 2165:2165 <> i:86
+R2190:2190 Satapps.Algebra <> A:81 var
+binder 2187:2187 <> a:87
+R2203:2205 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2194:2194 Satapps.Algebra <> f:84 var
+R2196:2196 Satapps.Algebra <> a:87 var
+R2199:2199 Satapps.Algebra <> i:86 var
+R2201:2201 Satapps.Algebra <> a:87 var
+R2206:2206 Satapps.Algebra <> e:85 var
+def 2221:2223 <> inv
+binder 2226:2226 <> A:88
+binder 2228:2228 <> C:89
+R2242:2246 Satapps.Algebra <> binop def
+R2248:2248 Satapps.Algebra <> A:88 var
+R2250:2250 Satapps.Algebra <> A:88 var
+R2252:2252 Satapps.Algebra <> C:89 var
+binder 2238:2238 <> f:90
+R2259:2259 Satapps.Algebra <> C:89 var
+binder 2256:2256 <> e:91
+R2267:2270 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2266:2266 Satapps.Algebra <> A:88 var
+R2271:2271 Satapps.Algebra <> A:88 var
+binder 2263:2263 <> i:92
+R2288:2291 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2277:2281 Satapps.Algebra <> inv_l def
+R2287:2287 Satapps.Algebra <> i:92 var
+R2285:2285 Satapps.Algebra <> e:91 var
+R2283:2283 Satapps.Algebra <> f:90 var
+R2292:2296 Satapps.Algebra <> inv_r def
+R2302:2302 Satapps.Algebra <> i:92 var
+R2300:2300 Satapps.Algebra <> e:91 var
+R2298:2298 Satapps.Algebra <> f:90 var
+rec 2312:2316 <> Group
+proj 2371:2381 <> group_assoc
+proj 2395:2405 <> group_neutr
+proj 2421:2429 <> group_inv
+binder 2319:2319 <> A:93
+R2335:2339 Satapps.Algebra <> binop def
+R2341:2341 Satapps.Algebra <> A:93 var
+R2343:2343 Satapps.Algebra <> A:93 var
+R2345:2345 Satapps.Algebra <> A:93 var
+binder 2329:2331 <> law:94
+R2352:2352 Satapps.Algebra <> A:93 var
+binder 2349:2349 <> e:95
+R2360:2363 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2359:2359 Satapps.Algebra <> A:93 var
+R2364:2364 Satapps.Algebra <> A:93 var
+binder 2356:2356 <> i:96
+R2384:2388 Satapps.Algebra <> assoc def
+R2390:2392 Satapps.Algebra <> law:94 var
+R2408:2412 Satapps.Algebra <> neutr def
+R2418:2418 Satapps.Algebra <> e:95 var
+R2414:2416 Satapps.Algebra <> law:94 var
+R2432:2434 Satapps.Algebra <> inv def
+R2442:2442 Satapps.Algebra <> i:96 var
+R2440:2440 Satapps.Algebra <> e:95 var
+R2436:2438 Satapps.Algebra <> law:94 var
+prf 2455:2469 <> group_is_monoid
+binder 2472:2472 <> A:101
+binder 2489:2491 <> law:102
+R2497:2497 Satapps.Algebra <> A:101 var
+binder 2494:2494 <> e:103
+binder 2500:2500 <> i:104
+R2516:2519 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2503:2507 Satapps.Algebra <> Group class
+R2515:2515 Satapps.Algebra <> i:104 var
+R2513:2513 Satapps.Algebra <> e:103 var
+R2509:2511 Satapps.Algebra <> law:102 var
+R2520:2525 Satapps.Algebra <> Monoid class
+R2531:2531 Satapps.Algebra <> e:103 var
+R2527:2529 Satapps.Algebra <> law:102 var
+R2585:2591 Satapps.Algebra Inverse <> sec
+sec 2603:2615 <> Commutativity
+def 2630:2633 <> comm
+binder 2636:2636 <> A:105
+binder 2638:2638 <> B:106
+R2652:2656 Satapps.Algebra <> binop def
+R2658:2658 Satapps.Algebra <> A:105 var
+R2660:2660 Satapps.Algebra <> A:105 var
+R2662:2662 Satapps.Algebra <> B:106 var
+binder 2648:2648 <> f:107
+R2683:2683 Satapps.Algebra <> A:105 var
+binder 2676:2677 <> a1:108
+binder 2679:2680 <> a2:109
+R2694:2696 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2687:2687 Satapps.Algebra <> f:107 var
+R2689:2690 Satapps.Algebra <> a1:108 var
+R2692:2693 Satapps.Algebra <> a2:109 var
+R2697:2697 Satapps.Algebra <> f:107 var
+R2699:2700 Satapps.Algebra <> a2:109 var
+R2702:2703 Satapps.Algebra <> a1:108 var
+rec 2713:2725 <> CommSemigroup
+proj 2761:2773 <> comm_sg_is_sg
+proj 2791:2804 <> comm_semigroup
+binder 2728:2728 <> A:110
+R2744:2748 Satapps.Algebra <> binop def
+R2750:2750 Satapps.Algebra <> A:110 var
+R2752:2752 Satapps.Algebra <> A:110 var
+R2754:2754 Satapps.Algebra <> A:110 var
+binder 2738:2740 <> law:111
+R2776:2784 Satapps.Algebra <> Semigroup class
+R2786:2788 Satapps.Algebra <> law:111 var
+R2807:2810 Satapps.Algebra <> comm def
+R2812:2814 Satapps.Algebra <> law:111 var
+rec 2825:2834 <> CommMonoid
+proj 2877:2897 <> comm_monoid_is_monoid
+proj 2914:2924 <> comm_monoid
+binder 2837:2837 <> A:115
+R2853:2857 Satapps.Algebra <> binop def
+R2859:2859 Satapps.Algebra <> A:115 var
+R2861:2861 Satapps.Algebra <> A:115 var
+R2863:2863 Satapps.Algebra <> A:115 var
+binder 2847:2849 <> law:116
+R2870:2870 Satapps.Algebra <> A:115 var
+binder 2867:2867 <> e:117
+R2900:2905 Satapps.Algebra <> Monoid class
+R2911:2911 Satapps.Algebra <> e:117 var
+R2907:2909 Satapps.Algebra <> law:116 var
+R2927:2930 Satapps.Algebra <> comm def
+R2932:2934 Satapps.Algebra <> law:116 var
+rec 2945:2956 <> AbelianGroup
+proj 3011:3029 <> abel_group_is_group
+proj 3047:3061 <> abel_group_comm
+binder 2959:2959 <> A:121
+R2975:2979 Satapps.Algebra <> binop def
+R2981:2981 Satapps.Algebra <> A:121 var
+R2983:2983 Satapps.Algebra <> A:121 var
+R2985:2985 Satapps.Algebra <> A:121 var
+binder 2969:2971 <> law:122
+R2992:2992 Satapps.Algebra <> A:121 var
+binder 2989:2989 <> e:123
+R3000:3003 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2999:2999 Satapps.Algebra <> A:121 var
+R3004:3004 Satapps.Algebra <> A:121 var
+binder 2996:2996 <> i:124
+R3032:3036 Satapps.Algebra <> Group class
+R3044:3044 Satapps.Algebra <> i:124 var
+R3042:3042 Satapps.Algebra <> e:123 var
+R3038:3040 Satapps.Algebra <> law:122 var
+R3064:3067 Satapps.Algebra <> comm def
+R3069:3071 Satapps.Algebra <> law:122 var
+prf 3084:3112 <> comm_monoid_is_comm_semigroup
+binder 3115:3115 <> A:128
+R3139:3143 Satapps.Algebra <> binop def
+R3145:3145 Satapps.Algebra <> A:128 var
+R3147:3147 Satapps.Algebra <> A:128 var
+R3149:3149 Satapps.Algebra <> A:128 var
+binder 3133:3135 <> law:129
+binder 3152:3152 <> e:130
+R3171:3174 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3155:3164 Satapps.Algebra <> CommMonoid class
+R3170:3170 Satapps.Algebra <> e:130 var
+R3166:3168 Satapps.Algebra <> law:129 var
+R3175:3187 Satapps.Algebra <> CommSemigroup class
+R3189:3191 Satapps.Algebra <> law:129 var
+R3228:3246 Satapps.Algebra <> monoid_is_semigroup thm
+R3228:3246 Satapps.Algebra <> monoid_is_semigroup thm
+prf 3294:3318 <> abel_group_is_comm_monoid
+binder 3321:3321 <> A:131
+R3345:3349 Satapps.Algebra <> binop def
+R3351:3351 Satapps.Algebra <> A:131 var
+R3353:3353 Satapps.Algebra <> A:131 var
+R3355:3355 Satapps.Algebra <> A:131 var
+binder 3339:3341 <> law:132
+binder 3358:3358 <> e:133
+binder 3360:3360 <> i:134
+R3383:3386 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3363:3374 Satapps.Algebra <> AbelianGroup class
+R3382:3382 Satapps.Algebra <> i:134 var
+R3380:3380 Satapps.Algebra <> e:133 var
+R3376:3378 Satapps.Algebra <> law:132 var
+R3387:3396 Satapps.Algebra <> CommMonoid class
+R3402:3402 Satapps.Algebra <> e:133 var
+R3398:3400 Satapps.Algebra <> law:132 var
+R3439:3453 Satapps.Algebra <> group_is_monoid thm
+R3439:3453 Satapps.Algebra <> group_is_monoid thm
+def 3502:3505 <> flip
+binder 3508:3508 <> A:135
+binder 3510:3510 <> B:136
+R3524:3528 Satapps.Algebra <> binop def
+R3530:3530 Satapps.Algebra <> A:135 var
+R3532:3532 Satapps.Algebra <> A:135 var
+R3534:3534 Satapps.Algebra <> B:136 var
+binder 3520:3520 <> f:137
+binder 3544:3544 <> x:138
+binder 3553:3553 <> y:139
+R3558:3558 Satapps.Algebra <> f:137 var
+R3560:3560 Satapps.Algebra <> y:139 var
+R3562:3562 Satapps.Algebra <> x:138 var
+prf 3574:3582 <> comm_flip
+binder 3585:3585 <> A:140
+binder 3587:3587 <> B:141
+R3609:3613 Satapps.Algebra <> binop def
+R3615:3615 Satapps.Algebra <> A:140 var
+R3617:3617 Satapps.Algebra <> A:140 var
+R3619:3619 Satapps.Algebra <> B:141 var
+binder 3605:3605 <> f:142
+R3629:3633 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3623:3626 Satapps.Algebra <> comm def
+R3628:3628 Satapps.Algebra <> f:142 var
+R3635:3637 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3634:3634 Satapps.Algebra <> f:142 var
+R3638:3641 Satapps.Algebra <> flip def
+R3643:3643 Satapps.Algebra <> f:142 var
+R3663:3666 Satapps.Algebra <> comm def
+R3669:3672 Satapps.Algebra <> flip def
+R3697:3721 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R3697:3721 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R3740:3764 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R3740:3764 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R3816:3822 Coq.Logic.FunctionalExtensionality <> equal_f thm
+R3816:3822 Coq.Logic.FunctionalExtensionality <> equal_f thm
+R3834:3840 Coq.Logic.FunctionalExtensionality <> equal_f thm
+R3834:3840 Coq.Logic.FunctionalExtensionality <> equal_f thm
+prf 3889:3900 <> neutr_l_comm
+binder 3903:3903 <> A:143
+R3925:3929 Satapps.Algebra <> binop def
+R3931:3931 Satapps.Algebra <> A:143 var
+R3933:3933 Satapps.Algebra <> A:143 var
+R3935:3935 Satapps.Algebra <> A:143 var
+binder 3921:3921 <> f:144
+R3942:3942 Satapps.Algebra <> A:143 var
+binder 3939:3939 <> e:145
+R3957:3960 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3946:3952 Satapps.Algebra <> neutr_l def
+R3956:3956 Satapps.Algebra <> e:145 var
+R3954:3954 Satapps.Algebra <> f:144 var
+R3967:3970 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3961:3964 Satapps.Algebra <> comm def
+R3966:3966 Satapps.Algebra <> f:144 var
+R3971:3975 Satapps.Algebra <> neutr def
+R3979:3979 Satapps.Algebra <> e:145 var
+R3977:3977 Satapps.Algebra <> f:144 var
+R4021:4027 Satapps.Algebra <> neutr_r def
+R4037:4043 Satapps.Algebra <> neutr_l def
+R4059:4062 Satapps.Algebra <> comm def
+prf 4157:4168 <> neutr_r_comm
+binder 4171:4171 <> A:146
+R4193:4197 Satapps.Algebra <> binop def
+R4199:4199 Satapps.Algebra <> A:146 var
+R4201:4201 Satapps.Algebra <> A:146 var
+R4203:4203 Satapps.Algebra <> A:146 var
+binder 4189:4189 <> f:147
+R4210:4210 Satapps.Algebra <> A:146 var
+binder 4207:4207 <> e:148
+R4225:4228 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4214:4220 Satapps.Algebra <> neutr_r def
+R4224:4224 Satapps.Algebra <> e:148 var
+R4222:4222 Satapps.Algebra <> f:147 var
+R4235:4238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4229:4232 Satapps.Algebra <> comm def
+R4234:4234 Satapps.Algebra <> f:147 var
+R4239:4243 Satapps.Algebra <> neutr def
+R4247:4247 Satapps.Algebra <> e:148 var
+R4245:4245 Satapps.Algebra <> f:147 var
+R4282:4288 Satapps.Algebra <> neutr_l def
+R4298:4304 Satapps.Algebra <> neutr_r def
+R4320:4323 Satapps.Algebra <> comm def
+R4418:4430 Satapps.Algebra Commutativity <> sec
+sec 4442:4452 <> Idempotence
+def 4467:4476 <> idempotent
+binder 4479:4479 <> A:149
+R4493:4497 Satapps.Algebra <> binop def
+R4499:4499 Satapps.Algebra <> A:149 var
+R4501:4501 Satapps.Algebra <> A:149 var
+R4503:4503 Satapps.Algebra <> A:149 var
+binder 4489:4489 <> f:150
+R4520:4520 Satapps.Algebra <> A:149 var
+binder 4517:4517 <> a:151
+R4529:4531 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4524:4524 Satapps.Algebra <> f:150 var
+R4526:4526 Satapps.Algebra <> a:151 var
+R4528:4528 Satapps.Algebra <> a:151 var
+R4532:4532 Satapps.Algebra <> a:151 var
+rec 4542:4545 <> Band
+proj 4581:4597 <> band_is_semigroup
+proj 4616:4624 <> band_idem
+binder 4548:4548 <> A:152
+R4564:4568 Satapps.Algebra <> binop def
+R4570:4570 Satapps.Algebra <> A:152 var
+R4572:4572 Satapps.Algebra <> A:152 var
+R4574:4574 Satapps.Algebra <> A:152 var
+binder 4558:4560 <> law:153
+R4600:4608 Satapps.Algebra <> Semigroup class
+R4610:4612 Satapps.Algebra <> law:153 var
+R4627:4636 Satapps.Algebra <> idempotent def
+R4638:4640 Satapps.Algebra <> law:153 var
+rec 4650:4660 <> Semilattice
+proj 4696:4712 <> semilattice_assoc
+proj 4727:4742 <> semilattice_comm
+proj 4756:4771 <> semilattice_idem
+binder 4663:4663 <> A:157
+R4679:4683 Satapps.Algebra <> binop def
+R4685:4685 Satapps.Algebra <> A:157 var
+R4687:4687 Satapps.Algebra <> A:157 var
+R4689:4689 Satapps.Algebra <> A:157 var
+binder 4673:4675 <> law:158
+R4715:4719 Satapps.Algebra <> assoc def
+R4721:4723 Satapps.Algebra <> law:158 var
+R4745:4748 Satapps.Algebra <> comm def
+R4750:4752 Satapps.Algebra <> law:158 var
+R4774:4783 Satapps.Algebra <> idempotent def
+R4785:4787 Satapps.Algebra <> law:158 var
+rec 4797:4814 <> BoundedSemilattice
+proj 4857:4878 <> bounded_is_semilattice
+proj 4899:4913 <> bound_indentity
+binder 4817:4817 <> A:163
+R4833:4837 Satapps.Algebra <> binop def
+R4839:4839 Satapps.Algebra <> A:163 var
+R4841:4841 Satapps.Algebra <> A:163 var
+R4843:4843 Satapps.Algebra <> A:163 var
+binder 4827:4829 <> law:164
+R4850:4850 Satapps.Algebra <> A:163 var
+binder 4847:4847 <> e:165
+R4881:4891 Satapps.Algebra <> Semilattice class
+R4893:4895 Satapps.Algebra <> law:164 var
+R4916:4920 Satapps.Algebra <> neutr def
+R4926:4926 Satapps.Algebra <> e:165 var
+R4922:4924 Satapps.Algebra <> law:164 var
+prf 4939:4957 <> semilattice_is_band
+binder 4960:4960 <> A:169
+R4984:4988 Satapps.Algebra <> binop def
+R4990:4990 Satapps.Algebra <> A:169 var
+R4992:4992 Satapps.Algebra <> A:169 var
+R4994:4994 Satapps.Algebra <> A:169 var
+binder 4978:4980 <> law:170
+R5013:5016 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4998:5008 Satapps.Algebra <> Semilattice class
+R5010:5012 Satapps.Algebra <> law:170 var
+R5017:5020 Satapps.Algebra <> Band class
+R5022:5024 Satapps.Algebra <> law:170 var
+prf 5089:5117 <> bounded_semilattice_is_monoid
+binder 5120:5120 <> A:171
+R5144:5148 Satapps.Algebra <> binop def
+R5150:5150 Satapps.Algebra <> A:171 var
+R5152:5152 Satapps.Algebra <> A:171 var
+R5154:5154 Satapps.Algebra <> A:171 var
+binder 5138:5140 <> law:172
+binder 5157:5157 <> e:173
+R5184:5187 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5160:5177 Satapps.Algebra <> BoundedSemilattice class
+R5183:5183 Satapps.Algebra <> e:173 var
+R5179:5181 Satapps.Algebra <> law:172 var
+R5188:5193 Satapps.Algebra <> Monoid class
+R5199:5199 Satapps.Algebra <> e:173 var
+R5195:5197 Satapps.Algebra <> law:172 var
+R5287:5297 Satapps.Algebra Idempotence <> sec
+sec 5309:5314 <> Absorb
+def 5329:5333 <> abs_l
+binder 5336:5336 <> A:174
+binder 5338:5338 <> B:175
+R5352:5356 Satapps.Algebra <> binop def
+R5358:5358 Satapps.Algebra <> A:174 var
+R5360:5360 Satapps.Algebra <> B:175 var
+R5362:5362 Satapps.Algebra <> A:174 var
+binder 5348:5348 <> f:176
+R5369:5369 Satapps.Algebra <> A:174 var
+binder 5366:5366 <> z:177
+R5386:5386 Satapps.Algebra <> B:175 var
+binder 5383:5383 <> b:178
+R5395:5397 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5390:5390 Satapps.Algebra <> f:176 var
+R5392:5392 Satapps.Algebra <> z:177 var
+R5394:5394 Satapps.Algebra <> b:178 var
+R5398:5398 Satapps.Algebra <> z:177 var
+def 5413:5417 <> abs_r
+binder 5420:5420 <> A:179
+binder 5422:5422 <> B:180
+R5436:5440 Satapps.Algebra <> binop def
+R5442:5442 Satapps.Algebra <> A:179 var
+R5444:5444 Satapps.Algebra <> B:180 var
+R5446:5446 Satapps.Algebra <> B:180 var
+binder 5432:5432 <> f:181
+R5453:5453 Satapps.Algebra <> B:180 var
+binder 5450:5450 <> z:182
+R5470:5470 Satapps.Algebra <> A:179 var
+binder 5467:5467 <> a:183
+R5479:5481 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5474:5474 Satapps.Algebra <> f:181 var
+R5476:5476 Satapps.Algebra <> a:183 var
+R5478:5478 Satapps.Algebra <> z:182 var
+R5482:5482 Satapps.Algebra <> z:182 var
+def 5497:5499 <> abs
+binder 5502:5502 <> A:184
+R5516:5520 Satapps.Algebra <> binop def
+R5522:5522 Satapps.Algebra <> A:184 var
+R5524:5524 Satapps.Algebra <> A:184 var
+R5526:5526 Satapps.Algebra <> A:184 var
+binder 5512:5512 <> f:185
+R5533:5533 Satapps.Algebra <> A:184 var
+binder 5530:5530 <> z:186
+R5548:5551 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R5539:5543 Satapps.Algebra <> abs_l def
+R5547:5547 Satapps.Algebra <> z:186 var
+R5545:5545 Satapps.Algebra <> f:185 var
+R5552:5556 Satapps.Algebra <> abs_r def
+R5560:5560 Satapps.Algebra <> z:186 var
+R5558:5558 Satapps.Algebra <> f:185 var
+R5568:5573 Satapps.Algebra Absorb <> sec
+sec 5585:5592 <> Examples
+prf 5604:5613 <> comp_assoc
+binder 5616:5616 <> A:187
+R5626:5630 Satapps.Algebra <> assoc def
+R5634:5637 Satapps.Fun <> comp def
+R5639:5639 Satapps.Algebra <> A:187 var
+R5641:5641 Satapps.Algebra <> A:187 var
+R5643:5643 Satapps.Algebra <> A:187 var
+R5654:5658 Satapps.Algebra <> assoc def
+R5661:5664 Satapps.Fun <> comp def
+prf 5688:5699 <> comp_neutr_l
+binder 5702:5702 <> A:188
+binder 5704:5704 <> B:189
+R5715:5721 Satapps.Algebra <> neutr_l def
+R5737:5740 Satapps.Fun <> id_f def
+R5725:5728 Satapps.Fun <> comp def
+R5730:5730 Satapps.Algebra <> A:188 var
+R5732:5732 Satapps.Algebra <> B:189 var
+R5734:5734 Satapps.Algebra <> B:189 var
+R5750:5756 Satapps.Algebra <> neutr_l def
+R5759:5762 Satapps.Fun <> comp def
+R5765:5768 Satapps.Fun <> id_f def
+R5785:5809 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R5785:5809 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+prf 5833:5844 <> comp_neutr_r
+binder 5847:5847 <> A:190
+binder 5849:5849 <> B:191
+R5860:5866 Satapps.Algebra <> neutr_r def
+R5882:5885 Satapps.Fun <> id_f def
+R5870:5873 Satapps.Fun <> comp def
+R5875:5875 Satapps.Algebra <> A:190 var
+R5877:5877 Satapps.Algebra <> A:190 var
+R5879:5879 Satapps.Algebra <> B:191 var
+R5895:5901 Satapps.Algebra <> neutr_r def
+R5904:5907 Satapps.Fun <> comp def
+R5910:5913 Satapps.Fun <> id_f def
+R5930:5954 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R5930:5954 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+def 5981:5990 <> comp_neutr
+binder 5993:5993 <> A:192
+R6003:6007 Satapps.Algebra <> neutr def
+R6023:6026 Satapps.Fun <> id_f def
+R6011:6014 Satapps.Fun <> comp def
+R6016:6016 Satapps.Algebra <> A:192 var
+R6018:6018 Satapps.Algebra <> A:192 var
+R6020:6020 Satapps.Algebra <> A:192 var
+R6031:6034 Coq.Init.Logic <> conj constr
+R6049:6060 Satapps.Algebra <> comp_neutr_r thm
+R6036:6047 Satapps.Algebra <> comp_neutr_l thm
+prf 6072:6081 <> comp_abs_l
+binder 6084:6084 <> A:193
+binder 6086:6086 <> B:194
+binder 6104:6104 <> b:195
+R6107:6111 Satapps.Algebra <> abs_l def
+R6128:6134 Satapps.Fun <> const_f def
+R6136:6136 Satapps.Algebra <> b:195 var
+R6115:6118 Satapps.Fun <> comp def
+R6120:6120 Satapps.Algebra <> A:193 var
+R6122:6122 Satapps.Algebra <> A:193 var
+R6124:6124 Satapps.Algebra <> B:194 var
+R6147:6151 Satapps.Algebra <> abs_l def
+R6154:6157 Satapps.Fun <> comp def
+R6160:6166 Satapps.Fun <> const_f def
+inst 6191:6199 <> FunMonoid
+binder 6202:6202 <> A:196
+R6213:6218 Satapps.Algebra <> Monoid class
+R6234:6237 Satapps.Fun <> id_f def
+R6222:6225 Satapps.Fun <> comp def
+R6227:6227 Satapps.Algebra <> A:196 var
+R6229:6229 Satapps.Algebra <> A:196 var
+R6231:6231 Satapps.Algebra <> A:196 var
+R6253:6262 Satapps.Algebra <> comp_assoc thm
+R6253:6262 Satapps.Algebra <> comp_assoc thm
+R6271:6280 Satapps.Algebra <> comp_neutr def
+R6271:6280 Satapps.Algebra <> comp_neutr def
+prf 6297:6307 <> id_f_linear
+binder 6310:6310 <> A:197
+R6334:6338 Satapps.Algebra <> binop def
+R6340:6340 Satapps.Algebra <> A:197 var
+R6342:6342 Satapps.Algebra <> A:197 var
+R6344:6344 Satapps.Algebra <> A:197 var
+binder 6328:6330 <> bin:198
+R6348:6353 Satapps.Algebra <> linear def
+R6358:6360 Satapps.Algebra <> bin:198 var
+R6355:6356 Coq.Init.Datatypes <> id def
+R6382:6387 Satapps.Algebra <> linear def
+R6390:6401 Satapps.Algebra <> homomorphism def
+R6404:6413 Satapps.Algebra <> comp_f_bin def
+R6416:6425 Satapps.Algebra <> comp_bin_f def
+R6428:6429 Coq.Init.Datatypes <> id def
+def 6457:6465 <> andb_comm
+R6468:6471 Satapps.Algebra <> comm def
+R6473:6476 Coq.Init.Datatypes <> andb def
+R6481:6489 Coq.Bool.Bool <> andb_comm thm
+def 6503:6512 <> andb_assoc
+R6515:6519 Satapps.Algebra <> assoc def
+R6521:6524 Coq.Init.Datatypes <> andb def
+R6529:6538 Coq.Bool.Bool <> andb_assoc thm
+def 6552:6561 <> andb_neutr
+R6564:6568 Satapps.Algebra <> neutr def
+R6575:6578 Coq.Init.Datatypes <> true constr
+R6570:6573 Coq.Init.Datatypes <> andb def
+R6583:6586 Coq.Init.Logic <> conj constr
+R6600:6610 Coq.Bool.Bool <> andb_true_r thm
+R6588:6598 Coq.Bool.Bool <> andb_true_l thm
+def 6624:6631 <> andb_abs
+R6634:6636 Satapps.Algebra <> abs def
+R6643:6647 Coq.Init.Datatypes <> false constr
+R6638:6641 Coq.Init.Datatypes <> andb def
+R6652:6655 Coq.Init.Logic <> conj constr
+R6670:6681 Coq.Bool.Bool <> andb_false_r thm
+R6657:6668 Coq.Bool.Bool <> andb_false_l thm
+prf 6692:6700 <> andb_idem
+R6703:6712 Satapps.Algebra <> idempotent def
+R6714:6717 Coq.Init.Datatypes <> andb def
+R6727:6736 Satapps.Algebra <> idempotent def
+R6757:6767 Coq.Bool.Bool <> andb_true_l thm
+R6757:6767 Coq.Bool.Bool <> andb_true_l thm
+R6776:6787 Coq.Bool.Bool <> andb_false_l thm
+R6776:6787 Coq.Bool.Bool <> andb_false_l thm
+inst 6805:6829 <> BoolAndBoundedSemilattice
+R6833:6850 Satapps.Algebra <> BoundedSemilattice class
+R6857:6860 Coq.Init.Datatypes <> true constr
+R6852:6855 Coq.Init.Datatypes <> andb def
+R6883:6892 Satapps.Algebra <> andb_assoc def
+R6883:6892 Satapps.Algebra <> andb_assoc def
+R6902:6910 Satapps.Algebra <> andb_comm def
+R6902:6910 Satapps.Algebra <> andb_comm def
+R6919:6927 Satapps.Algebra <> andb_idem thm
+R6919:6927 Satapps.Algebra <> andb_idem thm
+R6936:6945 Satapps.Algebra <> andb_neutr def
+R6936:6945 Satapps.Algebra <> andb_neutr def
+def 6965:6972 <> orb_comm
+R6975:6978 Satapps.Algebra <> comm def
+R6980:6982 Coq.Init.Datatypes <> orb def
+R6987:6994 Coq.Bool.Bool <> orb_comm thm
+def 7008:7016 <> orb_assoc
+R7019:7023 Satapps.Algebra <> assoc def
+R7025:7027 Coq.Init.Datatypes <> orb def
+R7032:7040 Coq.Bool.Bool <> orb_assoc thm
+def 7054:7062 <> orb_neutr
+R7065:7069 Satapps.Algebra <> neutr def
+R7075:7079 Coq.Init.Datatypes <> false constr
+R7071:7073 Coq.Init.Datatypes <> orb def
+R7084:7087 Coq.Init.Logic <> conj constr
+R7101:7111 Coq.Bool.Bool <> orb_false_r thm
+R7089:7099 Coq.Bool.Bool <> orb_false_l thm
+def 7125:7131 <> orb_abs
+R7134:7136 Satapps.Algebra <> abs def
+R7142:7145 Coq.Init.Datatypes <> true constr
+R7138:7140 Coq.Init.Datatypes <> orb def
+R7150:7153 Coq.Init.Logic <> conj constr
+R7166:7175 Coq.Bool.Bool <> orb_true_r thm
+R7155:7164 Coq.Bool.Bool <> orb_true_l thm
+prf 7186:7193 <> orb_idem
+R7196:7205 Satapps.Algebra <> idempotent def
+R7207:7209 Coq.Init.Datatypes <> orb def
+R7219:7228 Satapps.Algebra <> idempotent def
+R7249:7258 Coq.Bool.Bool <> orb_true_l thm
+R7249:7258 Coq.Bool.Bool <> orb_true_l thm
+R7267:7277 Coq.Bool.Bool <> orb_false_l thm
+R7267:7277 Coq.Bool.Bool <> orb_false_l thm
+inst 7295:7318 <> BoolOrBoundedSemilattice
+R7322:7339 Satapps.Algebra <> BoundedSemilattice class
+R7345:7349 Coq.Init.Datatypes <> false constr
+R7341:7343 Coq.Init.Datatypes <> orb def
+R7372:7380 Satapps.Algebra <> orb_assoc def
+R7372:7380 Satapps.Algebra <> orb_assoc def
+R7390:7397 Satapps.Algebra <> orb_comm def
+R7390:7397 Satapps.Algebra <> orb_comm def
+R7406:7413 Satapps.Algebra <> orb_idem thm
+R7406:7413 Satapps.Algebra <> orb_idem thm
+R7422:7430 Satapps.Algebra <> orb_neutr def
+R7422:7430 Satapps.Algebra <> orb_neutr def
+def 7450:7458 <> xorb_comm
+R7461:7464 Satapps.Algebra <> comm def
+R7466:7469 Coq.Init.Datatypes <> xorb def
+R7474:7482 Coq.Bool.Bool <> xorb_comm thm
+def 7496:7505 <> xorb_assoc
+R7508:7512 Satapps.Algebra <> assoc def
+R7514:7517 Coq.Init.Datatypes <> xorb def
+binder 7526:7526 <> a:199
+binder 7528:7528 <> b:200
+binder 7530:7530 <> c:201
+R7535:7540 Coq.Init.Logic <> eq_sym thm
+R7543:7552 Coq.Bool.Bool <> xorb_assoc syndef
+R7554:7554 Satapps.Algebra <> a:199 var
+R7556:7556 Satapps.Algebra <> b:200 var
+R7558:7558 Satapps.Algebra <> c:201 var
+inst 7572:7591 <> BoolXorCommSemigroup
+R7595:7607 Satapps.Algebra <> CommSemigroup class
+R7609:7612 Coq.Init.Datatypes <> xorb def
+R7635:7644 Satapps.Algebra <> xorb_assoc def
+R7635:7644 Satapps.Algebra <> xorb_assoc def
+R7653:7661 Satapps.Algebra <> xorb_comm def
+R7653:7661 Satapps.Algebra <> xorb_comm def
+def 7682:7690 <> plus_comm
+R7693:7696 Satapps.Algebra <> comm def
+R7698:7701 Coq.Init.Peano <> plus syndef
+R7706:7717 Coq.Arith.PeanoNat Nat add_comm thm
+def 7731:7740 <> plus_assoc
+R7743:7747 Satapps.Algebra <> assoc def
+R7749:7752 Coq.Init.Peano <> plus syndef
+R7757:7769 Coq.Arith.PeanoNat Nat add_assoc thm
+def 7783:7792 <> plus_neutr
+R7795:7799 Satapps.Algebra <> neutr def
+R7801:7804 Coq.Init.Peano <> plus syndef
+R7811:7814 Coq.Init.Logic <> conj constr
+R7828:7838 Coq.Arith.PeanoNat Nat add_0_r thm
+R7816:7826 Coq.Arith.PeanoNat Nat add_0_l thm
+inst 7851:7867 <> NatPlusCommMonoid
+R7870:7879 Satapps.Algebra <> CommMonoid class
+R7881:7884 Coq.Init.Peano <> plus syndef
+R7909:7918 Satapps.Algebra <> plus_assoc def
+R7909:7918 Satapps.Algebra <> plus_assoc def
+R7927:7936 Satapps.Algebra <> plus_neutr def
+R7927:7936 Satapps.Algebra <> plus_neutr def
+R7945:7953 Satapps.Algebra <> plus_comm def
+R7945:7953 Satapps.Algebra <> plus_comm def
+def 7973:7981 <> mult_comm
+R7984:7987 Satapps.Algebra <> comm def
+R7989:7992 Coq.Init.Peano <> mult syndef
+R7997:8008 Coq.Arith.PeanoNat Nat mul_comm thm
+def 8022:8031 <> mult_assoc
+R8034:8038 Satapps.Algebra <> assoc def
+R8040:8043 Coq.Init.Peano <> mult syndef
+R8048:8060 Coq.Arith.PeanoNat Nat mul_assoc thm
+def 8074:8083 <> mult_neutr
+R8086:8090 Satapps.Algebra <> neutr def
+R8092:8095 Coq.Init.Peano <> mult syndef
+R8102:8105 Coq.Init.Logic <> conj constr
+R8119:8129 Coq.Arith.PeanoNat Nat mul_1_r thm
+R8107:8117 Coq.Arith.PeanoNat Nat mul_1_l thm
+def 8143:8153 <> mult_absorb
+R8156:8158 Satapps.Algebra <> abs def
+R8160:8163 Coq.Init.Peano <> mult syndef
+R8170:8173 Coq.Init.Logic <> conj constr
+R8187:8197 Coq.Arith.PeanoNat Nat mul_0_r thm
+R8175:8185 Coq.Arith.PeanoNat Nat mul_0_l thm
+inst 8210:8226 <> NatMultCommMonoid
+R8229:8238 Satapps.Algebra <> CommMonoid class
+R8240:8243 Coq.Init.Peano <> mult syndef
+R8268:8277 Satapps.Algebra <> mult_assoc def
+R8268:8277 Satapps.Algebra <> mult_assoc def
+R8286:8295 Satapps.Algebra <> mult_neutr def
+R8286:8295 Satapps.Algebra <> mult_neutr def
+R8304:8312 Satapps.Algebra <> mult_comm def
+R8304:8312 Satapps.Algebra <> mult_comm def
+R8325:8332 Satapps.Algebra Examples <> sec

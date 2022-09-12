@@ -5,13 +5,22 @@ import Extensions.*
 
 class Matrix[T] private(private val arr: IndexedSeq[T], val rows: Int, val columns: Int) extends Iterable[T]{
   require(arr.size == rows * columns)
+  require(rows >= 0)
+  require(columns >= 0)
 
   val shape: (Int, Int) = (rows, columns)
 
   def unravel: IndexedSeq[T] = arr
-  def apply(i: Int, j: Int): T = arr(i * columns + j)
-  def apply(i: Int): Int => T = (j: Int) => this.apply(i, j)
-  def updated(i: Int, j: Int, v: T): Matrix[T] = Matrix(arr.updated(i * columns + j, v), rows, columns)
+  def apply(i: Int, j: Int): T = 
+    require(0 <= i && i < rows)
+    require(0 <= j && j < columns)
+    arr(i * columns + j)
+  @targetName("CurryApply")
+  def apply(i: Int)(j: Int): T = this.apply(i, j)
+  def updated(i: Int, j: Int, v: T): Matrix[T] = 
+    require(0 <= i && i < rows)
+    require(0 <= j && j < columns)
+    Matrix(arr.updated(i * columns + j, v), rows, columns)
   override def iterator = arr.iterator
   def nestedIterators = iterator.grouped(columns).map(_.iterator)
   override def toString(): String =
@@ -23,8 +32,14 @@ class Matrix[T] private(private val arr: IndexedSeq[T], val rows: Int, val colum
       case _ => false
     }
 
-  def hConcatenate(m: Matrix[T]): Matrix[T] = 
+  override def zip[B](m: Matrix[B]): Matrix[(T, B)] = 
+    require(shape == m.shape)
+    Matrix(arr.zip(m.arr), rows, columns)
+
+  def hConcatenate(m: Matrix[T]): Matrix[T] =
     require(m.rows == rows)
+    if (this.columns == 0) m
+    else if (m.columns == 0) this else 
     Matrix(
       this.arr.grouped(this.columns)
         .zip(m.arr.grouped(m.columns))
@@ -62,17 +77,29 @@ object Matrix {
     new Matrix[T](arr, rows, columns)
   }
 
-  def fill[T](t: T)(rows: Int, columns: Int) = Matrix[T](IndexedSeq.fill(rows*columns)(t), rows, columns)
-  def eye[T](d: T, o: T)(n: Int) = Matrix[T](for(i <- 0 until n; j <- 0 until n) yield if (i == j) d else o, n, n)
+  def fill[T](t: T)(rows: Int, columns: Int) = 
+    require(rows >= 0 && columns >= 0)
+    Matrix[T](IndexedSeq.fill(rows*columns)(t), rows, columns)
+  def eye[T](d: T, o: T)(n: Int) = 
+    require(n >= 0)
+    Matrix[T](for(i <- 0 until n; j <- 0 until n) yield if (i == j) d else o, n, n)
 
   def fromBlock[T](ul: Matrix[T], ur: Matrix[T], ll: Matrix[T], lr: Matrix[T]) : Matrix[T] = 
     ul.hConcatenate(ur).vConcatenate(ll.hConcatenate(lr))
 }
 
 object BoolMatrix {
-  def trues(rows: Int, columns: Int): Matrix[Boolean] = Matrix.fill(true)(rows, columns)
-  def falses(rows: Int, columns: Int): Matrix[Boolean] = Matrix.fill(false)(rows, columns)
-  def id(n: Int) = Matrix.eye(true, false)(n)
+  def trues(rows: Int, columns: Int): Matrix[Boolean] = 
+    require(rows >= 0)
+    require(columns >= 0) 
+    Matrix.fill(true)(rows, columns)
+  def falses(rows: Int, columns: Int): Matrix[Boolean] = 
+    require(rows >= 0)
+    require(columns >= 0) 
+    Matrix.fill(false)(rows, columns)
+  def id(n: Int) = 
+    require(n >= 0)
+    Matrix.eye(true, false)(n)
 }
 
 object IntMatrix {

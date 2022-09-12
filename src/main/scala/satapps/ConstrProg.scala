@@ -15,6 +15,7 @@ object ConstrProg{
     def filterVar(i: Seq[String]): Query[T] = filterVar(i.toSet)
     def filterVal(p: T => Boolean): Query[T] = Query(mapping.filter((_, c) => p(c)))
     def varSet: Set[String] = mapping.keySet
+    override def toString(): String = mapping.toString
   }
 
   type NumQuery = Query[Const]
@@ -27,17 +28,17 @@ object ConstrProg{
 
     protected def vars: Set[Var] =
       this match{
-        case Add(ops*) => ops.map(_.vars).reduce(_ ++ _)
+        case Add(ops*) => ops.map(_.vars).foldLeft(Set())(_ ++ _)
         case Sub(op1, op2) => op1.vars ++ op2.vars
-        case Mul(ops*) => ops.map(_.vars).reduce(_ ++ _)
+        case Mul(ops*) => ops.map(_.vars).foldLeft(Set())(_ ++ _)
         case c: Const => Set()
         case v: Var => Set(v)
-        case And(ops*) => ops.map(_.vars).reduce(_ ++ _)
-        case Or(ops*) => ops.map(_.vars).reduce(_ ++ _)
+        case And(ops*) => ops.map(_.vars).foldLeft(Set())(_ ++ _)
+        case Or(ops*) => ops.map(_.vars).foldLeft(Set())(_ ++ _)
         case Xor(op1, op2) => op1.vars ++ op2.vars
         case Iff(op1, op2) => op1.vars ++ op2.vars
         case Not(op) => op.vars
-        case IntDist(ops*) => ops.map(_.vars).reduce(_ ++ _)
+        case IntDist(ops*) => ops.map(_.vars).foldLeft(Set())(_ ++ _)
         case IntEq(op1, op2) => op1.vars ++ op2.vars
         case BoolEq(op1, op2) => op1.vars ++ op2.vars
         case LE(op1, op2) => op1.vars ++ op2.vars
@@ -54,7 +55,7 @@ object ConstrProg{
         case Mul(ops*) => z.mkMul(ops.map(_(z)): _*)
         case IntNum(c) => z.mkInt(c, z.mkIntSort())
         case IntVar(id) => z.mkIntConst(id)
-        case And(ops*) => z.mkAnd(ops.map(_(z)): _*)
+        case And(ops*) => if (ops.isEmpty) BoolNum(true)(z) else z.mkAnd(ops.map(_(z)): _*)
         case Or(ops*) => z.mkOr(ops.map(_(z)): _*)
         case Xor(op1, op2) => z.mkXor(op1(z), op2(z))
         case Iff(op1, op2) => z.mkIff(op1(z), op2(z))

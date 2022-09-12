@@ -32,7 +32,7 @@ object Graphs {
     override protected def constraints(g: Graph, k: Int) =
       require(k >= 0)
       val vars: Seq[IntConstr] = IntVar(g.vertexSet.toList)
-      And((for (v1, v2) <- g.edgeSet yield IntVar(v1) + IntVar(v2) <= 1).toList) && vars >= 0 && Add(vars) === k
+      And((for (v1, v2) <- g.edgeSet yield IntVar(v1) + IntVar(v2) <= 1).toList) && vars >= 0 && vars <= 1 && Add(vars) === k
     override protected def convert(g: Graph, k: Int, sol: NumQuery) = sol.toInt.filterIdx
     
     override def verify(g: Graph, k: Int, sol: Set[Vertex]) = sol.size == k && g.induced(sol).isIndependent

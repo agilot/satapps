@@ -1,0 +1,8 @@
+-R theories Satapps
+
+theories/NArithSpec.v
+theories/Fun.v
+theories/Algebra.v
+theories/Pair.v
+theories/ListSpec2.v
+theories/Matrix.v

@@ -22,8 +22,15 @@ object Extensions{
     def >(b: IntConstr): BoolConstr = And(a.map(_ > b): _*)
 
   extension (a: Matrix[Boolean])
-    def ^(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_^_), a.rows, a.columns)
-    def ||(m2: Matrix[Boolean]): Matrix[Boolean] = Matrix[Boolean](a.unravel.zip(m2.iterator.toList).map(_||_), a.rows, a.columns)
+    def ^(m2: Matrix[Boolean]): Matrix[Boolean] = 
+      require(a.shape == m2.shape)
+      a.zip(m2).map(_^_)
+    def ||(m2: Matrix[Boolean]): Matrix[Boolean] = 
+      require(a.shape == m2.shape)
+      a.zip(m2).map(_||_)
+    def &&(m2: Matrix[Boolean]): Matrix[Boolean] = 
+      require(a.shape == m2.shape)
+      a.zip(m2).map(_&&_)
     def complement : Matrix[Boolean] = Matrix[Boolean](a.unravel.map(!_), a.rows, a.columns)
     
     def *(b2: Matrix[Boolean]): Matrix[Boolean] =

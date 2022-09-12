@@ -2,45 +2,49 @@ package satapps.problems
 
 import satapps.*
 import Graphs.*
+import Graph.*
 
 import org.scalatest.funsuite.AnyFunSuite
+import scala.util.Random
 
 class GraphsTests extends AnyFunSuite{
-  test("empty/complete"){
+  val rng = Random(100)
+  def randomGraph(n: Int) = 
+    Graph(Range(0, n).toSet, (for(i <- 0 until n; j <- 0 until n if i != j) yield ((i, j), rng.nextBoolean())).filter(_._2).map(_._1).toSet)
+
+  test("Independent Set"){
     val n = 5
-    for(i <- 2 to 5){
-      val g1 = Graph.complete(n)
-      val g1c = g1.nonReflComplement
-      val g2 = Graph.empty(n)
-      val g2c = g2.nonReflComplement
-      assert(g1c.adjList == g2.adjList)
-      assert(g2c.adjList == g1.adjList)
-      assert(g1c.edgeSet == g2.edgeSet)
-      assert(g2c.edgeSet == g1.edgeSet)
-      assert(g1c.vertexSet == g2.vertexSet)
-      assert(g2c.vertexSet == g1.vertexSet)
-    }
+    val r = 10
+    for(i <- 1 until n)
+      for(j <- 1 to i)
+        assert((j == 1) == Indset.decide(complete(i), j))
+        assert(Indset.decide(empty(i), j))
+        for(k <- 1 to r)
+          val rg = randomGraph(i)
+          assert(Indset.search(rg, j) match {
+            case Some(sol) => Indset.verify(rg, j, sol)
+            case None => true
+            }
+          )
   }
 
-  test("dominating set"){
+  test("Dominating Set"){
     val n = 5
-    for(i <- 1 to n){assert(DominatingSet.decide(Graph.complete(n), 1))}
-
-    for(i <- 1 to n - 1){
-      assert(!DominatingSet.decide(Graph.empty(n), i))
-    }
-    //println(connectedDominatingSet(Graph.complete(5))(0))
+    val r = 10
+    for(i <- 1 until n)
+      for(j <- 1 to i)
+        assert(DominatingSet.decide(complete(i), j))
+        assert((i == j) == DominatingSet.decide(empty(i), j))
+        for(k <- 1 to r)
+          val rg = randomGraph(i)
+          assert(DominatingSet.search(rg, j) match {
+            case Some(sol) => DominatingSet.verify(rg, j, sol)
+            case None => true
+            }
+          )
   }
 
-  test("indset/clique"){
-    val n = 5
-    for(i <- 2 to 5){
-      assert(!Indset.decide(Graph.complete(n), i))
-      assert(Clique.decide(Graph.complete(n), i))
-      assert(Indset.decide(Graph.empty(n), i))
-      assert(!Clique.decide(Graph.empty(n), i))
-    }
-  }
+
 
   test("hamiltonian"){
     // println(Graphs.complete(5).hamiltonianCycle)

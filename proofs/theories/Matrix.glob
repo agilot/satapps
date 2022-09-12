@@ -1,0 +1,2956 @@
+DIGEST e6bc92fe1d5e7006483d55f98edd1128
+FSatapps.Matrix
+R25:32 Coq.Arith.PeanoNat <> <> lib
+R34:37 Coq.Lists.List <> <> lib
+R39:47 Coq.Logic.Decidable <> <> lib
+R49:52 Coq.Bool.Bool <> <> lib
+R54:77 Coq.Logic.FunctionalExtensionality <> <> lib
+R79:81 Coq.Arith.Min <> <> lib
+R83:85 Coq.micromega.Lia <> <> lib
+R103:111 Satapps.ListSpec2 <> <> lib
+sec 123:130 <> Matrices
+def 145:150 <> Matrix
+binder 153:153 <> T:1
+R181:183 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R175:177 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R172:174 Coq.Init.Datatypes <> nat ind
+R178:180 Coq.Init.Datatypes <> nat ind
+R184:187 Coq.Init.Datatypes <> list ind
+R189:189 Satapps.Matrix <> T:1 var
+def 204:204 <> r
+binder 207:207 <> T:2
+R221:226 Satapps.Matrix <> Matrix def
+R228:228 Satapps.Matrix <> T:2 var
+binder 217:217 <> M:3
+R234:236 Coq.Init.Datatypes <> fst def
+R239:241 Coq.Init.Datatypes <> fst def
+R243:243 Satapps.Matrix <> M:3 var
+def 258:258 <> c
+binder 261:261 <> T:4
+R275:280 Satapps.Matrix <> Matrix def
+R282:282 Satapps.Matrix <> T:4 var
+binder 271:271 <> M:5
+R288:290 Coq.Init.Datatypes <> snd def
+R293:295 Coq.Init.Datatypes <> fst def
+R297:297 Satapps.Matrix <> M:5 var
+def 312:314 <> arr
+binder 317:317 <> T:6
+R331:336 Satapps.Matrix <> Matrix def
+R338:338 Satapps.Matrix <> T:6 var
+binder 327:327 <> M:7
+R344:346 Coq.Init.Datatypes <> snd def
+R348:348 Satapps.Matrix <> M:7 var
+def 362:366 <> shape
+binder 369:369 <> T:8
+R383:388 Satapps.Matrix <> Matrix def
+R390:390 Satapps.Matrix <> T:8 var
+binder 379:379 <> M:9
+R396:396 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R400:401 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R405:405 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R397:397 Satapps.Matrix <> r def
+R399:399 Satapps.Matrix <> M:9 var
+R402:402 Satapps.Matrix <> c def
+R404:404 Satapps.Matrix <> M:9 var
+def 419:426 <> is_valid
+binder 429:429 <> T:10
+R443:448 Satapps.Matrix <> Matrix def
+R450:450 Satapps.Matrix <> T:10 var
+binder 439:439 <> M:11
+R470:472 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R456:461 Coq.Init.Datatypes <> length def
+R464:466 Satapps.Matrix <> arr def
+R468:468 Satapps.Matrix <> M:11 var
+R473:473 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R477:481 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R485:485 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R474:474 Satapps.Matrix <> r def
+R476:476 Satapps.Matrix <> M:11 var
+R482:482 Satapps.Matrix <> c def
+R484:484 Satapps.Matrix <> M:11 var
+prf 497:505 <> matrix_eq
+binder 508:508 <> T:12
+R530:535 Satapps.Matrix <> Matrix def
+R537:537 Satapps.Matrix <> T:12 var
+binder 526:526 <> M:13
+R542:544 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R541:541 Satapps.Matrix <> M:13 var
+R545:545 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R549:550 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R554:555 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R561:561 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R546:546 Satapps.Matrix <> r def
+R548:548 Satapps.Matrix <> M:13 var
+R551:551 Satapps.Matrix <> c def
+R553:553 Satapps.Matrix <> M:13 var
+R556:558 Satapps.Matrix <> arr def
+R560:560 Satapps.Matrix <> M:13 var
+R579:579 Satapps.Matrix <> r def
+R582:582 Satapps.Matrix <> c def
+R585:587 Satapps.Matrix <> arr def
+prf 642:649 <> shape_eq
+binder 652:652 <> A:14
+binder 654:654 <> B:15
+R677:682 Satapps.Matrix <> Matrix def
+R684:684 Satapps.Matrix <> A:14 var
+binder 672:673 <> M1:16
+R693:698 Satapps.Matrix <> Matrix def
+R700:700 Satapps.Matrix <> B:15 var
+binder 688:689 <> M2:17
+R723:728 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R755:755 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R712:714 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R704:708 Satapps.Matrix <> shape def
+R710:711 Satapps.Matrix <> M1:16 var
+R715:719 Satapps.Matrix <> shape def
+R721:722 Satapps.Matrix <> M2:17 var
+R740:743 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R733:735 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R729:729 Satapps.Matrix <> r def
+R731:732 Satapps.Matrix <> M1:16 var
+R736:736 Satapps.Matrix <> r def
+R738:739 Satapps.Matrix <> M2:17 var
+R748:750 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R744:744 Satapps.Matrix <> c def
+R746:747 Satapps.Matrix <> M1:16 var
+R751:751 Satapps.Matrix <> c def
+R753:754 Satapps.Matrix <> M2:17 var
+R765:769 Satapps.Matrix <> shape def
+R814:820 Coq.Init.Logic <> f_equal thm
+R822:824 Coq.Init.Datatypes <> fst def
+R814:820 Coq.Init.Logic <> f_equal thm
+R822:824 Coq.Init.Datatypes <> fst def
+R852:858 Coq.Init.Logic <> f_equal thm
+R860:862 Coq.Init.Datatypes <> snd def
+R852:858 Coq.Init.Logic <> f_equal thm
+R860:862 Coq.Init.Datatypes <> snd def
+def 970:977 <> is_empty
+binder 980:980 <> T:18
+R994:999 Satapps.Matrix <> Matrix def
+R1001:1001 Satapps.Matrix <> T:18 var
+binder 990:990 <> M:19
+R1014:1017 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1010:1012 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1007:1007 Satapps.Matrix <> r def
+R1009:1009 Satapps.Matrix <> M:19 var
+R1021:1023 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1018:1018 Satapps.Matrix <> c def
+R1020:1020 Satapps.Matrix <> M:19 var
+prf 1034:1052 <> is_empty_is_valid_1
+binder 1055:1055 <> T:20
+R1078:1083 Satapps.Matrix <> Matrix def
+R1085:1085 Satapps.Matrix <> T:20 var
+binder 1074:1074 <> M:21
+R1099:1103 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1130:1130 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1089:1096 Satapps.Matrix <> is_empty def
+R1098:1098 Satapps.Matrix <> M:21 var
+R1114:1118 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1104:1111 Satapps.Matrix <> is_valid def
+R1113:1113 Satapps.Matrix <> M:21 var
+R1124:1126 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1119:1121 Satapps.Matrix <> arr def
+R1123:1123 Satapps.Matrix <> M:21 var
+R1127:1129 Coq.Init.Datatypes <> nil constr
+R1154:1161 Satapps.Matrix <> is_valid def
+R1197:1207 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1197:1207 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1197:1207 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1216:1234 Coq.Lists.List <> length_zero_iff_nil thm
+R1216:1234 Coq.Lists.List <> length_zero_iff_nil thm
+R1256:1266 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1256:1266 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1256:1266 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1275:1293 Coq.Lists.List <> length_zero_iff_nil thm
+R1275:1293 Coq.Lists.List <> length_zero_iff_nil thm
+prf 1308:1326 <> is_empty_is_valid_2
+binder 1329:1329 <> T:22
+R1352:1357 Satapps.Matrix <> Matrix def
+R1359:1359 Satapps.Matrix <> T:22 var
+binder 1348:1348 <> M:23
+R1373:1377 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1404:1404 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1363:1370 Satapps.Matrix <> is_valid def
+R1372:1372 Satapps.Matrix <> M:23 var
+R1388:1392 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1378:1385 Satapps.Matrix <> is_empty def
+R1387:1387 Satapps.Matrix <> M:23 var
+R1398:1400 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1393:1395 Satapps.Matrix <> arr def
+R1397:1397 Satapps.Matrix <> M:23 var
+R1401:1403 Coq.Init.Datatypes <> nil constr
+R1414:1421 Satapps.Matrix <> is_valid def
+R1424:1431 Satapps.Matrix <> is_empty def
+R1515:1525 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1515:1525 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1515:1525 Coq.Arith.PeanoNat Nat mul_0_l thm
+R1543:1561 Coq.Lists.List <> length_zero_iff_nil thm
+R1543:1561 Coq.Lists.List <> length_zero_iff_nil thm
+R1603:1613 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1603:1613 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1603:1613 Coq.Arith.PeanoNat Nat mul_0_r thm
+R1631:1649 Coq.Lists.List <> length_zero_iff_nil thm
+R1631:1649 Coq.Lists.List <> length_zero_iff_nil thm
+R1686:1704 Coq.Lists.List <> length_zero_iff_nil thm
+R1686:1704 Coq.Lists.List <> length_zero_iff_nil thm
+R1750:1755 Coq.Init.Logic <> eq_sym thm
+R1750:1755 Coq.Init.Logic <> eq_sym thm
+R1774:1787 Coq.Arith.Mult <> mult_is_O thm
+R1790:1790 Satapps.Matrix <> r def
+R1796:1796 Satapps.Matrix <> c def
+R1774:1787 Coq.Arith.Mult <> mult_is_O thm
+R1790:1790 Satapps.Matrix <> r def
+R1796:1796 Satapps.Matrix <> c def
+R1822:1829 Satapps.Matrix Matrices <> sec
+sec 1841:1849 <> MatrixOps
+def 1864:1872 <> in_bounds
+binder 1875:1875 <> T:24
+R1889:1894 Satapps.Matrix <> Matrix def
+R1896:1896 Satapps.Matrix <> T:24 var
+binder 1885:1885 <> M:25
+R1903:1905 Coq.Init.Datatypes <> nat ind
+binder 1900:1900 <> i:26
+R1912:1914 Coq.Init.Datatypes <> nat ind
+binder 1909:1909 <> j:27
+R1929:1932 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1921:1924 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R1928:1928 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R1920:1920 Satapps.Matrix <> i:26 var
+R1925:1925 Satapps.Matrix <> r def
+R1927:1927 Satapps.Matrix <> M:25 var
+R1934:1937 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R1941:1941 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R1933:1933 Satapps.Matrix <> j:27 var
+R1938:1938 Satapps.Matrix <> c def
+R1940:1940 Satapps.Matrix <> M:25 var
+prf 1951:1975 <> in_bounds_is_valid_access
+binder 1978:1978 <> T:28
+R2001:2006 Satapps.Matrix <> Matrix def
+R2008:2008 Satapps.Matrix <> T:28 var
+binder 1997:1997 <> M:29
+R2015:2017 Coq.Init.Datatypes <> nat ind
+binder 2012:2012 <> i:30
+R2024:2026 Coq.Init.Datatypes <> nat ind
+binder 2021:2021 <> j:31
+R2040:2043 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2030:2037 Satapps.Matrix <> is_valid def
+R2039:2039 Satapps.Matrix <> M:29 var
+R2059:2063 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2094:2094 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2044:2052 Satapps.Matrix <> in_bounds def
+R2058:2058 Satapps.Matrix <> j:31 var
+R2056:2056 Satapps.Matrix <> i:30 var
+R2054:2054 Satapps.Matrix <> M:29 var
+R2077:2079 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R2073:2075 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R2065:2068 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2072:2072 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2064:2064 Satapps.Matrix <> i:30 var
+R2069:2069 Satapps.Matrix <> c def
+R2071:2071 Satapps.Matrix <> M:29 var
+R2076:2076 Satapps.Matrix <> j:31 var
+R2080:2085 Coq.Init.Datatypes <> length def
+R2088:2090 Satapps.Matrix <> arr def
+R2092:2092 Satapps.Matrix <> M:29 var
+R2162:2178 Coq.Arith.PeanoNat Nat add_lt_mono_l thm
+R2183:2183 Satapps.Matrix <> c def
+R2190:2193 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2197:2197 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2194:2194 Satapps.Matrix <> c def
+R2162:2178 Coq.Arith.PeanoNat Nat add_lt_mono_l thm
+R2183:2183 Satapps.Matrix <> c def
+R2190:2193 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2197:2197 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2194:2194 Satapps.Matrix <> c def
+R2220:2230 Coq.Arith.PeanoNat Nat mul_1_l thm
+R2233:2233 Satapps.Matrix <> c def
+R2220:2230 Coq.Arith.PeanoNat Nat mul_1_l thm
+R2233:2233 Satapps.Matrix <> c def
+R2220:2230 Coq.Arith.PeanoNat Nat mul_1_l thm
+R2233:2233 Satapps.Matrix <> c def
+R2263:2281 Coq.Arith.PeanoNat Nat mul_add_distr_r thm
+R2263:2281 Coq.Arith.PeanoNat Nat mul_add_distr_r thm
+R2263:2281 Coq.Arith.PeanoNat Nat mul_add_distr_r thm
+R2298:2308 Coq.Arith.PeanoNat Nat add_1_r thm
+R2298:2308 Coq.Arith.PeanoNat Nat add_1_r thm
+R2298:2308 Coq.Arith.PeanoNat Nat add_1_r thm
+R2323:2332 Coq.Arith.Lt <> lt_le_S thm
+R2337:2337 Satapps.Matrix <> r def
+R2323:2332 Coq.Arith.Lt <> lt_le_S thm
+R2337:2337 Satapps.Matrix <> r def
+R2359:2375 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R2382:2382 Satapps.Matrix <> c def
+R2359:2375 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R2382:2382 Satapps.Matrix <> c def
+prf 2411:2443 <> out_of_bounds_is_not_valid_access
+binder 2446:2446 <> T:32
+R2469:2474 Satapps.Matrix <> Matrix def
+R2476:2476 Satapps.Matrix <> T:32 var
+binder 2465:2465 <> M:33
+R2483:2485 Coq.Init.Datatypes <> nat ind
+binder 2480:2480 <> i:34
+R2492:2494 Coq.Init.Datatypes <> nat ind
+binder 2489:2489 <> j:35
+R2508:2511 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2498:2505 Satapps.Matrix <> is_valid def
+R2507:2507 Satapps.Matrix <> M:33 var
+R2522:2526 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2558:2558 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2513:2517 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R2521:2521 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R2512:2512 Satapps.Matrix <> i:34 var
+R2518:2518 Satapps.Matrix <> r def
+R2520:2520 Satapps.Matrix <> M:33 var
+R2540:2543 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R2536:2538 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R2528:2531 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2535:2535 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R2527:2527 Satapps.Matrix <> i:34 var
+R2532:2532 Satapps.Matrix <> c def
+R2534:2534 Satapps.Matrix <> M:33 var
+R2539:2539 Satapps.Matrix <> j:35 var
+R2544:2549 Coq.Init.Datatypes <> length def
+R2552:2554 Satapps.Matrix <> arr def
+R2556:2556 Satapps.Matrix <> M:33 var
+R2568:2569 Coq.Init.Peano <> ge def
+R2614:2630 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R2637:2637 Satapps.Matrix <> c def
+R2614:2630 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R2637:2637 Satapps.Matrix <> c def
+prf 2666:2687 <> is_empty_not_in_bounds
+binder 2690:2690 <> T:36
+R2713:2718 Satapps.Matrix <> Matrix def
+R2720:2720 Satapps.Matrix <> T:36 var
+binder 2709:2709 <> M:37
+R2734:2739 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2768:2768 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2724:2731 Satapps.Matrix <> is_empty def
+R2733:2733 Satapps.Matrix <> M:37 var
+binder 2747:2747 <> i:38
+binder 2749:2749 <> j:39
+R2752:2752 Coq.Init.Logic <> ::type_scope:'~'_x not
+R2753:2761 Satapps.Matrix <> in_bounds def
+R2767:2767 Satapps.Matrix <> j:39 var
+R2765:2765 Satapps.Matrix <> i:38 var
+R2763:2763 Satapps.Matrix <> M:37 var
+R2792:2800 Satapps.Matrix <> in_bounds def
+R2810:2817 Satapps.Matrix <> is_empty def
+prf 2844:2859 <> not_in_bounds_ge
+binder 2862:2862 <> T:40
+R2885:2890 Satapps.Matrix <> Matrix def
+R2892:2892 Satapps.Matrix <> T:40 var
+binder 2881:2881 <> M:41
+binder 2895:2895 <> i:42
+binder 2897:2897 <> j:43
+R2916:2920 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2975:2975 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2900:2900 Coq.Init.Logic <> ::type_scope:'~'_x not
+R2901:2909 Satapps.Matrix <> in_bounds def
+R2915:2915 Satapps.Matrix <> j:43 var
+R2913:2913 Satapps.Matrix <> i:42 var
+R2911:2911 Satapps.Matrix <> M:41 var
+binder 2928:2929 <> i':44
+binder 2931:2932 <> j':45
+R2942:2945 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2937:2940 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R2935:2936 Satapps.Matrix <> i':44 var
+R2941:2941 Satapps.Matrix <> i:42 var
+R2953:2956 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2948:2951 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R2946:2947 Satapps.Matrix <> j':45 var
+R2952:2952 Satapps.Matrix <> j:43 var
+R2957:2957 Coq.Init.Logic <> ::type_scope:'~'_x not
+R2958:2966 Satapps.Matrix <> in_bounds def
+R2973:2974 Satapps.Matrix <> j':45 var
+R2970:2971 Satapps.Matrix <> i':44 var
+R2968:2968 Satapps.Matrix <> M:41 var
+R2985:2993 Satapps.Matrix <> in_bounds def
+prf 3013:3027 <> not_in_bounds_0
+binder 3030:3030 <> T:46
+R3053:3058 Satapps.Matrix <> Matrix def
+R3060:3060 Satapps.Matrix <> T:46 var
+binder 3049:3049 <> M:47
+R3080:3084 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3113:3113 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3064:3064 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3065:3073 Satapps.Matrix <> in_bounds def
+R3075:3075 Satapps.Matrix <> M:47 var
+binder 3092:3092 <> i:48
+binder 3094:3094 <> j:49
+R3097:3097 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3098:3106 Satapps.Matrix <> in_bounds def
+R3112:3112 Satapps.Matrix <> j:49 var
+R3110:3110 Satapps.Matrix <> i:48 var
+R3108:3108 Satapps.Matrix <> M:47 var
+R3123:3131 Satapps.Matrix <> in_bounds def
+prf 3151:3172 <> not_in_bounds_is_empty
+binder 3175:3175 <> T:50
+R3198:3203 Satapps.Matrix <> Matrix def
+R3205:3205 Satapps.Matrix <> T:50 var
+binder 3194:3194 <> M:51
+R3225:3228 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3209:3209 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3210:3218 Satapps.Matrix <> in_bounds def
+R3220:3220 Satapps.Matrix <> M:51 var
+R3229:3236 Satapps.Matrix <> is_empty def
+R3238:3238 Satapps.Matrix <> M:51 var
+R3248:3256 Satapps.Matrix <> in_bounds def
+R3259:3266 Satapps.Matrix <> is_empty def
+def 3306:3314 <> Apply_opt
+binder 3317:3317 <> T:52
+R3330:3335 Satapps.Matrix <> Matrix def
+binder 3327:3327 <> M:53
+R3341:3343 Coq.Init.Datatypes <> nat ind
+binder 3338:3338 <> i:54
+R3349:3351 Coq.Init.Datatypes <> nat ind
+binder 3346:3346 <> j:55
+R3355:3360 Coq.Init.Datatypes <> option ind
+R3362:3362 Satapps.Matrix <> T:52 var
+R3367:3375 Coq.Lists.List <> nth_error def
+R3395:3397 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R3387:3390 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R3394:3394 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R3386:3386 Satapps.Matrix <> i:54 var
+R3391:3391 Satapps.Matrix <> c def
+R3393:3393 Satapps.Matrix <> M:53 var
+R3398:3398 Satapps.Matrix <> j:55 var
+R3378:3380 Satapps.Matrix <> arr def
+R3382:3382 Satapps.Matrix <> M:53 var
+def 3413:3421 <> Apply_def
+binder 3424:3424 <> T:56
+R3437:3442 Satapps.Matrix <> Matrix def
+binder 3434:3434 <> M:57
+R3448:3450 Coq.Init.Datatypes <> nat ind
+binder 3445:3445 <> i:58
+R3456:3458 Coq.Init.Datatypes <> nat ind
+binder 3453:3453 <> j:59
+R3466:3466 Satapps.Matrix <> T:56 var
+binder 3461:3463 <> def:60
+R3470:3470 Satapps.Matrix <> T:56 var
+R3475:3477 Coq.Lists.List <> nth def
+R3503:3505 Satapps.Matrix <> def:60 var
+R3496:3498 Satapps.Matrix <> arr def
+R3500:3500 Satapps.Matrix <> M:57 var
+R3489:3491 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R3481:3484 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R3488:3488 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R3480:3480 Satapps.Matrix <> i:58 var
+R3485:3485 Satapps.Matrix <> c def
+R3487:3487 Satapps.Matrix <> M:57 var
+R3492:3492 Satapps.Matrix <> j:59 var
+prf 3517:3535 <> apply_opt_apply_def
+binder 3538:3538 <> T:61
+R3559:3564 Satapps.Matrix <> Matrix def
+binder 3556:3556 <> M:62
+binder 3567:3567 <> i:63
+binder 3569:3569 <> j:64
+R3577:3577 Satapps.Matrix <> T:61 var
+binder 3572:3574 <> def:65
+R3591:3594 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3581:3588 Satapps.Matrix <> is_valid def
+R3590:3590 Satapps.Matrix <> M:62 var
+R3610:3613 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3595:3603 Satapps.Matrix <> in_bounds def
+R3609:3609 Satapps.Matrix <> j:64 var
+R3607:3607 Satapps.Matrix <> i:63 var
+R3605:3605 Satapps.Matrix <> M:62 var
+R3629:3631 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3614:3622 Satapps.Matrix <> Apply_opt def
+R3628:3628 Satapps.Matrix <> j:64 var
+R3626:3626 Satapps.Matrix <> i:63 var
+R3624:3624 Satapps.Matrix <> M:62 var
+R3632:3635 Coq.Init.Datatypes <> Some constr
+R3637:3645 Satapps.Matrix <> Apply_def def
+R3653:3655 Satapps.Matrix <> def:65 var
+R3651:3651 Satapps.Matrix <> j:64 var
+R3649:3649 Satapps.Matrix <> i:63 var
+R3647:3647 Satapps.Matrix <> M:62 var
+R3694:3702 Satapps.Matrix <> Apply_opt def
+R3712:3720 Satapps.Matrix <> Apply_def def
+R3729:3744 Satapps.ListSpec2 <> nth_error_nth_lt thm
+R3729:3744 Satapps.ListSpec2 <> nth_error_nth_lt thm
+R3753:3777 Satapps.Matrix <> in_bounds_is_valid_access thm
+R3753:3777 Satapps.Matrix <> in_bounds_is_valid_access thm
+prf 3808:3822 <> apply_def_indep
+binder 3825:3825 <> T:66
+R3846:3851 Satapps.Matrix <> Matrix def
+binder 3843:3843 <> M:67
+binder 3854:3854 <> i:68
+binder 3856:3856 <> j:69
+R3865:3865 Satapps.Matrix <> T:66 var
+binder 3859:3862 <> def1:70
+R3875:3875 Satapps.Matrix <> T:66 var
+binder 3869:3872 <> def2:71
+R3889:3892 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3879:3886 Satapps.Matrix <> is_valid def
+R3888:3888 Satapps.Matrix <> M:67 var
+R3908:3911 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3893:3901 Satapps.Matrix <> in_bounds def
+R3907:3907 Satapps.Matrix <> j:69 var
+R3905:3905 Satapps.Matrix <> i:68 var
+R3903:3903 Satapps.Matrix <> M:67 var
+R3932:3934 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3912:3920 Satapps.Matrix <> Apply_def def
+R3928:3931 Satapps.Matrix <> def1:70 var
+R3926:3926 Satapps.Matrix <> j:69 var
+R3924:3924 Satapps.Matrix <> i:68 var
+R3922:3922 Satapps.Matrix <> M:67 var
+R3935:3943 Satapps.Matrix <> Apply_def def
+R3951:3954 Satapps.Matrix <> def2:71 var
+R3949:3949 Satapps.Matrix <> j:69 var
+R3947:3947 Satapps.Matrix <> i:68 var
+R3945:3945 Satapps.Matrix <> M:67 var
+R3998:4006 Satapps.Matrix <> Apply_def def
+R4015:4023 Coq.Lists.List <> nth_indep thm
+R4015:4023 Coq.Lists.List <> nth_indep thm
+R4032:4056 Satapps.Matrix <> in_bounds_is_valid_access thm
+R4032:4056 Satapps.Matrix <> in_bounds_is_valid_access thm
+prf 4087:4109 <> apply_def_out_of_bounds
+binder 4112:4112 <> T:72
+R4134:4139 Satapps.Matrix <> Matrix def
+R4141:4141 Satapps.Matrix <> T:72 var
+binder 4130:4130 <> M:73
+binder 4144:4144 <> i:74
+binder 4146:4146 <> j:75
+binder 4148:4150 <> def:76
+R4163:4166 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4153:4160 Satapps.Matrix <> is_valid def
+R4162:4162 Satapps.Matrix <> M:73 var
+R4175:4178 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4168:4171 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R4167:4167 Satapps.Matrix <> i:74 var
+R4172:4172 Satapps.Matrix <> r def
+R4174:4174 Satapps.Matrix <> M:73 var
+R4198:4200 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4179:4187 Satapps.Matrix <> Apply_def def
+R4195:4197 Satapps.Matrix <> def:76 var
+R4193:4193 Satapps.Matrix <> j:75 var
+R4191:4191 Satapps.Matrix <> i:74 var
+R4189:4189 Satapps.Matrix <> M:73 var
+R4201:4203 Satapps.Matrix <> def:76 var
+R4238:4246 Satapps.Matrix <> Apply_def def
+R4255:4266 Coq.Lists.List <> nth_overflow thm
+R4255:4266 Coq.Lists.List <> nth_overflow thm
+R4276:4308 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+R4276:4308 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+prf 4339:4356 <> apply_def_is_empty
+binder 4359:4359 <> T:77
+R4381:4386 Satapps.Matrix <> Matrix def
+R4388:4388 Satapps.Matrix <> T:77 var
+binder 4377:4377 <> M:78
+R4402:4405 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4392:4399 Satapps.Matrix <> is_empty def
+R4401:4401 Satapps.Matrix <> M:78 var
+R4416:4419 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4406:4413 Satapps.Matrix <> is_valid def
+R4415:4415 Satapps.Matrix <> M:78 var
+binder 4427:4427 <> i:79
+binder 4429:4429 <> j:80
+binder 4431:4433 <> def:81
+R4455:4457 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4436:4444 Satapps.Matrix <> Apply_def def
+R4452:4454 Satapps.Matrix <> def:81 var
+R4450:4450 Satapps.Matrix <> j:80 var
+R4448:4448 Satapps.Matrix <> i:79 var
+R4446:4446 Satapps.Matrix <> M:78 var
+R4458:4460 Satapps.Matrix <> def:81 var
+R4496:4504 Satapps.Matrix <> Apply_def def
+R4514:4532 Satapps.Matrix <> is_empty_is_valid_1 thm
+R4514:4532 Satapps.Matrix <> is_empty_is_valid_1 thm
+R4582:4584 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4574:4577 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4581:4581 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4578:4578 Satapps.Matrix <> c def
+R4582:4584 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4574:4577 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4581:4581 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4578:4578 Satapps.Matrix <> c def
+prf 4617:4633 <> apply_opt_none_ge
+binder 4636:4636 <> T:82
+R4658:4663 Satapps.Matrix <> Matrix def
+R4665:4665 Satapps.Matrix <> T:82 var
+binder 4654:4654 <> M:83
+binder 4668:4668 <> i:84
+binder 4670:4670 <> j:85
+R4695:4698 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4688:4690 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4673:4681 Satapps.Matrix <> Apply_opt def
+R4687:4687 Satapps.Matrix <> j:85 var
+R4685:4685 Satapps.Matrix <> i:84 var
+R4683:4683 Satapps.Matrix <> M:83 var
+R4691:4694 Coq.Init.Datatypes <> None constr
+binder 4706:4707 <> i':86
+binder 4709:4710 <> j':87
+R4720:4723 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4715:4718 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R4713:4714 Satapps.Matrix <> i':86 var
+R4719:4719 Satapps.Matrix <> i:84 var
+R4731:4734 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4726:4729 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R4724:4725 Satapps.Matrix <> j':87 var
+R4730:4730 Satapps.Matrix <> j:85 var
+R4752:4754 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4735:4743 Satapps.Matrix <> Apply_opt def
+R4750:4751 Satapps.Matrix <> j':87 var
+R4747:4748 Satapps.Matrix <> i':86 var
+R4745:4745 Satapps.Matrix <> M:83 var
+R4755:4758 Coq.Init.Datatypes <> None constr
+R4768:4776 Satapps.Matrix <> Apply_opt def
+R4779:4780 Coq.Init.Peano <> ge def
+R4825:4838 Coq.Lists.List <> nth_error_None thm
+R4825:4838 Coq.Lists.List <> nth_error_None thm
+R4847:4860 Coq.Lists.List <> nth_error_None thm
+R4847:4860 Coq.Lists.List <> nth_error_None thm
+R4892:4895 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4888:4890 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4882:4884 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4885:4885 Satapps.Matrix <> c def
+R4903:4905 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4897:4899 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4900:4900 Satapps.Matrix <> c def
+R4892:4895 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4888:4890 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4882:4884 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4885:4885 Satapps.Matrix <> c def
+R4903:4905 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4897:4899 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4900:4900 Satapps.Matrix <> c def
+R4935:4938 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4930:4932 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4924:4926 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4927:4927 Satapps.Matrix <> c def
+R4947:4949 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4941:4943 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4944:4944 Satapps.Matrix <> c def
+R4935:4938 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4930:4932 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4924:4926 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4927:4927 Satapps.Matrix <> c def
+R4947:4949 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4941:4943 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R4944:4944 Satapps.Matrix <> c def
+R4966:4982 Coq.Arith.PeanoNat Nat add_le_mono_r thm
+R4966:4982 Coq.Arith.PeanoNat Nat add_le_mono_r thm
+R4966:4982 Coq.Arith.PeanoNat Nat add_le_mono_r thm
+R4992:5008 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R5016:5016 Satapps.Matrix <> c def
+R4992:5008 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R5016:5016 Satapps.Matrix <> c def
+prf 5050:5063 <> apply_opt_none
+binder 5066:5066 <> T:88
+R5088:5093 Satapps.Matrix <> Matrix def
+R5095:5095 Satapps.Matrix <> T:88 var
+binder 5084:5084 <> M:89
+R5121:5124 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5114:5116 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5099:5107 Satapps.Matrix <> Apply_opt def
+R5109:5109 Satapps.Matrix <> M:89 var
+R5117:5120 Coq.Init.Datatypes <> None constr
+binder 5132:5132 <> i:90
+binder 5134:5134 <> j:91
+R5152:5154 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5137:5145 Satapps.Matrix <> Apply_opt def
+R5151:5151 Satapps.Matrix <> j:91 var
+R5149:5149 Satapps.Matrix <> i:90 var
+R5147:5147 Satapps.Matrix <> M:89 var
+R5155:5158 Coq.Init.Datatypes <> None constr
+R5188:5204 Satapps.Matrix <> apply_opt_none_ge thm
+R5188:5204 Satapps.Matrix <> apply_opt_none_ge thm
+prf 5258:5280 <> apply_opt_out_of_bounds
+binder 5283:5283 <> T:92
+R5305:5310 Satapps.Matrix <> Matrix def
+R5312:5312 Satapps.Matrix <> T:92 var
+binder 5301:5301 <> M:93
+binder 5315:5315 <> i:94
+binder 5317:5317 <> j:95
+R5330:5333 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5320:5327 Satapps.Matrix <> is_valid def
+R5329:5329 Satapps.Matrix <> M:93 var
+R5342:5345 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5335:5338 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R5334:5334 Satapps.Matrix <> i:94 var
+R5339:5339 Satapps.Matrix <> r def
+R5341:5341 Satapps.Matrix <> M:93 var
+R5361:5363 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5346:5354 Satapps.Matrix <> Apply_opt def
+R5360:5360 Satapps.Matrix <> j:95 var
+R5358:5358 Satapps.Matrix <> i:94 var
+R5356:5356 Satapps.Matrix <> M:93 var
+R5364:5367 Coq.Init.Datatypes <> None constr
+R5398:5406 Satapps.Matrix <> Apply_opt def
+R5415:5428 Coq.Lists.List <> nth_error_None thm
+R5415:5428 Coq.Lists.List <> nth_error_None thm
+R5437:5469 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+R5437:5469 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+prf 5501:5520 <> apply_opt_is_empty_1
+binder 5523:5523 <> T:96
+R5545:5550 Satapps.Matrix <> Matrix def
+R5552:5552 Satapps.Matrix <> T:96 var
+binder 5541:5541 <> M:97
+R5566:5569 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5556:5563 Satapps.Matrix <> is_empty def
+R5565:5565 Satapps.Matrix <> M:97 var
+R5580:5583 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5570:5577 Satapps.Matrix <> is_valid def
+R5579:5579 Satapps.Matrix <> M:97 var
+binder 5591:5591 <> i:98
+binder 5593:5593 <> j:99
+R5611:5613 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5596:5604 Satapps.Matrix <> Apply_opt def
+R5610:5610 Satapps.Matrix <> j:99 var
+R5608:5608 Satapps.Matrix <> i:98 var
+R5606:5606 Satapps.Matrix <> M:97 var
+R5614:5617 Coq.Init.Datatypes <> None constr
+R5649:5657 Satapps.Matrix <> Apply_opt def
+R5667:5685 Satapps.Matrix <> is_empty_is_valid_1 thm
+R5667:5685 Satapps.Matrix <> is_empty_is_valid_1 thm
+R5723:5736 Coq.Lists.List <> nth_error_None thm
+R5723:5736 Coq.Lists.List <> nth_error_None thm
+R5723:5736 Coq.Lists.List <> nth_error_None thm
+prf 5765:5784 <> apply_opt_is_empty_2
+binder 5787:5787 <> T:100
+R5809:5814 Satapps.Matrix <> Matrix def
+R5816:5816 Satapps.Matrix <> T:100 var
+binder 5805:5805 <> M:101
+R5830:5833 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5820:5827 Satapps.Matrix <> is_valid def
+R5829:5829 Satapps.Matrix <> M:101 var
+R5856:5859 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5849:5851 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5834:5842 Satapps.Matrix <> Apply_opt def
+R5844:5844 Satapps.Matrix <> M:101 var
+R5852:5855 Coq.Init.Datatypes <> None constr
+R5860:5867 Satapps.Matrix <> is_empty def
+R5869:5869 Satapps.Matrix <> M:101 var
+R5879:5887 Satapps.Matrix <> Apply_opt def
+R5890:5897 Satapps.Matrix <> is_empty def
+R5900:5907 Satapps.Matrix <> is_valid def
+R5937:5947 Coq.Arith.PeanoNat Nat mul_0_l thm
+R5937:5947 Coq.Arith.PeanoNat Nat mul_0_l thm
+R5937:5947 Coq.Arith.PeanoNat Nat mul_0_l thm
+R5966:5976 Coq.Arith.PeanoNat Nat add_0_l thm
+R5966:5976 Coq.Arith.PeanoNat Nat add_0_l thm
+R5966:5976 Coq.Arith.PeanoNat Nat add_0_l thm
+R5993:6006 Coq.Lists.List <> nth_error_None thm
+R5993:6006 Coq.Lists.List <> nth_error_None thm
+R6039:6041 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6025:6030 Coq.Init.Datatypes <> length def
+R6033:6035 Satapps.Matrix <> arr def
+R6039:6041 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6025:6030 Coq.Init.Datatypes <> length def
+R6033:6035 Satapps.Matrix <> arr def
+prf 6088:6107 <> apply_opt_is_empty_3
+binder 6110:6110 <> T:102
+R6132:6137 Satapps.Matrix <> Matrix def
+R6139:6139 Satapps.Matrix <> T:102 var
+binder 6128:6128 <> M:103
+R6153:6156 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6143:6150 Satapps.Matrix <> is_empty def
+R6152:6152 Satapps.Matrix <> M:103 var
+R6179:6182 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6172:6174 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6157:6165 Satapps.Matrix <> Apply_opt def
+R6167:6167 Satapps.Matrix <> M:103 var
+R6175:6178 Coq.Init.Datatypes <> None constr
+R6183:6190 Satapps.Matrix <> is_valid def
+R6192:6192 Satapps.Matrix <> M:103 var
+R6202:6210 Satapps.Matrix <> Apply_opt def
+R6213:6220 Satapps.Matrix <> is_empty def
+R6223:6230 Satapps.Matrix <> is_valid def
+R6260:6270 Coq.Arith.PeanoNat Nat mul_0_l thm
+R6260:6270 Coq.Arith.PeanoNat Nat mul_0_l thm
+R6260:6270 Coq.Arith.PeanoNat Nat mul_0_l thm
+R6289:6299 Coq.Arith.PeanoNat Nat add_0_l thm
+R6289:6299 Coq.Arith.PeanoNat Nat add_0_l thm
+R6289:6299 Coq.Arith.PeanoNat Nat add_0_l thm
+R6316:6329 Coq.Lists.List <> nth_error_None thm
+R6316:6329 Coq.Lists.List <> nth_error_None thm
+R6362:6364 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6348:6353 Coq.Init.Datatypes <> length def
+R6356:6358 Satapps.Matrix <> arr def
+R6362:6364 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6348:6353 Coq.Init.Datatypes <> length def
+R6356:6358 Satapps.Matrix <> arr def
+def 6407:6412 <> Update
+binder 6415:6415 <> T:104
+R6428:6433 Satapps.Matrix <> Matrix def
+binder 6425:6425 <> M:105
+R6439:6441 Coq.Init.Datatypes <> nat ind
+binder 6436:6436 <> i:106
+R6447:6449 Coq.Init.Datatypes <> nat ind
+binder 6444:6444 <> j:107
+R6455:6455 Satapps.Matrix <> T:104 var
+binder 6452:6452 <> v:108
+R6459:6464 Satapps.Matrix <> Matrix def
+R6469:6469 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6473:6474 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6478:6479 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6512:6512 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6470:6470 Satapps.Matrix <> r def
+R6472:6472 Satapps.Matrix <> M:105 var
+R6475:6475 Satapps.Matrix <> c def
+R6477:6477 Satapps.Matrix <> M:105 var
+R6480:6485 Satapps.ListSpec2 <> update def
+R6511:6511 Satapps.Matrix <> v:108 var
+R6505:6507 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6497:6500 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R6504:6504 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R6496:6496 Satapps.Matrix <> i:106 var
+R6501:6501 Satapps.Matrix <> c def
+R6503:6503 Satapps.Matrix <> M:105 var
+R6508:6508 Satapps.Matrix <> j:107 var
+R6488:6490 Satapps.Matrix <> arr def
+R6492:6492 Satapps.Matrix <> M:105 var
+prf 6524:6538 <> update_is_valid
+binder 6541:6541 <> T:109
+R6563:6568 Satapps.Matrix <> Matrix def
+R6570:6570 Satapps.Matrix <> T:109 var
+binder 6559:6559 <> M:110
+binder 6573:6573 <> i:111
+binder 6575:6575 <> j:112
+binder 6577:6577 <> v:113
+R6590:6593 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6580:6587 Satapps.Matrix <> is_valid def
+R6589:6589 Satapps.Matrix <> M:110 var
+R6594:6601 Satapps.Matrix <> is_valid def
+R6604:6609 Satapps.Matrix <> Update def
+R6617:6617 Satapps.Matrix <> v:113 var
+R6615:6615 Satapps.Matrix <> j:112 var
+R6613:6613 Satapps.Matrix <> i:111 var
+R6611:6611 Satapps.Matrix <> M:110 var
+R6655:6662 Satapps.Matrix <> is_valid def
+R6672:6677 Satapps.Matrix <> Update def
+R6687:6687 Satapps.Matrix <> r def
+R6697:6697 Satapps.Matrix <> c def
+R6714:6721 Satapps.Matrix <> is_valid def
+R6746:6758 Satapps.ListSpec2 <> update_length thm
+R6746:6758 Satapps.ListSpec2 <> update_length thm
+R6746:6758 Satapps.ListSpec2 <> update_length thm
+prf 6782:6797 <> update_in_bounds
+binder 6800:6800 <> T:114
+R6822:6827 Satapps.Matrix <> Matrix def
+R6829:6829 Satapps.Matrix <> T:114 var
+binder 6818:6818 <> M:115
+binder 6832:6832 <> i:116
+binder 6834:6834 <> j:117
+binder 6836:6836 <> v:118
+binder 6838:6839 <> i':119
+binder 6841:6842 <> j':120
+R6862:6865 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6845:6853 Satapps.Matrix <> in_bounds def
+R6860:6861 Satapps.Matrix <> j':120 var
+R6857:6858 Satapps.Matrix <> i':119 var
+R6855:6855 Satapps.Matrix <> M:115 var
+R6866:6874 Satapps.Matrix <> in_bounds def
+R6896:6897 Satapps.Matrix <> j':120 var
+R6893:6894 Satapps.Matrix <> i':119 var
+R6877:6882 Satapps.Matrix <> Update def
+R6890:6890 Satapps.Matrix <> v:118 var
+R6888:6888 Satapps.Matrix <> j:117 var
+R6886:6886 Satapps.Matrix <> i:116 var
+R6884:6884 Satapps.Matrix <> M:115 var
+prf 6921:6940 <> update_out_of_bounds
+binder 6943:6943 <> T:121
+R6965:6970 Satapps.Matrix <> Matrix def
+R6972:6972 Satapps.Matrix <> T:121 var
+binder 6961:6961 <> M:122
+binder 6975:6975 <> i:123
+binder 6977:6977 <> j:124
+binder 6979:6979 <> v:125
+R6992:6995 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6982:6989 Satapps.Matrix <> is_valid def
+R6991:6991 Satapps.Matrix <> M:122 var
+R7004:7007 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6997:7000 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R6996:6996 Satapps.Matrix <> i:123 var
+R7001:7001 Satapps.Matrix <> r def
+R7003:7003 Satapps.Matrix <> M:122 var
+R7022:7024 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7008:7013 Satapps.Matrix <> Update def
+R7021:7021 Satapps.Matrix <> v:125 var
+R7019:7019 Satapps.Matrix <> j:124 var
+R7017:7017 Satapps.Matrix <> i:123 var
+R7015:7015 Satapps.Matrix <> M:122 var
+R7025:7025 Satapps.Matrix <> M:122 var
+R7058:7063 Satapps.Matrix <> Update def
+R7074:7088 Satapps.ListSpec2 <> update_overflow thm
+R7074:7088 Satapps.ListSpec2 <> update_overflow thm
+R7074:7088 Satapps.ListSpec2 <> update_overflow thm
+R7074:7088 Satapps.ListSpec2 <> update_overflow thm
+R7097:7102 Coq.Init.Logic <> eq_sym thm
+R7097:7102 Coq.Init.Logic <> eq_sym thm
+R7111:7119 Satapps.Matrix <> matrix_eq thm
+R7111:7119 Satapps.Matrix <> matrix_eq thm
+R7128:7160 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+R7128:7160 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+prf 7191:7202 <> update_empty
+binder 7205:7205 <> T:126
+R7227:7232 Satapps.Matrix <> Matrix def
+R7234:7234 Satapps.Matrix <> T:126 var
+binder 7223:7223 <> M:127
+binder 7237:7237 <> v:128
+R7250:7253 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7240:7247 Satapps.Matrix <> is_valid def
+R7249:7249 Satapps.Matrix <> M:127 var
+R7264:7268 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7299:7299 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7254:7261 Satapps.Matrix <> is_empty def
+R7263:7263 Satapps.Matrix <> M:127 var
+binder 7276:7276 <> i:129
+binder 7278:7278 <> j:130
+R7295:7297 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7281:7286 Satapps.Matrix <> Update def
+R7294:7294 Satapps.Matrix <> v:128 var
+R7292:7292 Satapps.Matrix <> j:130 var
+R7290:7290 Satapps.Matrix <> i:129 var
+R7288:7288 Satapps.Matrix <> M:127 var
+R7298:7298 Satapps.Matrix <> M:127 var
+R7333:7338 Satapps.Matrix <> Update def
+R7349:7363 Satapps.ListSpec2 <> update_overflow thm
+R7349:7363 Satapps.ListSpec2 <> update_overflow thm
+R7349:7363 Satapps.ListSpec2 <> update_overflow thm
+R7349:7363 Satapps.ListSpec2 <> update_overflow thm
+R7372:7377 Coq.Init.Logic <> eq_sym thm
+R7372:7377 Coq.Init.Logic <> eq_sym thm
+R7386:7394 Satapps.Matrix <> matrix_eq thm
+R7386:7394 Satapps.Matrix <> matrix_eq thm
+R7404:7408 Coq.Init.Logic <> proj1 thm
+R7411:7429 Satapps.Matrix <> is_empty_is_valid_1 thm
+R7404:7408 Coq.Init.Logic <> proj1 thm
+R7411:7429 Satapps.Matrix <> is_empty_is_valid_1 thm
+R7451:7469 Coq.Lists.List <> length_zero_iff_nil thm
+R7451:7469 Coq.Lists.List <> length_zero_iff_nil thm
+prf 7507:7522 <> apply_opt_update
+binder 7525:7525 <> T:131
+R7547:7552 Satapps.Matrix <> Matrix def
+binder 7543:7543 <> M:132
+binder 7555:7555 <> i:133
+binder 7557:7557 <> j:134
+R7563:7563 Satapps.Matrix <> T:131 var
+binder 7560:7560 <> v:135
+R7577:7580 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7567:7574 Satapps.Matrix <> is_valid def
+R7576:7576 Satapps.Matrix <> M:132 var
+R7596:7599 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7581:7589 Satapps.Matrix <> in_bounds def
+R7595:7595 Satapps.Matrix <> j:134 var
+R7593:7593 Satapps.Matrix <> i:133 var
+R7591:7591 Satapps.Matrix <> M:132 var
+R7630:7633 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7600:7608 Satapps.Matrix <> Apply_opt def
+R7629:7629 Satapps.Matrix <> j:134 var
+R7627:7627 Satapps.Matrix <> i:133 var
+R7611:7616 Satapps.Matrix <> Update def
+R7624:7624 Satapps.Matrix <> v:135 var
+R7622:7622 Satapps.Matrix <> j:134 var
+R7620:7620 Satapps.Matrix <> i:133 var
+R7618:7618 Satapps.Matrix <> M:132 var
+R7634:7637 Coq.Init.Datatypes <> Some constr
+R7639:7639 Satapps.Matrix <> v:135 var
+R7687:7711 Satapps.Matrix <> in_bounds_is_valid_access thm
+R7687:7711 Satapps.Matrix <> in_bounds_is_valid_access thm
+R7750:7765 Satapps.ListSpec2 <> nth_error_update thm
+R7750:7765 Satapps.ListSpec2 <> nth_error_update thm
+prf 7789:7804 <> apply_def_update
+binder 7807:7807 <> T:136
+R7829:7834 Satapps.Matrix <> Matrix def
+binder 7825:7825 <> M:137
+binder 7837:7837 <> i:138
+binder 7839:7839 <> j:139
+R7845:7845 Satapps.Matrix <> T:136 var
+binder 7842:7842 <> v:140
+R7854:7854 Satapps.Matrix <> T:136 var
+binder 7849:7851 <> def:141
+R7858:7858 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7869:7873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7859:7866 Satapps.Matrix <> is_valid def
+R7868:7868 Satapps.Matrix <> M:137 var
+R7889:7892 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7874:7882 Satapps.Matrix <> in_bounds def
+R7888:7888 Satapps.Matrix <> j:139 var
+R7886:7886 Satapps.Matrix <> i:138 var
+R7884:7884 Satapps.Matrix <> M:137 var
+R7927:7930 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7893:7901 Satapps.Matrix <> Apply_def def
+R7924:7926 Satapps.Matrix <> def:141 var
+R7922:7922 Satapps.Matrix <> j:139 var
+R7920:7920 Satapps.Matrix <> i:138 var
+R7904:7909 Satapps.Matrix <> Update def
+R7917:7917 Satapps.Matrix <> v:140 var
+R7915:7915 Satapps.Matrix <> j:139 var
+R7913:7913 Satapps.Matrix <> i:138 var
+R7911:7911 Satapps.Matrix <> M:137 var
+R7931:7931 Satapps.Matrix <> v:140 var
+R7981:8005 Satapps.Matrix <> in_bounds_is_valid_access thm
+R7981:8005 Satapps.Matrix <> in_bounds_is_valid_access thm
+R8042:8051 Satapps.ListSpec2 <> nth_update thm
+R8042:8051 Satapps.ListSpec2 <> nth_update thm
+def 8078:8080 <> Map
+binder 8083:8083 <> A:142
+binder 8085:8085 <> B:143
+R8099:8104 Satapps.Matrix <> Matrix def
+R8106:8106 Satapps.Matrix <> A:142 var
+binder 8095:8095 <> M:144
+R8114:8117 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8113:8113 Satapps.Matrix <> A:142 var
+R8118:8118 Satapps.Matrix <> B:143 var
+binder 8110:8110 <> f:145
+R8123:8128 Satapps.Matrix <> Matrix def
+R8130:8130 Satapps.Matrix <> B:143 var
+R8135:8135 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R8139:8140 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R8144:8145 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R8159:8159 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R8136:8136 Satapps.Matrix <> r def
+R8138:8138 Satapps.Matrix <> M:144 var
+R8141:8141 Satapps.Matrix <> c def
+R8143:8143 Satapps.Matrix <> M:144 var
+R8146:8148 Coq.Lists.List <> map def
+R8153:8155 Satapps.Matrix <> arr def
+R8157:8157 Satapps.Matrix <> M:144 var
+R8150:8150 Satapps.Matrix <> f:145 var
+prf 8171:8182 <> map_is_valid
+binder 8184:8184 <> A:146
+binder 8186:8186 <> B:147
+R8207:8212 Satapps.Matrix <> Matrix def
+binder 8204:8204 <> M:148
+R8220:8223 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8219:8219 Satapps.Matrix <> A:146 var
+R8224:8224 Satapps.Matrix <> B:147 var
+binder 8216:8216 <> f:149
+R8238:8241 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8228:8235 Satapps.Matrix <> is_valid def
+R8237:8237 Satapps.Matrix <> M:148 var
+R8242:8249 Satapps.Matrix <> is_valid def
+R8252:8254 Satapps.Matrix <> Map def
+R8258:8258 Satapps.Matrix <> f:149 var
+R8256:8256 Satapps.Matrix <> M:148 var
+R8290:8297 Satapps.Matrix <> is_valid def
+R8307:8309 Satapps.Matrix <> Map def
+R8319:8319 Satapps.Matrix <> r def
+R8329:8329 Satapps.Matrix <> c def
+R8346:8353 Satapps.Matrix <> is_valid def
+R8378:8387 Coq.Lists.List <> map_length thm
+R8378:8387 Coq.Lists.List <> map_length thm
+R8378:8387 Coq.Lists.List <> map_length thm
+prf 8411:8423 <> map_in_bounds
+binder 8426:8426 <> A:150
+binder 8428:8428 <> B:151
+R8449:8454 Satapps.Matrix <> Matrix def
+binder 8446:8446 <> M:152
+R8462:8465 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8461:8461 Satapps.Matrix <> A:150 var
+R8466:8466 Satapps.Matrix <> B:151 var
+binder 8458:8458 <> f:153
+binder 8469:8469 <> i:154
+binder 8471:8471 <> j:155
+R8489:8492 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8474:8482 Satapps.Matrix <> in_bounds def
+R8488:8488 Satapps.Matrix <> j:155 var
+R8486:8486 Satapps.Matrix <> i:154 var
+R8484:8484 Satapps.Matrix <> M:152 var
+R8493:8501 Satapps.Matrix <> in_bounds def
+R8515:8515 Satapps.Matrix <> j:155 var
+R8513:8513 Satapps.Matrix <> i:154 var
+R8504:8506 Satapps.Matrix <> Map def
+R8510:8510 Satapps.Matrix <> f:153 var
+R8508:8508 Satapps.Matrix <> M:152 var
+prf 8555:8563 <> map_empty
+binder 8566:8566 <> A:156
+binder 8568:8568 <> B:157
+R8589:8594 Satapps.Matrix <> Matrix def
+binder 8586:8586 <> M:158
+R8602:8605 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8601:8601 Satapps.Matrix <> A:156 var
+R8606:8606 Satapps.Matrix <> B:157 var
+binder 8598:8598 <> f:159
+R8620:8623 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8610:8617 Satapps.Matrix <> is_empty def
+R8619:8619 Satapps.Matrix <> M:158 var
+R8624:8631 Satapps.Matrix <> is_empty def
+R8634:8636 Satapps.Matrix <> Map def
+R8640:8640 Satapps.Matrix <> f:159 var
+R8638:8638 Satapps.Matrix <> M:158 var
+prf 8666:8678 <> apply_opt_map
+binder 8681:8681 <> A:160
+binder 8683:8683 <> B:161
+R8704:8709 Satapps.Matrix <> Matrix def
+binder 8701:8701 <> M:162
+R8717:8720 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8716:8716 Satapps.Matrix <> A:160 var
+R8721:8721 Satapps.Matrix <> B:161 var
+binder 8713:8713 <> f:163
+binder 8724:8724 <> i:164
+binder 8726:8726 <> j:165
+R8752:8754 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8729:8737 Satapps.Matrix <> Apply_opt def
+R8751:8751 Satapps.Matrix <> j:165 var
+R8749:8749 Satapps.Matrix <> i:164 var
+R8740:8742 Satapps.Matrix <> Map def
+R8746:8746 Satapps.Matrix <> f:163 var
+R8744:8744 Satapps.Matrix <> M:162 var
+R8756:8760 Satapps.Fun <> opt_f def
+R8762:8762 Satapps.Matrix <> f:163 var
+R8766:8774 Satapps.Matrix <> Apply_opt def
+R8780:8780 Satapps.Matrix <> j:165 var
+R8778:8778 Satapps.Matrix <> i:164 var
+R8776:8776 Satapps.Matrix <> M:162 var
+R8806:8818 Satapps.ListSpec2 <> nth_error_map thm
+R8806:8818 Satapps.ListSpec2 <> nth_error_map thm
+prf 8835:8847 <> apply_def_map
+binder 8850:8850 <> A:166
+binder 8852:8852 <> B:167
+R8874:8879 Satapps.Matrix <> Matrix def
+R8881:8881 Satapps.Matrix <> A:166 var
+binder 8870:8870 <> M:168
+R8889:8892 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8888:8888 Satapps.Matrix <> A:166 var
+R8893:8893 Satapps.Matrix <> B:167 var
+binder 8885:8885 <> f:169
+binder 8896:8896 <> i:170
+binder 8898:8898 <> j:171
+R8906:8906 Satapps.Matrix <> A:166 var
+binder 8901:8903 <> def:172
+R8941:8943 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8910:8918 Satapps.Matrix <> Apply_def def
+R8935:8935 Satapps.Matrix <> f:169 var
+R8937:8939 Satapps.Matrix <> def:172 var
+R8932:8932 Satapps.Matrix <> j:171 var
+R8930:8930 Satapps.Matrix <> i:170 var
+R8921:8923 Satapps.Matrix <> Map def
+R8927:8927 Satapps.Matrix <> f:169 var
+R8925:8925 Satapps.Matrix <> M:168 var
+R8944:8944 Satapps.Matrix <> f:169 var
+R8947:8955 Satapps.Matrix <> Apply_def def
+R8963:8965 Satapps.Matrix <> def:172 var
+R8961:8961 Satapps.Matrix <> j:171 var
+R8959:8959 Satapps.Matrix <> i:170 var
+R8957:8957 Satapps.Matrix <> M:168 var
+R8995:9001 Coq.Lists.List <> map_nth thm
+R8995:9001 Coq.Lists.List <> map_nth thm
+prf 9018:9027 <> map_update
+binder 9030:9030 <> A:173
+binder 9032:9032 <> B:174
+R9054:9059 Satapps.Matrix <> Matrix def
+R9061:9061 Satapps.Matrix <> A:173 var
+binder 9050:9050 <> M:175
+R9069:9072 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9068:9068 Satapps.Matrix <> A:173 var
+R9073:9073 Satapps.Matrix <> B:174 var
+binder 9065:9065 <> f:176
+binder 9076:9076 <> i:177
+binder 9078:9078 <> j:178
+binder 9080:9080 <> v:179
+R9105:9107 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9083:9085 Satapps.Matrix <> Map def
+R9104:9104 Satapps.Matrix <> f:176 var
+R9088:9093 Satapps.Matrix <> Update def
+R9101:9101 Satapps.Matrix <> v:179 var
+R9099:9099 Satapps.Matrix <> j:178 var
+R9097:9097 Satapps.Matrix <> i:177 var
+R9095:9095 Satapps.Matrix <> M:175 var
+R9108:9113 Satapps.Matrix <> Update def
+R9130:9130 Satapps.Matrix <> f:176 var
+R9132:9132 Satapps.Matrix <> v:179 var
+R9127:9127 Satapps.Matrix <> j:178 var
+R9125:9125 Satapps.Matrix <> i:177 var
+R9116:9118 Satapps.Matrix <> Map def
+R9122:9122 Satapps.Matrix <> f:176 var
+R9120:9120 Satapps.Matrix <> M:175 var
+R9161:9163 Satapps.Matrix <> Map def
+R9166:9171 Satapps.Matrix <> Update def
+R9174:9174 Satapps.Matrix <> r def
+R9177:9177 Satapps.Matrix <> c def
+R9195:9204 Satapps.ListSpec2 <> update_map thm
+R9195:9204 Satapps.ListSpec2 <> update_map thm
+R9195:9204 Satapps.ListSpec2 <> update_map thm
+prf 9228:9238 <> mat_map_map
+binder 9241:9241 <> A:180
+binder 9243:9243 <> B:181
+binder 9245:9245 <> C:182
+binder 9262:9262 <> M:183
+R9269:9272 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9268:9268 Satapps.Matrix <> A:180 var
+R9273:9273 Satapps.Matrix <> B:181 var
+binder 9265:9265 <> f:184
+R9281:9284 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9280:9280 Satapps.Matrix <> B:181 var
+R9285:9285 Satapps.Matrix <> C:182 var
+binder 9277:9277 <> g:185
+R9304:9306 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9289:9291 Satapps.Matrix <> Map def
+R9303:9303 Satapps.Matrix <> g:185 var
+R9294:9296 Satapps.Matrix <> Map def
+R9300:9300 Satapps.Matrix <> f:184 var
+R9298:9298 Satapps.Matrix <> M:183 var
+R9307:9309 Satapps.Matrix <> Map def
+R9314:9317 Satapps.Fun <> comp def
+R9321:9321 Satapps.Matrix <> f:184 var
+R9319:9319 Satapps.Matrix <> g:185 var
+R9311:9311 Satapps.Matrix <> M:183 var
+R9346:9348 Satapps.Matrix <> Map def
+R9351:9351 Satapps.Matrix <> r def
+R9354:9354 Satapps.Matrix <> c def
+R9357:9359 Satapps.Matrix <> arr def
+R9362:9365 Satapps.Fun <> comp def
+R9384:9390 Coq.Lists.List <> map_map thm
+R9397:9399 Coq.Init.Datatypes <> snd def
+R9384:9390 Coq.Lists.List <> map_map thm
+R9397:9399 Coq.Init.Datatypes <> snd def
+R9384:9390 Coq.Lists.List <> map_map thm
+R9397:9399 Coq.Init.Datatypes <> snd def
+def 9430:9432 <> Zip
+binder 9435:9435 <> A:186
+binder 9437:9437 <> B:187
+R9452:9457 Satapps.Matrix <> Matrix def
+R9459:9459 Satapps.Matrix <> A:186 var
+binder 9447:9448 <> M1:188
+R9468:9473 Satapps.Matrix <> Matrix def
+R9475:9475 Satapps.Matrix <> B:187 var
+binder 9463:9464 <> M2:189
+R9481:9481 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R9486:9487 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R9492:9493 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R9519:9519 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R9482:9482 Satapps.Matrix <> r def
+R9484:9485 Satapps.Matrix <> M1:188 var
+R9488:9488 Satapps.Matrix <> c def
+R9490:9491 Satapps.Matrix <> M1:188 var
+R9494:9500 Coq.Lists.List <> combine def
+R9512:9514 Satapps.Matrix <> arr def
+R9516:9517 Satapps.Matrix <> M2:189 var
+R9503:9505 Satapps.Matrix <> arr def
+R9507:9508 Satapps.Matrix <> M1:188 var
+prf 9531:9542 <> zip_is_valid
+binder 9545:9545 <> A:190
+binder 9547:9547 <> B:191
+R9571:9576 Satapps.Matrix <> Matrix def
+R9578:9578 Satapps.Matrix <> A:190 var
+binder 9566:9567 <> M1:192
+R9587:9592 Satapps.Matrix <> Matrix def
+R9594:9594 Satapps.Matrix <> B:191 var
+binder 9582:9583 <> M2:193
+R9610:9613 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9599:9606 Satapps.Matrix <> is_valid def
+R9608:9609 Satapps.Matrix <> M1:192 var
+R9625:9628 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9614:9621 Satapps.Matrix <> is_valid def
+R9623:9624 Satapps.Matrix <> M2:193 var
+R9648:9651 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9637:9639 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9629:9633 Satapps.Matrix <> shape def
+R9635:9636 Satapps.Matrix <> M1:192 var
+R9640:9644 Satapps.Matrix <> shape def
+R9646:9647 Satapps.Matrix <> M2:193 var
+R9652:9659 Satapps.Matrix <> is_valid def
+R9662:9664 Satapps.Matrix <> Zip def
+R9669:9670 Satapps.Matrix <> M2:193 var
+R9666:9667 Satapps.Matrix <> M1:192 var
+R9681:9683 Satapps.Matrix <> Zip def
+R9686:9693 Satapps.Matrix <> is_valid def
+R9696:9696 Satapps.Matrix <> r def
+R9699:9699 Satapps.Matrix <> c def
+R9746:9759 Coq.Lists.List <> combine_length thm
+R9746:9759 Coq.Lists.List <> combine_length thm
+R9746:9759 Coq.Lists.List <> combine_length thm
+R9769:9773 Coq.Init.Logic <> proj1 thm
+R9776:9783 Satapps.Matrix <> shape_eq thm
+R9769:9773 Coq.Init.Logic <> proj1 thm
+R9776:9783 Satapps.Matrix <> shape_eq thm
+R9809:9809 Satapps.Matrix <> r def
+R9812:9812 Satapps.Matrix <> c def
+R9897:9906 Coq.Arith.PeanoNat Nat min_id thm
+R9897:9906 Coq.Arith.PeanoNat Nat min_id thm
+R9897:9906 Coq.Arith.PeanoNat Nat min_id thm
+prf 9930:9942 <> zip_in_bounds
+binder 9945:9945 <> A:194
+binder 9947:9947 <> B:195
+R9970:9975 Satapps.Matrix <> Matrix def
+R9977:9977 Satapps.Matrix <> A:194 var
+binder 9965:9966 <> M1:196
+R9986:9991 Satapps.Matrix <> Matrix def
+R9993:9993 Satapps.Matrix <> B:195 var
+binder 9981:9982 <> M2:197
+binder 9996:9996 <> i:198
+binder 9998:9998 <> j:199
+R10017:10020 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10001:10009 Satapps.Matrix <> in_bounds def
+R10016:10016 Satapps.Matrix <> j:199 var
+R10014:10014 Satapps.Matrix <> i:198 var
+R10011:10012 Satapps.Matrix <> M1:196 var
+R10037:10040 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10021:10029 Satapps.Matrix <> in_bounds def
+R10036:10036 Satapps.Matrix <> j:199 var
+R10034:10034 Satapps.Matrix <> i:198 var
+R10031:10032 Satapps.Matrix <> M2:197 var
+R10041:10049 Satapps.Matrix <> in_bounds def
+R10065:10065 Satapps.Matrix <> j:199 var
+R10063:10063 Satapps.Matrix <> i:198 var
+R10052:10054 Satapps.Matrix <> Zip def
+R10059:10060 Satapps.Matrix <> M2:197 var
+R10056:10057 Satapps.Matrix <> M1:196 var
+prf 10105:10117 <> apply_opt_zip
+binder 10120:10120 <> A:200
+binder 10122:10122 <> B:201
+R10145:10150 Satapps.Matrix <> Matrix def
+R10152:10152 Satapps.Matrix <> A:200 var
+binder 10140:10141 <> M1:202
+R10161:10166 Satapps.Matrix <> Matrix def
+R10168:10168 Satapps.Matrix <> B:201 var
+binder 10156:10157 <> M2:203
+binder 10171:10171 <> i:204
+binder 10173:10173 <> j:205
+R10187:10190 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10176:10183 Satapps.Matrix <> is_valid def
+R10185:10186 Satapps.Matrix <> M1:202 var
+R10202:10205 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10191:10198 Satapps.Matrix <> is_valid def
+R10200:10201 Satapps.Matrix <> M2:203 var
+R10225:10228 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10214:10216 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10206:10210 Satapps.Matrix <> shape def
+R10212:10213 Satapps.Matrix <> M1:202 var
+R10217:10221 Satapps.Matrix <> shape def
+R10223:10224 Satapps.Matrix <> M2:203 var
+R10254:10256 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10229:10237 Satapps.Matrix <> Apply_opt def
+R10253:10253 Satapps.Matrix <> j:205 var
+R10251:10251 Satapps.Matrix <> i:204 var
+R10240:10242 Satapps.Matrix <> Zip def
+R10247:10248 Satapps.Matrix <> M2:203 var
+R10244:10245 Satapps.Matrix <> M1:202 var
+R10257:10269 Satapps.Pair <> fact_opt_pair def
+R10271:10272 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10289:10292 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10309:10310 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10273:10281 Satapps.Matrix <> Apply_opt def
+R10288:10288 Satapps.Matrix <> j:205 var
+R10286:10286 Satapps.Matrix <> i:204 var
+R10283:10284 Satapps.Matrix <> M1:202 var
+R10293:10301 Satapps.Matrix <> Apply_opt def
+R10308:10308 Satapps.Matrix <> j:205 var
+R10306:10306 Satapps.Matrix <> i:204 var
+R10303:10304 Satapps.Matrix <> M2:203 var
+R10320:10327 Satapps.Matrix <> is_valid def
+R10369:10376 Satapps.Matrix <> shape_eq thm
+R10369:10376 Satapps.Matrix <> shape_eq thm
+R10409:10417 Satapps.Matrix <> Apply_opt def
+R10420:10422 Satapps.Matrix <> Zip def
+R10452:10468 Satapps.ListSpec2 <> combine_nth_error thm
+R10452:10468 Satapps.ListSpec2 <> combine_nth_error thm
+R10452:10468 Satapps.ListSpec2 <> combine_nth_error thm
+R10452:10468 Satapps.ListSpec2 <> combine_nth_error thm
+R10478:10478 Satapps.Matrix <> c def
+prf 10543:10555 <> apply_def_zip
+binder 10558:10558 <> A:206
+binder 10560:10560 <> B:207
+R10583:10588 Satapps.Matrix <> Matrix def
+R10590:10590 Satapps.Matrix <> A:206 var
+binder 10578:10579 <> M1:208
+R10599:10604 Satapps.Matrix <> Matrix def
+R10606:10606 Satapps.Matrix <> B:207 var
+binder 10594:10595 <> M2:209
+binder 10609:10609 <> i:210
+binder 10611:10611 <> j:211
+binder 10613:10614 <> d1:212
+binder 10616:10617 <> d2:213
+R10631:10634 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10620:10627 Satapps.Matrix <> is_valid def
+R10629:10630 Satapps.Matrix <> M1:208 var
+R10646:10649 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10635:10642 Satapps.Matrix <> is_valid def
+R10644:10645 Satapps.Matrix <> M2:209 var
+R10669:10672 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10658:10660 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10650:10654 Satapps.Matrix <> shape def
+R10656:10657 Satapps.Matrix <> M1:208 var
+R10661:10665 Satapps.Matrix <> shape def
+R10667:10668 Satapps.Matrix <> M2:209 var
+R10707:10709 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10673:10681 Satapps.Matrix <> Apply_def def
+R10699:10699 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10702:10703 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10706:10706 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10700:10701 Satapps.Matrix <> d1:212 var
+R10704:10705 Satapps.Matrix <> d2:213 var
+R10697:10697 Satapps.Matrix <> j:211 var
+R10695:10695 Satapps.Matrix <> i:210 var
+R10684:10686 Satapps.Matrix <> Zip def
+R10691:10692 Satapps.Matrix <> M2:209 var
+R10688:10689 Satapps.Matrix <> M1:208 var
+R10710:10711 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10731:10734 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10754:10755 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10712:10720 Satapps.Matrix <> Apply_def def
+R10729:10730 Satapps.Matrix <> d1:212 var
+R10727:10727 Satapps.Matrix <> j:211 var
+R10725:10725 Satapps.Matrix <> i:210 var
+R10722:10723 Satapps.Matrix <> M1:208 var
+R10735:10743 Satapps.Matrix <> Apply_def def
+R10752:10753 Satapps.Matrix <> d2:213 var
+R10750:10750 Satapps.Matrix <> j:211 var
+R10748:10748 Satapps.Matrix <> i:210 var
+R10745:10746 Satapps.Matrix <> M2:209 var
+R10765:10773 Satapps.Matrix <> Apply_def def
+R10776:10778 Satapps.Matrix <> Zip def
+R10781:10788 Satapps.Matrix <> is_valid def
+R10836:10843 Satapps.Matrix <> shape_eq thm
+R10836:10843 Satapps.Matrix <> shape_eq thm
+R10884:10894 Coq.Lists.List <> combine_nth thm
+R10884:10894 Coq.Lists.List <> combine_nth thm
+R10884:10894 Coq.Lists.List <> combine_nth thm
+R10884:10894 Coq.Lists.List <> combine_nth thm
+prf 10964:10973 <> zip_update
+binder 10976:10976 <> A:214
+binder 10978:10978 <> B:215
+R11001:11006 Satapps.Matrix <> Matrix def
+R11008:11008 Satapps.Matrix <> A:214 var
+binder 10996:10997 <> M1:216
+R11017:11022 Satapps.Matrix <> Matrix def
+R11024:11024 Satapps.Matrix <> B:215 var
+binder 11012:11013 <> M2:217
+binder 11027:11027 <> i:218
+binder 11029:11029 <> j:219
+binder 11031:11032 <> d1:220
+binder 11034:11035 <> d2:221
+R11057:11060 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11046:11048 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11038:11042 Satapps.Matrix <> shape def
+R11044:11045 Satapps.Matrix <> M1:216 var
+R11049:11053 Satapps.Matrix <> shape def
+R11055:11056 Satapps.Matrix <> M2:217 var
+R11092:11094 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11061:11066 Satapps.Matrix <> Update def
+R11084:11084 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R11087:11088 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R11091:11091 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R11085:11086 Satapps.Matrix <> d1:220 var
+R11089:11090 Satapps.Matrix <> d2:221 var
+R11082:11082 Satapps.Matrix <> j:219 var
+R11080:11080 Satapps.Matrix <> i:218 var
+R11069:11071 Satapps.Matrix <> Zip def
+R11076:11077 Satapps.Matrix <> M2:217 var
+R11073:11074 Satapps.Matrix <> M1:216 var
+R11095:11097 Satapps.Matrix <> Zip def
+R11119:11124 Satapps.Matrix <> Update def
+R11133:11134 Satapps.Matrix <> d2:221 var
+R11131:11131 Satapps.Matrix <> j:219 var
+R11129:11129 Satapps.Matrix <> i:218 var
+R11126:11127 Satapps.Matrix <> M2:217 var
+R11100:11105 Satapps.Matrix <> Update def
+R11114:11115 Satapps.Matrix <> d1:220 var
+R11112:11112 Satapps.Matrix <> j:219 var
+R11110:11110 Satapps.Matrix <> i:218 var
+R11107:11108 Satapps.Matrix <> M1:216 var
+R11145:11152 Satapps.Matrix <> is_valid def
+R11155:11160 Satapps.Matrix <> Update def
+R11163:11165 Satapps.Matrix <> Zip def
+R11168:11168 Satapps.Matrix <> r def
+R11171:11171 Satapps.Matrix <> c def
+R11174:11176 Satapps.Matrix <> arr def
+R11221:11228 Satapps.Matrix <> shape_eq thm
+R11221:11228 Satapps.Matrix <> shape_eq thm
+R11246:11246 Satapps.Matrix <> r def
+R11249:11249 Satapps.Matrix <> c def
+R11283:11296 Satapps.ListSpec2 <> combine_update thm
+R11283:11296 Satapps.ListSpec2 <> combine_update thm
+R11283:11296 Satapps.ListSpec2 <> combine_update thm
+def 11336:11343 <> MatBinop
+binder 11346:11346 <> A:222
+binder 11348:11348 <> B:223
+binder 11350:11350 <> C:224
+R11366:11370 Satapps.Algebra <> binop def
+R11372:11372 Satapps.Matrix <> A:222 var
+R11374:11374 Satapps.Matrix <> B:223 var
+R11376:11376 Satapps.Matrix <> C:224 var
+binder 11360:11362 <> bin:225
+R11380:11384 Satapps.Algebra <> binop def
+binder 11393:11394 <> M1:226
+binder 11403:11404 <> M2:227
+R11409:11411 Satapps.Matrix <> Map def
+R11426:11436 Satapps.Pair <> bin_to_pair def
+R11438:11440 Satapps.Matrix <> bin:225 var
+R11414:11416 Satapps.Matrix <> Zip def
+R11421:11422 Satapps.Matrix <> M2:227 var
+R11418:11419 Satapps.Matrix <> M1:226 var
+prf 11453:11470 <> mat_binop_is_valid
+binder 11473:11473 <> A:228
+binder 11475:11475 <> B:229
+binder 11477:11477 <> C:230
+binder 11494:11495 <> M1:231
+binder 11497:11498 <> M2:232
+R11507:11511 Satapps.Algebra <> binop def
+R11513:11513 Satapps.Matrix <> A:228 var
+R11515:11515 Satapps.Matrix <> B:229 var
+R11517:11517 Satapps.Matrix <> C:230 var
+binder 11501:11503 <> bin:233
+R11532:11535 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11521:11528 Satapps.Matrix <> is_valid def
+R11530:11531 Satapps.Matrix <> M1:231 var
+R11547:11550 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11536:11543 Satapps.Matrix <> is_valid def
+R11545:11546 Satapps.Matrix <> M2:232 var
+R11570:11573 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11559:11561 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11551:11555 Satapps.Matrix <> shape def
+R11557:11558 Satapps.Matrix <> M1:231 var
+R11562:11566 Satapps.Matrix <> shape def
+R11568:11569 Satapps.Matrix <> M2:232 var
+R11574:11581 Satapps.Matrix <> is_valid def
+R11584:11591 Satapps.Matrix <> MatBinop def
+R11600:11601 Satapps.Matrix <> M2:232 var
+R11597:11598 Satapps.Matrix <> M1:231 var
+R11593:11595 Satapps.Matrix <> bin:233 var
+R11644:11655 Satapps.Matrix <> map_is_valid thm
+R11644:11655 Satapps.Matrix <> map_is_valid thm
+R11664:11675 Satapps.Matrix <> zip_is_valid thm
+R11664:11675 Satapps.Matrix <> zip_is_valid thm
+prf 11713:11731 <> mat_binop_in_bounds
+binder 11734:11734 <> A:234
+binder 11736:11736 <> B:235
+binder 11738:11738 <> C:236
+R11761:11766 Satapps.Matrix <> Matrix def
+R11768:11768 Satapps.Matrix <> A:234 var
+binder 11756:11757 <> M1:237
+R11777:11782 Satapps.Matrix <> Matrix def
+R11784:11784 Satapps.Matrix <> B:235 var
+binder 11772:11773 <> M2:238
+R11794:11798 Satapps.Algebra <> binop def
+R11800:11800 Satapps.Matrix <> A:234 var
+R11802:11802 Satapps.Matrix <> B:235 var
+R11804:11804 Satapps.Matrix <> C:236 var
+binder 11788:11790 <> bin:239
+binder 11808:11808 <> i:240
+binder 11810:11810 <> j:241
+R11829:11832 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11813:11821 Satapps.Matrix <> in_bounds def
+R11828:11828 Satapps.Matrix <> j:241 var
+R11826:11826 Satapps.Matrix <> i:240 var
+R11823:11824 Satapps.Matrix <> M1:237 var
+R11849:11852 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11833:11841 Satapps.Matrix <> in_bounds def
+R11848:11848 Satapps.Matrix <> j:241 var
+R11846:11846 Satapps.Matrix <> i:240 var
+R11843:11844 Satapps.Matrix <> M2:238 var
+R11853:11861 Satapps.Matrix <> in_bounds def
+R11886:11886 Satapps.Matrix <> j:241 var
+R11884:11884 Satapps.Matrix <> i:240 var
+R11864:11871 Satapps.Matrix <> MatBinop def
+R11880:11881 Satapps.Matrix <> M2:238 var
+R11877:11878 Satapps.Matrix <> M1:237 var
+R11873:11875 Satapps.Matrix <> bin:239 var
+prf 11926:11945 <> mat_binop_list_binop
+binder 11948:11948 <> A:242
+binder 11950:11950 <> B:243
+binder 11952:11952 <> C:244
+R11975:11980 Satapps.Matrix <> Matrix def
+R11982:11982 Satapps.Matrix <> A:242 var
+binder 11970:11971 <> M1:245
+R11991:11996 Satapps.Matrix <> Matrix def
+R11998:11998 Satapps.Matrix <> B:243 var
+binder 11986:11987 <> M2:246
+R12008:12012 Satapps.Algebra <> binop def
+R12014:12014 Satapps.Matrix <> A:242 var
+R12016:12016 Satapps.Matrix <> B:243 var
+R12018:12018 Satapps.Matrix <> C:244 var
+binder 12002:12004 <> bin:247
+R12046:12048 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12022:12024 Satapps.Matrix <> arr def
+R12027:12034 Satapps.Matrix <> MatBinop def
+R12043:12044 Satapps.Matrix <> M2:246 var
+R12040:12041 Satapps.Matrix <> M1:245 var
+R12036:12038 Satapps.Matrix <> bin:247 var
+R12049:12058 Satapps.ListSpec2 <> list_binop def
+R12078:12080 Satapps.Matrix <> bin:247 var
+R12070:12072 Satapps.Matrix <> arr def
+R12074:12075 Satapps.Matrix <> M2:246 var
+R12061:12063 Satapps.Matrix <> arr def
+R12065:12066 Satapps.Matrix <> M1:245 var
+prf 12122:12140 <> apply_opt_mat_binop
+binder 12143:12143 <> A:248
+binder 12145:12145 <> B:249
+binder 12147:12147 <> C:250
+R12170:12175 Satapps.Matrix <> Matrix def
+R12177:12177 Satapps.Matrix <> A:248 var
+binder 12165:12166 <> M1:251
+R12186:12191 Satapps.Matrix <> Matrix def
+R12193:12193 Satapps.Matrix <> B:249 var
+binder 12181:12182 <> M2:252
+R12203:12207 Satapps.Algebra <> binop def
+R12209:12209 Satapps.Matrix <> A:248 var
+R12211:12211 Satapps.Matrix <> B:249 var
+R12213:12213 Satapps.Matrix <> C:250 var
+binder 12197:12199 <> bin:253
+binder 12216:12216 <> i:254
+binder 12218:12218 <> j:255
+R12233:12236 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12222:12229 Satapps.Matrix <> is_valid def
+R12231:12232 Satapps.Matrix <> M1:251 var
+R12248:12251 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12237:12244 Satapps.Matrix <> is_valid def
+R12246:12247 Satapps.Matrix <> M2:252 var
+R12271:12274 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12260:12262 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12252:12256 Satapps.Matrix <> shape def
+R12258:12259 Satapps.Matrix <> M1:251 var
+R12263:12267 Satapps.Matrix <> shape def
+R12269:12270 Satapps.Matrix <> M2:252 var
+R12309:12311 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12275:12283 Satapps.Matrix <> Apply_opt def
+R12308:12308 Satapps.Matrix <> j:255 var
+R12306:12306 Satapps.Matrix <> i:254 var
+R12286:12293 Satapps.Matrix <> MatBinop def
+R12302:12303 Satapps.Matrix <> M2:252 var
+R12299:12300 Satapps.Matrix <> M1:251 var
+R12295:12297 Satapps.Matrix <> bin:253 var
+R12313:12317 Satapps.Fun <> opt_f def
+R12320:12330 Satapps.Pair <> bin_to_pair def
+R12332:12334 Satapps.Matrix <> bin:253 var
+R12339:12351 Satapps.Pair <> fact_opt_pair def
+R12353:12354 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12371:12374 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12391:12392 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12355:12363 Satapps.Matrix <> Apply_opt def
+R12370:12370 Satapps.Matrix <> j:255 var
+R12368:12368 Satapps.Matrix <> i:254 var
+R12365:12366 Satapps.Matrix <> M1:251 var
+R12375:12383 Satapps.Matrix <> Apply_opt def
+R12390:12390 Satapps.Matrix <> j:255 var
+R12388:12388 Satapps.Matrix <> i:254 var
+R12385:12386 Satapps.Matrix <> M2:252 var
+R12440:12447 Satapps.Matrix <> MatBinop def
+R12458:12470 Satapps.Matrix <> apply_opt_map thm
+R12458:12470 Satapps.Matrix <> apply_opt_map thm
+R12458:12470 Satapps.Matrix <> apply_opt_map thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+R12481:12493 Satapps.Matrix <> apply_opt_zip thm
+prf 12538:12556 <> apply_def_mat_binop
+binder 12559:12559 <> A:256
+binder 12561:12561 <> B:257
+binder 12563:12563 <> C:258
+R12586:12591 Satapps.Matrix <> Matrix def
+R12593:12593 Satapps.Matrix <> A:256 var
+binder 12581:12582 <> M1:259
+R12602:12607 Satapps.Matrix <> Matrix def
+R12609:12609 Satapps.Matrix <> B:257 var
+binder 12597:12598 <> M2:260
+R12619:12623 Satapps.Algebra <> binop def
+R12625:12625 Satapps.Matrix <> A:256 var
+R12627:12627 Satapps.Matrix <> B:257 var
+R12629:12629 Satapps.Matrix <> C:258 var
+binder 12613:12615 <> bin:261
+binder 12632:12632 <> i:262
+binder 12634:12634 <> j:263
+binder 12636:12637 <> d1:264
+binder 12639:12640 <> d2:265
+R12654:12657 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12643:12650 Satapps.Matrix <> is_valid def
+R12652:12653 Satapps.Matrix <> M1:259 var
+R12669:12672 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12658:12665 Satapps.Matrix <> is_valid def
+R12667:12668 Satapps.Matrix <> M2:260 var
+R12692:12695 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12681:12683 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12673:12677 Satapps.Matrix <> shape def
+R12679:12680 Satapps.Matrix <> M1:259 var
+R12684:12688 Satapps.Matrix <> shape def
+R12690:12691 Satapps.Matrix <> M2:260 var
+R12742:12744 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12696:12704 Satapps.Matrix <> Apply_def def
+R12732:12734 Satapps.Matrix <> bin:261 var
+R12736:12737 Satapps.Matrix <> d1:264 var
+R12739:12740 Satapps.Matrix <> d2:265 var
+R12729:12729 Satapps.Matrix <> j:263 var
+R12727:12727 Satapps.Matrix <> i:262 var
+R12707:12714 Satapps.Matrix <> MatBinop def
+R12723:12724 Satapps.Matrix <> M2:260 var
+R12720:12721 Satapps.Matrix <> M1:259 var
+R12716:12718 Satapps.Matrix <> bin:261 var
+R12745:12747 Satapps.Matrix <> bin:261 var
+R12750:12758 Satapps.Matrix <> Apply_def def
+R12767:12768 Satapps.Matrix <> d1:264 var
+R12765:12765 Satapps.Matrix <> j:263 var
+R12763:12763 Satapps.Matrix <> i:262 var
+R12760:12761 Satapps.Matrix <> M1:259 var
+R12772:12780 Satapps.Matrix <> Apply_def def
+R12789:12790 Satapps.Matrix <> d2:265 var
+R12787:12787 Satapps.Matrix <> j:263 var
+R12785:12785 Satapps.Matrix <> i:262 var
+R12782:12783 Satapps.Matrix <> M2:260 var
+R12844:12851 Satapps.Matrix <> MatBinop def
+R12860:12872 Satapps.Matrix <> apply_def_map thm
+R12908:12908 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12911:12912 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12915:12915 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12887:12897 Satapps.Pair <> bin_to_pair def
+R12875:12877 Satapps.Matrix <> Zip def
+R12860:12872 Satapps.Matrix <> apply_def_map thm
+R12908:12908 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12911:12912 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12915:12915 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12887:12897 Satapps.Pair <> bin_to_pair def
+R12875:12877 Satapps.Matrix <> Zip def
+R12926:12936 Satapps.Pair <> bin_to_pair def
+R12963:12973 Satapps.Pair <> bin_to_pair def
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+R12995:13007 Satapps.Matrix <> apply_def_zip thm
+prf 13059:13074 <> mat_binop_update
+binder 13077:13077 <> A:266
+binder 13079:13079 <> B:267
+binder 13081:13081 <> C:268
+R13104:13109 Satapps.Matrix <> Matrix def
+R13111:13111 Satapps.Matrix <> A:266 var
+binder 13099:13100 <> M1:269
+R13120:13125 Satapps.Matrix <> Matrix def
+R13127:13127 Satapps.Matrix <> B:267 var
+binder 13115:13116 <> M2:270
+R13137:13141 Satapps.Algebra <> binop def
+R13143:13143 Satapps.Matrix <> A:266 var
+R13145:13145 Satapps.Matrix <> B:267 var
+R13147:13147 Satapps.Matrix <> C:268 var
+binder 13131:13133 <> bin:271
+binder 13150:13150 <> i:272
+binder 13152:13152 <> j:273
+binder 13154:13155 <> d1:274
+binder 13157:13158 <> d2:275
+R13180:13183 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13169:13171 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13161:13165 Satapps.Matrix <> shape def
+R13167:13168 Satapps.Matrix <> M1:269 var
+R13172:13176 Satapps.Matrix <> shape def
+R13178:13179 Satapps.Matrix <> M2:270 var
+R13227:13229 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13184:13189 Satapps.Matrix <> Update def
+R13217:13219 Satapps.Matrix <> bin:271 var
+R13221:13222 Satapps.Matrix <> d1:274 var
+R13224:13225 Satapps.Matrix <> d2:275 var
+R13214:13214 Satapps.Matrix <> j:273 var
+R13212:13212 Satapps.Matrix <> i:272 var
+R13192:13199 Satapps.Matrix <> MatBinop def
+R13208:13209 Satapps.Matrix <> M2:270 var
+R13205:13206 Satapps.Matrix <> M1:269 var
+R13201:13203 Satapps.Matrix <> bin:271 var
+R13230:13237 Satapps.Matrix <> MatBinop def
+R13263:13268 Satapps.Matrix <> Update def
+R13277:13278 Satapps.Matrix <> d2:275 var
+R13275:13275 Satapps.Matrix <> j:273 var
+R13273:13273 Satapps.Matrix <> i:272 var
+R13270:13271 Satapps.Matrix <> M2:270 var
+R13244:13249 Satapps.Matrix <> Update def
+R13258:13259 Satapps.Matrix <> d1:274 var
+R13256:13256 Satapps.Matrix <> j:273 var
+R13254:13254 Satapps.Matrix <> i:272 var
+R13251:13252 Satapps.Matrix <> M1:269 var
+R13239:13241 Satapps.Matrix <> bin:271 var
+R13321:13328 Satapps.Matrix <> MatBinop def
+R13337:13346 Satapps.Matrix <> map_update thm
+R13381:13381 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13384:13385 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13388:13388 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13361:13371 Satapps.Pair <> bin_to_pair def
+R13349:13351 Satapps.Matrix <> Zip def
+R13337:13346 Satapps.Matrix <> map_update thm
+R13381:13381 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13384:13385 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13388:13388 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13361:13371 Satapps.Pair <> bin_to_pair def
+R13349:13351 Satapps.Matrix <> Zip def
+R13399:13409 Satapps.Pair <> bin_to_pair def
+R13436:13446 Satapps.Pair <> bin_to_pair def
+R13471:13480 Satapps.Matrix <> zip_update thm
+R13471:13480 Satapps.Matrix <> zip_update thm
+R13471:13480 Satapps.Matrix <> zip_update thm
+R13471:13480 Satapps.Matrix <> zip_update thm
+prf 13511:13523 <> mat_binop_map
+binder 13526:13526 <> A:276
+binder 13528:13528 <> B:277
+binder 13530:13530 <> C:278
+binder 13532:13532 <> D:279
+R13555:13560 Satapps.Matrix <> Matrix def
+R13562:13562 Satapps.Matrix <> A:276 var
+binder 13550:13551 <> M1:280
+R13571:13576 Satapps.Matrix <> Matrix def
+R13578:13578 Satapps.Matrix <> B:277 var
+binder 13566:13567 <> M2:281
+R13588:13592 Satapps.Algebra <> binop def
+R13594:13594 Satapps.Matrix <> A:276 var
+R13596:13596 Satapps.Matrix <> B:277 var
+R13598:13598 Satapps.Matrix <> C:278 var
+binder 13582:13584 <> bin:282
+R13606:13609 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13605:13605 Satapps.Matrix <> C:278 var
+R13610:13610 Satapps.Matrix <> D:279 var
+binder 13602:13602 <> f:283
+R13633:13636 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13622:13624 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13614:13618 Satapps.Matrix <> shape def
+R13620:13621 Satapps.Matrix <> M1:280 var
+R13625:13629 Satapps.Matrix <> shape def
+R13631:13632 Satapps.Matrix <> M2:281 var
+R13663:13665 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13637:13639 Satapps.Matrix <> Map def
+R13662:13662 Satapps.Matrix <> f:283 var
+R13642:13649 Satapps.Matrix <> MatBinop def
+R13658:13659 Satapps.Matrix <> M2:281 var
+R13655:13656 Satapps.Matrix <> M1:280 var
+R13651:13653 Satapps.Matrix <> bin:282 var
+R13666:13673 Satapps.Matrix <> MatBinop def
+R13697:13698 Satapps.Matrix <> M2:281 var
+R13694:13695 Satapps.Matrix <> M1:280 var
+R13676:13685 Satapps.Algebra <> comp_f_bin def
+R13689:13691 Satapps.Matrix <> bin:282 var
+R13687:13687 Satapps.Matrix <> f:283 var
+R13733:13740 Satapps.Matrix <> MatBinop def
+R13751:13761 Satapps.Matrix <> mat_map_map thm
+R13751:13761 Satapps.Matrix <> mat_map_map thm
+R13751:13761 Satapps.Matrix <> mat_map_map thm
+R13772:13793 Satapps.Pair <> bin_to_pair_comp_f_bin thm
+R13772:13793 Satapps.Pair <> bin_to_pair_comp_f_bin thm
+R13772:13793 Satapps.Pair <> bin_to_pair_comp_f_bin thm
+def 13820:13833 <> mat_binop_comm
+binder 13836:13836 <> A:284
+binder 13838:13838 <> B:285
+R13860:13864 Satapps.Algebra <> binop def
+R13866:13866 Satapps.Matrix <> A:284 var
+R13868:13868 Satapps.Matrix <> A:284 var
+R13870:13870 Satapps.Matrix <> B:285 var
+binder 13856:13856 <> f:286
+binder 13873:13874 <> M1:287
+binder 13876:13877 <> M2:288
+R13891:13894 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13880:13887 Satapps.Matrix <> is_valid def
+R13889:13890 Satapps.Matrix <> M1:287 var
+R13906:13909 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13895:13902 Satapps.Matrix <> is_valid def
+R13904:13905 Satapps.Matrix <> M2:288 var
+R13929:13932 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13918:13920 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13910:13914 Satapps.Matrix <> shape def
+R13916:13917 Satapps.Matrix <> M1:287 var
+R13921:13925 Satapps.Matrix <> shape def
+R13927:13928 Satapps.Matrix <> M2:288 var
+R13939:13942 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13933:13936 Satapps.Algebra <> comm def
+R13938:13938 Satapps.Matrix <> f:286 var
+R13959:13961 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13943:13950 Satapps.Matrix <> MatBinop def
+R13957:13958 Satapps.Matrix <> M2:288 var
+R13954:13955 Satapps.Matrix <> M1:287 var
+R13952:13952 Satapps.Matrix <> f:286 var
+R13962:13969 Satapps.Matrix <> MatBinop def
+R13976:13977 Satapps.Matrix <> M1:287 var
+R13973:13974 Satapps.Matrix <> M2:288 var
+R13971:13971 Satapps.Matrix <> f:286 var
+R14024:14032 Satapps.Matrix <> matrix_eq thm
+R14024:14032 Satapps.Matrix <> matrix_eq thm
+R14024:14032 Satapps.Matrix <> matrix_eq thm
+R14043:14062 Satapps.Matrix <> mat_binop_list_binop thm
+R14043:14062 Satapps.Matrix <> mat_binop_list_binop thm
+R14043:14062 Satapps.Matrix <> mat_binop_list_binop thm
+R14072:14079 Satapps.Matrix <> MatBinop def
+R14089:14091 Satapps.Matrix <> Map def
+R14094:14096 Satapps.Matrix <> Zip def
+R14099:14099 Satapps.Matrix <> r def
+R14102:14102 Satapps.Matrix <> c def
+R14120:14134 Satapps.ListSpec2 <> list_binop_comm def
+R14120:14134 Satapps.ListSpec2 <> list_binop_comm def
+R14120:14134 Satapps.ListSpec2 <> list_binop_comm def
+R14120:14134 Satapps.ListSpec2 <> list_binop_comm def
+R14120:14134 Satapps.ListSpec2 <> list_binop_comm def
+R14143:14150 Satapps.Matrix <> shape_eq thm
+R14143:14150 Satapps.Matrix <> shape_eq thm
+R14171:14171 Satapps.Matrix <> r def
+R14174:14174 Satapps.Matrix <> c def
+R14236:14243 Satapps.Matrix <> is_valid def
+R14261:14268 Satapps.Matrix <> is_valid def
+R14313:14320 Satapps.Matrix <> shape_eq thm
+R14313:14320 Satapps.Matrix <> shape_eq thm
+def 14363:14369 <> VConcat
+binder 14372:14372 <> A:289
+R14387:14392 Satapps.Matrix <> Matrix def
+R14394:14394 Satapps.Matrix <> A:289 var
+binder 14382:14383 <> M1:290
+R14403:14408 Satapps.Matrix <> Matrix def
+R14410:14410 Satapps.Matrix <> A:289 var
+binder 14398:14399 <> M2:291
+R14416:14416 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14432:14433 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14438:14439 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14460:14460 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14417:14417 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R14422:14426 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R14431:14431 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R14418:14418 Satapps.Matrix <> r def
+R14420:14421 Satapps.Matrix <> M1:290 var
+R14427:14427 Satapps.Matrix <> r def
+R14429:14430 Satapps.Matrix <> M2:291 var
+R14434:14434 Satapps.Matrix <> c def
+R14436:14437 Satapps.Matrix <> M1:290 var
+R14440:14440 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R14447:14452 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R14459:14459 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R14441:14443 Satapps.Matrix <> arr def
+R14445:14446 Satapps.Matrix <> M1:290 var
+R14453:14455 Satapps.Matrix <> arr def
+R14457:14458 Satapps.Matrix <> M2:291 var
+prf 14472:14487 <> vconcat_is_valid
+binder 14490:14490 <> A:292
+R14513:14518 Satapps.Matrix <> Matrix def
+R14520:14520 Satapps.Matrix <> A:292 var
+binder 14508:14509 <> M1:293
+R14529:14534 Satapps.Matrix <> Matrix def
+R14536:14536 Satapps.Matrix <> A:292 var
+binder 14524:14525 <> M2:294
+R14551:14554 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14540:14547 Satapps.Matrix <> is_valid def
+R14549:14550 Satapps.Matrix <> M1:293 var
+R14566:14569 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14555:14562 Satapps.Matrix <> is_valid def
+R14564:14565 Satapps.Matrix <> M2:294 var
+R14581:14584 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14574:14576 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14570:14570 Satapps.Matrix <> c def
+R14572:14573 Satapps.Matrix <> M1:293 var
+R14577:14577 Satapps.Matrix <> c def
+R14579:14580 Satapps.Matrix <> M2:294 var
+R14585:14592 Satapps.Matrix <> is_valid def
+R14595:14601 Satapps.Matrix <> VConcat def
+R14606:14607 Satapps.Matrix <> M2:294 var
+R14603:14604 Satapps.Matrix <> M1:293 var
+R14618:14625 Satapps.Matrix <> is_valid def
+R14628:14634 Satapps.Matrix <> VConcat def
+R14637:14637 Satapps.Matrix <> r def
+R14640:14640 Satapps.Matrix <> c def
+R14643:14645 Satapps.Matrix <> arr def
+R14691:14700 Coq.Lists.List <> app_length thm
+R14691:14700 Coq.Lists.List <> app_length thm
+R14691:14700 Coq.Lists.List <> app_length thm
+prf 14722:14736 <> vconcat_empty_l
+binder 14739:14739 <> A:295
+R14762:14767 Satapps.Matrix <> Matrix def
+R14769:14769 Satapps.Matrix <> A:295 var
+binder 14757:14758 <> M1:296
+binder 14772:14773 <> M2:297
+R14787:14790 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14776:14783 Satapps.Matrix <> is_valid def
+R14785:14786 Satapps.Matrix <> M1:296 var
+R14802:14805 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14791:14798 Satapps.Matrix <> is_valid def
+R14800:14801 Satapps.Matrix <> M2:297 var
+R14817:14819 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14810:14812 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14806:14806 Satapps.Matrix <> c def
+R14808:14809 Satapps.Matrix <> M1:296 var
+R14813:14813 Satapps.Matrix <> c def
+R14815:14816 Satapps.Matrix <> M2:297 var
+R14831:14834 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14820:14827 Satapps.Matrix <> is_empty def
+R14829:14830 Satapps.Matrix <> M1:296 var
+R14843:14846 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14839:14841 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R14835:14835 Satapps.Matrix <> c def
+R14837:14838 Satapps.Matrix <> M2:297 var
+R14860:14862 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14847:14853 Satapps.Matrix <> VConcat def
+R14858:14859 Satapps.Matrix <> M2:297 var
+R14855:14856 Satapps.Matrix <> M1:296 var
+R14863:14864 Satapps.Matrix <> M2:297 var
+R14930:14932 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14911:14913 Satapps.Matrix <> arr def
+R14916:14922 Satapps.Matrix <> VConcat def
+R14933:14935 Satapps.Matrix <> arr def
+R14930:14932 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14911:14913 Satapps.Matrix <> arr def
+R14916:14922 Satapps.Matrix <> VConcat def
+R14933:14935 Satapps.Matrix <> arr def
+R14949:14967 Satapps.Matrix <> is_empty_is_valid_1 thm
+R14949:14967 Satapps.Matrix <> is_empty_is_valid_1 thm
+R14993:14999 Satapps.Matrix <> VConcat def
+R15016:15024 Coq.Lists.List <> app_nil_l thm
+R15016:15024 Coq.Lists.List <> app_nil_l thm
+R15016:15024 Coq.Lists.List <> app_nil_l thm
+R15034:15036 Satapps.Matrix <> arr def
+R15076:15082 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15053:15053 Satapps.Matrix <> c def
+R15062:15068 Satapps.Matrix <> VConcat def
+R15083:15083 Satapps.Matrix <> c def
+R15076:15082 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15053:15053 Satapps.Matrix <> c def
+R15062:15068 Satapps.Matrix <> VConcat def
+R15083:15083 Satapps.Matrix <> c def
+R15101:15107 Satapps.Matrix <> VConcat def
+R15110:15110 Satapps.Matrix <> c def
+R15149:15151 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15132:15132 Satapps.Matrix <> r def
+R15135:15141 Satapps.Matrix <> VConcat def
+R15152:15152 Satapps.Matrix <> r def
+R15149:15151 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15132:15132 Satapps.Matrix <> r def
+R15135:15141 Satapps.Matrix <> VConcat def
+R15152:15152 Satapps.Matrix <> r def
+R15165:15180 Satapps.Matrix <> vconcat_is_valid thm
+R15165:15180 Satapps.Matrix <> vconcat_is_valid thm
+R15211:15218 Satapps.Matrix <> is_valid def
+R15233:15239 Coq.Init.Logic <> f_equal thm
+R15243:15248 Coq.Init.Datatypes <> length def
+R15233:15239 Coq.Init.Logic <> f_equal thm
+R15243:15248 Coq.Init.Datatypes <> length def
+R15267:15274 Satapps.Matrix <> is_valid def
+R15331:15346 Coq.Arith.PeanoNat Nat mul_cancel_r thm
+R15331:15346 Coq.Arith.PeanoNat Nat mul_cancel_r thm
+R15375:15383 Satapps.Matrix <> matrix_eq thm
+R15375:15383 Satapps.Matrix <> matrix_eq thm
+R15375:15383 Satapps.Matrix <> matrix_eq thm
+R15395:15403 Satapps.Matrix <> matrix_eq thm
+R15406:15412 Satapps.Matrix <> VConcat def
+R15395:15403 Satapps.Matrix <> matrix_eq thm
+R15406:15412 Satapps.Matrix <> VConcat def
+R15395:15403 Satapps.Matrix <> matrix_eq thm
+R15406:15412 Satapps.Matrix <> VConcat def
+R15429:15443 Coq.Init.Datatypes <> pair_equal_spec thm
+R15429:15443 Coq.Init.Datatypes <> pair_equal_spec thm
+R15459:15473 Coq.Init.Datatypes <> pair_equal_spec thm
+R15459:15473 Coq.Init.Datatypes <> pair_equal_spec thm
+prf 15504:15518 <> vconcat_empty_r
+binder 15521:15521 <> A:298
+R15544:15549 Satapps.Matrix <> Matrix def
+R15551:15551 Satapps.Matrix <> A:298 var
+binder 15539:15540 <> M1:299
+binder 15554:15555 <> M2:300
+R15569:15572 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15558:15565 Satapps.Matrix <> is_valid def
+R15567:15568 Satapps.Matrix <> M1:299 var
+R15584:15587 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15573:15580 Satapps.Matrix <> is_valid def
+R15582:15583 Satapps.Matrix <> M2:300 var
+R15599:15601 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15592:15594 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15588:15588 Satapps.Matrix <> c def
+R15590:15591 Satapps.Matrix <> M1:299 var
+R15595:15595 Satapps.Matrix <> c def
+R15597:15598 Satapps.Matrix <> M2:300 var
+R15613:15616 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15602:15609 Satapps.Matrix <> is_empty def
+R15611:15612 Satapps.Matrix <> M2:300 var
+R15625:15628 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15621:15623 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R15617:15617 Satapps.Matrix <> c def
+R15619:15620 Satapps.Matrix <> M1:299 var
+R15642:15644 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15629:15635 Satapps.Matrix <> VConcat def
+R15640:15641 Satapps.Matrix <> M2:300 var
+R15637:15638 Satapps.Matrix <> M1:299 var
+R15645:15646 Satapps.Matrix <> M1:299 var
+R15712:15714 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15693:15695 Satapps.Matrix <> arr def
+R15698:15704 Satapps.Matrix <> VConcat def
+R15715:15717 Satapps.Matrix <> arr def
+R15712:15714 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15693:15695 Satapps.Matrix <> arr def
+R15698:15704 Satapps.Matrix <> VConcat def
+R15715:15717 Satapps.Matrix <> arr def
+R15731:15749 Satapps.Matrix <> is_empty_is_valid_1 thm
+R15731:15749 Satapps.Matrix <> is_empty_is_valid_1 thm
+R15775:15781 Satapps.Matrix <> VConcat def
+R15798:15806 Coq.Lists.List <> app_nil_r thm
+R15798:15806 Coq.Lists.List <> app_nil_r thm
+R15798:15806 Coq.Lists.List <> app_nil_r thm
+R15816:15818 Satapps.Matrix <> arr def
+R15858:15864 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15835:15835 Satapps.Matrix <> c def
+R15844:15850 Satapps.Matrix <> VConcat def
+R15865:15865 Satapps.Matrix <> c def
+R15858:15864 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15835:15835 Satapps.Matrix <> c def
+R15844:15850 Satapps.Matrix <> VConcat def
+R15865:15865 Satapps.Matrix <> c def
+R15883:15889 Satapps.Matrix <> VConcat def
+R15892:15892 Satapps.Matrix <> c def
+R15931:15933 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15914:15914 Satapps.Matrix <> r def
+R15917:15923 Satapps.Matrix <> VConcat def
+R15934:15934 Satapps.Matrix <> r def
+R15931:15933 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15914:15914 Satapps.Matrix <> r def
+R15917:15923 Satapps.Matrix <> VConcat def
+R15934:15934 Satapps.Matrix <> r def
+R15947:15962 Satapps.Matrix <> vconcat_is_valid thm
+R15947:15962 Satapps.Matrix <> vconcat_is_valid thm
+R15993:16000 Satapps.Matrix <> is_valid def
+R16015:16021 Coq.Init.Logic <> f_equal thm
+R16025:16030 Coq.Init.Datatypes <> length def
+R16015:16021 Coq.Init.Logic <> f_equal thm
+R16025:16030 Coq.Init.Datatypes <> length def
+R16049:16056 Satapps.Matrix <> is_valid def
+R16113:16128 Coq.Arith.PeanoNat Nat mul_cancel_r thm
+R16113:16128 Coq.Arith.PeanoNat Nat mul_cancel_r thm
+R16157:16165 Satapps.Matrix <> matrix_eq thm
+R16157:16165 Satapps.Matrix <> matrix_eq thm
+R16157:16165 Satapps.Matrix <> matrix_eq thm
+R16177:16185 Satapps.Matrix <> matrix_eq thm
+R16188:16194 Satapps.Matrix <> VConcat def
+R16177:16185 Satapps.Matrix <> matrix_eq thm
+R16188:16194 Satapps.Matrix <> VConcat def
+R16177:16185 Satapps.Matrix <> matrix_eq thm
+R16188:16194 Satapps.Matrix <> VConcat def
+R16211:16225 Coq.Init.Datatypes <> pair_equal_spec thm
+R16211:16225 Coq.Init.Datatypes <> pair_equal_spec thm
+R16241:16255 Coq.Init.Datatypes <> pair_equal_spec thm
+R16241:16255 Coq.Init.Datatypes <> pair_equal_spec thm
+prf 16286:16296 <> vconcat_map
+binder 16299:16299 <> A:301
+binder 16301:16301 <> B:302
+R16324:16329 Satapps.Matrix <> Matrix def
+R16331:16331 Satapps.Matrix <> A:301 var
+binder 16319:16320 <> M1:303
+R16340:16345 Satapps.Matrix <> Matrix def
+R16347:16347 Satapps.Matrix <> A:301 var
+binder 16335:16336 <> M2:304
+R16355:16358 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16354:16354 Satapps.Matrix <> A:301 var
+R16359:16359 Satapps.Matrix <> B:302 var
+binder 16351:16351 <> f:305
+R16384:16386 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16363:16365 Satapps.Matrix <> Map def
+R16383:16383 Satapps.Matrix <> f:305 var
+R16368:16374 Satapps.Matrix <> VConcat def
+R16379:16380 Satapps.Matrix <> M2:304 var
+R16376:16377 Satapps.Matrix <> M1:303 var
+R16387:16393 Satapps.Matrix <> VConcat def
+R16407:16409 Satapps.Matrix <> Map def
+R16414:16414 Satapps.Matrix <> f:305 var
+R16411:16412 Satapps.Matrix <> M2:304 var
+R16396:16398 Satapps.Matrix <> Map def
+R16403:16403 Satapps.Matrix <> f:305 var
+R16400:16401 Satapps.Matrix <> M1:303 var
+R16433:16435 Satapps.Matrix <> Map def
+R16438:16444 Satapps.Matrix <> VConcat def
+R16447:16447 Satapps.Matrix <> r def
+R16450:16450 Satapps.Matrix <> c def
+R16468:16474 Coq.Lists.List <> map_app thm
+R16468:16474 Coq.Lists.List <> map_app thm
+R16468:16474 Coq.Lists.List <> map_app thm
+prf 16498:16508 <> vconcat_zip
+binder 16511:16511 <> A:306
+binder 16513:16513 <> B:307
+R16536:16541 Satapps.Matrix <> Matrix def
+R16543:16543 Satapps.Matrix <> A:306 var
+binder 16531:16532 <> M1:308
+R16552:16557 Satapps.Matrix <> Matrix def
+R16559:16559 Satapps.Matrix <> B:307 var
+binder 16547:16548 <> M2:309
+R16568:16573 Satapps.Matrix <> Matrix def
+R16575:16575 Satapps.Matrix <> A:306 var
+binder 16563:16564 <> M3:310
+R16584:16589 Satapps.Matrix <> Matrix def
+R16591:16591 Satapps.Matrix <> B:307 var
+binder 16579:16580 <> M4:311
+R16606:16609 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16595:16602 Satapps.Matrix <> is_valid def
+R16604:16605 Satapps.Matrix <> M1:308 var
+R16621:16624 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16610:16617 Satapps.Matrix <> is_valid def
+R16619:16620 Satapps.Matrix <> M2:309 var
+R16644:16647 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16633:16635 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16625:16629 Satapps.Matrix <> shape def
+R16631:16632 Satapps.Matrix <> M1:308 var
+R16636:16640 Satapps.Matrix <> shape def
+R16642:16643 Satapps.Matrix <> M2:309 var
+R16679:16681 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16648:16654 Satapps.Matrix <> VConcat def
+R16669:16671 Satapps.Matrix <> Zip def
+R16676:16677 Satapps.Matrix <> M4:311 var
+R16673:16674 Satapps.Matrix <> M3:310 var
+R16657:16659 Satapps.Matrix <> Zip def
+R16664:16665 Satapps.Matrix <> M2:309 var
+R16661:16662 Satapps.Matrix <> M1:308 var
+R16682:16684 Satapps.Matrix <> Zip def
+R16703:16709 Satapps.Matrix <> VConcat def
+R16714:16715 Satapps.Matrix <> M4:311 var
+R16711:16712 Satapps.Matrix <> M2:309 var
+R16687:16693 Satapps.Matrix <> VConcat def
+R16698:16699 Satapps.Matrix <> M3:310 var
+R16695:16696 Satapps.Matrix <> M1:308 var
+R16726:16732 Satapps.Matrix <> VConcat def
+R16735:16737 Satapps.Matrix <> Zip def
+R16740:16740 Satapps.Matrix <> r def
+R16743:16743 Satapps.Matrix <> c def
+R16746:16753 Satapps.Matrix <> is_valid def
+R16779:16789 Satapps.ListSpec2 <> combine_app thm
+R16779:16789 Satapps.ListSpec2 <> combine_app thm
+R16779:16789 Satapps.ListSpec2 <> combine_app thm
+R16779:16789 Satapps.ListSpec2 <> combine_app thm
+R16805:16812 Satapps.Matrix <> shape_eq thm
+R16805:16812 Satapps.Matrix <> shape_eq thm
+prf 16853:16865 <> vconcat_binop
+binder 16868:16868 <> A:312
+binder 16870:16870 <> B:313
+binder 16872:16872 <> C:314
+R16895:16900 Satapps.Matrix <> Matrix def
+R16902:16902 Satapps.Matrix <> A:312 var
+binder 16890:16891 <> M1:315
+R16911:16916 Satapps.Matrix <> Matrix def
+R16918:16918 Satapps.Matrix <> B:313 var
+binder 16906:16907 <> M2:316
+R16927:16932 Satapps.Matrix <> Matrix def
+R16934:16934 Satapps.Matrix <> A:312 var
+binder 16922:16923 <> M3:317
+R16943:16948 Satapps.Matrix <> Matrix def
+R16950:16950 Satapps.Matrix <> B:313 var
+binder 16938:16939 <> M4:318
+R16960:16964 Satapps.Algebra <> binop def
+R16966:16966 Satapps.Matrix <> A:312 var
+R16968:16968 Satapps.Matrix <> B:313 var
+R16970:16970 Satapps.Matrix <> C:314 var
+binder 16954:16956 <> bin:319
+R16985:16988 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16974:16981 Satapps.Matrix <> is_valid def
+R16983:16984 Satapps.Matrix <> M1:315 var
+R17000:17003 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16989:16996 Satapps.Matrix <> is_valid def
+R16998:16999 Satapps.Matrix <> M2:316 var
+R17023:17026 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17012:17014 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17004:17008 Satapps.Matrix <> shape def
+R17010:17011 Satapps.Matrix <> M1:315 var
+R17015:17019 Satapps.Matrix <> shape def
+R17021:17022 Satapps.Matrix <> M2:316 var
+R17076:17078 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17027:17033 Satapps.Matrix <> VConcat def
+R17057:17064 Satapps.Matrix <> MatBinop def
+R17073:17074 Satapps.Matrix <> M4:318 var
+R17070:17071 Satapps.Matrix <> M3:317 var
+R17066:17068 Satapps.Matrix <> bin:319 var
+R17036:17043 Satapps.Matrix <> MatBinop def
+R17052:17053 Satapps.Matrix <> M2:316 var
+R17049:17050 Satapps.Matrix <> M1:315 var
+R17045:17047 Satapps.Matrix <> bin:319 var
+R17079:17086 Satapps.Matrix <> MatBinop def
+R17109:17115 Satapps.Matrix <> VConcat def
+R17120:17121 Satapps.Matrix <> M4:318 var
+R17117:17118 Satapps.Matrix <> M2:316 var
+R17093:17099 Satapps.Matrix <> VConcat def
+R17104:17105 Satapps.Matrix <> M3:317 var
+R17101:17102 Satapps.Matrix <> M1:315 var
+R17088:17090 Satapps.Matrix <> bin:319 var
+R17171:17178 Satapps.Matrix <> MatBinop def
+R17192:17202 Satapps.Matrix <> vconcat_map thm
+R17192:17202 Satapps.Matrix <> vconcat_map thm
+R17192:17202 Satapps.Matrix <> vconcat_map thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+R17216:17226 Satapps.Matrix <> vconcat_zip thm
+prf 17272:17290 <> vconcat_apply_def_1
+binder 17293:17293 <> A:320
+R17316:17321 Satapps.Matrix <> Matrix def
+R17323:17323 Satapps.Matrix <> A:320 var
+binder 17311:17312 <> M1:321
+R17332:17337 Satapps.Matrix <> Matrix def
+R17339:17339 Satapps.Matrix <> A:320 var
+binder 17327:17328 <> M2:322
+binder 17342:17342 <> i:323
+binder 17344:17344 <> j:324
+binder 17346:17348 <> def:325
+R17362:17365 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17351:17358 Satapps.Matrix <> is_valid def
+R17360:17361 Satapps.Matrix <> M1:321 var
+R17382:17385 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17366:17374 Satapps.Matrix <> in_bounds def
+R17381:17381 Satapps.Matrix <> j:324 var
+R17379:17379 Satapps.Matrix <> i:323 var
+R17376:17377 Satapps.Matrix <> M1:321 var
+R17419:17421 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17386:17394 Satapps.Matrix <> Apply_def def
+R17416:17418 Satapps.Matrix <> def:325 var
+R17414:17414 Satapps.Matrix <> j:324 var
+R17412:17412 Satapps.Matrix <> i:323 var
+R17397:17403 Satapps.Matrix <> VConcat def
+R17408:17409 Satapps.Matrix <> M2:322 var
+R17405:17406 Satapps.Matrix <> M1:321 var
+R17422:17430 Satapps.Matrix <> Apply_def def
+R17439:17441 Satapps.Matrix <> def:325 var
+R17437:17437 Satapps.Matrix <> j:324 var
+R17435:17435 Satapps.Matrix <> i:323 var
+R17432:17433 Satapps.Matrix <> M1:321 var
+R17480:17504 Satapps.Matrix <> in_bounds_is_valid_access thm
+R17480:17504 Satapps.Matrix <> in_bounds_is_valid_access thm
+R17519:17527 Satapps.Matrix <> Apply_def def
+R17530:17536 Satapps.Matrix <> VConcat def
+R17539:17539 Satapps.Matrix <> r def
+R17542:17542 Satapps.Matrix <> c def
+R17545:17547 Satapps.Matrix <> arr def
+R17563:17570 Coq.Lists.List <> app_nth1 thm
+R17563:17570 Coq.Lists.List <> app_nth1 thm
+R17580:17580 Satapps.Matrix <> c def
+R17583:17585 Satapps.Matrix <> arr def
+prf 17621:17639 <> vconcat_apply_def_2
+binder 17642:17642 <> A:326
+R17665:17670 Satapps.Matrix <> Matrix def
+R17672:17672 Satapps.Matrix <> A:326 var
+binder 17660:17661 <> M1:327
+R17681:17686 Satapps.Matrix <> Matrix def
+R17688:17688 Satapps.Matrix <> A:326 var
+binder 17676:17677 <> M2:328
+binder 17691:17691 <> i:329
+binder 17693:17693 <> j:330
+binder 17695:17697 <> def:331
+R17711:17714 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17700:17707 Satapps.Matrix <> is_valid def
+R17709:17710 Satapps.Matrix <> M1:327 var
+R17726:17729 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17719:17721 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17715:17715 Satapps.Matrix <> c def
+R17717:17718 Satapps.Matrix <> M1:327 var
+R17722:17722 Satapps.Matrix <> c def
+R17724:17725 Satapps.Matrix <> M2:328 var
+R17739:17742 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17734:17737 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R17730:17730 Satapps.Matrix <> r def
+R17732:17733 Satapps.Matrix <> M1:327 var
+R17738:17738 Satapps.Matrix <> i:329 var
+R17776:17778 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17743:17751 Satapps.Matrix <> Apply_def def
+R17773:17775 Satapps.Matrix <> def:331 var
+R17771:17771 Satapps.Matrix <> j:330 var
+R17769:17769 Satapps.Matrix <> i:329 var
+R17754:17760 Satapps.Matrix <> VConcat def
+R17765:17766 Satapps.Matrix <> M2:328 var
+R17762:17763 Satapps.Matrix <> M1:327 var
+R17779:17787 Satapps.Matrix <> Apply_def def
+R17807:17809 Satapps.Matrix <> def:331 var
+R17805:17805 Satapps.Matrix <> j:330 var
+R17794:17797 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17802:17802 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17793:17793 Satapps.Matrix <> i:329 var
+R17798:17798 Satapps.Matrix <> r def
+R17800:17801 Satapps.Matrix <> M1:327 var
+R17789:17790 Satapps.Matrix <> M2:328 var
+R17853:17861 Satapps.Matrix <> Apply_def def
+R17864:17870 Satapps.Matrix <> VConcat def
+R17880:17880 Satapps.Matrix <> c def
+R17895:17897 Satapps.Matrix <> arr def
+R17954:17956 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17950:17952 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R17933:17933 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17942:17945 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17935:17937 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17938:17938 Satapps.Matrix <> r def
+R17946:17946 Satapps.Matrix <> c def
+R17969:17971 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17965:17967 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R17958:17960 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17961:17961 Satapps.Matrix <> c def
+R17976:17978 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17972:17972 Satapps.Matrix <> r def
+R17979:17979 Satapps.Matrix <> c def
+R17954:17956 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17950:17952 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R17933:17933 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17942:17945 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17935:17937 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17938:17938 Satapps.Matrix <> r def
+R17946:17946 Satapps.Matrix <> c def
+R17969:17971 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R17965:17967 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R17958:17960 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17961:17961 Satapps.Matrix <> c def
+R17976:17978 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R17972:17972 Satapps.Matrix <> r def
+R17979:17979 Satapps.Matrix <> c def
+R17994:18012 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R17994:18012 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R17994:18012 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R18026:18041 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18026:18041 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18026:18041 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18026:18041 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18070:18086 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R18070:18086 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R18130:18137 Coq.Lists.List <> app_nth2 thm
+R18130:18137 Coq.Lists.List <> app_nth2 thm
+R18162:18194 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+R18162:18194 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+prf 18225:18243 <> vconcat_apply_opt_1
+binder 18246:18246 <> A:332
+R18269:18274 Satapps.Matrix <> Matrix def
+R18276:18276 Satapps.Matrix <> A:332 var
+binder 18264:18265 <> M1:333
+R18285:18290 Satapps.Matrix <> Matrix def
+R18292:18292 Satapps.Matrix <> A:332 var
+binder 18280:18281 <> M2:334
+binder 18295:18295 <> i:335
+binder 18297:18297 <> j:336
+R18311:18314 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18300:18307 Satapps.Matrix <> is_valid def
+R18309:18310 Satapps.Matrix <> M1:333 var
+R18331:18334 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18315:18323 Satapps.Matrix <> in_bounds def
+R18330:18330 Satapps.Matrix <> j:336 var
+R18328:18328 Satapps.Matrix <> i:335 var
+R18325:18326 Satapps.Matrix <> M1:333 var
+R18364:18366 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18335:18343 Satapps.Matrix <> Apply_opt def
+R18363:18363 Satapps.Matrix <> j:336 var
+R18361:18361 Satapps.Matrix <> i:335 var
+R18346:18352 Satapps.Matrix <> VConcat def
+R18357:18358 Satapps.Matrix <> M2:334 var
+R18354:18355 Satapps.Matrix <> M1:333 var
+R18367:18375 Satapps.Matrix <> Apply_opt def
+R18382:18382 Satapps.Matrix <> j:336 var
+R18380:18380 Satapps.Matrix <> i:335 var
+R18377:18378 Satapps.Matrix <> M1:333 var
+R18416:18440 Satapps.Matrix <> in_bounds_is_valid_access thm
+R18416:18440 Satapps.Matrix <> in_bounds_is_valid_access thm
+R18455:18463 Satapps.Matrix <> Apply_opt def
+R18466:18472 Satapps.Matrix <> VConcat def
+R18475:18475 Satapps.Matrix <> r def
+R18478:18478 Satapps.Matrix <> c def
+R18481:18483 Satapps.Matrix <> arr def
+R18499:18513 Satapps.ListSpec2 <> app_nth_error_1 thm
+R18499:18513 Satapps.ListSpec2 <> app_nth_error_1 thm
+R18523:18523 Satapps.Matrix <> c def
+R18526:18528 Satapps.Matrix <> arr def
+prf 18564:18582 <> vconcat_apply_opt_2
+binder 18585:18585 <> A:337
+R18608:18613 Satapps.Matrix <> Matrix def
+R18615:18615 Satapps.Matrix <> A:337 var
+binder 18603:18604 <> M1:338
+R18624:18629 Satapps.Matrix <> Matrix def
+R18631:18631 Satapps.Matrix <> A:337 var
+binder 18619:18620 <> M2:339
+binder 18634:18634 <> i:340
+binder 18636:18636 <> j:341
+R18650:18653 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18639:18646 Satapps.Matrix <> is_valid def
+R18648:18649 Satapps.Matrix <> M1:338 var
+R18665:18668 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18658:18660 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18654:18654 Satapps.Matrix <> c def
+R18656:18657 Satapps.Matrix <> M1:338 var
+R18661:18661 Satapps.Matrix <> c def
+R18663:18664 Satapps.Matrix <> M2:339 var
+R18678:18681 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18673:18676 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R18669:18669 Satapps.Matrix <> r def
+R18671:18672 Satapps.Matrix <> M1:338 var
+R18677:18677 Satapps.Matrix <> i:340 var
+R18711:18713 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18682:18690 Satapps.Matrix <> Apply_opt def
+R18710:18710 Satapps.Matrix <> j:341 var
+R18708:18708 Satapps.Matrix <> i:340 var
+R18693:18699 Satapps.Matrix <> VConcat def
+R18704:18705 Satapps.Matrix <> M2:339 var
+R18701:18702 Satapps.Matrix <> M1:338 var
+R18714:18722 Satapps.Matrix <> Apply_opt def
+R18740:18740 Satapps.Matrix <> j:341 var
+R18729:18732 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18737:18737 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18728:18728 Satapps.Matrix <> i:340 var
+R18733:18733 Satapps.Matrix <> r def
+R18735:18736 Satapps.Matrix <> M1:338 var
+R18724:18725 Satapps.Matrix <> M2:339 var
+R18780:18788 Satapps.Matrix <> Apply_opt def
+R18791:18797 Satapps.Matrix <> VConcat def
+R18807:18807 Satapps.Matrix <> c def
+R18822:18824 Satapps.Matrix <> arr def
+R18881:18883 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18877:18879 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R18860:18860 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18869:18872 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18862:18864 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18865:18865 Satapps.Matrix <> r def
+R18873:18873 Satapps.Matrix <> c def
+R18896:18898 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18892:18894 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R18885:18887 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18888:18888 Satapps.Matrix <> c def
+R18903:18905 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18899:18899 Satapps.Matrix <> r def
+R18906:18906 Satapps.Matrix <> c def
+R18881:18883 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18877:18879 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R18860:18860 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18869:18872 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18862:18864 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18865:18865 Satapps.Matrix <> r def
+R18873:18873 Satapps.Matrix <> c def
+R18896:18898 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R18892:18894 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R18885:18887 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18888:18888 Satapps.Matrix <> c def
+R18903:18905 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R18899:18899 Satapps.Matrix <> r def
+R18906:18906 Satapps.Matrix <> c def
+R18921:18939 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R18921:18939 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R18921:18939 Coq.Arith.PeanoNat Nat mul_sub_distr_r thm
+R18953:18968 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18953:18968 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18953:18968 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18953:18968 Coq.Arith.PeanoNat Nat add_sub_swap thm
+R18997:19013 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R18997:19013 Coq.Arith.PeanoNat Nat mul_le_mono_r thm
+R19057:19071 Satapps.ListSpec2 <> app_nth_error_2 thm
+R19057:19071 Satapps.ListSpec2 <> app_nth_error_2 thm
+R19096:19128 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+R19096:19128 Satapps.Matrix <> out_of_bounds_is_not_valid_access thm
+def 19162:19168 <> HConcat
+binder 19171:19171 <> A:342
+R19186:19191 Satapps.Matrix <> Matrix def
+R19193:19193 Satapps.Matrix <> A:342 var
+binder 19181:19182 <> M1:343
+R19202:19207 Satapps.Matrix <> Matrix def
+R19209:19209 Satapps.Matrix <> A:342 var
+binder 19197:19198 <> M2:344
+R19215:19215 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R19220:19221 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R19233:19235 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R19391:19391 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R19216:19216 Satapps.Matrix <> r def
+R19218:19219 Satapps.Matrix <> M1:343 var
+R19226:19228 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R19222:19222 Satapps.Matrix <> c def
+R19224:19225 Satapps.Matrix <> M1:343 var
+R19229:19229 Satapps.Matrix <> c def
+R19231:19232 Satapps.Matrix <> M2:344 var
+R19248:19248 Satapps.Matrix <> c def
+R19250:19251 Satapps.Matrix <> M2:344 var
+R19242:19242 Satapps.Matrix <> c def
+R19244:19245 Satapps.Matrix <> M1:343 var
+R19268:19270 Satapps.Matrix <> arr def
+R19272:19273 Satapps.Matrix <> M2:344 var
+R19285:19287 Satapps.Matrix <> arr def
+R19289:19290 Satapps.Matrix <> M1:343 var
+R19294:19294 Coq.Init.Datatypes <> S constr
+R19299:19299 Coq.Init.Datatypes <> S constr
+R19307:19312 Coq.Lists.List <> concat def
+R19315:19324 Satapps.ListSpec2 <> list_binop def
+R19380:19382 Coq.Init.Datatypes <> app def
+R19384:19384 Satapps.Matrix <> A:342 var
+R19353:19359 Satapps.ListSpec2 <> grouped def
+R19371:19371 Satapps.Matrix <> c def
+R19373:19374 Satapps.Matrix <> M2:344 var
+R19362:19364 Satapps.Matrix <> arr def
+R19366:19367 Satapps.Matrix <> M2:344 var
+R19327:19333 Satapps.ListSpec2 <> grouped def
+R19345:19345 Satapps.Matrix <> c def
+R19347:19348 Satapps.Matrix <> M1:343 var
+R19336:19338 Satapps.Matrix <> arr def
+R19340:19341 Satapps.Matrix <> M1:343 var
+prf 19404:19419 <> hconcat_is_valid
+binder 19422:19422 <> A:345
+R19445:19450 Satapps.Matrix <> Matrix def
+R19452:19452 Satapps.Matrix <> A:345 var
+binder 19440:19441 <> M1:346
+R19461:19466 Satapps.Matrix <> Matrix def
+R19468:19468 Satapps.Matrix <> A:345 var
+binder 19456:19457 <> M2:347
+R19483:19486 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19472:19479 Satapps.Matrix <> is_valid def
+R19481:19482 Satapps.Matrix <> M1:346 var
+R19498:19501 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19487:19494 Satapps.Matrix <> is_valid def
+R19496:19497 Satapps.Matrix <> M2:347 var
+R19513:19516 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19506:19508 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19502:19502 Satapps.Matrix <> r def
+R19504:19505 Satapps.Matrix <> M1:346 var
+R19509:19509 Satapps.Matrix <> r def
+R19511:19512 Satapps.Matrix <> M2:347 var
+R19517:19524 Satapps.Matrix <> is_valid def
+R19527:19533 Satapps.Matrix <> HConcat def
+R19538:19539 Satapps.Matrix <> M2:347 var
+R19535:19536 Satapps.Matrix <> M1:346 var
+R19550:19557 Satapps.Matrix <> is_valid def
+R19560:19566 Satapps.Matrix <> HConcat def
+R19569:19569 Satapps.Matrix <> r def
+R19572:19572 Satapps.Matrix <> c def
+R19575:19577 Satapps.Matrix <> arr def
+R19604:19606 Coq.Init.Datatypes <> snd def
+R19609:19611 Coq.Init.Datatypes <> fst def
+R19620:19622 Coq.Init.Datatypes <> snd def
+R19625:19627 Coq.Init.Datatypes <> fst def
+R19604:19606 Coq.Init.Datatypes <> snd def
+R19609:19611 Coq.Init.Datatypes <> fst def
+R19620:19622 Coq.Init.Datatypes <> snd def
+R19625:19627 Coq.Init.Datatypes <> fst def
+R19620:19622 Coq.Init.Datatypes <> snd def
+R19625:19627 Coq.Init.Datatypes <> fst def
+R19728:19745 Satapps.ListSpec2 <> concat_same_length thm
+R19755:19757 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R19752:19752 Coq.Init.Datatypes <> S constr
+R19758:19758 Coq.Init.Datatypes <> S constr
+R19728:19745 Satapps.ListSpec2 <> concat_same_length thm
+R19755:19757 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R19752:19752 Coq.Init.Datatypes <> S constr
+R19758:19758 Coq.Init.Datatypes <> S constr
+R19728:19745 Satapps.ListSpec2 <> concat_same_length thm
+R19755:19757 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R19752:19752 Coq.Init.Datatypes <> S constr
+R19758:19758 Coq.Init.Datatypes <> S constr
+R19728:19745 Satapps.ListSpec2 <> concat_same_length thm
+R19755:19757 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R19752:19752 Coq.Init.Datatypes <> S constr
+R19758:19758 Coq.Init.Datatypes <> S constr
+R19776:19792 Satapps.ListSpec2 <> list_binop_length thm
+R19776:19792 Satapps.ListSpec2 <> list_binop_length thm
+R19776:19792 Satapps.ListSpec2 <> list_binop_length thm
+R19776:19792 Satapps.ListSpec2 <> list_binop_length thm
+R19805:19818 Satapps.ListSpec2 <> grouped_length thm
+R19805:19818 Satapps.ListSpec2 <> grouped_length thm
+R19805:19818 Satapps.ListSpec2 <> grouped_length thm
+R19847:19857 Coq.Arith.PeanoNat Nat div_mul thm
+R19847:19857 Coq.Arith.PeanoNat Nat div_mul thm
+R19847:19857 Coq.Arith.PeanoNat Nat div_mul thm
+R19847:19857 Coq.Arith.PeanoNat Nat div_mul thm
+R19886:19899 Satapps.ListSpec2 <> grouped_length thm
+R19902:19915 Satapps.ListSpec2 <> grouped_length thm
+R19930:19940 Coq.Arith.PeanoNat Nat div_mul thm
+R19943:19953 Coq.Arith.PeanoNat Nat div_mul thm
+R19886:19899 Satapps.ListSpec2 <> grouped_length thm
+R19886:19899 Satapps.ListSpec2 <> grouped_length thm
+R19902:19915 Satapps.ListSpec2 <> grouped_length thm
+R19902:19915 Satapps.ListSpec2 <> grouped_length thm
+R19930:19940 Coq.Arith.PeanoNat Nat div_mul thm
+R19930:19940 Coq.Arith.PeanoNat Nat div_mul thm
+R19930:19940 Coq.Arith.PeanoNat Nat div_mul thm
+R19943:19953 Coq.Arith.PeanoNat Nat div_mul thm
+R19943:19953 Coq.Arith.PeanoNat Nat div_mul thm
+R19943:19953 Coq.Arith.PeanoNat Nat div_mul thm
+R19988:19997 Satapps.ListSpec2 <> list_binop def
+R20008:20017 Coq.Lists.List <> Forall_map thm
+R20008:20017 Coq.Lists.List <> Forall_map thm
+R20028:20040 Coq.Lists.List <> Forall_forall thm
+R20028:20040 Coq.Lists.List <> Forall_forall thm
+R20068:20078 Satapps.Pair <> bin_to_pair def
+R20091:20100 Coq.Lists.List <> app_length thm
+R20091:20100 Coq.Lists.List <> app_length thm
+R20091:20100 Coq.Lists.List <> app_length thm
+R20114:20131 Coq.Init.Datatypes <> surjective_pairing thm
+R20114:20131 Coq.Init.Datatypes <> surjective_pairing thm
+R20114:20131 Coq.Init.Datatypes <> surjective_pairing thm
+R20152:20161 Satapps.ListSpec2 <> combine_In thm
+R20152:20161 Satapps.ListSpec2 <> combine_In thm
+R20195:20216 Satapps.ListSpec2 <> grouped_element_length thm
+R20195:20216 Satapps.ListSpec2 <> grouped_element_length thm
+R20232:20253 Satapps.ListSpec2 <> grouped_element_length thm
+R20232:20253 Satapps.ListSpec2 <> grouped_element_length thm
+prf 20287:20297 <> hconcat_0_l
+binder 20300:20300 <> A:348
+R20324:20329 Satapps.Matrix <> Matrix def
+R20331:20331 Satapps.Matrix <> A:348 var
+binder 20319:20320 <> M1:349
+binder 20334:20335 <> M2:350
+R20349:20352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20338:20345 Satapps.Matrix <> is_valid def
+R20347:20348 Satapps.Matrix <> M1:349 var
+R20364:20367 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20353:20360 Satapps.Matrix <> is_valid def
+R20362:20363 Satapps.Matrix <> M2:350 var
+R20379:20381 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20372:20374 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20368:20368 Satapps.Matrix <> r def
+R20370:20371 Satapps.Matrix <> M1:349 var
+R20375:20375 Satapps.Matrix <> r def
+R20377:20378 Satapps.Matrix <> M2:350 var
+R20393:20396 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20382:20389 Satapps.Matrix <> is_empty def
+R20391:20392 Satapps.Matrix <> M1:349 var
+R20405:20408 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20401:20403 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R20397:20397 Satapps.Matrix <> r def
+R20399:20400 Satapps.Matrix <> M2:350 var
+R20422:20424 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20409:20415 Satapps.Matrix <> HConcat def
+R20420:20421 Satapps.Matrix <> M2:350 var
+R20417:20418 Satapps.Matrix <> M1:349 var
+R20425:20426 Satapps.Matrix <> M2:350 var
+R20478:20480 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20472:20474 Satapps.Matrix <> arr def
+R20481:20483 Coq.Init.Datatypes <> nil constr
+R20478:20480 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20472:20474 Satapps.Matrix <> arr def
+R20481:20483 Coq.Init.Datatypes <> nil constr
+R20495:20499 Coq.Init.Logic <> proj1 thm
+R20502:20520 Satapps.Matrix <> is_empty_is_valid_1 thm
+R20495:20499 Coq.Init.Logic <> proj1 thm
+R20502:20520 Satapps.Matrix <> is_empty_is_valid_1 thm
+R20544:20551 Satapps.Matrix <> is_valid def
+R20554:20560 Satapps.Matrix <> HConcat def
+R20544:20551 Satapps.Matrix <> is_valid def
+R20554:20560 Satapps.Matrix <> HConcat def
+R20578:20593 Satapps.Matrix <> hconcat_is_valid thm
+R20578:20593 Satapps.Matrix <> hconcat_is_valid thm
+R20628:20630 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20624:20624 Satapps.Matrix <> c def
+R20628:20630 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20624:20624 Satapps.Matrix <> c def
+R20648:20655 Satapps.Matrix <> is_empty def
+R20720:20722 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20701:20703 Satapps.Matrix <> arr def
+R20706:20712 Satapps.Matrix <> HConcat def
+R20723:20725 Satapps.Matrix <> arr def
+R20720:20722 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20701:20703 Satapps.Matrix <> arr def
+R20706:20712 Satapps.Matrix <> HConcat def
+R20723:20725 Satapps.Matrix <> arr def
+R20739:20745 Satapps.Matrix <> HConcat def
+R20773:20783 Coq.Arith.PeanoNat Nat add_0_l thm
+R20773:20783 Coq.Arith.PeanoNat Nat add_0_l thm
+R20773:20783 Coq.Arith.PeanoNat Nat add_0_l thm
+R20793:20795 Satapps.Matrix <> arr def
+R20836:20838 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20819:20819 Satapps.Matrix <> r def
+R20822:20828 Satapps.Matrix <> HConcat def
+R20839:20839 Satapps.Matrix <> r def
+R20836:20838 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20819:20819 Satapps.Matrix <> r def
+R20822:20828 Satapps.Matrix <> HConcat def
+R20839:20839 Satapps.Matrix <> r def
+R20853:20859 Satapps.Matrix <> HConcat def
+R20882:20882 Satapps.Matrix <> r def
+R20885:20885 Satapps.Matrix <> c def
+R20926:20928 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20909:20909 Satapps.Matrix <> c def
+R20912:20918 Satapps.Matrix <> HConcat def
+R20929:20929 Satapps.Matrix <> c def
+R20926:20928 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20909:20909 Satapps.Matrix <> c def
+R20912:20918 Satapps.Matrix <> HConcat def
+R20929:20929 Satapps.Matrix <> c def
+R20943:20949 Satapps.Matrix <> HConcat def
+R20952:20952 Satapps.Matrix <> r def
+R20955:20955 Satapps.Matrix <> c def
+R20972:20972 Satapps.Matrix <> c def
+R21006:21014 Satapps.Matrix <> matrix_eq thm
+R21006:21014 Satapps.Matrix <> matrix_eq thm
+R21006:21014 Satapps.Matrix <> matrix_eq thm
+R21052:21060 Satapps.Matrix <> matrix_eq thm
+R21052:21060 Satapps.Matrix <> matrix_eq thm
+prf 21077:21087 <> hconcat_0_r
+binder 21090:21090 <> A:351
+R21114:21119 Satapps.Matrix <> Matrix def
+R21121:21121 Satapps.Matrix <> A:351 var
+binder 21109:21110 <> M1:352
+binder 21124:21125 <> M2:353
+R21139:21142 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21128:21135 Satapps.Matrix <> is_valid def
+R21137:21138 Satapps.Matrix <> M1:352 var
+R21154:21157 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21143:21150 Satapps.Matrix <> is_valid def
+R21152:21153 Satapps.Matrix <> M2:353 var
+R21169:21171 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21162:21164 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21158:21158 Satapps.Matrix <> r def
+R21160:21161 Satapps.Matrix <> M1:352 var
+R21165:21165 Satapps.Matrix <> r def
+R21167:21168 Satapps.Matrix <> M2:353 var
+R21183:21186 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21172:21179 Satapps.Matrix <> is_empty def
+R21181:21182 Satapps.Matrix <> M2:353 var
+R21195:21198 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21191:21193 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R21187:21187 Satapps.Matrix <> r def
+R21189:21190 Satapps.Matrix <> M1:352 var
+R21212:21214 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21199:21205 Satapps.Matrix <> HConcat def
+R21210:21211 Satapps.Matrix <> M2:353 var
+R21207:21208 Satapps.Matrix <> M1:352 var
+R21215:21216 Satapps.Matrix <> M1:352 var
+R21268:21270 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21262:21264 Satapps.Matrix <> arr def
+R21271:21273 Coq.Init.Datatypes <> nil constr
+R21268:21270 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21262:21264 Satapps.Matrix <> arr def
+R21271:21273 Coq.Init.Datatypes <> nil constr
+R21285:21289 Coq.Init.Logic <> proj1 thm
+R21292:21310 Satapps.Matrix <> is_empty_is_valid_1 thm
+R21285:21289 Coq.Init.Logic <> proj1 thm
+R21292:21310 Satapps.Matrix <> is_empty_is_valid_1 thm
+R21334:21341 Satapps.Matrix <> is_valid def
+R21344:21350 Satapps.Matrix <> HConcat def
+R21334:21341 Satapps.Matrix <> is_valid def
+R21344:21350 Satapps.Matrix <> HConcat def
+R21368:21383 Satapps.Matrix <> hconcat_is_valid thm
+R21368:21383 Satapps.Matrix <> hconcat_is_valid thm
+R21418:21420 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21414:21414 Satapps.Matrix <> c def
+R21418:21420 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21414:21414 Satapps.Matrix <> c def
+R21438:21445 Satapps.Matrix <> is_empty def
+R21507:21509 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21488:21490 Satapps.Matrix <> arr def
+R21493:21499 Satapps.Matrix <> HConcat def
+R21510:21512 Satapps.Matrix <> arr def
+R21507:21509 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21488:21490 Satapps.Matrix <> arr def
+R21493:21499 Satapps.Matrix <> HConcat def
+R21510:21512 Satapps.Matrix <> arr def
+R21526:21532 Satapps.Matrix <> HConcat def
+R21560:21570 Coq.Arith.PeanoNat Nat add_0_r thm
+R21560:21570 Coq.Arith.PeanoNat Nat add_0_r thm
+R21560:21570 Coq.Arith.PeanoNat Nat add_0_r thm
+R21580:21582 Satapps.Matrix <> arr def
+R21607:21610 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21603:21605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21599:21599 Satapps.Matrix <> c def
+R21617:21619 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21611:21613 Coq.Init.Datatypes <> snd def
+R21620:21622 Coq.Init.Datatypes <> nil constr
+R21607:21610 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21603:21605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21599:21599 Satapps.Matrix <> c def
+R21617:21619 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21611:21613 Coq.Init.Datatypes <> snd def
+R21620:21622 Coq.Init.Datatypes <> nil constr
+R21641:21648 Satapps.Matrix <> is_empty def
+R21641:21648 Satapps.Matrix <> is_empty def
+R21662:21669 Satapps.Matrix <> is_empty def
+R21685:21703 Satapps.Matrix <> is_empty_is_valid_1 thm
+R21685:21703 Satapps.Matrix <> is_empty_is_valid_1 thm
+R21737:21739 Satapps.Matrix <> arr def
+R21764:21766 Satapps.Matrix <> arr def
+R21784:21784 Satapps.Matrix <> c def
+R21784:21784 Satapps.Matrix <> c def
+R21848:21850 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21831:21831 Satapps.Matrix <> r def
+R21834:21840 Satapps.Matrix <> HConcat def
+R21851:21851 Satapps.Matrix <> r def
+R21848:21850 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21831:21831 Satapps.Matrix <> r def
+R21834:21840 Satapps.Matrix <> HConcat def
+R21851:21851 Satapps.Matrix <> r def
+R21865:21871 Satapps.Matrix <> HConcat def
+R21894:21894 Satapps.Matrix <> r def
+R21897:21897 Satapps.Matrix <> c def
+R21938:21940 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21921:21921 Satapps.Matrix <> c def
+R21924:21930 Satapps.Matrix <> HConcat def
+R21941:21941 Satapps.Matrix <> c def
+R21938:21940 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21921:21921 Satapps.Matrix <> c def
+R21924:21930 Satapps.Matrix <> HConcat def
+R21941:21941 Satapps.Matrix <> c def
+R21955:21961 Satapps.Matrix <> HConcat def
+R21964:21964 Satapps.Matrix <> r def
+R21967:21967 Satapps.Matrix <> c def
+R21984:21984 Satapps.Matrix <> c def
+R22018:22026 Satapps.Matrix <> matrix_eq thm
+R22018:22026 Satapps.Matrix <> matrix_eq thm
+R22018:22026 Satapps.Matrix <> matrix_eq thm
+R22064:22072 Satapps.Matrix <> matrix_eq thm
+R22064:22072 Satapps.Matrix <> matrix_eq thm
+prf 22090:22100 <> hconcat_map
+binder 22103:22103 <> A:354
+binder 22105:22105 <> B:355
+R22128:22133 Satapps.Matrix <> Matrix def
+R22135:22135 Satapps.Matrix <> A:354 var
+binder 22123:22124 <> M1:356
+R22144:22149 Satapps.Matrix <> Matrix def
+R22151:22151 Satapps.Matrix <> A:354 var
+binder 22139:22140 <> M2:357
+R22159:22162 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22158:22158 Satapps.Matrix <> A:354 var
+R22163:22163 Satapps.Matrix <> B:355 var
+binder 22155:22155 <> f:358
+R22188:22190 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22167:22169 Satapps.Matrix <> Map def
+R22187:22187 Satapps.Matrix <> f:358 var
+R22172:22178 Satapps.Matrix <> HConcat def
+R22183:22184 Satapps.Matrix <> M2:357 var
+R22180:22181 Satapps.Matrix <> M1:356 var
+R22191:22197 Satapps.Matrix <> HConcat def
+R22211:22213 Satapps.Matrix <> Map def
+R22218:22218 Satapps.Matrix <> f:358 var
+R22215:22216 Satapps.Matrix <> M2:357 var
+R22200:22202 Satapps.Matrix <> Map def
+R22207:22207 Satapps.Matrix <> f:358 var
+R22204:22205 Satapps.Matrix <> M1:356 var
+R22245:22247 Satapps.Matrix <> Map def
+R22250:22256 Satapps.Matrix <> HConcat def
+R22259:22259 Satapps.Matrix <> r def
+R22262:22262 Satapps.Matrix <> c def
+R22282:22284 Coq.Init.Datatypes <> snd def
+R22287:22289 Coq.Init.Datatypes <> fst def
+R22282:22284 Coq.Init.Datatypes <> snd def
+R22287:22289 Coq.Init.Datatypes <> fst def
+R22314:22316 Coq.Init.Datatypes <> snd def
+R22319:22321 Coq.Init.Datatypes <> fst def
+R22314:22316 Coq.Init.Datatypes <> snd def
+R22319:22321 Coq.Init.Datatypes <> fst def
+R22348:22358 Satapps.ListSpec2 <> grouped_map thm
+R22364:22374 Satapps.ListSpec2 <> grouped_map thm
+R22348:22358 Satapps.ListSpec2 <> grouped_map thm
+R22348:22358 Satapps.ListSpec2 <> grouped_map thm
+R22364:22374 Satapps.ListSpec2 <> grouped_map thm
+R22364:22374 Satapps.ListSpec2 <> grouped_map thm
+R22385:22394 Coq.Lists.List <> concat_map thm
+R22385:22394 Coq.Lists.List <> concat_map thm
+R22385:22394 Coq.Lists.List <> concat_map thm
+R22406:22426 Satapps.ListSpec2 <> list_binop_map_linear thm
+R22433:22442 Satapps.ListSpec2 <> app_linear thm
+R22406:22426 Satapps.ListSpec2 <> list_binop_map_linear thm
+R22433:22442 Satapps.ListSpec2 <> app_linear thm
+R22406:22426 Satapps.ListSpec2 <> list_binop_map_linear thm
+R22433:22442 Satapps.ListSpec2 <> app_linear thm
+prf 22470:22480 <> hconcat_zip
+binder 22483:22483 <> A:359
+binder 22485:22485 <> B:360
+R22508:22513 Satapps.Matrix <> Matrix def
+R22515:22515 Satapps.Matrix <> A:359 var
+binder 22503:22504 <> M1:361
+R22524:22529 Satapps.Matrix <> Matrix def
+R22531:22531 Satapps.Matrix <> B:360 var
+binder 22519:22520 <> M2:362
+R22540:22545 Satapps.Matrix <> Matrix def
+R22547:22547 Satapps.Matrix <> A:359 var
+binder 22535:22536 <> M3:363
+R22556:22561 Satapps.Matrix <> Matrix def
+R22563:22563 Satapps.Matrix <> B:360 var
+binder 22551:22552 <> M4:364
+R22578:22581 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22567:22574 Satapps.Matrix <> is_valid def
+R22576:22577 Satapps.Matrix <> M1:361 var
+R22593:22596 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22582:22589 Satapps.Matrix <> is_valid def
+R22591:22592 Satapps.Matrix <> M2:362 var
+R22616:22619 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22605:22607 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22597:22601 Satapps.Matrix <> shape def
+R22603:22604 Satapps.Matrix <> M1:361 var
+R22608:22612 Satapps.Matrix <> shape def
+R22614:22615 Satapps.Matrix <> M2:362 var
+R22651:22653 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22620:22626 Satapps.Matrix <> HConcat def
+R22641:22643 Satapps.Matrix <> Zip def
+R22648:22649 Satapps.Matrix <> M4:364 var
+R22645:22646 Satapps.Matrix <> M3:363 var
+R22629:22631 Satapps.Matrix <> Zip def
+R22636:22637 Satapps.Matrix <> M2:362 var
+R22633:22634 Satapps.Matrix <> M1:361 var
+R22654:22656 Satapps.Matrix <> Zip def
+R22675:22681 Satapps.Matrix <> HConcat def
+R22686:22687 Satapps.Matrix <> M4:364 var
+R22683:22684 Satapps.Matrix <> M2:362 var
+R22659:22665 Satapps.Matrix <> HConcat def
+R22670:22671 Satapps.Matrix <> M3:363 var
+R22667:22668 Satapps.Matrix <> M1:361 var
+R22698:22704 Satapps.Matrix <> VConcat def
+R22707:22709 Satapps.Matrix <> Zip def
+R22712:22712 Satapps.Matrix <> r def
+R22715:22715 Satapps.Matrix <> c def
+R22718:22725 Satapps.Matrix <> is_valid def
+R22751:22761 Satapps.ListSpec2 <> combine_app thm
+R22751:22761 Satapps.ListSpec2 <> combine_app thm

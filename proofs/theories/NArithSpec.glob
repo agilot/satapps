@@ -1,0 +1,113 @@
+DIGEST 1a4fcb57b5338006e0690f93ce8bf8c5
+FSatapps.NArithSpec
+R15:17 Coq.micromega.Lia <> <> lib
+R19:26 Coq.Arith.PeanoNat <> <> lib
+prf 36:43 <> Nmod_div
+binder 53:53 <> a:1
+binder 55:55 <> b:2
+R63:66 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R59:61 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R58:58 Satapps.NArithSpec <> b:2 var
+R80:82 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R67:67 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R75:78 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R69:73 Coq.Arith.PeanoNat <> ::nat_scope:x_'mod'_x not
+R68:68 Satapps.NArithSpec <> a:1 var
+R74:74 Satapps.NArithSpec <> b:2 var
+R79:79 Satapps.NArithSpec <> b:2 var
+R107:119 Coq.Arith.PeanoNat Nat div_small thm
+R107:119 Coq.Arith.PeanoNat Nat div_small thm
+R128:146 Coq.Arith.PeanoNat Nat mod_upper_bound thm
+R128:146 Coq.Arith.PeanoNat Nat mod_upper_bound thm
+prf 166:176 <> Ndiv_ge_mul
+binder 186:186 <> a:3
+binder 188:188 <> b:4
+binder 190:190 <> c:5
+R198:201 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R194:196 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R193:193 Satapps.NArithSpec <> b:4 var
+R212:216 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R207:210 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R203:205 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R202:202 Satapps.NArithSpec <> a:3 var
+R206:206 Satapps.NArithSpec <> b:4 var
+R211:211 Satapps.NArithSpec <> c:5 var
+R218:221 Coq.Init.Peano <> ::nat_scope:x_'>='_x not
+R217:217 Satapps.NArithSpec <> a:3 var
+R223:225 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R222:222 Satapps.NArithSpec <> c:5 var
+R226:226 Satapps.NArithSpec <> b:4 var
+R236:237 Coq.Init.Peano <> ge def
+R266:276 Coq.Arith.PeanoNat Nat div_mod thm
+R266:276 Coq.Arith.PeanoNat Nat div_mod thm
+R314:317 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R302:305 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R313:313 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R298:300 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R307:311 Coq.Arith.PeanoNat <> ::nat_scope:x_'mod'_x not
+R329:332 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R340:340 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R319:322 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R328:328 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R324:326 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R334:338 Coq.Arith.PeanoNat <> ::nat_scope:x_'mod'_x not
+R314:317 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R302:305 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R313:313 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R298:300 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R307:311 Coq.Arith.PeanoNat <> ::nat_scope:x_'mod'_x not
+R329:332 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R340:340 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R319:322 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R328:328 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R324:326 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R334:338 Coq.Arith.PeanoNat <> ::nat_scope:x_'mod'_x not
+R351:367 Coq.Arith.PeanoNat Nat mul_le_mono_l thm
+R373:375 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R351:367 Coq.Arith.PeanoNat Nat mul_le_mono_l thm
+R373:375 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R449:463 Coq.Arith.PeanoNat Nat div_le_mono thm
+R449:463 Coq.Arith.PeanoNat Nat div_le_mono thm
+R491:501 Coq.Arith.PeanoNat Nat div_mul thm
+R491:501 Coq.Arith.PeanoNat Nat div_mul thm
+R491:501 Coq.Arith.PeanoNat Nat div_mul thm
+R491:501 Coq.Arith.PeanoNat Nat div_mul thm
+prf 545:555 <> Ndiv_mul_le
+binder 565:565 <> a:6
+binder 567:567 <> b:7
+R575:578 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R571:573 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R570:570 Satapps.NArithSpec <> b:7 var
+R588:591 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R584:586 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R580:582 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R579:579 Satapps.NArithSpec <> a:6 var
+R583:583 Satapps.NArithSpec <> b:7 var
+R587:587 Satapps.NArithSpec <> b:7 var
+R592:592 Satapps.NArithSpec <> a:6 var
+R617:627 Satapps.NArithSpec <> Ndiv_ge_mul thm
+R635:637 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R617:627 Satapps.NArithSpec <> Ndiv_ge_mul thm
+R635:637 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+prf 665:675 <> Ndiv_gt_mul
+binder 685:685 <> a:8
+binder 687:687 <> b:9
+binder 689:689 <> c:10
+R697:700 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R693:695 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R692:692 Satapps.NArithSpec <> b:9 var
+R710:714 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R706:708 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R702:704 Coq.Arith.PeanoNat <> ::nat_scope:x_'/'_x not
+R701:701 Satapps.NArithSpec <> a:8 var
+R705:705 Satapps.NArithSpec <> b:9 var
+R709:709 Satapps.NArithSpec <> c:10 var
+R716:718 Coq.Init.Peano <> ::nat_scope:x_'<'_x not
+R715:715 Satapps.NArithSpec <> a:8 var
+R720:722 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R719:719 Satapps.NArithSpec <> c:10 var
+R723:723 Satapps.NArithSpec <> b:9 var
+R750:763 Coq.Init.Logic <> not_iff_compat thm
+R766:776 Satapps.NArithSpec <> Ndiv_ge_mul thm
+R750:763 Coq.Init.Logic <> not_iff_compat thm
+R766:776 Satapps.NArithSpec <> Ndiv_ge_mul thm
