@@ -5,11 +5,10 @@ import scala.annotation.targetName
 import BooleanMatricesOps.{*, given}
 import Extensions.*
 import problems.Graphs.*
-import java.beans.VetoableChangeSupport
 
 type Vertex = Int
 type Edge = (Vertex, Vertex)
-
+type Labelling[T] = Map[Vertex, T]
 trait Graph {
   def n: Int
   def adjMat: Matrix[Boolean]
@@ -88,25 +87,14 @@ trait Graph {
 
 }
 
-class SetGraph (override val n: Int, override val edgeSet: Set[Edge]) extends Graph {
-  override lazy val adjMat: Matrix[Boolean] = 
-    edgeSet.foldLeft(BoolMatrix.falses(n, n))((acc: Matrix[Boolean], e: Edge) => acc.updated(e._1, e._2, true))
-
-  override lazy val adjList: Map[Vertex, Set[Vertex]] = 
-    edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[Vertex]], p: Edge) => 
-      m + (p._1 -> (m(p._1) + p._2)) 
-    )
-  
-  override lazy val wMat: Matrix[Int] = 
-    edgeSet.foldLeft(IntMatrix.zeros(n, n))((acc: Matrix[Int], e: Edge) => acc.updated(e._1, e._2, 1))
-
-  override lazy val wAdjList: Map[Vertex, Set[(Vertex, Int)]] = 
-    edgeSet.foldLeft(Range(0, n).map((_, Set())).toMap)((m: Map[Vertex, Set[(Vertex, Int)]], p: Edge) => 
-      m + (p._1 -> (m(p._1) + ((p._2, 1)))) 
-    )
-
-  override lazy val wMap: Map[Edge, Int] =
-    edgeSet.map((_, 1)).toMap
+class LabelledGraph[T] (val g: Graph, val labels: Labelling[T])   {
+  override def n: Int = g.n
+  override def adjMat: Matrix[Boolean] = 
+  def adjList: Map[Vertex, Set[Vertex]]
+  def edgeSet: Set[Edge]
+  def wMat: Matrix[Int]
+  def wAdjList: Map[Vertex, Set[(Vertex, Int)]]
+  def wMap: Map[Edge, Int]
 }
 
 class WeightedSetGraph (override val n: Int, override val wMap: Map[Edge, Int]) extends Graph {
@@ -139,7 +127,7 @@ class MatrixGraph (override val wMat: Matrix[Int]) extends Graph {
     (for(i <- 0 until wMat.rows; j <- 0 until wMat.columns if wMat(i, j) > 0) yield (i, j)).toSet
 
   override lazy val vertexSet: Set[Vertex] =
-    Range(0,wMat.rows).toSet
+    Range(0, wMat.rows).toSet
 
   override lazy val wAdjList: Map[Vertex, Set[(Vertex, Int)]] =
     (for(i <- 0 until wMat.rows) yield (i, (for(j <- 0 until wMat.columns if wMat(i, j) > 0) yield (j, wMat(i, j))).toSet)).toMap
@@ -149,7 +137,7 @@ class MatrixGraph (override val wMat: Matrix[Int]) extends Graph {
 }
 
 object Graph {
-  def apply(n: Int, e: Set[Edge]): Graph = SetGraph(n, e)
+  def apply(n: Int, e: Set[Edge]): Graph = WeightedSetGraph(n, e.map((_, 1)).toMap)
   def apply(wMat: Matrix[Int]): Graph = MatrixGraph(wMat)
   def apply(n: Int, e: Map[Edge, Int]): Graph = WeightedSetGraph(n, e)
 
@@ -166,6 +154,13 @@ class GraphBuilder[T](vertices: Set[T], edges: Set[(T, T)]){
     assert(vertices(e._1))
     assert(vertices(e._2))
     GraphBuilder(vertices, edges + e)
-  def build(): (Graph, Map[Vertex, T]) = 
+  def build(): LabelledGraph[T] =
+    val v: List[T] = vertices.toList
+    val n: Int = v.size
+    val r: Range = Range(0, n)
+    val map1: Map[T, Vertex] = v.zip(r).toMap
+    val map2: Labelling[T] = r.zip(v).toMap
+    val e: Set[Edge] = edges.map(p => (map1(p._1), map1(p._2)))
+    LabelledGraph[T](Graph(n, e), map2)
 
 }
