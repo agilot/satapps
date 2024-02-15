@@ -1,11 +1,10 @@
 package satapps.problems
 
 import satapps.ConstrProg.{*, given}
-import satapps.BooleanMatricesOps.{*, given}
+import satapps.BoolMatrix.{*, given}
 import scala.collection.immutable.ArraySeq
 import satapps.Extensions.*
 import z3.scala.*
-import javax.swing.SpringLayout.Constraints
 
 trait BasicProblem[A, R]{
   def search(args: A): Option[R]

@@ -4,6 +4,7 @@ import scala.collection.mutable.ArrayBuffer
 import scala.language.implicitConversions
 
 object Main{
+  
 
   // def xorMat(a: Matrix[Boolean], b: Matrix[Boolean]): Boolean = 
   //   def matToCNF(mat: Matrix[Boolean]): Expr = 
