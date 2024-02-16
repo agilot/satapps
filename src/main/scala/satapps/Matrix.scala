@@ -19,6 +19,11 @@ import java.util.ArrayList
   *   rows by rows, the number of rows and the number of columns. The number of
   *   rows and columns must be positive and the shape of the matrix has to be
   *   compatible with the number of entries: `rows * columns == flatten.size`.
+  * 
+  *   @todo
+  *     - astype
+  *     - real
+  *     - imaginary
   */
 class Matrix[+A](
     val flatten: IndexedSeq[A],
@@ -33,13 +38,52 @@ class Matrix[+A](
   require(
     columns > 0,
     s"The number of columns must be positive: current ${columns}."
-  )
+  ) 
 
-  /** Number if dimensions of the matrix, .i.e. 2. */
-  def ndim: Int = 2
+  /**
+    *  ## Layout
+    * 
+    * The following attributes contain information about the layout of the matrix.
+    */
 
-  /** Pair of matrix dimensions. */
-  def shape: (Int, Int) = (rows, columns)
+    /** Pair of matrix dimensions. */
+    def shape: (Int, Int) = (rows, columns)
+
+    /** Number if dimensions of the matrix, .i.e. 2. */
+    def ndim: Int = 2
+
+    /** Returns the number of entries of this matrix
+      * @note
+      *   has a O(1) complexity.
+      */
+    def size: Int = rows * columns
+
+  /**
+    * ## Array conversion
+    */
+
+  /** Converts this matrix to a list containing its entries. */
+  def toList: List[A] = flatten.toList
+
+  /** Converts this matrix into a string. */
+  override def toString(): String =
+    (for i <- 0 until flatten.size
+    yield s"${flatten(i)} " + (if (i + 1) % columns == 0 then "\n"
+                               else "")).flatten.toString()
+
+  /**
+    * Fills this matrix with a value
+    * 
+    * @param v
+    *  all entries of the matrix will be assigned this value.
+    */
+  def fill[B](v: B): Matrix[B] = Matrix.fill(rows, columns)(v) 
+
+  /**
+    * ## Shape manipulation
+    * 
+    * For reshape and resize, the single pair argument may be replaced with 2 integers .
+    */
 
   /** Gives a new shape to this matrix without changing its entries. The new
     * shape should be compatible with the original shape. One shape dimension
@@ -84,6 +128,87 @@ class Matrix[+A](
       else Matrix(flatten, numberEntries / newCol, newCol)
     else if newCol == -1 then Matrix(flatten, newRows, numberEntries / newRows)
     else Matrix(flatten, newRows, newCol)
+
+
+  /** Change shape and size of this matrix.
+    *
+    * @param newRows
+    *   rows of the resized matrix.
+    * @param newCol
+    *   columns of the resized matrix.
+    */
+  def resize(newRows: Int, newCol: Int): Matrix[A] =
+    if newRows < 0 then
+      throw IllegalArgumentException(
+        s"The number of rows of the new matrix must be positive: current ${newRows}."
+      )
+    else if newCol < 0 then
+      throw IllegalArgumentException(
+        s"The number of rows of the new matrix must be positive: current ${newCol}."
+      )
+    Matrix(flatten.take(newRows * newCol), newRows, newCol)
+
+  /** Overload of [[this.resize]], taking a tuple as parameter instead of two
+    * integers.
+    */
+  def resize(newShape: (Int, Int)): Matrix[A] = resize(newShape._1, newShape._2)
+
+  /** Returns the transpose of this matrix. */
+  def transpose: Matrix[A] =
+    val emptyColumn: IndexedSeq[List[A]] =
+      IndexedSeq.fill(columns)(List.empty[A])
+    // Since `Lists` are used to add elements, using foldRight
+    // instead of foldLeft increases performances.
+    Matrix(
+      flatten
+        .grouped(columns)
+        .foldRight(emptyColumn)((acc, col) =>
+          acc.zip(col).map((h, t) => (h :: t))
+        )
+        .flatten
+        .toIndexedSeq,
+      columns,
+      rows
+    )
+
+  /** Alias of [[this.transpose]] */
+  def T: Matrix[A] = transpose
+
+  /** Alias of [[this.transpose]] */
+  def swapaxes: Matrix[A] = transpose
+
+  /** Alias of [[this.flatten]] */
+  def ravel: IndexedSeq[A] = flatten
+
+  /** Remove an axis of length one from this matrix.
+    *
+    * @param axis
+    *   the axis to be removed. If set to [[Axis.None]], the axis is
+    *   automatically infered.
+    *
+    * @throws IllegalStateException
+    *   if the shape entry of the selected axis is greater than one.
+    */
+  def squeeze(axis: Axis): IndexedSeq[A] =
+    axis match
+      case Axis.None =>
+        if rows > 1 && columns > 1 then
+          throw IllegalStateException(
+            s"The matrix must be a vector: current shape ${shape}"
+          )
+        else flatten
+      case Axis.Vertical =>
+        if rows > 1 then
+          throw IllegalStateException(
+            s"The matrix must be a row vector: current shape ${shape}"
+          )
+        else flatten
+      case Axis.Horizontal =>
+        if columns > 1 then
+          throw IllegalStateException(
+            s"The matrix must be a column vector: current shape ${shape}"
+          )
+        else flatten
 
   /** Alias for [[this.item]].
     *
@@ -207,17 +332,32 @@ class Matrix[+A](
       )
     else Matrix(flatten.updated(ind, v), rows, columns)
 
+  /** Returns this matrix with a list entries replaced by other values.
+    *
+    * Indices starts at 0.
+    *
+    * @param ind
+    *   the indices of the entries that should be replaced. They are row wise
+    *   and pass to the next row if they overflows.
+    * @param v
+    *   the list of new values.
+    *
+    * @throws IllegalArgumentException
+    *   if the number of indices is different from the number of values to be
+    *   replaced.
+    */
+  def put[S >: A](ind: Seq[Int], v: Seq[S]): Matrix[S] =
+    ind.zip(v).foldLeft(this)((acc: Matrix[S], p) => acc.itemset(p._1, p._2))
+
+
+
   /** An iterator for this matrix that outputs its entries row by row. */
   def flat: Iterator[A] = flatten.iterator
 
   /** Alias for [[this.flat]]. */
   def iterator: Iterator[A] = flat
 
-  /** Converts this matrix into a string. */
-  override def toString(): String =
-    (for i <- 0 until flatten.size
-    yield s"${flatten(i)} " + (if (i + 1) % columns == 0 then "\n"
-                               else "")).flatten.toString()
+
 
   /** Returns whether this matrix is identical to another one
     *
@@ -231,11 +371,8 @@ class Matrix[+A](
       case _ => false
     }
 
-  /** Returns the number of entries of this matrix
-    * @note
-    *   has a O(1) complexity.
-    */
-  def size: Int = rows * columns
+
+
 
   /** Stacks matrices in sequence horizontally.
     *
@@ -290,37 +427,54 @@ class Matrix[+A](
     */
   def concatenate[S >: A](ms: Seq[Matrix[S]], axis: Axis = 0): Matrix[S] =
     axis match
-      case Axis.Vertical => vstack(ms*)
+      case Axis.Vertical   => vstack(ms*)
       case Axis.Horizontal => hstack(ms*)
-      case _ => throw IllegalArgumentException(s"Axis should be 0 or 1, current ${axis}")
-      
-  /** Returns the transpose of this matrix. */
-  def transpose: Matrix[A] =
-    val emptyColumn: IndexedSeq[List[A]] =
-      IndexedSeq.fill(columns)(List.empty[A])
-    // Since `Lists` are used to add elements, using foldRight
-    // instead of foldLeft increases performances.
-    Matrix(
-      flatten
-        .grouped(columns)
-        .foldRight(emptyColumn)((acc, col) =>
-          acc.zip(col).map((h, t) => (h :: t))
+      case _ =>
+        throw IllegalArgumentException(
+          s"Axis should be 0 or 1, current ${axis}"
         )
-        .flatten
-        .toIndexedSeq,
-      columns,
-      rows
-    )
 
-  /** Alias of [[this.transpose]] */
-  def T: Matrix[A] = transpose
+  
 
-  /** Alias of [[this.transpose]] */
-  def swapaxes: Matrix[A] = transpose
 
-  /** Alias of [[this.flatten]] */
-  def ravel: IndexedSeq[A] = flatten
 
+  /** 
+   * Return the maximum entry of this matrix. 
+   * 
+   * @param ord
+   *  ordering used to compute the maximum element.
+   */
+  def max[B >: A](implicit ord: Ordering[B]): B = flatten.max
+
+  /** 
+   * Return the maximum entry of this matrix along an axis. 
+   * 
+   * @param axis
+   *  axis along which maximum elements are computed.
+   * 
+   * @param ord
+   *  ordering used to compute the maximum element.
+   */
+  def max[B >: A](axis: Axis)(implicit ord: Ordering[B]): IndexedSeq[B] = Matrix.applyAlongAxis[B, B](_.max, axis, this)
+
+  /** 
+   * Return the minimum entry of this matrix. 
+   * 
+   * @param ord
+   *  ordering used to compute the minimum element.
+   */
+  def min[B >: A](implicit ord: Ordering[B]): B = flatten.min
+
+ /** 
+   * Return the minimum entry of this matrix along an axis. 
+   * 
+   * @param axis
+   *  axis along which minimum elements are computed.
+   * 
+   * @param ord
+   *  ordering used to compute the minimum element.
+   */
+  def min[B >: A](axis: Axis)(implicit ord: Ordering[B]): IndexedSeq[B] = Matrix.applyAlongAxis[B, B](_.min, axis, this)
 
   /** Returns the specified diagonal of this matrix.
     *
@@ -335,6 +489,7 @@ class Matrix[+A](
     yield apply(i, i + offset)
 
 
+
   /** Builds a new matrix by applying a function to all entries of this matrix.
     *
     * @param f
@@ -342,8 +497,7 @@ class Matrix[+A](
     */
   def map[B](f: A => B): Matrix[B] = new Matrix(flatten.map(f), rows, columns)
 
-  /** Converts this matrix to a list containing its entries. */
-  def toList: List[A] = flatten.toList
+
 }
 
 type Axis = Int
@@ -393,7 +547,7 @@ object Matrix {
     * @param columns
     *   the number of columns in the matrix
     */
-  def fill[T](t: T)(rows: Int, columns: Int) =
+  def fill[T](rows: Int, columns: Int)(t: T) =
     require(rows >= 0 && columns >= 0)
     Matrix[T](IndexedSeq.fill(rows * columns)(t), rows, columns)
 
@@ -413,26 +567,33 @@ object Matrix {
   ): Matrix[A] =
     ul.hstack(ur).vstack(ll.hstack(lr))
 
-  /**
-    * 
-    */
-  def applyAlongAxis[A, B](f: Iterable[A] => B, axis: Axis, arr: Matrix[A]): IndexedSeq[B] =
+  /** */
+  def applyAlongAxis[A, B](
+      f: Iterable[A] => B,
+      axis: Axis,
+      arr: Matrix[A]
+  ): IndexedSeq[B] =
     axis match
-      case Axis.Horizontal => (for i <- 0 until arr.rows yield f(for j <- 0 until arr.columns yield arr(i)(j))).toIndexedSeq
-      case Axis.Vertical => (for j <- 0 until arr.columns yield f(for i <- 0 until arr.rows yield arr(i)(j))).toIndexedSeq
-      case _ => throw IllegalArgumentException(s"Axis must be 0 or 1: curent ${axis}")
-    
+      case Axis.Horizontal =>
+        (for i <- 0 until arr.rows
+        yield f(for j <- 0 until arr.columns yield arr(i)(j))).toIndexedSeq
+      case Axis.Vertical =>
+        (for j <- 0 until arr.columns
+        yield f(for i <- 0 until arr.rows yield arr(i)(j))).toIndexedSeq
+      case _ =>
+        throw IllegalArgumentException(s"Axis must be 0 or 1: curent ${axis}")
+
 }
 
 object BoolMatrix {
   def trues(rows: Int, columns: Int): Matrix[Boolean] =
     require(rows >= 0)
     require(columns >= 0)
-    Matrix.fill(true)(rows, columns)
+    Matrix.fill(rows, columns)(true)
   def falses(rows: Int, columns: Int): Matrix[Boolean] =
     require(rows >= 0)
     require(columns >= 0)
-    Matrix.fill(false)(rows, columns)
+    Matrix.fill(rows, columns)(false)
   def id(n: Int) =
     require(n >= 0)
     Matrix.eye(true, false)(n)
@@ -443,7 +604,7 @@ object BoolMatrix {
 
 object IntMatrix {
   def zeros(rows: Int, columns: Int): Matrix[Int] =
-    Matrix.fill(0)(rows, columns)
-  def ones(rows: Int, columns: Int) = Matrix.fill(1)(rows, columns)
+    Matrix.fill(rows, columns)(0)
+  def ones(rows: Int, columns: Int) = Matrix.fill(rows, columns)(1)
   def id(n: Int) = Matrix.eye(1, 0)(n)
 }

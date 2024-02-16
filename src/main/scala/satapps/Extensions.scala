@@ -3,6 +3,7 @@ package satapps
 import ConstrProg.*
 import z3.scala.*
 import z3.scala.dsl.BoolConstant
+import scala.runtime.ScalaNumberProxy
 
 object Extensions {
 
